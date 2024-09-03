@@ -1,0 +1,112 @@
+
+:root{
+    --cor-bg: #ffffff;
+    --cor-principal: #0f8f8f;
+    --cor-text: #EFEFEF;
+    --font-size: 14pt;
+}
+
+*{
+
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--cor-bg);
+}   
+
+header{
+    background-color: var(--cor-principal);
+    height: 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    position: fixed;
+    width: 100vw;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navlist{
+    display: flex;
+    justify-content: space-between;
+    gap: 5vw;
+    color: var(--cor-text);
+}
+
+li{
+    cursor: pointer;
+    font-size: var(--font-size);
+}
+
+.cadastro{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 1vw;
+    justify-content: space-around;
+    font-size: var(--font-size);
+}
+
+.cadastre-se{
+    color: var(--cor-text);
+}
+
+.login{
+    color: var(--cor-principal);
+    background-color: var(--cor-bg);
+    width: 5vw;
+    padding: 0.2vw;
+    border-radius: 3px;
+}
+
+.bannerhome{
+    display: flex;
+    height: auto;
+    width: 99vw;
+}
+
+.bannerhome img{
+    width: 99.2vw;
+    height: auto;
+}
+
+.texto-home{
+    display: flex;
+    justify-content: center;
+    color: var(--cor-principal);
+    font-size: 5vw;
+    margin: 5vw;
+}
+
+section{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    background: var(--cor-principal);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+figure img{
+    display: flex;
+    width: 20vw;
+}
