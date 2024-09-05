@@ -2,7 +2,7 @@
 :root{
     --cor-bg: #ffffff;
     --cor-principal: #0f8f8f;
-    --cor-text: #EFEFEF;
+    --cor-text: #EDEDED;
     --font-size: 14pt;
 }
 
@@ -74,11 +74,11 @@ li{
 .bannerhome{
     display: flex;
     height: auto;
-    width: 99vw;
+    max-width: 99vw;
 }
 
 .bannerhome img{
-    width: 99.2vw;
+    max-width: 99vw;
     height: auto;
 }
 
@@ -87,26 +87,68 @@ li{
     justify-content: center;
     color: var(--cor-principal);
     font-size: 5vw;
-    margin: 5vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 
 section{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
     flex-wrap: wrap;
+    padding: 2vw;
+    align-items: center;
 
 }
 
 .card{
-    display: flex;
-    flex-direction: column;
+    display: block;
     background: var(--cor-principal);
-    padding: 10px;
+    padding: 2vw;
     border-radius: 8px;
-    margin: 20px;
+    width: 20vw;
+    height: 25vw;
+    cursor: pointer;
 }
 
-figure img{
+.card img{
     display: flex;
-    width: 20vw;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+
+.card a{
+    color: var(--cor-text);
+    font-weight: bold;
+}
+
+.departamentos figure{
+    background-color: var(--cor-text);
+    display: block;
+    text-align: center;
+    padding: 1vw;
+}
+
+.pontas{
+    display: flex;
+    justify-content: center;
+    height: 30vw;
+}
+
+.pontas div{
+    display: flex;
+    justify-content: center;
+    height: 30vw;
+}
+
+/* .card-meio{
+    gap: 1vw;
+    display: flex;
+    flex-direction: column;
+} */
+
+.departamentos img{
+    width: 40%;
 }
