@@ -50,6 +50,10 @@ li{
     font-size: var(--font-size);
 }
 
+li a{
+    color: var(--cor-text);
+}
+
 .cadastro{
     display: flex;
     align-items: center;
@@ -82,13 +86,15 @@ li{
     height: auto;
 }
 
+
 .texto-home{
     display: flex;
     justify-content: center;
     color: var(--cor-principal);
-    font-size: 5vw;
+    font-size: 3vw;
     margin-left: 5vw;
     margin-right: 5vw;
+    margin-top: 3vw;
 }
 
 section{
@@ -110,6 +116,7 @@ section{
     width: 20vw;
     height: 25vw;
     cursor: pointer;
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .card img{
@@ -124,31 +131,50 @@ section{
     font-weight: bold;
 }
 
-.departamentos figure{
+.departamentos{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-meio img{
+    width: 10vw;
+}
+
+.card-meio{
     background-color: var(--cor-text);
-    display: block;
-    text-align: center;
-    padding: 1vw;
+    height: 15vw;
+    width: 33vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-bottom: 1vw;
+    cursor: pointer;
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pontas img{
+    width: 20vw;
 }
 
 .pontas{
+    background-color: var(--cor-text);
+    height: 32vw;
     display: flex;
-    justify-content: center;
-    height: 30vw;
-}
-
-.pontas div{
-    display: flex;
-    justify-content: center;
-    height: 30vw;
-}
-
-/* .card-meio{
-    gap: 1vw;
-    display: flex;
+    padding: 3vw;
     flex-direction: column;
-} */
-
-.departamentos img{
-    width: 40%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    gap: 2vw;
+    cursor: pointer;
+    
 }
+
+.departamentos h2{
+    color: var(--cor-principal);
+    font-size: 2vw;
+
+}
+
