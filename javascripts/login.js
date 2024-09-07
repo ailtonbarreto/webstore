@@ -1,5 +1,5 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio do formulário
+    event.preventDefault();
     
     // Pega os valores do input
     const username = document.getElementById('username').value;
@@ -17,3 +17,5 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         document.getElementById('message').innerText = "Usuário ou senha incorretos!";
     }
 });
+
+
