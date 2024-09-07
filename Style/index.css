@@ -31,6 +31,10 @@ header{
     width: 100vw;
 }
 
+.logo{
+    width: 3vw;
+}
+
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -78,11 +82,11 @@ li a{
 .bannerhome{
     display: flex;
     height: auto;
-    max-width: 99vw;
+    max-width: 100vw;
 }
 
 .bannerhome img{
-    max-width: 99vw;
+    width: 100%;
     height: auto;
 }
 
@@ -95,6 +99,7 @@ li a{
     margin-left: 5vw;
     margin-right: 5vw;
     margin-top: 3vw;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 section{
@@ -115,25 +120,32 @@ section{
     border-radius: 8px;
     width: 20vw;
     height: 25vw;
-    cursor: pointer;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .card img{
     display: flex;
     width: 100%;
     margin-top: 5%;
-    margin-bottom: 15%;
+    margin-bottom: 2vw;
 }
 
-.card a{
-    color: var(--cor-text);
-    font-weight: bold;
+
+.btn-prod{
+    background-color: var(--cor-text);
+    border: none;
+    padding: 0.3vw;
+    color: #0f8f8f;
+    width: 50%;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font-weight: bolder;
 }
 
 .departamentos{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .card-meio img{
@@ -169,6 +181,7 @@ section{
     border-radius: 8px;
     gap: 2vw;
     cursor: pointer;
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     
 }
 
@@ -177,4 +190,5 @@ section{
     font-size: 2vw;
 
 }
+
 
