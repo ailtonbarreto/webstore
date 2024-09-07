@@ -1,0 +1,126 @@
+
+:root{
+    --cor-bg: #ffffff;
+    --cor-principal: #0f8f8f;
+    --cor-text: #EDEDED;
+    --font-size: 100%;
+}
+
+*{
+
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--cor-bg);
+}   
+
+header{
+    background-color: var(--cor-principal);
+    height: 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+}
+
+.logo{
+    width: 3vw;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navlist{
+    display: flex;
+    justify-content: space-between;
+    gap: 5vw;
+    color: var(--cor-text);
+}
+
+li{
+    cursor: pointer;
+    font-size: var(--font-size);
+}
+
+li a{
+    color: var(--cor-text);
+}
+
+.cadastro{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 1vw;
+    justify-content: space-around;
+    font-size: var(--font-size);
+}
+
+.cadastre-se{
+    color: var(--cor-text);
+}
+
+.login{
+    color: var(--cor-principal);
+    background-color: var(--cor-bg);
+    width: 5vw;
+    padding: 0.2vw;
+    border-radius: 3px;
+}
+
+.texto-home{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    color: var(--cor-principal);
+    font-size: 3vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 15vw;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+section{
+    position: relative;
+    top: 15vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+    flex-wrap: wrap;
+    padding: 2vw;
+    align-items: center;
+
+}
+
+
+.card{
+    display: block;
+    background: var(--cor-principal);
+    padding: 2vw;
+    border-radius: 8px;
+    width: 20vw;
+    height: 25vw;
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.card img{
+    display: flex;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 2vw;
+}
