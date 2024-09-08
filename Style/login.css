@@ -33,8 +33,9 @@ img{
     align-items: center;
     border-radius: 0.5vw;
     color: var(--cor-text);
-    width: 20%;
+    width: 20vw;
     padding: 2vw;
+    height: 30vw;
     gap: 1vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
@@ -44,16 +45,22 @@ input{
     outline: none;
     border: none;
     border-radius: 2px;
-    height: 1vw;
+    height: 1.5vw;
 }
 
-button{
+p{
+    text-align: center;
+    margin: 1vw;
+}
+
+.btn{
     background-color: var(--cor-text);
     border: none;
     width: 100%;
-    height: 1.5vw;
+    height: 2vw;
     border-radius: 0.2vw;
     color: var(--cor-principal);
     font-weight: bolder;
 }
+
 

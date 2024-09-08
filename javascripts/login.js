@@ -1,18 +1,17 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    // Pega os valores do input
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     
-    // Exemplo simples de validação
+    //validacao
     const validUsername = "ailton";
     const validPassword = "071954";
 
     if (username === validUsername && password === validPassword) {
         document.getElementById('message').innerText = "Login bem-sucedido!";
-        // Aqui você poderia redirecionar para outra página:
-        // window.location.href = 'index2.html';
+       
+        window.location.href = './login-sucess.html';
     } else {
         document.getElementById('message').innerText = "Usuário ou senha incorretos!";
     }

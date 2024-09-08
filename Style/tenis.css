@@ -7,7 +7,6 @@
 }
 
 *{
-
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
@@ -17,6 +16,7 @@
 
 body{
     background-color: var(--cor-bg);
+    height: 100vh;
 }   
 
 header{
@@ -29,6 +29,7 @@ header{
     padding-right: 2vw;
     position: fixed;
     width: 100vw;
+    top: 0;
     z-index: 1;
 }
 
@@ -81,21 +82,19 @@ li a{
 }
 
 .texto-home{
-    position: fixed;
     display: flex;
     justify-content: center;
     color: var(--cor-principal);
     font-size: 3vw;
     margin-left: 5vw;
     margin-right: 5vw;
-    margin-top: 15vw;
+    margin-top: 10vw;
     text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-
 section{
     position: relative;
-    top: 15vw;
+    top: 2vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -123,4 +122,20 @@ section{
     width: 100%;
     margin-top: 5%;
     margin-bottom: 2vw;
+}
+
+.card a{
+    color: var(--cor-text);
+}
+
+
+.btn-prod{
+    background-color: var(--cor-text);
+    border: none;
+    padding: 0.3vw;
+    color: #0f8f8f;
+    width: 50%;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font-weight: bolder;
 }
