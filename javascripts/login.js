@@ -9,9 +9,9 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const validPassword = "071954";
 
     if (username === validUsername && password === validPassword) {
-        document.getElementById('message').innerText = "Login bem-sucedido!";
        
         window.location.href = './login-sucess.html';
+        
     } else {
         document.getElementById('message').innerText = "Usuário ou senha incorretos!";
     }
