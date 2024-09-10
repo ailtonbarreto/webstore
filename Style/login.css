@@ -5,12 +5,19 @@
     --font-size: 14pt;
 }
 
+@font-face{
+    font-family: 'fonte-personalizada';
+    src: url('../Sevillana-Regular.ttf') format('ttf');
+}
+
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'fonte-personalizada', sans-serif ;
 }
+
 
 body{
     background-color: var(--cor-bg);
@@ -35,7 +42,7 @@ img{
     color: var(--cor-text);
     width: 20vw;
     padding: 2vw;
-    height: 30vw;
+    height: 28vw;
     gap: 1vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
