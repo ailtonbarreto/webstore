@@ -226,6 +226,7 @@ section{
 footer{
     background-color: var(--cor-principal);
     display: flex;
+    margin-top: 5vw;
     justify-content: space-around;
     align-items: center;
     padding: 1vw;
