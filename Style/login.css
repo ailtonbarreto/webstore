@@ -43,10 +43,15 @@ img{
     border-radius: 0.5vw;
     color: var(--cor-text);
     width: 20vw;
-    padding: 2vw;
+    padding: 1vw;
     height: 28vw;
     gap: 1vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+#loginForm{
+    padding: 1vw;
+    width: 100%;
 }
 
 input{
@@ -60,7 +65,13 @@ input{
 
 p{
     text-align: center;
-    margin: 1vw;
+    margin: 0.5vw;
+}
+
+#message{
+    /* text-align: center; */
+    margin-bottom: 1vw;
+
 }
 
 .btn{
