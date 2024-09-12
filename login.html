@@ -12,28 +12,38 @@
 <body>
 
     <div class="container">
+
         <img src="./Assets/logo.png" alt="">
 
-        <h2>Login</h2>
 
         <form id="loginForm">
+
             <label for="username">Usuário:</label>
+
             <input type="text" id="username" name="username" required>
+
             <br><br>
+
             <label for="password">Senha:</label>
+
             <input type="password" id="password" name="password" required>
+
             <br><br>
-            <button class="btn" type="submit">Entrar</button>
 
-            <p>ou</p>
-
-            <button class="btn">Cadastre-se</button>
-
-            <p id="message"></p>
+            <div class="button">
+                <button class="btn" type="submit">Entrar</button>
+            </div>
 
         </form>
 
+        <p>Não possui uma conta? <a href=""><span>Cadastra-se</span></a></p>
 
+    </div>
+
+
+    <div class="message">
+
+        <p id="message"></p>
 
     </div>
 
