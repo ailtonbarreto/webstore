@@ -5,17 +5,18 @@
     --font-size: 14pt;
 }
 
-@font-face{
-    font-family: 'fonte-personalizada';
-    src: url('../Sevillana-Regular.ttf') format('ttf');
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('../fonts/PlaypenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
-
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'fonte-personalizada', sans-serif ;
+    
 }
 
 
@@ -27,6 +28,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'MinhaFonte', sans-serif ;
 }
 
 img{

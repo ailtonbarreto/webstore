@@ -1,28 +1,32 @@
 
 :root{
-    --cor-bg: #ffffff;
+    --cor-bg: #faf9f9;
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
     --font-size: 100%;
+    --cor-card: #ffffff;
 }
 
-@font-face{
-    font-family: 'fonte-personalizada';
-    src: url('../Sevillana-Regular.ttf') format('ttf');
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('../fonts/PlaypenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
 
 *{
-
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
     margin: 0;
     padding: 0;
-    font-family: 'fonte-personalizada', sans-serif ;
+    
 }
 
 body{
     background-color: var(--cor-bg);
+    font-family: 'MinhaFonte', sans-serif;
 }   
 
 header{
@@ -120,7 +124,7 @@ section{
 
 .card{
     display: block;
-    background: var(--cor-principal);
+    background: var(--cor-card);
     padding: 2vw;
     border-radius: 8px;
     width: 20vw;
@@ -130,7 +134,7 @@ section{
 }
 
 .card a{
-    color: var(--cor-text);
+    color: var(--cor-principal);
 }
 
 .card img{
@@ -142,10 +146,10 @@ section{
 
 
 .btn-prod{
-    background-color: var(--cor-text);
+    background-color: var(--cor-principal);
     border: none;
     padding: 0.3vw;
-    color: #0f8f8f;
+    color: var(--cor-text);
     width: 50%;
     border-radius: 0.5vw;
     cursor: pointer;
@@ -228,8 +232,7 @@ footer{
     margin-top: 5vw;
     justify-content: space-around;
     align-items: center;
-    padding: 1vw;
-    height: 15vw;
+    height: 12vw;
 }
 
 .container-footer{
@@ -242,12 +245,10 @@ footer{
 }
 
 .assinatura{
-    margin: 1vw;
-    font-weight: bold;
-}
-
-.link-port{
+    text-align: right;
+    font-weight: thin;
+    background-color: var(--cor-principal);
     color: var(--cor-text);
-    font-weight: bold;
-    text-decoration: underline;
+    padding-bottom: 1vw;
+    padding-right: 2vw;
 }
