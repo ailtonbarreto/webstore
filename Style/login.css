@@ -2,7 +2,7 @@
     --cor-bg: #ffffff;
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
-    --font-size: 14pt;
+    --font-size: 1vw;
 }
 
 @font-face {
@@ -33,11 +33,12 @@ body{
 
 img{
     margin-top: 2vw;
-    margin-bottom: 1vw;
-    width: 3vw;
+    margin-bottom: -2vw;
+    width: 6vw;
 }
 
 .container{
+    margin: 10%;
     background-color: var(--cor-principal);
     position: relative;
     display: flex;
@@ -48,7 +49,7 @@ img{
     color: var(--cor-text);
     width: 25vw;
     padding: 1vw;
-    height: 30vw;
+    height: 100%;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -77,17 +78,13 @@ label{
     margin-top: 0.5vw;
 }
 
-.ou{
-    text-align: center;
-    margin: 0.5vw;
-}
 
 .message{
-    position: relative;
     text-align: center;
+    font-size: var(--font-size);
     margin: 1vw;
     width: 100%;
-    color: rgb(158, 52, 52);
+    color: rgb(134, 15, 15);
 }
 
 .btn{
@@ -107,4 +104,5 @@ span{
 
 a{
     text-decoration-color: var(--cor-text);
+    font-size: var(--font-size);
 }

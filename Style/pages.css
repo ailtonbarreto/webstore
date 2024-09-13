@@ -1,6 +1,6 @@
 
 :root{
-    --cor-bg: #faf9f9;
+    --cor-bg: #eaf7f5;
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
     --font-size: 100%;
@@ -157,6 +157,10 @@ footer{
     height: 12vw;
 }
 
+footer img{
+    width: 5vw;    
+}
+
 .container-footer{
     color: var(--cor-text);
     text-align: center;
@@ -167,11 +171,8 @@ footer{
 }
 
 .assinatura{
-    text-align: right;
     font-weight: thin;
+    margin-top: 1vw;
     background-color: var(--cor-principal);
     color: var(--cor-text);
-    padding-bottom: 1vw;
-    padding-right: 2vw;
 }
-

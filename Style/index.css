@@ -1,6 +1,6 @@
 
 :root{
-    --cor-bg: #faf9f9;
+    --cor-bg: #eaf7f5;
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
     --font-size: 100%;
@@ -39,6 +39,7 @@ header{
     padding-right: 2vw;
     position: fixed;
     width: 100vw;
+    z-index: 1;
 }
 
 .logo{
@@ -185,9 +186,22 @@ section{
     gap: 2vw;
 }
 
+.meio img{
+    transition: transform 0.3s ease;
+}
+
+.meio img:hover{
+    transform: scale(1.1);
+}
+
 .pontas img{
     width: 20vw;
     margin-bottom: 2vw;
+    transition: transform 0.3s ease;
+}
+
+.pontas img:hover{
+    transform: scale(1.1);
 }
 
 .pontas{
@@ -235,6 +249,10 @@ footer{
     height: 12vw;
 }
 
+footer img{
+    width: 5vw;    
+}
+
 .container-footer{
     color: var(--cor-text);
     text-align: center;
@@ -245,10 +263,9 @@ footer{
 }
 
 .assinatura{
-    text-align: right;
     font-weight: thin;
+    margin-top: 1vw;
     background-color: var(--cor-principal);
     color: var(--cor-text);
-    padding-bottom: 1vw;
-    padding-right: 2vw;
+
 }
