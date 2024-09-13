@@ -31,9 +31,13 @@ body{
     font-family: 'MinhaFonte', sans-serif ;
 }
 
+.teste{
+    margin-top: 3vw;
+}
+
 img{
     margin-top: 2vw;
-    margin-bottom: -2vw;
+    margin-bottom: 0;
     width: 6vw;
 }
 
