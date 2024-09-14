@@ -252,6 +252,7 @@ section{
 
 .pontas img:hover{
     transform: scale(1.1);
+
 }
 
 .pontas{
@@ -268,6 +269,7 @@ section{
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     
 }
+
 
 .departamentos h2{
     color: var(--cor-principal);
