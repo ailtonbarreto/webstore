@@ -5,6 +5,7 @@
     --cor-text: #EDEDED;
     --font-size: 100%;
     --cor-card: #ffffff;
+    --cor-card-departamentos: #ffffff;
 }
 
 @font-face {
@@ -167,7 +168,7 @@ section{
 }
 
 .card-meio{
-    background-color: var(--cor-text);
+    background-color: var(--cor-card-departamentos);
     height: 15vw;
     width: 30vw;
     display: flex;
@@ -205,7 +206,7 @@ section{
 }
 
 .pontas{
-    background-color: var(--cor-text);
+    background-color: var(--cor-card-departamentos);
     height: 32vw;
     display: flex;
     padding: 3vw;
