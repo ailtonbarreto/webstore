@@ -32,7 +32,8 @@ body{
 }
 
 .teste{
-    margin-top: 3vw;
+    margin-top: 8vw;
+    margin-bottom: 1vw;
 }
 
 img{
@@ -42,7 +43,7 @@ img{
 }
 
 .container{
-    margin: 10%;
+    margin-bottom: 10%;
     background-color: var(--cor-principal);
     position: relative;
     display: flex;
