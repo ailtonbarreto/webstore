@@ -93,10 +93,11 @@ label{
 }
 
 .btn{
-    margin-top: 1vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
     background-color: var(--cor-text);
     border: none;
-    width: 100%;
+    width: 50%;
     height: 2vw;
     border-radius: 0.2vw;
     color: var(--cor-principal);
