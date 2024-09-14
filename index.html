@@ -32,7 +32,17 @@
     </header>
 
     <div class="bannerhome">
-        <img src="./Assets/banner-home1.png" alt="">
+
+        <div class="carousel">
+            <button class="prev" onclick="changeSlide(-1)"><</button>
+            <div class="carousel-images">
+                <img src="./Assets/banner-home1.png" class="slide active">
+                <img src="./Assets/banner-home2.png" class="slide">
+                <img src="./Assets/banner-home3.png" class="slide">
+            </div>
+            <button class="next" onclick="changeSlide(1)">></button>
+        </div>
+        <!-- <img src="./Assets/banner-home1.png" alt=""> -->
     </div>
 
     <div class="texto-home">
@@ -188,7 +198,7 @@
     </section>
 
     <div class="bannerhome2">
-        <img src="./Assets/banner-home3.png" alt="">
+        <img src="./Assets/banner-home-meio.png" alt="">
     </div>
 
     <div class="texto-home">
@@ -293,6 +303,8 @@
 
     </footer>
 
+
+    <script src="./javascripts/carrossel.js"></script>
 </body>
 
 </html>

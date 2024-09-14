@@ -92,6 +92,54 @@ li a{
     border-radius: 3px;
 }
 
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+}
+
+
+.slide {
+    max-width: 100%;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.prev, .next {
+    color: var(--cor-text);
+    position: absolute;
+    top: 50%;
+    background-color: var(--cor-principal);
+    border: none;
+    padding: 10px;
+    height: 3vw;
+    margin: 0.5vw;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0.3vw;
+}
+
+.prev {
+    left: 0;
+}
+
+
+.next {
+    right: 0;
+}
+
+
+
+
 .bannerhome{
     display: flex;
     height: auto;
