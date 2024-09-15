@@ -40,7 +40,7 @@ header{
     padding-right: 2vw;
     position: fixed;
     width: 100vw;
-    z-index: 99;
+    z-index: 100;
     margin-top: 0;
 }
 
@@ -52,6 +52,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 
 }
 
@@ -115,11 +116,27 @@ li a:hover::after{
     width: 100%;
     max-width: 100vw;
     overflow: hidden;
-    z-index: 2;
+    z-index: 10;
+    background-color: var(--cor-bg);
 }
 
-.carousel-images {
+.carousel-images a{
     display: flex;
+
+}
+
+.carousel-images .link1{
+    width: 100%;
+    max-width: 100vw;
+}
+.carousel-images .link2{
+    width: 100%;
+    max-width: 100vw;
+}
+
+.carousel-images .link3{
+    width: 100%;
+    max-width: 100vw;
 }
 
 
@@ -139,11 +156,13 @@ li a:hover::after{
     background-color: var(--cor-principal);
     border: none;
     padding: 10px;
-    height: 3vw;
+    height: 2vw;
+    width: 2vw;
     margin: 0.5vw;
     cursor: pointer;
     font-weight: bold;
-    border-radius: 0.3vw;
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .prev {
@@ -154,6 +173,19 @@ li a:hover::after{
 .next {
     right: 0;
 }
+
+
+@keyframes toActive{
+    from{
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.slide.active{
+    animation: toActive 2s ease-in-out 1;
+}
+
 
 
 .logowhats{
@@ -322,7 +354,6 @@ footer{
     justify-content: space-around;
     align-items: center;
     height: 12vw;
-    z-index: 4;
 }
 
 footer img{

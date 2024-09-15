@@ -15,15 +15,15 @@ function changeSlide(direction) {
 
 function startAutoSlide() {
     slideInterval = setInterval(() => {
-        changeSlide(1); // Muda para a próxima imagem automaticamente
-    }, 5000); // 3000ms = 3 segundos entre as trocas
+        changeSlide(1);
+    }, 6000);
 }
 
 function stopAutoSlide() {
     clearInterval(slideInterval);
 }
 
-// Inicializa o carrossel mostrando a primeira imagem e iniciando o slide automático
+
 showSlide(currentSlide);
 startAutoSlide();
 
