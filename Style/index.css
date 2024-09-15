@@ -40,7 +40,7 @@ header{
     padding-right: 2vw;
     position: fixed;
     width: 100vw;
-    z-index: 1;
+    z-index: 99;
     margin-top: 0;
 }
 
@@ -115,6 +115,7 @@ li a:hover::after{
     width: 100%;
     max-width: 100vw;
     overflow: hidden;
+    z-index: 2;
 }
 
 .carousel-images {
@@ -155,11 +156,18 @@ li a:hover::after{
 }
 
 
-.bannerhome{
-    display: flex;
-    height: auto;
-    max-width: 100vw;
+.logowhats{
+    width: 3vw;
+    position: fixed;
+    top: 40vw;
+    right: 1vw;
+    z-index: 1;
 }
+
+.logowhats img{
+    width: 3vw;
+}
+
 
 .bannerhome img{
     width: 100%;
@@ -314,6 +322,7 @@ footer{
     justify-content: space-around;
     align-items: center;
     height: 12vw;
+    z-index: 4;
 }
 
 footer img{
