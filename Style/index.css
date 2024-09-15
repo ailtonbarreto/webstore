@@ -69,7 +69,24 @@ li{
 
 li a{
     color: var(--cor-text);
+    position: relative;
 }
+
+li a::after{
+    content: " ";
+    width: 0%;
+    height: 0.1vw;
+    background-color: var(--cor-text);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s ease-in-out;
+}
+
+li a:hover::after{
+    width: 100%;
+}
+
 
 .cadastro{
     display: flex;
@@ -136,8 +153,6 @@ li a{
 .next {
     right: 0;
 }
-
-
 
 
 .bannerhome{
