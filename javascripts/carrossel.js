@@ -16,7 +16,7 @@ function changeSlide(direction) {
 function startAutoSlide() {
     slideInterval = setInterval(() => {
         changeSlide(1);
-    }, 6000);
+    }, 8000);
 }
 
 function stopAutoSlide() {
