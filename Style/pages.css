@@ -166,6 +166,28 @@ li a:hover::after{
     color: var(--cor-principal);
 }
 
+.preco-container{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+
+}
+
+.preco_de{
+    color: var(--cor-principal);
+    float: left;
+    text-decoration: line-through;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.preco_por{
+    color: var(--cor-principal);
+    font-weight: bolder;
+    float: right;
+
+}
+
 
 .btn-prod{
     background-color: var(--cor-principal);
@@ -176,6 +198,8 @@ li a:hover::after{
     border-radius: 0.5vw;
     cursor: pointer;
     font-weight: bolder;
+
+    display: none;
 }
 
 footer{
