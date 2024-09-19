@@ -21,7 +21,7 @@ fetch(api)
 
         // let desiredCategory = "Mochila"; 
 
-        let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
+        let filteredData = data.filter(item => item.HOME === categoria);
 
         filteredData.forEach(item => {
 

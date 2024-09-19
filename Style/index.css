@@ -229,7 +229,10 @@ section{
 }
 
 .card{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     background: var(--cor-card);
     padding: 2vw;
     border-radius: 8px;
@@ -243,11 +246,33 @@ section{
     color: var(--cor-principal);
 }
 
+.preco-container{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+
+}
+
+.preco_de{
+    color: var(--cor-principal);
+    float: left;
+    text-decoration: line-through;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.preco_por{
+    color: var(--cor-principal);
+    font-weight: bolder;
+    float: right;
+
+}
+
 .card img{
     display: flex;
-    width: 100%;
-    margin-top: 5%;
-    margin-bottom: 2vw;
+    width: 70%;
+    margin-top: 10%;
+    margin-bottom: 4vw;
 }
 
 
@@ -260,6 +285,8 @@ section{
     border-radius: 0.5vw;
     cursor: pointer;
     font-weight: bolder;
+
+    display: none;
 }
 
 .departamentos{

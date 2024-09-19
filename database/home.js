@@ -13,22 +13,18 @@ fetch(api)
         
         let product_name = document.querySelector(".prod");
 
-        // let categoria = document.querySelector("#category").value;
 
         console.log(data)
 
-        let categoria = document.querySelector("#category").textContent.trim();
+        let categoria = document.querySelector(".category").textContent.trim();
+ 
 
-        // let desiredCategory = "Mochila"; 
-
-        let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
+        let filteredData = data.filter(item => item.HOME === categoria);
 
         filteredData.forEach(item => {
 
             let card = document.createElement("figure");
             card.classList.add("card");
-
-            // <a href="../login.html"><button class="btn-prod">Ver Preço</button></a>
 
             let list_name = document.createElement("a");
             list_name.classList.add("prodct-name");
