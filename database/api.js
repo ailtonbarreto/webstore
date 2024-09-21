@@ -5,7 +5,6 @@ let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6
 let api = 'https://api-rhmw.onrender.com/';
 
 
-
 fetch(api)
     .then(response => response.json())
 
@@ -43,6 +42,7 @@ fetch(api)
 
 
             let priceLink = document.createElement("a");
+            priceLink.classList.add("preco-label");
             priceLink.href = "../login.html";
             card.appendChild(priceLink);
             

@@ -37,6 +37,7 @@ function load_best_sellers(){
 
             // Link para login com botão "Ver Preço"
             let priceLink = document.createElement("a");
+            priceLink.classList.add("preco-label");
             priceLink.href = "../login.html";
             card.appendChild(priceLink);
 
@@ -108,6 +109,7 @@ function load_destaques(){
 
             // Link para login com botão "Ver Preço"
             let priceLink = document.createElement("a");
+            priceLink.classList.add("preco-label");
             priceLink.href = "../login.html";
             card.appendChild(priceLink);
 
@@ -178,6 +180,7 @@ function load_estoque_limitado(){
 
             // Link para login com botão "Ver Preço"
             let priceLink = document.createElement("a");
+            priceLink.classList.add("preco-label");
             priceLink.href = "../login.html";
             card.appendChild(priceLink);
 

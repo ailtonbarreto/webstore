@@ -35,13 +35,13 @@ body{
     background-color: var(--cor-principal);
     position: relative;
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
     border-radius: 0.5vw;
     color: var(--cor-text);
-    width: 50vw;
-    /* height: 80vh; */
+    width: 90vw;
+    height: 90vh;
     padding: 1vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
@@ -65,7 +65,8 @@ form div{
 
 form div{
     width: 100%;
-    justify-content: space-between;
+    display: flex;
+    justify-content: left;
 }
 
 
