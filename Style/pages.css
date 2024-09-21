@@ -4,6 +4,7 @@
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
     --font-size: 100%;
+    --card-font-size: 0.7vw;
     --cor-card: #ffffff;
 }
 
@@ -171,16 +172,16 @@ li a:hover::after{
 
 .preco-container{
     display: flex;
-    align-items: center;
+    align-items: left;
+    justify-content: center;
     gap: 1vw;
-
 }
 
 .preco_de{
     color: var(--cor-principal);
     float: left;
     text-decoration: line-through;
-    font-size: 10pt;
+    font-size: var(--card-font-size);
     font-weight: bold;
 }
 
@@ -188,6 +189,7 @@ li a:hover::after{
     color: var(--cor-principal);
     font-weight: bolder;
     float: right;
+    font-size: var(--font-size);
 
 }
 
