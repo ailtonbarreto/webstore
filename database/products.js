@@ -1,6 +1,3 @@
-
-
-
 // Função que será chamada ao clicar em um produto
 function produtoclicado(event) {
     // O 'event.target' refere-se ao elemento que foi clicado
@@ -8,9 +5,12 @@ function produtoclicado(event) {
 
     let elementoPai = selected_product.parentElement.parentElement;
 
-    console.log("Clicou num produto");
-    console.log("ID do produto:", selected_product.alt);
-    console.log("Elemento pai:", elementoPai.id);
+    console.log("Clicou no produto");
+    console.log("Parent do produto:", elementoPai.id);
+
+    let produto = localStorage.setItem("produtoSelecionado",elementoPai.id);
+
+    window.location.href = "./pages/produto.html";
 }
 
 // Seleciona todos os elementos que possuem a classe 'produto' (por exemplo)
@@ -20,5 +20,3 @@ let produtos = document.querySelectorAll(".produto");
 produtos.forEach(produto => {
     produto.addEventListener("click", produtoclicado);
 });
-
-

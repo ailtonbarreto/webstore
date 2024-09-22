@@ -20,8 +20,7 @@ function load_best_sellers(){
 
         filteredData.forEach(item => {
             let card = document.createElement("figure");
-            card.id = `card-${item.PARENT}`;
-            card.addEventListener("click",produtoclicado);
+            card.id = `${item.PARENT}`;
             card.classList.add("card");
 
             // Nome do produto
@@ -33,10 +32,10 @@ function load_best_sellers(){
             // Imagem do produto
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
-            // imageLink.addEventListener("click",produtoclicado);
             // imageLink.href ="../pages/produto.html";
 
             let imagem = document.createElement("img");
+            imagem.addEventListener("click",produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);

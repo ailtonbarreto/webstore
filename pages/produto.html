@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Produto</title>
+    <script>
+        window.onload = function() {
+
+            const valor = localStorage.getItem("produtoSelecionado");
+
+
+            if (valor) {
+                document.getElementById("produto-nome").innerHTML  = "Id do produto clicado: " + valor;
+            } else {
+                document.getElementById("produto-nome").innerHTML = "Nenhum produto selecionado.";
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Em contrução</h1>
+    <h1>Detalhes do Produto</h1>
+    <h2 id="produto-nome">Carregando...</h2>
 </body>
 </html>
