@@ -3,8 +3,8 @@
     --cor-bg: #eaf7f5;
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
-    --font-size: 100%;
-    --card-font-size: 0.7vw;
+    --font-size: 1vw;
+    --card-font-size: 1vw;
     --cor-card: #ffffff;
 }
 
@@ -27,6 +27,7 @@ body{
     background-color: var(--cor-bg);
     height: 100vh;
     font-family: 'MinhaFonte', sans-serif ;
+    height: 100vh;
 }   
 
 header{
@@ -38,9 +39,13 @@ header{
     padding-left: 2vw;
     padding-right: 2vw;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     top: 0;
     z-index: 1;
+}
+
+.div-logo{
+    display: flex;
 }
 
 .logo{
@@ -181,6 +186,7 @@ li a:hover::after{
 
 .card a{
     color: var(--cor-principal);
+    font-size: var(--card-font-size);
 }
 
 .preco-container{
@@ -224,9 +230,12 @@ li a:hover::after{
     border-radius: 0.5vw;
     cursor: pointer;
     font-weight: bolder;
+    font-size: var(--card-font-size);
+
 
     /* display: none; */
 }
+
 
 footer{
     background-color: var(--cor-principal);

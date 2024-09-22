@@ -3,8 +3,8 @@
     --cor-bg: #eaf7f5;
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
-    --font-size: 100%;
-    --card-font-size: 0.7vw;
+    --font-size: 1vw;
+    --card-font-size: 1vw;
     --cor-card: #ffffff;
     --cor-card-departamentos: #ffffff;
 }
@@ -29,6 +29,7 @@
 body{
     background-color: var(--cor-bg);
     font-family: 'MinhaFonte', sans-serif;
+    height: 100vh;
 }   
 
 header{
@@ -40,9 +41,13 @@ header{
     padding-left: 2vw;
     padding-right: 2vw;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     z-index: 100;
     margin-top: 0;
+}
+
+.div-logo{
+    display: flex;
 }
 
 .logo{
@@ -157,10 +162,11 @@ li a:hover::after{
     background-color: var(--cor-principal);
     border: none;
     padding: 10px;
-    height: 2vw;
+    height: 5vh;
     width: 2vw;
     margin: 0.5vw;
     cursor: pointer;
+    text-align: center;
     font-weight: bold;
     border-radius: 50%;
     z-index: 1;
@@ -252,6 +258,7 @@ section{
 
 .card a{
     color: var(--cor-principal);
+    font-size: var(--card-font-size);
 }
 
 .produto{
@@ -328,6 +335,8 @@ section{
     border-radius: 0.5vw;
     cursor: pointer;
     font-weight: bolder;
+    font-size: var(--card-font-size);
+
 
     /* display: none; */
 }
