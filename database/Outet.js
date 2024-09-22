@@ -19,13 +19,14 @@ fetch(api)
 
         let categoria = document.querySelector("#category").textContent.trim();
 
-        // let desiredCategory = "Mochila"; 
 
         let filteredData = data.filter(item => item.HOME === categoria);
 
         filteredData.forEach(item => {
 
+         
             let card = document.createElement("figure");
+            card.id = `${item.PARENT}`;
             card.classList.add("card");
 
             // <a href="../login.html"><button class="btn-prod">Ver Preço</button></a>
@@ -36,13 +37,20 @@ fetch(api)
             card.appendChild(list_name);
 
             
+            let imageLink = document.createElement("a");
+            imageLink.classList.add("produto");
+            // imageLink.href = "./produto.html";
+
             let imagem = document.createElement("img");
+            // imagem.addEventListener("click",produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
-            card.appendChild(imagem);
+            imageLink.appendChild(imagem);
+            card.appendChild(imageLink);
 
 
             let priceLink = document.createElement("a");
+            priceLink.classList.add("preco-label");
             priceLink.href = "../login.html";
             card.appendChild(priceLink);
             

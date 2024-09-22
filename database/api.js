@@ -12,7 +12,6 @@ fetch(api)
         
         let product_name = document.querySelector(".prod");
 
-        // let categoria = document.querySelector("#category").value;
 
         console.log(data)
 
@@ -25,6 +24,7 @@ fetch(api)
         filteredData.forEach(item => {
 
             let card = document.createElement("figure");
+            card.id = `${item.PARENT}`;
             card.classList.add("card");
 
             // <a href="../login.html"><button class="btn-prod">Ver Preço</button></a>
@@ -37,9 +37,10 @@ fetch(api)
             
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
-            imageLink.href = "./produto.html";
+            // imageLink.href = "./produto.html";
 
             let imagem = document.createElement("img");
+            // imagem.addEventListener("click",produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);

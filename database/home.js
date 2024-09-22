@@ -97,6 +97,7 @@ function load_destaques(){
 
         filteredData.forEach(item => {
             let card = document.createElement("figure");
+            card.id = `${item.PARENT}`;
             card.classList.add("card");
 
             // Nome do produto
@@ -107,9 +108,10 @@ function load_destaques(){
 
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
-            imageLink.href = "../pages/produto.html";
+            // imageLink.href = "../pages/produto.html";
 
             let imagem = document.createElement("img");
+            imagem.addEventListener("click",produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);
@@ -169,6 +171,7 @@ function load_estoque_limitado(){
 
         filteredData.forEach(item => {
             let card = document.createElement("figure");
+            card.id = `${item.PARENT}`;
             card.classList.add("card");
 
             // Nome do produto
@@ -180,9 +183,10 @@ function load_estoque_limitado(){
             // ------------------------------------------------------------------------------------
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
-            imageLink.href = "../pages/produto.html";
+            // imageLink.href = "../pages/produto.html";
 
             let imagem = document.createElement("img");
+            imagem.addEventListener("click",produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);
