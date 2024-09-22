@@ -10,17 +10,18 @@ function load_best_sellers(){
 
         let categoria = "best_sellers";
 
+
         // Filtrando os dados que correspondem à categoria
         let filteredData = data.filter(item => item.HOME === categoria);
 
-        console.log(categoria.HOME);
-        console.log(filteredData);
 
         // Certifique-se de que existe um container no HTML para adicionar os cards
         let productContainer = document.querySelector(".best_sellers");
 
         filteredData.forEach(item => {
             let card = document.createElement("figure");
+            card.id = `card-${item.PARENT}`;
+            card.addEventListener("click",produtoclicado);
             card.classList.add("card");
 
             // Nome do produto
@@ -30,10 +31,16 @@ function load_best_sellers(){
             card.appendChild(list_name);
 
             // Imagem do produto
+            let imageLink = document.createElement("a");
+            imageLink.classList.add("produto");
+            // imageLink.addEventListener("click",produtoclicado);
+            // imageLink.href ="../pages/produto.html";
+
             let imagem = document.createElement("img");
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
-            card.appendChild(imagem);
+            imageLink.appendChild(imagem);
+            card.appendChild(imageLink);
 
             // Link para login com botão "Ver Preço"
             let priceLink = document.createElement("a");
@@ -85,8 +92,6 @@ function load_destaques(){
         // Filtrando os dados que correspondem à categoria
         let filteredData = data.filter(item => item.HOME === categoria);
 
-        console.log(categoria.HOME);
-        console.log(filteredData);
 
         // Certifique-se de que existe um container no HTML para adicionar os cards
         let productContainer = document.querySelector(".destaques");
@@ -101,11 +106,15 @@ function load_destaques(){
             list_name.textContent = `${item.DESCRICAO}`;
             card.appendChild(list_name);
 
-            // Imagem do produto
+            let imageLink = document.createElement("a");
+            imageLink.classList.add("produto");
+            imageLink.href = "../pages/produto.html";
+
             let imagem = document.createElement("img");
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
-            card.appendChild(imagem);
+            imageLink.appendChild(imagem);
+            card.appendChild(imageLink);
 
             // Link para login com botão "Ver Preço"
             let priceLink = document.createElement("a");
@@ -156,9 +165,6 @@ function load_estoque_limitado(){
         // Filtrando os dados que correspondem à categoria
         let filteredData = data.filter(item => item.HOME === categoria);
 
-        console.log(categoria.HOME);
-        console.log(filteredData);
-
         // Certifique-se de que existe um container no HTML para adicionar os cards
         let productContainer = document.querySelector(".estoque_limitado");
 
@@ -172,12 +178,18 @@ function load_estoque_limitado(){
             list_name.textContent = `${item.DESCRICAO}`;
             card.appendChild(list_name);
 
-            // Imagem do produto
+            // ------------------------------------------------------------------------------------
+            let imageLink = document.createElement("a");
+            imageLink.classList.add("produto");
+            imageLink.href = "../pages/produto.html";
+
             let imagem = document.createElement("img");
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
-            card.appendChild(imagem);
+            imageLink.appendChild(imagem);
+            card.appendChild(imageLink);
 
+            // ------------------------------------------------------------------------------------
             // Link para login com botão "Ver Preço"
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");

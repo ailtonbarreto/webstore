@@ -35,10 +35,15 @@ fetch(api)
             card.appendChild(list_name);
 
             
+            let imageLink = document.createElement("a");
+            imageLink.classList.add("produto");
+            imageLink.href = "./produto.html";
+
             let imagem = document.createElement("img");
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
-            card.appendChild(imagem);
+            imageLink.appendChild(imagem);
+            card.appendChild(imageLink);
 
 
             let priceLink = document.createElement("a");

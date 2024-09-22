@@ -254,6 +254,14 @@ section{
     color: var(--cor-principal);
 }
 
+.produto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
 .preco-container{
     display: flex;
     align-items: left;
