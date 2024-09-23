@@ -1,12 +1,20 @@
 
+let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 
-let api = 'https://api-rhmw.onrender.com/';
 
 function load_best_sellers(){
 
-    fetch(api)
-    .then(response => response.json())
-    .then(data => {
+    fetch(url)
+    .then(response => response.text())
+    .then(text => {
+        
+        const resultados = Papa.parse(text, {
+            header: true,
+            skipEmptyLines: true,
+            dynamicTyping: true,
+        });
+
+        const data = resultados.data;
 
         let categoria = "best_sellers";
 
@@ -82,9 +90,17 @@ function load_best_sellers(){
 
 function load_destaques(){
 
-    fetch(api)
-    .then(response => response.json())
-    .then(data => {
+    fetch(url)
+    .then(response => response.text())
+    .then(text => {
+        
+        const resultados = Papa.parse(text, {
+            header: true,
+            skipEmptyLines: true,
+            dynamicTyping: true,
+        });
+
+        const data = resultados.data;
 
         let categoria = "destaques";
 
@@ -157,9 +173,17 @@ function load_destaques(){
 
 function load_estoque_limitado(){
 
-    fetch(api)
-    .then(response => response.json())
-    .then(data => {
+    fetch(url)
+    .then(response => response.text())
+    .then(text => {
+        
+        const resultados = Papa.parse(text, {
+            header: true,
+            skipEmptyLines: true,
+            dynamicTyping: true,
+        });
+
+        const data = resultados.data;
 
         let categoria = "estoque_limitado";
 
