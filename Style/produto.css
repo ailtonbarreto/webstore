@@ -1,0 +1,113 @@
+
+:root{
+    --cor-bg: #eaf7f5;
+    --cor-principal: #0f8f8f;
+    --cor-text: #EDEDED;
+    --font-size: 1vw;
+    --card-font-size: 1vw;
+    --cor-card: #ffffff;
+}
+
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('../fonts/PlaypenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--cor-bg);
+    height: 100vh;
+    font-family: 'MinhaFonte', sans-serif ;
+    height: 100vh;
+}   
+
+header{
+    background-color: var(--cor-principal);
+    height: 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.div-logo{
+    display: flex;
+}
+
+.logo{
+    width: 3vw;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navlist{
+    display: flex;
+    justify-content: space-between;
+    gap: 5vw;
+    color: var(--cor-text);
+}
+
+li{
+    cursor: pointer;
+    font-size: var(--font-size);
+}
+
+li a{
+    color: var(--cor-text);
+    position: relative;
+}
+
+li a::after{
+    content: " ";
+    width: 0%;
+    height: 0.1vw;
+    background-color: var(--cor-text);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s ease-in-out;
+}
+
+li a:hover::after{
+    width: 100%;
+}
+
+.cadastro{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 1vw;
+    justify-content: space-around;
+    font-size: var(--font-size);
+}
+
+.cadastre-se{
+    color: var(--cor-text);
+}
+
+.login{
+    color: var(--cor-principal);
+    background-color: var(--cor-bg);
+    width: 5vw;
+    padding: 0.2vw;
+    border-radius: 3px;
+}

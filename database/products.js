@@ -1,15 +1,22 @@
-// Função que será chamada ao clicar em um produto
+// Função Clicar em um produto
 function produtoclicado(event) {
-    // O 'event.target' refere-se ao elemento que foi clicado
+
     let selected_product = event.target;
+
 
     let elementoPai = selected_product.parentElement.parentElement;
 
+
+    let foto = elementoPai.querySelector("img").src;
+
     console.log("Clicou no produto");
-    console.log("Parent do produto:", elementoPai.id);
+    console.log("parent do produto", elementoPai.id);
+    console.log("foto do produto:", foto);
 
-    let produto = localStorage.setItem("produtoSelecionado",elementoPai.id);
+    // Armazena no localStorage o id do elemento pai
+    localStorage.setItem("produtoSelecionado", elementoPai.id);
 
+    // Redireciona para outra página, se necessário
     window.location.href = "./pages/produto.html";
 }
 
