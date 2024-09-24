@@ -111,3 +111,88 @@ li a:hover::after{
     padding: 0.2vw;
     border-radius: 3px;
 }
+
+
+.title{
+    display: flex;
+    margin-top: 9vw;
+    color: var(--cor-principal);
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+.container{
+    margin-top: 9vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.produto-box{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3vh;
+    padding: 4vw;
+    background-color: var(--cor-card);
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5vw;
+}
+
+.preco-box{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3vh;
+    padding: 4vw;
+    background-color: var(--cor-card);
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5vw;
+
+}
+
+.produto-box img{
+    width: 20vw;
+}
+
+.descricao{
+    color: var(--cor-principal);
+    font-weight: bold;
+    font-size: var(--font-size);
+}
+
+
+footer{
+    background-color: var(--cor-principal);
+    display: flex;
+    margin-top: 5vw;
+    font-size: var(--font-size);
+    justify-content: space-around;
+    align-items: center;
+    height: 12vw;
+}
+
+footer img{
+    width: 5vw;    
+}
+
+.container-footer{
+    color: var(--cor-text);
+    text-align: center;
+}
+
+.item-lista{
+    margin: 0.5vw;
+}
+
+.assinatura{
+    font-weight: thin;
+    margin-top: 1vw;
+    background-color: var(--cor-principal);
+    color: var(--cor-text);
+}

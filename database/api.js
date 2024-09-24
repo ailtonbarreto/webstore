@@ -3,73 +3,117 @@ let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6
 
 
 // Função para fazer o fetch e converter para JSON
-fetch(url)
-    .then(response => response.text())
-    .then(text => {
-        
-        const resultados = Papa.parse(text, {
-            header: true,
-            skipEmptyLines: true,
-            dynamicTyping: true,
+function carregar_produtos() {
+
+    fetch(url)
+        .then(response => response.text())
+        .then(text => {
+
+            const resultados = Papa.parse(text, {
+                header: true,
+                skipEmptyLines: true,
+                dynamicTyping: true,
+            });
+
+            const data = resultados.data;
+
+            // console.log(data);
+
+            let product_name = document.querySelector(".prod");
+            let categoria = document.querySelector("#category").textContent.trim();
+
+            let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
+
+            filteredData.forEach(item => {
+                let card = document.createElement("figure");
+                card.id = `${item.PARENT}`;
+                card.classList.add("card");
+
+                let list_name = document.createElement("a");
+                list_name.classList.add("prodct-name");
+                list_name.textContent = `${item.DESCRICAO}`;
+                card.appendChild(list_name);
+
+                let imageLink = document.createElement("a");
+                imageLink.classList.add("produto");
+
+                let imagem = document.createElement("img");
+                imagem.addEventListener("click", produtoclicado);
+                imagem.src = item.IMAGEM;
+                imagem.alt = item.DESCRICAO;
+                imageLink.appendChild(imagem);
+                card.appendChild(imageLink);
+
+                let priceLink = document.createElement("a");
+                priceLink.classList.add("preco-label");
+                priceLink.href = "../login.html";
+                card.appendChild(priceLink);
+
+                let priceButton = document.createElement("button");
+                priceButton.classList.add("btn-prod");
+                priceButton.textContent = "Ver Preço";
+                priceLink.appendChild(priceButton);
+
+                let priceContainer = document.createElement("div");
+                priceContainer.classList.add("preco-container");
+
+                let label = document.createElement("p");
+                label.classList.add("preco_de");
+                label.innerHTML = `De: R$ ${item.PRECO_DE}`;
+                priceContainer.appendChild(label);
+
+                let label_por = document.createElement("p");
+                label_por.classList.add("preco_por");
+                label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
+                priceContainer.appendChild(label_por);
+
+                card.appendChild(priceContainer);
+                product_name.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error("Erro ao buscar os dados:", error);
         });
 
-        const data = resultados.data;
+}
 
-        console.log(data);
+carregar_produtos()
 
-        let product_name = document.querySelector(".prod");
-        let categoria = document.querySelector("#category").textContent.trim();
+function produtoclicado(event) {
 
-        let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
+    let selected_product = event.target;
 
-        filteredData.forEach(item => {
-            let card = document.createElement("figure");
-            card.id = `${item.PARENT}`;
-            card.classList.add("card");
 
-            let list_name = document.createElement("a");
-            list_name.classList.add("prodct-name");
-            list_name.textContent = `${item.DESCRICAO}`;
-            card.appendChild(list_name);
+    let elementoPai = selected_product.parentElement.parentElement;
 
-            let imageLink = document.createElement("a");
-            imageLink.classList.add("produto");
-            // imageLink.href = "./produto.html";
 
-            let imagem = document.createElement("img");
-            // imagem.addEventListener("click", produtoclicado);
-            imagem.src = item.IMAGEM;
-            imagem.alt = item.DESCRICAO;
-            imageLink.appendChild(imagem);
-            card.appendChild(imageLink);
+    let foto = elementoPai.querySelector("img").src;
+    let produtonome = elementoPai.querySelector("img").alt;
+    let precoDe = elementoPai.querySelector(".preco_de").textContent;
+    let precoPor = elementoPai.querySelector(".preco_por").textContent;
 
-            let priceLink = document.createElement("a");
-            priceLink.classList.add("preco-label");
-            priceLink.href = "../login.html";
-            card.appendChild(priceLink);
+    console.log("Clicou no produto");
+    console.log("parent do produto", elementoPai.id);
+    console.log("foto do produto:", foto);
+    console.log("nome: ", produtonome);
+    console.log("Preço de:", precoDe);
+    console.log("Preço por:", precoPor);
 
-            let priceButton = document.createElement("button");
-            priceButton.classList.add("btn-prod");
-            priceButton.textContent = "Ver Preço";
-            priceLink.appendChild(priceButton);
+    // Armazena no localStorage o id do elemento pai
+    localStorage.setItem("produtoSelecionado", elementoPai.id);
+    localStorage.setItem("foto", foto);
+    localStorage.setItem("nome", produtonome);
+    localStorage.setItem("preco_de", precoDe);
+    localStorage.setItem("preco_por", precoPor);
 
-            let priceContainer = document.createElement("div");
-            priceContainer.classList.add("preco-container");
+    // Redireciona para outra página, se necessário
+    window.location.href = "./produto.html";
+}
 
-            let label = document.createElement("p");
-            label.classList.add("preco_de");
-            label.innerHTML = `De: R$ ${item.PRECO_DE}`;
-            priceContainer.appendChild(label);
+// Seleciona todos os elementos que possuem a classe 'produto' (por exemplo)
+let produtos = document.querySelectorAll(".produto");
 
-            let label_por = document.createElement("p");
-            label_por.classList.add("preco_por");
-            label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
-            priceContainer.appendChild(label_por);
-
-            card.appendChild(priceContainer);
-            product_name.appendChild(card);
-        });
-    })
-    .catch(error => {
-        console.error("Erro ao buscar os dados:", error);
+// Adiciona o evento de clique para todos os produtos
+produtos.forEach(produto => {
+    produto.addEventListener("click", produtoclicado);
 });

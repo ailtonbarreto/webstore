@@ -8,13 +8,23 @@ function produtoclicado(event) {
 
 
     let foto = elementoPai.querySelector("img").src;
+    let produtonome = elementoPai.querySelector("img").alt;
+    let precoDe = elementoPai.querySelector(".preco_de").textContent;
+    let precoPor = elementoPai.querySelector(".preco_por").textContent;
 
     console.log("Clicou no produto");
     console.log("parent do produto", elementoPai.id);
     console.log("foto do produto:", foto);
+    console.log("nome: ",produtonome);
+    console.log("Preço de:",precoDe);
+    console.log("Preço por:",precoPor);
 
     // Armazena no localStorage o id do elemento pai
     localStorage.setItem("produtoSelecionado", elementoPai.id);
+    localStorage.setItem("foto",foto);
+    localStorage.setItem("nome",produtonome);
+    localStorage.setItem("preco_de",precoDe);
+    localStorage.setItem("preco_por",precoPor);
 
     // Redireciona para outra página, se necessário
     window.location.href = "./pages/produto.html";

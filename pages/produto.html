@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../Style/produto.css">
     <title>Ver Produto</title>
     <script>
         window.onload = function() {
 
-            const valor = localStorage.getItem("produtoSelecionado");
-
-
-            if (valor) {
-                document.getElementById("produto-nome").innerHTML  = "Parent do produto clicado: " + valor;
+            const img = localStorage.getItem("foto");
+            const nome = localStorage.getItem("nome");
+            const preco_de = localStorage.getItem("preco_de");
+            const preco_por = localStorage.getItem("preco_por");
+            
+            if (img) {
+                document.getElementById("imagemProduto").src = img;
             } else {
-                document.getElementById("produto-nome").innerHTML = "Nenhum produto selecionado.";
+                console.log("Nenhuma imagem foi encontrada");
             }
+
+            if (nome) {
+                document.getElementById("nome").innerHTML = nome;
+            } else {
+                console.log("Nenhuma imagem foi encontrada");
+            }
+
+            if(preco_de){
+                document.getElementById("precode").innerHTML = preco_de; 
+            } else{
+                console.log(" ");
+            }
+
+            if(preco_por){
+                document.getElementById("precopor").innerHTML = preco_por; 
+            } else{
+                console.log(" ");
+            }
+
         }
+
     </script>
 </head>
 <body>
@@ -25,32 +48,106 @@
 
         <div class="div-logo">
 
-            <a href="#"><img class="logo" src="../Assets/logo.png" alt=""></a>
+            <a href="../index.html"><img class="logo" src="../Assets/logo.png" alt=""></a>
 
         </div>
         
         <div class="navbar">
             <ul class="navlist">
-                <li><a href="./pages/roupas.html">Roupas</a></li>
-                <li><a href="./pages/tenis.html">Tênis</a></li>
-                <li><a href="./pages/mochilas.html">Mochilas</a></li>
-                <li><a href="./pages/Bones.html">Bonés</a></li>
-                <li><a href="./pages/outlet.html">Outlet</a></li>
+                <li><a href="./roupas.html">Roupas</a></li>
+                <li><a href="./tenis.html">Tênis</a></li>
+                <li><a href="./mochilas.html">Mochilas</a></li>
+                <li><a href=".Bones.html">Bonés</a></li>
+                <li><a href="./outlet.html">Outlet</a></li>
             </ul>
         </div>
 
         <div class="cadastro">
-            <a class="cadastre-se" href="./cadastro.html">Cadastre-se</a>
-            <a class="login" href="./login.html">Login</a>
+            <a class="cadastre-se" href="../cadastro.html">Cadastre-se</a>
+            <a class="login" href="../login.html">Login</a>
         </div>
 
     </header>
-    <div style="margin-top: 12vw;">
 
-        <h1>Detalhes do Produto</h1>
-        <h2 id="produto-nome">Carregando...</h2>
+     
 
-    </div>
+    <section class="container">
+
+        <div class="produto-box">
+
+            <img id="imagemProduto" src="" alt="Imagem do Produto">
+
+        </div>
+
+
+
+        <div class="preco-box">
+
+            <h2 id="nome" class="title"></h2>
+            
+
+            <p class="descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+            Obcaecati, qui omnis dolor expedita illum hic 
+            consectetur magnam asperiores architecto doloribus. Ipsa, enim eligendi.<br>
+            Corporis velit saepe, consequuntur maxime eos eveniet!</p>
+
+            <h2 id="precode">preco</h2>
+
+            <h2 id="precopor">preco</h2>
+
+            <button type="submit">Adicionar ao pedido</button>
+
+        </div>
+
+     
+
+    </section>
+
+    <footer>
+
+        <div class="container-footer">
+            <h3>INSTITUCIONAL</h3>
+            <div>
+
+                <nav>
+                    <ul>
+                        <li class="item-lista">Quem Somos</li>
+                        <li class="item-lista">Política de Entrega</li>
+                        <li class="item-lista">Trocas e Devoluções</li>
+                        <li class="item-lista">Política de Privacidade</li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+        <div class="container-footer">
+            <h3>AJUDA</h3>
+            <div>
+
+                <nav>
+                    <ul>
+                        <li class="item-lista">Meus Pedidos</li>
+                        <li class="item-lista">Recuperar Senha</li>
+                        <li class="item-lista">Dúvidas Frequentes</li>
+                        <li class="item-lista">Fale conosco</li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+        <div class="container-footer">
+
+            <img src="../Assets/logo.png" alt="">
+
+            <p class="assinatura">Desenvolvido Por Ailton Barreto</p>
+
+        </div>
+
+    </footer>
 
 </body>
 </html>

@@ -241,6 +241,7 @@ footer{
     background-color: var(--cor-principal);
     display: flex;
     margin-top: 5vw;
+    font-size: var(--font-size);
     justify-content: space-around;
     align-items: center;
     height: 12vw;
