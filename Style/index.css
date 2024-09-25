@@ -95,6 +95,12 @@ li a:hover::after{
 }
 
 
+.cadastro img{
+    width: 1.2vw;
+    cursor: pointer;
+
+}
+
 .cadastro{
     display: flex;
     align-items: center;

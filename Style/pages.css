@@ -100,6 +100,14 @@ li a:hover::after{
     font-size: var(--font-size);
 }
 
+
+.cadastro img{
+    width: 1.2vw;
+    cursor: pointer;
+
+}
+
+
 .cadastre-se{
     color: var(--cor-text);
 }

@@ -104,7 +104,7 @@ function load_destaques(){
 
         let categoria = "destaques";
 
-        // Filtrando os dados que correspondem à categoria
+        
         let filteredData = data.filter(item => item.HOME === categoria);
 
 
@@ -124,7 +124,7 @@ function load_destaques(){
 
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
-            // imageLink.href = "../pages/produto.html";
+          
 
             let imagem = document.createElement("img");
             imagem.addEventListener("click",produtoclicado);
@@ -133,7 +133,7 @@ function load_destaques(){
             imageLink.appendChild(imagem);
             card.appendChild(imageLink);
 
-            // Link para login com botão "Ver Preço"
+           
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");
             priceLink.href = "../login.html";
@@ -144,7 +144,7 @@ function load_destaques(){
             priceButton.textContent = "Ver Preço";
             priceLink.appendChild(priceButton);
 
-            // Container de preço
+       
             let priceContainer = document.createElement("div");
             priceContainer.classList.add("preco-container");
 
@@ -160,7 +160,6 @@ function load_destaques(){
 
             card.appendChild(priceContainer);
 
-            // Adiciona o card ao container de produtos
             productContainer.appendChild(card);
         });
     })
@@ -187,10 +186,10 @@ function load_estoque_limitado(){
 
         let categoria = "estoque_limitado";
 
-        // Filtrando os dados que correspondem à categoria
+      
         let filteredData = data.filter(item => item.HOME === categoria);
 
-        // Certifique-se de que existe um container no HTML para adicionar os cards
+  
         let productContainer = document.querySelector(".estoque_limitado");
 
         filteredData.forEach(item => {
