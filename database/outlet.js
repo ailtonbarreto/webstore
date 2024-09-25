@@ -37,11 +37,14 @@ fetch(url)
             // imageLink.href = "./produto.html";
 
             let imagem = document.createElement("img");
-            // imagem.addEventListener("click", produtoclicado);
+            imagem.addEventListener("click", produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);
             card.appendChild(imageLink);
+
+
+            
 
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");
@@ -73,3 +76,4 @@ fetch(url)
     .catch(error => {
         console.error("Erro ao buscar os dados:", error);
 });
+

@@ -120,15 +120,20 @@ li a:hover::after{
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 .container{
-    margin-top: 9vw;
+    margin-top: 1vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    position: relative;
+}
+
+#precode, #precopor{
+    display: none;
 }
 
 .produto-box{
@@ -136,23 +141,34 @@ li a:hover::after{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 3vh;
     padding: 4vw;
     background-color: var(--cor-card);
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0.5vw;
+    /* height: 70vh; */
+    width: 30vw;
+    position: absolute;
+    left: 4vw;
 }
 
 .preco-box{
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: 3vh;
     padding: 4vw;
     background-color: var(--cor-card);
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0.5vw;
+    min-height: 80vh;
+    width: 60vw;
+    /* position: absolute; */
+    right: 2vw;
+
+    /* display: none; */
 
 }
 
@@ -164,8 +180,26 @@ li a:hover::after{
     color: var(--cor-principal);
     font-weight: bold;
     font-size: var(--font-size);
+    text-align: left;
+    margin-left: 12vw;
 }
 
+button{
+    background-color: var(--cor-principal);
+    border: none;
+    padding: 0.3vw;
+    color: var(--cor-text);
+    width: 50%;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: var(--card-font-size);
+
+
+    /* display: none; */
+}
+
+/* ////////////////////////////////////rodape */
 
 footer{
     background-color: var(--cor-principal);
