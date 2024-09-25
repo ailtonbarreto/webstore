@@ -44,8 +44,6 @@ fetch(url)
             card.appendChild(imageLink);
 
 
-            
-
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");
             priceLink.href = "../login.html";

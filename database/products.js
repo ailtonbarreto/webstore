@@ -27,7 +27,7 @@ function produtoclicado(event) {
     localStorage.setItem("preco_por",precoPor);
 
     // Redireciona para outra página, se necessário
-    window.location.href = "../pages/produto.html";
+    window.location.href = "./pages/produto.html";
 }
 
 // Seleciona todos os elementos que possuem a classe 'produto' (por exemplo)
