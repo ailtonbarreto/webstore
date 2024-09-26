@@ -25,25 +25,17 @@
 
     </div>
 
-        <form id="loginForm">
-
-            <label for="username">Usuário:</label>
-
-            <input type="text" id="username" name="username" required>
-
-            <br><br>
-
-            <label for="password">Senha:</label>
-
-            <input type="password" id="password" name="password" required>
-
-            <br><br>
-
-            <div class="button">
-                <button class="btn" type="submit">Entrar</button>
-            </div>
-
-        </form>
+    <form id="loginForm" method="post" name="loginForm">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <div class="button">
+            <button id="btn" class="btn" value="submit" type="submit">Entrar</button>
+        </div>
+    </form>
 
         <p>Não possui uma conta? <a href="./cadastro.html"><span>Cadastra-se</span></a></p>
 
