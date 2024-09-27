@@ -2,13 +2,43 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 
 
+
+let lista = document.querySelector(".navlist");
+
+
+lista.addEventListener('click', function(event) {
+    if (event.target.tagName === 'A' && event.target.classList.contains('page')) {
+        event.preventDefault();
+
+        document.querySelectorAll('.page').forEach(function(el) {
+            el.classList.remove('active');
+        });
+
+
+        event.target.classList.add('active');
+
+
+        let categoria = event.target.textContent.trim();
+
+        let page_title = document.getElementById('page-title'); 
+        page_title.innerHTML = categoria;
+
+        localStorage.setItem("categoria",categoria);
+
+        carregar_produtos(categoria);
+    }
+});
+
 // Função para fazer o fetch e converter para JSON
-function carregar_produtos() {
+function carregar_produtos(categoria) {
+
+    let product_name = document.querySelector(".prod");
+    product_name.innerHTML = '';
+
 
     fetch(url)
         .then(response => response.text())
         .then(text => {
-
             const resultados = Papa.parse(text, {
                 header: true,
                 skipEmptyLines: true,
@@ -17,12 +47,9 @@ function carregar_produtos() {
 
             const data = resultados.data;
 
-            // console.log(data);
-
-            let product_name = document.querySelector(".prod");
-            let categoria = document.querySelector("#category").textContent.trim();
 
             let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
+
 
             filteredData.forEach(item => {
                 let card = document.createElement("figure");
@@ -74,19 +101,11 @@ function carregar_produtos() {
         .catch(error => {
             console.error("Erro ao buscar os dados:", error);
         });
-
 }
 
-carregar_produtos()
-
 function produtoclicado(event) {
-
     let selected_product = event.target;
-
-
     let elementoPai = selected_product.parentElement.parentElement;
-
-
     let foto = elementoPai.querySelector("img").src;
     let produtonome = elementoPai.querySelector("img").alt;
     let precoDe = elementoPai.querySelector(".preco_de").textContent;
@@ -99,21 +118,12 @@ function produtoclicado(event) {
     console.log("Preço de:", precoDe);
     console.log("Preço por:", precoPor);
 
-
     localStorage.setItem("produtoSelecionado", elementoPai.id);
     localStorage.setItem("foto", foto);
     localStorage.setItem("nome", produtonome);
     localStorage.setItem("preco_de", precoDe);
     localStorage.setItem("preco_por", precoPor);
 
-  
     window.location.href = "./produto.html";
 }
 
-
-let produtos = document.querySelectorAll(".produto");
-
-
-produtos.forEach(produto => {
-    produto.addEventListener("click", produtoclicado);
-});

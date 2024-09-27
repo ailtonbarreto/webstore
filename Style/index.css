@@ -95,33 +95,32 @@ li a:hover::after{
 }
 
 
-.cadastro img{
-    width: 1.2vw;
-    cursor: pointer;
-
-}
-
 .cadastro{
     display: flex;
     align-items: center;
     text-align: center;
     gap: 1vw;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: var(--font-size);
 }
 
-.cadastre-se{
-    color: var(--cor-text);
+.search img{
+    width: 1.25vw;
+    cursor: pointer;
+
 }
 
 .login{
-    color: var(--cor-principal);
-    background-color: var(--cor-bg);
-    width: 5vw;
-    padding: 0.2vw;
-    border-radius: 3px;
+    width: 1.2vw;
 }
 
+.login img{
+    width: 1.25vw;
+}
+
+.cart img{
+    width: 1.8vw;
+}
 
 .carousel {
     position: relative;

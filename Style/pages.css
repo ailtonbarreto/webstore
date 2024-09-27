@@ -96,29 +96,28 @@ li a:hover::after{
     align-items: center;
     text-align: center;
     gap: 1vw;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: var(--font-size);
 }
 
-
-.cadastro img{
-    width: 1.2vw;
+.search img{
+    width: 1.25vw;
     cursor: pointer;
 
 }
 
-
-.cadastre-se{
-    color: var(--cor-text);
-}
-
 .login{
-    color: var(--cor-principal);
-    background-color: var(--cor-bg);
-    width: 5vw;
-    padding: 0.2vw;
-    border-radius: 3px;
+    width: 1.2vw;
 }
+
+.login img{
+    width: 1.25vw;
+}
+
+.cart img{
+    width: 1.8vw;
+}
+
 
 .logowhats{
     width: 3vw;
