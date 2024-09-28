@@ -152,7 +152,7 @@ li a:hover::after{
 
 
 #precode, #precopor{
-    /* display: none; */
+    display: none;
     color: var(--cor-principal);
     font-size: 1.25vw;
 }
