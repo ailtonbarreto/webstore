@@ -3,7 +3,7 @@ let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6
 
 
 // FUNCAO PARA PEGAR OS DADOS DO LINK
-function carregar_produtos() {
+async function carregar_produtos() {
 
     fetch(url)
         .then(response => response.text())

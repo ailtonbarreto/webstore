@@ -91,26 +91,32 @@ li a:hover::after{
     width: 100%;
 }
 
+/* div cadastro -------------------------------*/
+
 .cadastro{
     display: flex;
     align-items: center;
     text-align: center;
     gap: 1vw;
-    justify-content: space-around;
-    font-size: var(--font-size);
+    justify-content: space-between;
 }
 
-.cadastre-se{
-    color: var(--cor-text);
+.search-icon{
+    width: 1.2vw;
+    cursor: pointer;
+
+}
+
+.cart{
+    width: 1.7vw;
 }
 
 .login{
-    color: var(--cor-principal);
-    background-color: var(--cor-bg);
-    width: 5vw;
-    padding: 0.2vw;
-    border-radius: 3px;
+    width: 1.2vw;
 }
+
+/* div cadastro -------------------------------*/
+
 
 
 .title{
@@ -189,11 +195,6 @@ li a:hover::after{
 }
 
 
-.cadastro img{
-    width: 1.2vw;
-    cursor: pointer;
-
-}
 
 
 .produto-box img{
