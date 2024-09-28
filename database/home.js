@@ -52,7 +52,7 @@ function load_best_sellers(){
             // Link para login com botão "Ver Preço"
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");
-            priceLink.href = "../login.html";
+            priceLink.href = "login.html";
             card.appendChild(priceLink);
 
             let priceButton = document.createElement("button");
