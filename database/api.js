@@ -106,7 +106,7 @@ function produtoclicado(event) {
     localStorage.setItem("preco_de", precoDe);
     localStorage.setItem("preco_por", precoPor);
 
-  
+
     window.location.href = "./produto.html";
 }
 

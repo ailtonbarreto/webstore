@@ -46,10 +46,12 @@ header{
 
 .div-logo{
     display: flex;
+    margin-right: 3vw;
 }
 
 .logo{
     width: 3vw;
+    
 }
 
 .navbar{
@@ -116,6 +118,15 @@ li a:hover::after{
 }
 
 /* div cadastro -------------------------------*/
+
+
+
+
+/* carrinho de compras */
+
+
+
+/* carrinho de compras */
 
 .logowhats{
     width: 3vw;

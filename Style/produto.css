@@ -46,6 +46,7 @@ header{
 
 .div-logo{
     display: flex;
+    margin-right: 3vw;
 }
 
 .logo{
