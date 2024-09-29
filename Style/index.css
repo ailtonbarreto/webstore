@@ -78,11 +78,8 @@ header{
 }
   
 
-.store {
-    padding: 50px;
-}
   
-button.add-to-cart {
+button.add-to-cart-btn {
     background-color: var(--cor-principal);
     border: none;
     padding: 0.3vw;
@@ -91,9 +88,13 @@ button.add-to-cart {
     border-radius: 0.5vw;
     cursor: pointer;
     font-weight: bolder;
-    display: none;
+    /* display: none; */
 }
   
+.cart-items{
+    background-color: black;
+}
+
 
 ul {
     list-style: none;

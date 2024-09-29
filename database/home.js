@@ -50,26 +50,25 @@ function load_best_sellers(){
             card.appendChild(imageLink);
 
             // Link para login com botão "Ver Preço"
-            let priceLink = document.createElement("a");
-            priceLink.classList.add("preco-label");
-            priceLink.href = "login.html";
-            card.appendChild(priceLink);
+            // let priceLink = document.createElement("a");
+            // priceLink.classList.add("preco-label");
+            // priceLink.href = "login.html";
+            // card.appendChild(priceLink);
 
-            let priceButton = document.createElement("button");
-            priceButton.classList.add("btn-prod");
-            priceButton.textContent = "Ver Preço";
-            priceLink.appendChild(priceButton);
+            // let priceButton = document.createElement("button");
+            // priceButton.classList.add("btn-prod");
+            // priceButton.textContent = "Ver Preço";
+            // priceLink.appendChild(priceButton);
 
             // -----------------------------------
-            let cartlink = document.createElement("a");
-            cartlink.classList.add("add-to-cart");
-            // cartlink.href = "";
-            card.appendChild(cartlink);
+
 
             let cartButton = document.createElement("button");
-            cartButton.classList.add("add-to-cart");
+            cartButton.classList.add("add-to-cart-btn");
             cartButton.textContent = "+ Carrinho";
-            priceLink.appendChild(cartButton);
+            cartButton.onclick = function() {add_to_cart();};
+            card.appendChild(cartButton);
+            
             // -----------------------------------
 
 
@@ -271,3 +270,4 @@ function load_estoque_limitado(){
 load_best_sellers()
 load_destaques()
 load_estoque_limitado()
+
