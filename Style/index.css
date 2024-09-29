@@ -48,14 +48,14 @@ header{
 
 
 /* --------------------------------------- */
-
+/* comeco do carrinho */
 .cart {
     position: fixed;
     top: 0;
     right: -300px;
     width: 300px;
     height: 100vh;
-    background-color: #f1f1f1;
+    background-color: var(--cor-bg);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     transition: right 0.3s ease;
     padding: 20px;
@@ -94,7 +94,7 @@ button.add-to-cart-btn {
 .cart-items{
     background-color: black;
 }
-
+/* fim do carrinho */
 /* ------------------------------------- */
 
 
