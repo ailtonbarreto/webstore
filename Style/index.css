@@ -46,6 +46,68 @@ header{
     margin-top: 0;
 }
 
+
+/* --------------------------------------- */
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: #f1f1f1;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+}
+  
+.cart.active {
+    right: 0;
+}
+
+
+#close-cart {
+    background-color: var(--cor-principal);
+    color: white;
+    float: right;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+  
+
+.store {
+    padding: 50px;
+}
+  
+button.add-to-cart {
+    background-color: var(--cor-principal);
+    border: none;
+    padding: 0.3vw;
+    color: var(--cor-text);
+    width: 50%;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font-weight: bolder;
+    display: none;
+}
+  
+
+ul {
+    list-style: none;
+}
+  
+ul li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+
+/* ------------------------------------- */
+
+
 .div-logo{
     display: flex;
     margin-right: 3vw;
@@ -111,6 +173,7 @@ li a:hover::after{
 
 .cart-icon{
     width: 1.7vw;
+    cursor: pointer;
 }
 
 .login{

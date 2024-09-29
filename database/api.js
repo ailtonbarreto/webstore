@@ -54,6 +54,7 @@ async function carregar_produtos() {
                 priceButton.textContent = "Ver Preço";
                 priceLink.appendChild(priceButton);
 
+
                 let priceContainer = document.createElement("div");
                 priceContainer.classList.add("preco-container");
 

@@ -10,6 +10,7 @@
     <script async src="./javascripts/carrossel.js"></script>
     <script async src="./database/products.js"></script>
     <script async src="./database/home.js"></script>
+
     <title>Home</title>
 
 
@@ -17,6 +18,13 @@
 
 <body>
 
+    <div id="cart" class="cart">
+      <button id="close-cart">X</button>
+      <h2>Meu Carrinho</h2>
+      <ul id="cart-items"></ul>
+      
+    </div>
+  
     <header>
 
         <div class="div-logo">
@@ -41,7 +49,7 @@
         <div class="cadastro">
             <a href="#"><img class="search-icon" src="./Assets/search-icon.png" alt=""></a>
             <a href="./login.html"><img class="login" src="./Assets/user-icon.png" alt=""></a>
-            <a href=""><img class="cart-icon" src="./Assets/carrinho.png" alt=""></a>
+            <a id="open-cart"><img class="cart-icon" src="./Assets/carrinho.png" alt=""></a>
         </div>
 
 
@@ -191,5 +199,7 @@
     </footer>
 
 </body>
+
+<script src="./javascripts/cart.js"></script>
 
 </html>

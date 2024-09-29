@@ -60,6 +60,19 @@ function load_best_sellers(){
             priceButton.textContent = "Ver Preço";
             priceLink.appendChild(priceButton);
 
+            // -----------------------------------
+            let cartlink = document.createElement("a");
+            cartlink.classList.add("add-to-cart");
+            // cartlink.href = "";
+            card.appendChild(cartlink);
+
+            let cartButton = document.createElement("button");
+            cartButton.classList.add("add-to-cart");
+            cartButton.textContent = "+ Carrinho";
+            priceLink.appendChild(cartButton);
+            // -----------------------------------
+
+
             // Container de preço
             let priceContainer = document.createElement("div");
             priceContainer.classList.add("preco-container");
