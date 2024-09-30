@@ -33,7 +33,7 @@ function load_best_sellers(){
 
             // Nome do produto
             let list_name = document.createElement("a");
-            list_name.classList.add("prodct-name");
+            list_name.classList.add("product-name");
             list_name.textContent = `${item.DESCRICAO}`;
             card.appendChild(list_name);
 
@@ -66,7 +66,7 @@ function load_best_sellers(){
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
             cartButton.textContent = "+ Carrinho";
-            cartButton.onclick = function() {add_to_cart();};
+            cartButton.onclick = function() {cliquei();};
             card.appendChild(cartButton);
             
             // -----------------------------------
@@ -130,7 +130,7 @@ function load_destaques(){
 
             // Nome do produto
             let list_name = document.createElement("a");
-            list_name.classList.add("prodct-name");
+            list_name.classList.add("product-name");
             list_name.textContent = `${item.DESCRICAO}`;
             card.appendChild(list_name);
 
@@ -211,7 +211,7 @@ function load_estoque_limitado(){
 
             // Nome do produto
             let list_name = document.createElement("a");
-            list_name.classList.add("prodct-name");
+            list_name.classList.add("product-name");
             list_name.textContent = `${item.DESCRICAO}`;
             card.appendChild(list_name);
 
