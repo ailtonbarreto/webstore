@@ -53,6 +53,7 @@ function load_best_sellers(){
             imagem.addEventListener("click",produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
+            imagem.loading = "lazy"; 
             imageLink.appendChild(imagem);
             card.appendChild(imageLink);
 
@@ -67,15 +68,6 @@ function load_best_sellers(){
             priceButton.textContent = "Ver Preço";
             priceLink.appendChild(priceButton);
 
-            // -----------------------------------
-
-
-            // let cartButton = document.createElement("button");
-            // cartButton.classList.add("add-to-cart-btn");
-            // cartButton.textContent = "+ Carrinho";
-            // cartButton.onclick = function() {cliquei();};
-            // card.appendChild(cartButton);
-            
             // -----------------------------------
 
 
@@ -156,6 +148,7 @@ function load_destaques(){
             imagem.addEventListener("click",produtoclicado);
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
+            imagem.loading = "lazy"; 
             imageLink.appendChild(imagem);
             card.appendChild(imageLink);
 
@@ -243,6 +236,7 @@ function load_estoque_limitado(){
 
             let imagem = document.createElement("img");
             imagem.addEventListener("click",produtoclicado);
+            imagem.loading = "lazy"; 
             imagem.src = item.IMAGEM;
             imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);
