@@ -2,6 +2,8 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 
 
+lazyLoadImages()
+
 // FUNCAO PARA PEGAR OS DADOS DO LINK
 async function carregar_produtos() {
 
@@ -40,6 +42,7 @@ async function carregar_produtos() {
                 let imagem = document.createElement("img");
                 imagem.addEventListener("click", produtoclicado);
                 imagem.src = item.IMAGEM;
+                imagem.loading = "lazy"
                 imagem.alt = item.DESCRICAO;
                 imageLink.appendChild(imagem);
                 card.appendChild(imageLink);
@@ -78,7 +81,28 @@ async function carregar_produtos() {
 
 }
 
-carregar_produtos()
+function lazyLoadImages() {
+    const images = document.querySelectorAll("img[data-src]");
+  
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute("data-src");
+            observer.unobserve(img);
+          }
+        });
+      });
+  
+      images.forEach(img => {
+        observer.observe(img);
+      });
+    }
+}
+
+
 
 function produtoclicado(event) {
 
@@ -118,3 +142,8 @@ let produtos = document.querySelectorAll(".produto");
 produtos.forEach(produto => {
     produto.addEventListener("click", produtoclicado);
 });
+
+
+
+
+carregar_produtos()

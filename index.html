@@ -9,7 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script async src="./javascripts/carrossel.js"></script>
     <script async src="./database/products.js"></script>
-    <script async src="./database/home.js"></script>
     <title>Home</title>
 
 
@@ -19,7 +18,7 @@
 
     <div id="cart" class="cart">
         
-      <button id="close-cart">Fechar</button>
+      <button id="close-cart">X</button>
       <h2>Meu Carrinho</h2>
       <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
       <ul id="cart-items"></ul>
@@ -64,8 +63,8 @@
             <button class="prev" onclick="changeSlide(-1)"><</button>
             <div class="carousel-images">
                 <a href="./pages/outlet.html" class="link1"><img src="./Assets/banner-home1.png" class="slide active"></a>
-                <a href="./pages/Bones.html" class="link2"><img src="./Assets/banner-home3.png" class="slide"></a>
-                <a href="./pages/camisetas.html" class="link3"><img src="./Assets/banner-home2.png" class="slide"></a>
+                <a href="./pages/bone.html" class="link2"><img src="./Assets/banner-home3.png" class="slide"></a>
+                <a href="./pages/roupas.html" class="link3"><img src="./Assets/banner-home2.png" class="slide"></a>
             </div>
             <button class="next" onclick="changeSlide(1)">></button>
         </div>
@@ -202,5 +201,6 @@
 </body>
 
 <script async src="./javascripts/cart.js"></script>
+<script async src="./database/home.js"></script>
 
 </html>
