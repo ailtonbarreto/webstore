@@ -5,60 +5,67 @@ const closeCartBtn = document.getElementById('close-cart');
 const cartItems = document.getElementById('cart-items');
 
 
-
 function cliquei() {
   const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 
-  for (let i = 0; i < addToCartButtons.length; i++) {
-    addToCartButtons[i].addEventListener("click", () => {
-      const parentElement = addToCartButtons[i].parentElement;
-      console.log("Produto selecionado:", addToCartButtons[i]);
-      console.log("Elemento pai encontrado:", parentElement);
 
-      nome = parentElement.querySelector(".product-name").textContent;
-      img = parentElement.querySelector("img");
-
-
-    add_to_cart(img);
-
-    });
-  }
+  addToCartButtons.forEach(button => {
+    if (!button.dataset.listenerAdded) { 
+      button.addEventListener("click", handleAddToCart);
+      button.dataset.listenerAdded = true;
+    }
+  });
 }
 
 
-// Abrir o carrinho
+function handleAddToCart(event) {
+  const parentElement = event.target.parentElement;
+  console.log("Elemento pai encontrado:", parentElement);
+
+  const nome = parentElement.querySelector(".product-name").textContent;
+  const preco = parentElement.querySelector(".preco_por").textContent;
+
+
+  add_to_cart([nome + " --- " + preco]);
+}
+
+// Chamar a função uma vez após o carregamento do DOM
+document.addEventListener('DOMContentLoaded', () => {
+  cliquei();
+  renderCartItems(); // Carregar os itens do carrinho ao iniciar
+});
+
 openCartBtn.addEventListener('click', () => {
   cart.classList.add('active');
 });
 
-// Fechar o carrinho
 closeCartBtn.addEventListener('click', () => {
   cart.classList.remove('active');
 });
 
-// Função para adicionar ao carrinho e salvar no localStorage
+
 function add_to_cart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
-  renderCartItems(); // Renderizar os itens novamente
-
+  renderCartItems();
 }
 
 // Função para renderizar os itens no carrinho
 function renderCartItems() {
-  cartItems.innerHTML = ""; // Limpar o conteúdo atual do carrinho
+  cartItems.innerHTML = "";
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // Adicionar cada item no <ul> como <li>
   cart.forEach((item, index) => {
     const li = document.createElement('li');
-    li.textContent = item; // Mostrar o nome do produto
+    li.classList.add("item-carrinho");
+    li.textContent = item;
 
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remover';
+    const removeButton = document.createElement('a');
+    removeButton.textContent = 'x';
+    removeButton.classList.add("remove-btn");
     removeButton.addEventListener('click', () => {
-      removeFromCart(index); // Função para remover o item do carrinho
+      removeFromCart(index);
     });
 
     li.appendChild(removeButton); // Adicionar botão ao <li>
@@ -73,7 +80,3 @@ function removeFromCart(index) {
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCartItems(); // Re-renderizar os itens no carrinho
 }
-
-// Carregar os itens do carrinho quando a página for carregada
-document.addEventListener('DOMContentLoaded', renderCartItems);
-

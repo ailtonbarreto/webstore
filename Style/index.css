@@ -51,9 +51,8 @@ header{
 /* comeco do carrinho */
 .cart {
     position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
+    right: -30vw;
+    width: 30vw;
     height: 100vh;
     background-color: var(--cor-bg);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
@@ -72,28 +71,41 @@ header{
     color: white;
     float: right;
     border: none;
-    padding: 10px;
+    padding: 0.5vw;
     cursor: pointer;
-    margin-top: 20px;
-}
-  
+    border-radius: 50%;
 
+}
   
 .add-to-cart-btn {
     background-color: var(--cor-principal);
+    margin-left: 15vw;
+    margin-top: 1vw;
     border: none;
     padding: 0.3vw;
     color: var(--cor-text);
-    width: 50%;
+    width: 25%;
     border-radius: 0.5vw;
     cursor: pointer;
     font-weight: bolder;
-    font-size: var(--card-font-size);
+    font-size: 0.7vw;
     /* display: none; */
 }
   
-.cart-items{
-    background-color: black;
+.item-carrinho{
+    margin-top: 2vw;
+    color: var(--cor-principal);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8vw;
+
+}
+
+.remove-btn{
+    color: red;
+    font-size: var(--font-size);
+    width: 1vw;
+    border-radius: 50%;
 }
 /* fim do carrinho */
 /* ------------------------------------- */
@@ -297,7 +309,7 @@ section{
     justify-content: space-between;
     align-items: center;
     background: var(--cor-card);
-    padding: 2vw;
+    padding: 0.1vw 2vw 1vw;
     border-radius: 8px;
     width: 20vw;
     height: 25vw;
@@ -315,6 +327,7 @@ section{
 .card a{
     color: var(--cor-principal);
     font-size: var(--card-font-size);
+    margin-top: 0;
 }
 
 .produto{
@@ -332,7 +345,7 @@ section{
     gap: 1vw;
     width: 100%;
 
-    display: none;
+    /* display: none; */
 }
 
 .preco_de{
@@ -373,8 +386,8 @@ section{
 .card img{
     display: flex;
     width: 70%;
-    margin-top: 10%;
-    margin-bottom: 4vw;
+    margin-top: 5%;
+    margin-bottom: 0.2vw;
 }
 
 .preco-label{
@@ -394,7 +407,7 @@ section{
     font-size: var(--card-font-size);
 
 
-    /* display: none; */
+    display: none;
 }
 
 .departamentos{
