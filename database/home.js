@@ -2,7 +2,7 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 
 
-lazyLoadImages()
+
 
 
 function load_best_sellers(){
@@ -36,8 +36,9 @@ function load_best_sellers(){
 
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
+            cartButton.onclick = function(){cliquei()};
             cartButton.textContent = "+ Add";
-            cartButton.onclick = function() {cliquei();};
+            // cartButton.setAttribute("data-listener-added",true);
             card.appendChild(cartButton);
 
             // Nome do produto
@@ -134,7 +135,6 @@ function load_destaques(){
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
             cartButton.textContent = "+ Add";
-            cartButton.onclick = function() {cliquei();};
             card.appendChild(cartButton);
 
 
@@ -223,7 +223,6 @@ function load_estoque_limitado(){
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
             cartButton.textContent = "+ Add";
-            cartButton.onclick = function() {cliquei();};
             card.appendChild(cartButton);
 
 
@@ -306,7 +305,7 @@ function lazyLoadImages() {
 }
 
 
-
+lazyLoadImages()
 load_best_sellers()
 load_destaques()
 load_estoque_limitado()

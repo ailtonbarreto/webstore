@@ -4,22 +4,28 @@ const openCartBtn = document.getElementById('open-cart');
 const closeCartBtn = document.getElementById('close-cart');
 const cartItems = document.getElementById('cart-items');
 
+
+
+console.log("TESTE DE CARREGAR SCRIPT");
+
 window.addEventListener('load', () => {
-  cliquei();
   renderCartItems();
 });
 
+
 // ---------------------------------------------------------------------------
 function cliquei() {
-  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-  
 
-  addToCartButtons.forEach(button => {
-    if (!button.dataset.listenerAdded) { 
-      button.addEventListener("click", handleAddToCart);
-      button.dataset.listenerAdded = true;
-    }
+  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+  addToCartButtons.forEach(button=>{
+
+    button.addEventListener("click",handleAddToCart);
+    
   });
+
+  console.log(cart);
+  
 }
 // ---------------------------------------------------------------------------
 function handleAddToCart(event) {
@@ -36,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCartItems();
 });
 // ---------------------------------------------------------------------------
-
+// ABRIR E FECHAR CARRINHO
 openCartBtn.addEventListener('click', () => {
   cart.classList.add('active');
 });
-// ---------------------------------------------------------------------------
+
 
 closeCartBtn.addEventListener('click', () => {
   cart.classList.remove('active');

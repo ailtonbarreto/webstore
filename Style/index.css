@@ -57,8 +57,9 @@ header{
     background-color: var(--cor-bg);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     transition: right 0.3s ease;
-    padding: 20px;
+    padding: 10px;
     z-index: 1000;
+    overflow-y:scroll;
 }
   
 .cart.active {
@@ -102,6 +103,7 @@ header{
     align-items: center;
     justify-content: space-between;
     font-size: 0.8vw;
+    margin-left: 1vw;
 
 }
 
@@ -109,8 +111,27 @@ header{
     color: red;
     font-size: var(--font-size);
     width: 1vw;
-    border-radius: 50%;
 }
+
+.finish{
+    background-color: #0cf75a;
+    color: var(--cor-bg);
+    font-weight: bold;
+    padding: 0.4vw;
+    position: fixed;
+    bottom: 0.2vw;
+    border: none;
+    border-radius: 3px;
+    width: 10%;
+}
+
+/* .finish-btn{
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-principal);
+    position: fixed;
+    width: 100%;
+} */
 /* fim do carrinho */
 /* ------------------------------------- */
 

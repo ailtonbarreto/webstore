@@ -10,6 +10,7 @@
     <script async src="./javascripts/carrossel.js"></script>
     <script async src="./database/home.js"></script>
     <script async src="./database/products.js"></script>
+    <script async src="./javascripts/cart.js"></script>
     <title>Home</title>
 
 
@@ -20,9 +21,15 @@
     <div id="cart" class="cart">
         
       <button id="close-cart">X</button>
-      <h2>Meu Carrinho</h2>
+      <h2 style="color:#0f8f8f">Meu Carrinho</h2>
       <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
       <ul id="cart-items"></ul>
+
+      <div class="finish-btn">
+
+        <button class="finish">Finalizar Pedido</button>
+
+      </div>
 
     </div>
   
@@ -200,8 +207,5 @@
     </footer>
 
 </body>
-
-<script async src="./javascripts/cart.js"></script>
-
 
 </html>
