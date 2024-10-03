@@ -69,7 +69,7 @@ function renderCartItems() {
     li.textContent = item;
 
     const removeButton = document.createElement('img');
-    removeButton.src = '../Assets/delete.png';
+    removeButton.src = './Assets/delete.png';
     removeButton.classList.add("remove-btn");
     removeButton.addEventListener('click', () => {
       removeFromCart(index);
