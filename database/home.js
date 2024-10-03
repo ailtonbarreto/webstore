@@ -135,6 +135,7 @@ function load_destaques(){
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
             cartButton.textContent = "+ Add";
+            cartButton.onclick = function(){cliquei()};
             card.appendChild(cartButton);
 
 
@@ -223,6 +224,7 @@ function load_estoque_limitado(){
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
             cartButton.textContent = "+ Add";
+            cartButton.onclick = function(){cliquei()};
             card.appendChild(cartButton);
 
 
