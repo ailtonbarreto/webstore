@@ -108,8 +108,9 @@ li a:hover::after{
 
 }
 
-.cart{
+.cart-icon{
     width: 1.7vw;
+    cursor: pointer;
 }
 
 .login{
@@ -117,7 +118,6 @@ li a:hover::after{
 }
 
 /* div cadastro -------------------------------*/
-
 
 
 .title{

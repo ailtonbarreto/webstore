@@ -2,7 +2,6 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 
 
-lazyLoadImages()
 
 // FUNCAO PARA PEGAR OS DADOS DO LINK
 async function carregar_produtos() {
@@ -30,6 +29,13 @@ async function carregar_produtos() {
                 let card = document.createElement("figure");
                 card.id = `${item.PARENT}`;
                 card.classList.add("card");
+
+                let cartButton = document.createElement("button");
+                cartButton.classList.add("add-to-cart-btn");
+                cartButton.onclick = function(){cliquei()};
+                cartButton.textContent = "+ Add";
+                // cartButton.setAttribute("data-listener-added",true);
+                card.appendChild(cartButton);
 
                 let list_name = document.createElement("a");
                 list_name.classList.add("prodct-name");
@@ -146,4 +152,5 @@ produtos.forEach(produto => {
 
 
 
+lazyLoadImages()
 carregar_produtos()
