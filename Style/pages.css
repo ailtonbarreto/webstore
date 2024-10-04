@@ -30,6 +30,7 @@ body{
     background-color: var(--cor-bg);
     font-family: 'MinhaFonte', sans-serif;
     height: 100vh;
+    min-height: 700px;
 }   
 
 header{
@@ -273,6 +274,7 @@ li a:hover::after{
 
 .slide.active {
     display: block;
+
 }
 
 .prev, .next {
