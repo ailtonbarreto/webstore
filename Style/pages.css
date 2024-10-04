@@ -129,7 +129,6 @@ li a:hover::after{
     background-color: var(--cor-bg);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     transition: right 0.3s ease;
-    padding: 10px;
     z-index: 1000;
     top: 0;
     overflow-y:scroll;

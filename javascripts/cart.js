@@ -3,6 +3,7 @@ const cart = document.getElementById('cart');
 const openCartBtn = document.getElementById('open-cart');
 const closeCartBtn = document.getElementById('close-cart');
 const cartItems = document.getElementById('cart-items');
+const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 
 
 
@@ -27,6 +28,8 @@ function cliquei() {
   console.log(cart);
   
 }
+
+
 // ---------------------------------------------------------------------------
 function handleAddToCart(event) {
 
@@ -52,12 +55,14 @@ closeCartBtn.addEventListener('click', () => {
   cart.classList.remove('active');
 });
 // ---------------------------------------------------------------------------
+// ADICIONAR ITEM AO CARRINHO
 function add_to_cart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCartItems();
 }
+
 // ---------------------------------------------------------------------------
 function renderCartItems() {
   cartItems.innerHTML = "";
