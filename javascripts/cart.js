@@ -29,7 +29,6 @@ function cliquei() {
   
 }
 
-
 // ---------------------------------------------------------------------------
 function handleAddToCart(event) {
 

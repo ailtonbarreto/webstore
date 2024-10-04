@@ -37,6 +37,7 @@ function load_best_sellers(){
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
             cartButton.onclick = function(){cliquei()};
+            cartButton.onclick = function(){add_to_cart()};
             cartButton.textContent = "+ Add";
             // cartButton.setAttribute("data-listener-added",true);
             card.appendChild(cartButton);
