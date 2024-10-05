@@ -3,6 +3,7 @@
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
     --font-size: 1vw;
+    --cor-btn-addToCard: #08d43b;
     --card-font-size: 1vw;
     --cor-card: #ffffff;
     --cor-card-departamentos: #ffffff;
@@ -85,7 +86,7 @@ header{
 }
   
 .add-to-cart-btn {
-    background-color: var(--cor-principal);
+    background-color: var(--cor-btn-addToCard);
     margin-left: 15vw;
     margin-top: 1vw;
     border: none;
