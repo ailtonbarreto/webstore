@@ -52,6 +52,7 @@ header{
 /* comeco do carrinho */
 .cart {
     position: fixed;
+    top: 0;
     right: -30vw;
     width: 30vw;
     height: 100vh;
@@ -221,6 +222,7 @@ li a:hover::after{
 .cart-icon{
     width: 1.7vw;
     cursor: pointer;
+    margin-left: -0.2vw;
 }
 
 .login{
