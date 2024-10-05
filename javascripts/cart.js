@@ -38,7 +38,7 @@ function add_to_cart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
-  renderCartItems();  // Atualiza o carrinho na interface
+  renderCartItems();
 }
 
 // ---------------------------------------------------------------------------
@@ -78,3 +78,5 @@ function removeFromCart(index) {
 document.addEventListener('DOMContentLoaded', () => {
   renderCartItems();
 });
+
+renderCartItems() 
