@@ -3,7 +3,7 @@
     --cor-principal: #0f8f8f;
     --cor-text: #EDEDED;
     --font-size: 1vw;
-    --cor-btn-addToCard: #08d43b;
+    --cor-btn-addToCard: #29be4e;
     --card-font-size: 1vw;
     --cor-card: #ffffff;
     --cor-card-departamentos: #ffffff;
@@ -125,40 +125,30 @@ header{
     height: 3vw;
     bottom: 0vw;
     border: none;
-    width: 100vw;
+    width: 30vw;
     display: flex;
-    gap: 5vw;
-    /* justify-content:; */
+    align-items: center;
+    justify-content: space-around;
 
 }
 
 .finish{
-    background-color: rgb(7, 211, 92);
-    /* padding: 0.9vw; */
+    background-color: var(--cor-btn-addToCard);
     border-radius: 0.3vw;
     color: var(--cor-text);
     position: relative;
-    height: 2vw;
+    height: 1.5vw;
     border: none;
     align-items: center;
     justify-content: center;
-    width: 10%;
+    width: 20%;
+    cursor: pointer;
 }
 
-.cart-view{
-    background-color: rgb(13, 98, 167);
-    /* padding: 0.9vw; */
-    border-radius: 0.3vw;
+
+.subtotal{
     color: var(--cor-text);
-    position: relative;
-    height: 2vw;
-    border: none;
-    align-items: center;
-    justify-content: center;
-    width: 10%;
-    /* right: 8vw; */
 }
-
 
 /* fim do carrinho */
 /* ------------------------------------- */
