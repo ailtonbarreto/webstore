@@ -2,9 +2,6 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 
 
-
-
-
 function load_best_sellers(){
 
     fetch(url)
@@ -33,13 +30,15 @@ function load_best_sellers(){
             let card = document.createElement("figure");
             card.id = `${item.PARENT}`;
             card.classList.add("card");
-
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
-            cartButton.onclick = function(){cliquei()};
-            cartButton.onclick = function(){add_to_cart()};
             cartButton.textContent = "+ Add";
-            // cartButton.setAttribute("data-listener-added",true);
+            // cartButton.onclick = function(){handleAddToCart()};
+
+            // cartButton.onclick = function(){add_to_cart()};
+
+            cartButton.onclick = function(){cliquei()};
+
             card.appendChild(cartButton);
 
             // Nome do produto

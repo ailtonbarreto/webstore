@@ -3,66 +3,46 @@ const cart = document.getElementById('cart');
 const openCartBtn = document.getElementById('open-cart');
 const closeCartBtn = document.getElementById('close-cart');
 const cartItems = document.getElementById('cart-items');
-const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 
-
-
-console.log("TESTE DE CARREGAR SCRIPT");
-
-window.addEventListener('load', () => {
-  renderCartItems();
+// ---------------------------------------------------------------------------
+// Delegação de eventos para os botões de adicionar ao carrinho
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('add-to-cart-btn')) {
+    handleAddToCart(event);
+  }
 });
 
-
-// ---------------------------------------------------------------------------
-function cliquei() {
-
-  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-
-  addToCartButtons.forEach(button=>{
-
-    button.addEventListener("click",handleAddToCart);
-    
-  });
-
-  console.log(cart);
-  
-}
-
-// ---------------------------------------------------------------------------
-function handleAddToCart(event) {
-
-  const parentElement = event.target.parentElement;
-  const nome = parentElement.querySelector(".product-name").textContent;
-  const preco = parentElement.querySelector(".preco_por").textContent;
-
-  add_to_cart([nome + " --- " + preco]);
-}
-// ---------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  cliquei();
-  renderCartItems();
-});
 // ---------------------------------------------------------------------------
 // ABRIR E FECHAR CARRINHO
 openCartBtn.addEventListener('click', () => {
   cart.classList.add('active');
 });
 
-
 closeCartBtn.addEventListener('click', () => {
   cart.classList.remove('active');
 });
+
 // ---------------------------------------------------------------------------
 // ADICIONAR ITEM AO CARRINHO
+function handleAddToCart(event) {
+  const parentElement = event.target.parentElement;
+  const nome = parentElement.querySelector(".product-name").textContent;
+  const preco = parentElement.querySelector(".preco_por").textContent;
+
+  add_to_cart([`${nome} --- ${preco}`]);
+}
+
+// ---------------------------------------------------------------------------
+// Função para adicionar o item ao carrinho (localStorage)
 function add_to_cart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
-  renderCartItems();
+  renderCartItems();  // Atualiza o carrinho na interface
 }
 
 // ---------------------------------------------------------------------------
+// Renderiza os itens do carrinho
 function renderCartItems() {
   cartItems.innerHTML = "";
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -83,11 +63,18 @@ function renderCartItems() {
     cartItems.appendChild(li);
   });
 }
+
 // ---------------------------------------------------------------------------
+// Função para remover item do carrinho
 function removeFromCart(index) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCartItems();
 }
+
 // ---------------------------------------------------------------------------
+// Carrega os itens do carrinho ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+  renderCartItems();
+});
