@@ -1,11 +1,12 @@
-// CARRINHO DE COMPRAS-------------------------------------------------------
+// ---------------------------------------------------------------------------
+// CARRINHO DE COMPRAS
 const cart = document.getElementById('cart');
 const openCartBtn = document.getElementById('open-cart');
 const closeCartBtn = document.getElementById('close-cart');
 const cartItems = document.getElementById('cart-items');
 
 // ---------------------------------------------------------------------------
-// Delegação de eventos para os botões de adicionar ao carrinho
+//ADICIONAR EVENTO DE CLIQUE AOS TODOS OS BOTOES
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('add-to-cart-btn')) {
     handleAddToCart(event);
@@ -33,7 +34,7 @@ function handleAddToCart(event) {
 }
 
 // ---------------------------------------------------------------------------
-// Função para adicionar o item ao carrinho (localStorage)
+// FUNCAO ADD ITEM AO CARRINHO E SALVAR NO CACHE
 function add_to_cart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
@@ -42,7 +43,7 @@ function add_to_cart(product) {
 }
 
 // ---------------------------------------------------------------------------
-// Renderiza os itens do carrinho
+// RENDERIZAR CARRINHO TODA VEZ
 function renderCartItems() {
   cartItems.innerHTML = "";
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -65,7 +66,7 @@ function renderCartItems() {
 }
 
 // ---------------------------------------------------------------------------
-// Função para remover item do carrinho
+// FUNCAO REMOVER ITEM DO CARRINHO
 function removeFromCart(index) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
@@ -74,7 +75,7 @@ function removeFromCart(index) {
 }
 
 // ---------------------------------------------------------------------------
-// Carrega os itens do carrinho ao carregar a página
+// CARREGAR O CARRINHO SALVO NO CACHE AO CARREGAR A PAGINA
 document.addEventListener('DOMContentLoaded', () => {
   renderCartItems();
 });

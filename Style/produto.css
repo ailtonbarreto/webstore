@@ -140,6 +140,9 @@ li a:hover::after{
     gap: 1vw;
     margin-left: 12vw;
     margin-right: 12vw;
+    background-color: var(--cor-card);
+    border-radius: 8px;;
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .grade{
@@ -172,8 +175,6 @@ li a:hover::after{
     align-items: center;
     gap: 3vh;
     padding: 2vw;
-    background-color: var(--cor-card);
-    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0.5vw;
     width: 30vw;
     height: 35vw;
@@ -186,13 +187,10 @@ li a:hover::after{
     flex-direction: column;
     justify-content: center;
     gap: 3vh;
-    background-color: var(--cor-card);
-    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0.5vw;
     width: 40vw;
     padding: 2vw;
     height: 35vw;
-
 }
 
 

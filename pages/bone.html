@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Style/index.css">
+    <link rel="stylesheet" href="../Style/pages.css">
     <link rel="shortcut icon" href="../Assets/favicon.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script async src="../database/api.js"></script>
@@ -15,18 +15,20 @@
 
     <div id="cart" class="cart">
         
-        <button id="close-cart">X</button>
-        <h2 style="color:#0f8f8f">Meu Carrinho</h2>
-        <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
-        <ul id="cart-items"></ul>
-  
-        <div class="finish-btn">
-  
-          <button class="finish">Finalizar Pedido</button>
-  
-        </div>
-  
+      <button id="close-cart">X</button>
+      <h2 style="color:#0f8f8f">Meu Carrinho</h2>
+      <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
+      <ul id="cart-items"></ul>
+
+      <div class="finish-btn">
+
+        <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
+
+        <button class="finish">Finalizar Pedido</button>
+
       </div>
+
+    </div>
 
     <header>
         

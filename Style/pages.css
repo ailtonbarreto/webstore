@@ -30,7 +30,7 @@ body{
     background-color: var(--cor-bg);
     font-family: 'MinhaFonte', sans-serif;
     height: 100vh;
-    min-height: 700px;
+    min-height: 720px;
 }   
 
 header{
@@ -60,6 +60,7 @@ header{
     transition: right 0.3s ease;
     z-index: 1000;
     overflow-y:scroll;
+    height: 100vh;
 }
   
 .cart.active {
@@ -550,6 +551,7 @@ footer{
     justify-content: space-around;
     align-items: center;
     height: 12vw;
+    margin-bottom: 0;
 }
 
 footer img{
