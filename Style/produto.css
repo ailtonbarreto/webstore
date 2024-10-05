@@ -92,7 +92,8 @@ li a:hover::after{
     width: 100%;
 }
 
-/* div cadastro -------------------------------*/
+/* -------------------------------------------------------------------------------- */
+/* COMECO DA DIV CADASTRO */
 
 .cadastro{
     display: flex;
@@ -117,7 +118,9 @@ li a:hover::after{
     width: 1.2vw;
 }
 
-/* div cadastro -------------------------------*/
+/* FIM DO CADASTRO */
+/* -------------------------------------------------------------------------------- */
+
 
 
 .title{
@@ -209,7 +212,7 @@ li a:hover::after{
 }
 
 .add-to-cart-btn {
-    background-color: var(--cor-principal);
+    background-color: #29be4e;
     border: none;
     padding: 0.3vw;
     color: var(--cor-text);
@@ -221,7 +224,8 @@ li a:hover::after{
     /* display: none; */
 }
 
-/* ////////////////////////////////////rodape */
+/* -------------------------------------------------------------------------------- */
+/* RODAPE */
 
 footer{
     background-color: var(--cor-principal);
