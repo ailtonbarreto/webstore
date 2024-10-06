@@ -34,7 +34,6 @@ async function carregar_produtos() {
                 cartButton.classList.add("add-to-cart-btn");
                 cartButton.onclick = function(){cliquei()};
                 cartButton.textContent = "+ Add";
-                // cartButton.setAttribute("data-listener-added",true);
                 card.appendChild(cartButton);
 
                 let list_name = document.createElement("a");

@@ -121,7 +121,112 @@ li a:hover::after{
 
 /* FIM DO CADASTRO */
 /* -------------------------------------------------------------------------------- */
+/* --------------------------------------- */
+/* comeco do carrinho */
+.cart {
+    position: fixed;
+    top: 0;
+    right: -30vw;
+    width: 30vw;
+    height: 100vh;
+    background-color: var(--cor-bg);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y:scroll;
+    height: 100vh;
+}
+  
+.cart.active {
+    right: 0;
+}
 
+.cart h2 {
+    padding: 0.5vw;
+}
+
+#close-cart {
+    background-color: var(--cor-principal);
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    float: right;
+    border: none;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    cursor: pointer;
+    border-radius: 50%;
+
+}
+  
+.add-to-cart-btn {
+    background-color: var(--cor-btn-addToCard);
+    margin-left: 15vw;
+    margin-top: 1vw;
+    border: none;
+    padding: 0.3vw;
+    color: var(--cor-text);
+    width: 25%;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 0.7vw;
+    /* display: none; */
+}
+  
+.item-carrinho{
+    margin-top: 2vw;
+    color: var(--cor-principal);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8vw;
+    margin: 0 1vw 2vw;
+
+}
+
+.remove-btn{
+    color: red;
+    font-size: var(--font-size);
+    width: 1vw;
+}
+
+.finish-btn{
+    background-color: var(--cor-principal);
+    padding: 0.4vw;
+    display: flex;
+    position: fixed;
+    height: 3vw;
+    bottom: 0vw;
+    border: none;
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.finish{
+    background-color: var(--cor-btn-addToCard);
+    border-radius: 0.3vw;
+    color: var(--cor-text);
+    position: relative;
+    height: 1.5vw;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    cursor: pointer;
+}
+
+
+.subtotal{
+    color: var(--cor-text);
+}
+
+/* fim do carrinho */
+/* ------------------------------------- */
 
 
 .title{
