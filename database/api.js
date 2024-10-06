@@ -32,12 +32,11 @@ async function carregar_produtos() {
 
                 let cartButton = document.createElement("button");
                 cartButton.classList.add("add-to-cart-btn");
-                cartButton.onclick = function(){cliquei()};
                 cartButton.textContent = "+ Add";
                 card.appendChild(cartButton);
 
                 let list_name = document.createElement("a");
-                list_name.classList.add("prodct-name");
+                list_name.classList.add("product-name");
                 list_name.textContent = `${item.DESCRICAO}`;
                 card.appendChild(list_name);
 
@@ -73,9 +72,10 @@ async function carregar_produtos() {
 
                 let label_por = document.createElement("p");
                 label_por.classList.add("preco_por");
+                
                 label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
                 priceContainer.appendChild(label_por);
-
+                priceContainer.setAttribute("valor", item.PRECO_POR);
                 card.appendChild(priceContainer);
                 product_name.appendChild(card);
             });

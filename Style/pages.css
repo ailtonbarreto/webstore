@@ -110,13 +110,13 @@ header{
     justify-content: space-between;
     font-size: 0.8vw;
     margin: 0 1vw 2vw;
+    cursor:default;
 
 }
 
 .remove-btn{
-    color: red;
-    font-size: var(--font-size);
     width: 1vw;
+    cursor: pointer;
 }
 
 .finish-btn{

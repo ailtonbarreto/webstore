@@ -29,8 +29,12 @@ function handleAddToCart(event) {
   const parentElement = event.target.parentElement;
   const nome = parentElement.querySelector(".product-name").textContent;
   const preco = parentElement.querySelector(".preco_por").textContent;
+  const container = parentElement.querySelector(".preco-container");
+  const valor = container.getAttribute("valor");
+ 
+  add_to_cart(`${nome}______________________${preco}`);
 
-  add_to_cart([`${nome} --- ${preco}`]);
+  console.log([nome,preco,valor]);
 }
 
 // ---------------------------------------------------------------------------

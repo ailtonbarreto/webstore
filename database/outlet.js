@@ -70,6 +70,7 @@ fetch(url)
 
             let label_por = document.createElement("p");
             label_por.classList.add("preco_por");
+            label_por.setAttribute("valor", item.PRECO_POR);
             label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
             priceContainer.appendChild(label_por);
 
