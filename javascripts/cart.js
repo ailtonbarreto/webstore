@@ -34,6 +34,8 @@ function handleAddToCart(event) {
  
   add_to_cart(`${nome}_____${preco}`);
 
+
+
   console.log([nome,preco,valor]);
 }
 
