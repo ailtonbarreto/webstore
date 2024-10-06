@@ -32,7 +32,7 @@ function handleAddToCart(event) {
   const container = parentElement.querySelector(".preco-container");
   const valor = container.getAttribute("valor");
  
-  add_to_cart(`${nome}__________${preco}`);
+  add_to_cart(`${nome}_____${preco}`);
 
   console.log([nome,preco,valor]);
 }
