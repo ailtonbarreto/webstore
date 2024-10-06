@@ -47,7 +47,6 @@ function load_best_sellers(){
             // Imagem do produto
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
-            // imageLink.href ="../pages/produto.html";
 
             let imagem = document.createElement("img");
             imagem.addEventListener("click",produtoclicado);
@@ -233,7 +232,7 @@ function load_estoque_limitado(){
             // ------------------------------------------------------------------------------------
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
-            // imageLink.href = "../pages/produto.html";
+    
 
             let imagem = document.createElement("img");
             imagem.addEventListener("click",produtoclicado);
