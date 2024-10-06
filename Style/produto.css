@@ -160,20 +160,6 @@ li a:hover::after{
 
 }
   
-.add-to-cart-btn {
-    background-color: var(--cor-btn-addToCard);
-    margin-left: 15vw;
-    margin-top: 1vw;
-    border: none;
-    padding: 0.3vw;
-    color: var(--cor-text);
-    width: 25%;
-    border-radius: 0.5vw;
-    cursor: pointer;
-    font-weight: bolder;
-    font-size: 0.7vw;
-    /* display: none; */
-}
   
 .item-carrinho{
     margin-top: 2vw;
@@ -187,7 +173,6 @@ li a:hover::after{
 }
 
 .remove-btn{
-    color: red;
     font-size: var(--font-size);
     width: 1vw;
 }
@@ -301,8 +286,6 @@ li a:hover::after{
     padding: 2vw;
     height: 35vw;
 }
-
-
 
 
 .produto-box img{
