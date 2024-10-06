@@ -1,6 +1,3 @@
-
-
-
 // PAGINA DE PRODUTO
 function produtoclicado(event) {
 
