@@ -33,10 +33,6 @@ function load_best_sellers(){
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
             cartButton.textContent = "+ Add";
-            // cartButton.onclick = function(){handleAddToCart()};
-
-            // cartButton.onclick = function(){add_to_cart()};
-
             cartButton.onclick = function(){cliquei()};
 
             card.appendChild(cartButton);

@@ -103,7 +103,7 @@ function produtoclicado(event) {
     localStorage.setItem("preco_por",precoPor);
 
   
-    window.location.href = "../pages/produto.html";
+    window.location.href = "./pages/produto.html";
 }
 
 
