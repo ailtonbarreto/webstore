@@ -143,13 +143,15 @@ header{
     border: none;
     align-items: center;
     justify-content: center;
-    width: 20%;
+    width: 30%;
     cursor: pointer;
 }
 
 
 .subtotal{
     color: var(--cor-text);
+    width: 30%;
+    font-size: 0.9vw;
 }
 
 /* fim do carrinho */
