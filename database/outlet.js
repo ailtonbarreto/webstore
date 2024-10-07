@@ -29,7 +29,6 @@ fetch(url)
 
             let cartButton = document.createElement("button");
             cartButton.classList.add("add-to-cart-btn");
-            cartButton.onclick = function(){cliquei()};
             cartButton.textContent = "+ Add";
             card.appendChild(cartButton);
 
