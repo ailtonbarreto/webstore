@@ -28,15 +28,15 @@ closeCartBtn.addEventListener('click', () => {
 function handleAddToCart(event) {
   const parentElement = event.target.parentElement;
   const nome = parentElement.querySelector(".product-name").textContent;
-  const preco = parentElement.querySelector(".preco_por").textContent;
-  const container = parentElement.querySelector(".preco-container");
+  // const preco = parentElement.querySelector(".preco_por").textContent;
+  const container = parentElement.querySelector(".preco_por");
   const valor = container.getAttribute("valor");
  
-  add_to_cart(`${nome}_____${preco}`);
+  add_to_cart(`${nome}_____ ${valor}`);
 
 
 
-  console.log([nome,preco,valor]);
+  console.log(cart);
 }
 
 // ---------------------------------------------------------------------------

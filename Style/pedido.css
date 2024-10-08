@@ -1,0 +1,181 @@
+:root{
+    --cor-bg: #eaf7f5;
+    --cor-principal: #0f8f8f;
+    --cor-text: #EDEDED;
+    --font-size: 1vw;
+    --cor-btn-addToCard: #29be4e;
+    --card-font-size: 1vw;
+    --cor-card: #ffffff;
+    --cor-card-departamentos: #ffffff;
+}
+
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('../fonts/PlaypenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+
+*{
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    background-color: var(--cor-bg);
+    font-family: 'MinhaFonte', sans-serif;
+    height: 100vh;
+    /* min-height: 720px; */
+}   
+
+header{
+    background-color: var(--cor-principal);
+    height: 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+}
+
+.div-logo{
+    display: flex;
+    margin-right: 3vw;
+}
+
+.logo{
+    width: 3vw;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navlist{
+    display: flex;
+    justify-content: space-between;
+    gap: 5vw;
+    color: var(--cor-text);
+}
+
+li{
+    cursor: pointer;
+    font-size: var(--font-size);
+}
+
+li a{
+    color: var(--cor-text);
+    position: relative;
+}
+
+li a::after{
+    content: " ";
+    width: 0%;
+    height: 0.1vw;
+    background-color: var(--cor-text);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s ease-in-out;
+}
+
+li a:hover::after{
+    width: 100%;
+}
+
+/* div cadastro -------------------------------*/
+
+.cadastro{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 1vw;
+    justify-content: space-between;
+    visibility: hidden;
+}
+
+.search-icon{
+    width: 1.2vw;
+    cursor: pointer;
+
+}
+
+.cart-icon{
+    width: 1.7vw;
+    cursor: pointer;
+    margin-left: -0.2vw;
+}
+
+.login{
+    width: 1.2vw;
+}
+
+/* div cadastro -------------------------------*/
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vw;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-card);
+    margin-left: 5vw;
+    margin-right: 5vw;
+    min-height: 30vw;
+    border-radius: 0.5vw;
+    padding: 6vw;
+}
+
+.container ul{
+    display: flex;
+    flex-direction: column;
+    color: red;
+    padding: 1vw;
+    gap: 2vw;
+}
+
+
+/* RODAPE--------------------------------------------------------- */
+footer{
+    background-color: var(--cor-principal);
+    display: flex;
+    margin-top: 5vw;
+    font-size: var(--font-size);
+    justify-content: space-around;
+    align-items: center;
+    height: 14vw;
+}
+
+footer img{
+    width: 5vw;    
+}
+
+.container-footer{
+    color: var(--cor-text);
+    text-align: center;
+}
+
+.item-lista{
+    margin: 0.5vw;
+}
+
+.assinatura{
+    font-weight: thin;
+    margin-top: 1vw;
+    background-color: var(--cor-principal);
+    color: var(--cor-text);
+
+}
+
