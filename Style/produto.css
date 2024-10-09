@@ -121,7 +121,6 @@ li a:hover::after{
 
 /* FIM DO CADASTRO */
 /* -------------------------------------------------------------------------------- */
-/* --------------------------------------- */
 /* comeco do carrinho */
 .cart {
     position: fixed;
@@ -193,15 +192,16 @@ li a:hover::after{
 }
 
 .finish{
-    background-color: var(--cor-btn-addToCard);
+    background-color:  #29be4e;
     border-radius: 0.3vw;
     color: var(--cor-text);
     position: relative;
     height: 1.5vw;
+    text-align: center;
     border: none;
     align-items: center;
     justify-content: center;
-    width: 20%;
+    width: 30%;
     cursor: pointer;
 }
 
