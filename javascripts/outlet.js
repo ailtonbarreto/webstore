@@ -42,12 +42,13 @@ fetch(url)
             // imageLink.href = "./produto.html";
 
             let imagem = document.createElement("img");
-            imagem.addEventListener("click", produtoclicado);
-            imagem.src = item.IMAGEM;
+            imagem.addEventListener("click",produtoclicado);
+            imagem.src = `img/${item.PARENT}.png`
+            imagem.loading = "lazy";
             imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);
             card.appendChild(imageLink);
-
+      
 
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");

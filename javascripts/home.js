@@ -40,13 +40,13 @@ async function load_best_sellers() {
             imageLink.classList.add("produto");
 
             let imagem = document.createElement("img");
-            imagem.addEventListener("click", produtoclicado);
-            imagem.src = item.IMAGEM;
-            imagem.alt = item.DESCRICAO;
+            imagem.addEventListener("click",produtoclicado);
+            imagem.src = `img/${item.PARENT}.png`
             imagem.loading = "lazy";
-            imagem.setAttribute("valor", item.PRECO_POR);
+            imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);
             card.appendChild(imageLink);
+      
 
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");
@@ -124,15 +124,13 @@ async function load_destaques() {
             let imageLink = document.createElement("a");
             imageLink.classList.add("produto");
 
-
             let imagem = document.createElement("img");
-            imagem.addEventListener("click", produtoclicado);
-            imagem.src = item.IMAGEM;
-            imagem.alt = item.DESCRICAO;
+            imagem.addEventListener("click",produtoclicado);
+            imagem.src = `img/${item.PARENT}.png`
             imagem.loading = "lazy";
+            imagem.alt = item.DESCRICAO;
             imageLink.appendChild(imagem);
             card.appendChild(imageLink);
-
 
             let priceLink = document.createElement("a");
             priceLink.classList.add("preco-label");
@@ -213,13 +211,13 @@ async function load_estoque_limitado() {
 
 
                 let imagem = document.createElement("img");
-                imagem.addEventListener("click", produtoclicado);
+                imagem.addEventListener("click",produtoclicado);
+                imagem.src = `img/${item.PARENT}.png`
                 imagem.loading = "lazy";
-                imagem.src = item.IMAGEM;
                 imagem.alt = item.DESCRICAO;
                 imageLink.appendChild(imagem);
                 card.appendChild(imageLink);
-
+          
                 // ------------------------------------------------------------------------------------
                 // Link para login com botão "Ver Preço"
                 let priceLink = document.createElement("a");
