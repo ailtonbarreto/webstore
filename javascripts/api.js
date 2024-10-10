@@ -1,6 +1,10 @@
 
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 
+
+document.addEventListener("DOMContentLoaded", lazyLoadImages);
+
+
 async function carregar_produtos() {
   try {
     const response = await fetch(url);
@@ -104,6 +108,9 @@ function lazyLoadImages() {
 }
 
 
+
+
+
 function produtoclicado(event) {
 
   let selected_product = event.target;
@@ -144,7 +151,4 @@ produtos.forEach(produto => {
 });
 
 
-
-
-lazyLoadImages()
 carregar_produtos()
