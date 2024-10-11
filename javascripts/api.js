@@ -1,5 +1,29 @@
-
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
+let data = [];
+
+async function carregar_produtos() {
+  try {
+    const response = await fetch(url);
+    const text = await response.text();
+
+    const resultados = Papa.parse(text, {
+      header: true,
+      skipEmptyLines: true,
+      dynamicTyping: true,
+    });
+
+    data = resultados.data; // Armazena os dados no array global "data"
+    console.log("Dados carregados:", data); // Mostra os dados no console
+
+  } catch (error) {
+    console.error("Erro ao carregar os produtos: ", error);
+  }
+}
+
+
+carregar_produtos();
+
+console.log(data);
 
 
 async function carregar_produtos() {
@@ -38,15 +62,13 @@ async function carregar_produtos() {
       let imageLink = document.createElement("a");
       imageLink.classList.add("produto");
 
-      
-      let imagem = document.createElement("img");
-      imagem.addEventListener("click",produtoclicado);
-      imagem.dataset.src = `img/${item.PARENT}.png`
-     
-      imagem.loading = "lazy";
-      imagem.alt = item.DESCRICAO;
-      imageLink.appendChild(imagem);
-      card.appendChild(imageLink);
+      // let imagem = document.createElement("img");
+      // // imagem.addEventListener("click",produtoclicado);
+      // imagem.dataset.src = `img/${item.PARENT}.png`
+      // imagem.loading = "lazy";
+      // imagem.alt = item.DESCRICAO;
+      // imageLink.appendChild(imagem);
+      // card.appendChild(imageLink);
 
 
       let priceLink = document.createElement("a");
@@ -156,6 +178,3 @@ produtos.forEach(produto => {
 
 // -----------------------------------------------------------------------------
 
-carregar_produtos().then(() => {
-  lazyLoadImages();
-});
