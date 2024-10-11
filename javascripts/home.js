@@ -255,31 +255,49 @@ async function load_estoque_limitado() {
     }
 }
 
-
+// CARREGAR IMAGENS-------------------------------------------------------------
 function lazyLoadImages() {
     const images = document.querySelectorAll("img[data-src]");
-
+  
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute("data-src");
-                    observer.unobserve(img);
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute("data-src");
+                        observer.unobserve(img);
+                    }
                 }
             });
+        }, {
+            rootMargin: "0px 0px 100px 0px",
+            threshold: 0.1
         });
-
+  
         images.forEach(img => {
             observer.observe(img);
         });
+    } else {
+        images.forEach(img => {
+            img.src = img.dataset.src;
+        });
     }
 }
+// ---------------------------------------------------------------------------------
+
+load_best_sellers().then(() => {
+    lazyLoadImages();
+});
+
+load_destaques().then(() => {
+    lazyLoadImages();
+});
+ 
+load_estoque_limitado().then(() => {
+    lazyLoadImages();
+});
 
 
-lazyLoadImages()
-load_best_sellers()
-load_destaques()
-load_estoque_limitado()
 
