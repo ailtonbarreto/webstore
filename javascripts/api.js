@@ -41,20 +41,12 @@ async function carregar_produtos() {
       
       let imagem = document.createElement("img");
       imagem.addEventListener("click",produtoclicado);
-      // imagem.src = `img/${item.PARENT}.png`
-      // imagem.src = `img/${item.PARENT}.png`
+      imagem.src = `img/${item.PARENT}.png`
+      // imagem.src = "https://1drv.ms/i/s!Ar065l2YiZmI8AfeblRoa9nktaV2?embed=1&width=300&height=300"
       imagem.loading = "lazy";
       imagem.alt = item.DESCRICAO;
       imageLink.appendChild(imagem);
       card.appendChild(imageLink);
-
-      // let imagem = document.createElement("img");
-      // imagem.addEventListener("click", produtoclicado);
-      // imagem.setAttribute("data-src", `img/${item.PARENT}.png`);
-      // imagem.loading = "lazy";
-      // imagem.alt = item.DESCRICAO;
-      // imageLink.appendChild(imagem);
-      // card.appendChild(imageLink);
 
 
       let priceLink = document.createElement("a");
@@ -85,7 +77,6 @@ async function carregar_produtos() {
 
       product_name.appendChild(card);
 
-      console.log(imagem);
     });
   } catch (error) {
   }
