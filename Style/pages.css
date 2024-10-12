@@ -139,12 +139,13 @@ header{
     border-radius: 0.3vw;
     color: var(--cor-text);
     position: relative;
-    height: 1.5vw;
     border: none;
+    padding: 0.3vw;
     align-items: center;
     justify-content: center;
     width: 30%;
     text-align: center;
+    font-size: 0.7vw;
 }
 
 
