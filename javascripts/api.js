@@ -1,7 +1,8 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
-let data = [];
+let data = []; // Array global para armazenar os dados do CSV
 
-async function carregar_produtos() {
+// CARREGAR DADOS DA FONTE----------------------------------------------
+async function carregar_dados() {
   try {
     const response = await fetch(url);
     const text = await response.text();
@@ -12,98 +13,79 @@ async function carregar_produtos() {
       dynamicTyping: true,
     });
 
-    data = resultados.data; // Armazena os dados no array global "data"
-    console.log("Dados carregados:", data); // Mostra os dados no console
+    data = resultados.data;
+    console.log("Dados carregados:", data)
+    return data;
 
   } catch (error) {
     console.error("Erro ao carregar os produtos: ", error);
   }
 }
 
-
-carregar_produtos();
-
-console.log(data);
-
-
+// CARREGAR DADOS NA PAGINA---------------------------------------------------
 async function carregar_produtos() {
-  try {
-    const response = await fetch(url);
-    const text = await response.text();
+  await carregar_dados();
 
-    const resultados = Papa.parse(text, {
-      header: true,
-      skipEmptyLines: true,
-      dynamicTyping: true,
-    });
+  let product_name = document.querySelector(".prod");
+  let categoria = document.querySelector("#category").textContent.trim();
 
-    const data = resultados.data;
+  // Filtra os dados baseados na categoria e no status ATIVO
+  let filteredData = data.filter(item => item.CATEGORIA === categoria && (item.ATIVO === 1 || item.ATIVO === "1"));
 
-    let product_name = document.querySelector(".prod");
-    let categoria = document.querySelector("#category").textContent.trim();
+  // Processa e exibe os produtos filtrados
+  filteredData.forEach(item => {
+    let card = document.createElement("figure");
+    card.id = `${item.PARENT}`;
+    card.classList.add("card");
 
-    let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
+    let cartButton = document.createElement("button");
+    cartButton.classList.add("add-to-cart-btn");
+    cartButton.textContent = "+ Add";
+    card.appendChild(cartButton);
 
-    filteredData.forEach(item => {
-      let card = document.createElement("figure");
-      card.id = `${item.PARENT}`;
-      card.classList.add("card");
+    let list_name = document.createElement("a");
+    list_name.classList.add("product-name");
+    list_name.textContent = `${item.DESCRICAO}`;
+    card.appendChild(list_name);
 
-      let cartButton = document.createElement("button");
-      cartButton.classList.add("add-to-cart-btn");
-      cartButton.textContent = "+ Add";
-      card.appendChild(cartButton);
+    let imageLink = document.createElement("a");
+    imageLink.classList.add("produto");
 
-      let list_name = document.createElement("a");
-      list_name.classList.add("product-name");
-      list_name.textContent = `${item.DESCRICAO}`;
-      card.appendChild(list_name);
+    let imagem = document.createElement("img");
+    imagem.src = `img/${item.PARENT}.png`;
+    imagem.loading = "lazy";
+    imagem.alt = item.DESCRICAO;
+    imageLink.appendChild(imagem);
+    card.appendChild(imageLink);
 
-      let imageLink = document.createElement("a");
-      imageLink.classList.add("produto");
+    let priceLink = document.createElement("a");
+    priceLink.classList.add("preco-label");
+    priceLink.href = "./login.html";
+    card.appendChild(priceLink);
 
-      // let imagem = document.createElement("img");
-      // // imagem.addEventListener("click",produtoclicado);
-      // imagem.dataset.src = `img/${item.PARENT}.png`
-      // imagem.loading = "lazy";
-      // imagem.alt = item.DESCRICAO;
-      // imageLink.appendChild(imagem);
-      // card.appendChild(imageLink);
+    let priceButton = document.createElement("button");
+    priceButton.classList.add("btn-prod");
+    priceButton.textContent = "Ver Preço";
+    priceLink.appendChild(priceButton);
 
+    let priceContainer = document.createElement("div");
+    priceContainer.classList.add("preco-container");
 
-      let priceLink = document.createElement("a");
-      priceLink.classList.add("preco-label");
-      priceLink.href = "./login.html";
-      card.appendChild(priceLink);
+    let label = document.createElement("p");
+    label.classList.add("preco_de");
+    label.innerHTML = `De: R$ ${item.PRECO_DE}`;
+    priceContainer.appendChild(label);
 
-      let priceButton = document.createElement("button");
-      priceButton.classList.add("btn-prod");
-      priceButton.textContent = "Ver Preço";
-      priceLink.appendChild(priceButton);
+    let label_por = document.createElement("p");
+    label_por.classList.add("preco_por");
+    label_por.setAttribute("valor", item.PRECO_POR);
+    label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
+    priceContainer.appendChild(label_por);
 
-      let priceContainer = document.createElement("div");
-      priceContainer.classList.add("preco-container");
-
-      let label = document.createElement("p");
-      label.classList.add("preco_de");
-      label.innerHTML = `De: R$ ${item.PRECO_DE}`;
-      priceContainer.appendChild(label);
-
-      let label_por = document.createElement("p");
-      label_por.classList.add("preco_por");
-      label_por.setAttribute("valor", item.PRECO_POR);
-      label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
-      priceContainer.appendChild(label_por);
-
-      card.appendChild(priceContainer);
-
-      product_name.appendChild(card);
-
-    });
-  } catch (error) {
-  }
+    card.appendChild(priceContainer);
+    product_name.appendChild(card);
+  });
 };
-
 
 // CARREGAR IMAGENS-------------------------------------------------------------
 function lazyLoadImages() {
@@ -134,7 +116,7 @@ function lazyLoadImages() {
           img.src = img.dataset.src;
       });
   }
-}
+};
 // ---------------------------------------------------------------------------------
 
 
@@ -176,5 +158,7 @@ produtos.forEach(produto => {
   produto.addEventListener("click", produtoclicado);
 });
 
-// -----------------------------------------------------------------------------
-
+// CHAMAR FUNCOES NA ORDEM CORRETA----------------------------------------------
+carregar_produtos().then(() => {
+  lazyLoadImages();
+});
