@@ -392,7 +392,6 @@ section{
     display: flex;
     flex-direction: column;
     align-items: left;
-    /* justify-content: space-between; */
     gap: 0.2vw;
     width: 100%;
 
@@ -401,7 +400,6 @@ section{
 
 .preco_de{
     color: var(--cor-principal);
-    /* margin-left: 0; */
     text-decoration: line-through;
     text-align: left;
     font-size: 0.8vw;
@@ -414,6 +412,7 @@ section{
     text-align: left;
     margin-left: 1vw;
     font-size: var(--font-size);
+    
 
 }
 
@@ -422,19 +421,6 @@ section{
     width: 100%;
 }
 
-
-.btn-prod{
-    background-color: var(--cor-principal);
-    border: none;
-    padding: 0.3vw;
-    color: var(--cor-text);
-    width: 50%;
-    border-radius: 0.5vw;
-    cursor: pointer;
-    font-weight: bolder;
-
-    /* display: none; */
-}
 
 .card img{
     display: flex;
@@ -458,8 +444,7 @@ section{
     cursor: pointer;
     font-weight: bolder;
     font-size: var(--card-font-size);
-
-
+    
     display: none;
 }
 

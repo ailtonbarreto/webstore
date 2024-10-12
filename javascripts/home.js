@@ -2,6 +2,30 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 let data = [];
 
+
+
+
+window.addEventListener('load', function() {
+    let statusValue = localStorage.getItem("logged");
+    if (statusValue === "1") {
+        let btns = document.querySelectorAll(".btn-prod");
+        btns.forEach(function(btn) {
+            btn.style.display = "none";
+        });
+
+        let precos = document.querySelectorAll(".preco-container");
+        precos.forEach(function(preco){
+            preco.style.display = "none";
+        });
+
+        console.log("logado");
+    }
+    else{
+        console.log("não logado");
+    }
+});
+
+
 // CARREGAR DADOS DA FONTE----------------------------------------------
 async function carregar_dados() {
     try {
@@ -210,7 +234,7 @@ async function load_estoque_limitado() {
         priceButton.textContent = "Ver Preço";
         priceLink.appendChild(priceButton);
 
-        // Container de preço
+
         let priceContainer = document.createElement("div");
         priceContainer.classList.add("preco-container");
 
@@ -309,5 +333,5 @@ load_estoque_limitado().then(() => {
     lazyLoadImages();
 });
 
-
+// --------------------------------------------------------------------------------------
 

@@ -144,8 +144,10 @@ li a:hover::after{
     padding: 1vw;
     border-radius: 0.5vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 
 }
+
 
 
 table {
@@ -213,6 +215,8 @@ footer{
     justify-content: space-around;
     align-items: center;
     height: 14vw;
+    margin-bottom: 1vw;
+    display: none;
 }
 
 footer img{
