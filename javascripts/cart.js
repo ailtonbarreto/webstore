@@ -6,7 +6,7 @@ const closeCartBtn = document.getElementById('close-cart');
 const cartItems = document.getElementById('cart-items');
 
 // ---------------------------------------------------------------------------
-//ADICIONAR EVENTO DE CLIQUE AOS TODOS OS BOTOES
+// ADICIONAR EVENTO DE CLIQUE AOS TODOS OS BOTOES
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('add-to-cart-btn')) {
     handleAddToCart(event);
@@ -24,19 +24,16 @@ closeCartBtn.addEventListener('click', () => {
 });
 
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // ADICIONAR ITEM AO CARRINHO
 function handleAddToCart(event) {
   const parentElement = event.target.parentElement;
   const nome = parentElement.querySelector(".product-name").textContent;
-  // const preco = parentElement.querySelector(".preco_por").textContent;
+  const preco = parentElement.querySelector(".preco_por").textContent;
   const container = parentElement.querySelector(".preco_por");
   const valor = container.getAttribute("valor");
- 
-  add_to_cart(`${nome}_____ ${valor}`);
 
-
-
-  console.log(cart);
+  add_to_cart({ nome, preco, valor });
 }
 
 // ---------------------------------------------------------------------------
@@ -57,7 +54,8 @@ function renderCartItems() {
   cart.forEach((item, index) => {
     const li = document.createElement('li');
     li.classList.add("item-carrinho");
-    li.textContent = item;
+    li.setAttribute('data-valor', item.valor);
+    li.textContent = `${item.nome}_______R$: ${item.valor}`;
 
     const removeButton = document.createElement('img');
     removeButton.src = './Assets/delete.png';
@@ -69,6 +67,9 @@ function renderCartItems() {
     li.appendChild(removeButton);
     cartItems.appendChild(li);
   });
+
+  // Calcular o subtotal
+  calcularSubtotal();
 }
 
 // ---------------------------------------------------------------------------
@@ -81,9 +82,26 @@ function removeFromCart(index) {
 }
 
 // ---------------------------------------------------------------------------
+// CALCULAR O SUBTOTAL DOS ITENS
+function calcularSubtotal() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let subtotal = 0;
+
+  // Somar os valores dos itens do carrinho
+  cart.forEach((item) => {
+    subtotal += parseFloat(item.valor);
+  });
+
+  // Atualizar o subtotal na página
+  const subtotalElement = document.querySelector(".subtotal");
+  subtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2)}`;
+  localStorage.setItem("Subtotal", subtotalElement);
+}
+
+// ---------------------------------------------------------------------------
 // CARREGAR O CARRINHO SALVO NO CACHE AO CARREGAR A PAGINA
 document.addEventListener('DOMContentLoaded', () => {
   renderCartItems();
 });
 
-renderCartItems() 
+renderCartItems();

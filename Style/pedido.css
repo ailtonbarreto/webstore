@@ -94,7 +94,7 @@ li a:hover::after{
     width: 100%;
 }
 
-/* div cadastro -------------------------------*/
+/* INICIO DO CADASTRO--------------------------- */
 
 .cadastro{
     display: flex;
@@ -102,6 +102,7 @@ li a:hover::after{
     text-align: center;
     gap: 1vw;
     justify-content: space-between;
+    visibility: hidden;
 }
 
 .search-icon{
@@ -120,7 +121,7 @@ li a:hover::after{
     width: 1.2vw;
 }
 
-/* div cadastro -------------------------------*/
+/* ------------------------------------------------ */
 
 .title{
     display: flex;
@@ -133,36 +134,51 @@ li a:hover::after{
     margin-bottom: 2vw;
 }
 
-
 .container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin: 3vw 10vw;
+    justify-content: space-between;
     align-items: center;
-    background-color: var(--cor-card);
-    margin-left: 5vw;
-    margin-right: 5vw;
-    min-height: 30vw;
-    border-radius: 0.5vw;
-    /* padding: 6vw; */
-}
-
-.container ul{
-    display: flex;
-    flex-direction: column;
-    color: var(--cor-principal);
+    background: var(--cor-card);
     padding: 1vw;
-    gap: 2vw;
-    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+
 }
 
 
-.preco{
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    padding: 8px;
+}
+
+th {
+    background-color: transparent;
+    text-align: left;
+    color: var(--cor-principal);
+    font-weight: bolder;
+}
+
+tr:nth-child(even) {
+    background-color: transparent;
+}
+
+td {
+    text-align: left;
+    color: var(--cor-principal);
+}
+
+.enviar-section{
+    margin-top: 1vw;
     display: flex;
-    justify-content: space-around;
-    margin-top: 2vw;
-    width: 100%;
-    margin-bottom: -8vw;
+    width: 100vw;
+    justify-content: space-evenly;
 }
 
 #total{
@@ -172,11 +188,12 @@ li a:hover::after{
 
 
 .enviar{
+    display: flex;
     background-color:  #29be4e;
     border-radius: 0.3vw;
     color: var(--cor-text);
     position: relative;
-    height: 1.5vw;
+    height: 2vw;
     border: none;
     align-items: center;
     justify-content: center;
@@ -186,13 +203,6 @@ li a:hover::after{
 }
 
 
-.subtotal{
-    color: var(--cor-text);
-    width: 30%;
-    font-size: 0.9vw;
-}
-
-/* fim do carrinho------------------------------------------------ */
 
 /* RODAPE--------------------------------------------------------- */
 footer{
