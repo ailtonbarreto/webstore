@@ -29,7 +29,7 @@ async function load_best_sellers() {
 
     let categoria = "best_sellers";
 
-    let filteredData = data.filter(item => item.HOME === categoria);
+    let filteredData = data.filter(item => item.HOME === categoria && item.ATIVO === 1);
 
     let productContainer = document.querySelector(".best_sellers");
 
@@ -97,7 +97,7 @@ async function load_destaques() {
 
     let categoria = "destaques";
 
-    let filteredData = data.filter(item => item.HOME === categoria);
+    let filteredData = data.filter(item => item.HOME === categoria && item.ATIVO === 1);
 
     let productContainer = document.querySelector(".destaques");
 
@@ -167,7 +167,7 @@ async function load_estoque_limitado() {
     let categoria = "estoque_limitado";
 
 
-    let filteredData = data.filter(item => item.HOME === categoria);
+    let filteredData = data.filter(item => item.HOME === categoria && item.ATIVO === 1);
 
 
     let productContainer = document.querySelector(".estoque_limitado");

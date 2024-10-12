@@ -29,7 +29,7 @@ async function carregar_produtos() {
   let product_name = document.querySelector(".prod");
   let categoria = document.querySelector("#category").textContent.trim();
 
-  let filteredData = data.filter(item => item.CATEGORIA === categoria && (item.ATIVO === 1 || item.ATIVO === "1"));
+  let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
 
 
   filteredData.forEach(item => {
