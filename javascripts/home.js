@@ -319,5 +319,5 @@ load_estoque_limitado().then(() => {
     lazyLoadImages();
 });
 
-produtoclicado();
+
 

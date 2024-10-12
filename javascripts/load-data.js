@@ -163,4 +163,3 @@ carregar_produtos().then(() => {
   lazyLoadImages();
 });
 
-produtoclicado();
