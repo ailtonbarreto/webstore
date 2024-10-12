@@ -51,7 +51,7 @@ async function carregar_produtos() {
     imageLink.classList.add("produto");
 
     let imagem = document.createElement("img");
-    imagem.src = `img/${item.PARENT}.png`;
+    imagem.src = `${item.IMAGEM}`;
     imagem.loading = "lazy";
     imagem.addEventListener("click",produtoclicado);
     imagem.alt = item.DESCRICAO;

@@ -53,7 +53,7 @@ async function load_best_sellers() {
 
         let imagem = document.createElement("img");
         imagem.addEventListener("click", produtoclicado);
-        imagem.dataset.src = `img/${item.PARENT}.png`
+        imagem.dataset.src = `${item.IMAGEM}`;
         imagem.loading = "lazy";
         imagem.alt = item.DESCRICAO;
         imageLink.appendChild(imagem);
@@ -122,7 +122,7 @@ async function load_destaques() {
 
         let imagem = document.createElement("img");
         imagem.addEventListener("click", produtoclicado);
-        imagem.dataset.src = `img/${item.PARENT}.png`
+        imagem.dataset.src = `${item.IMAGEM}`;
         imagem.loading = "lazy";
         imagem.alt = item.DESCRICAO;
         imageLink.appendChild(imagem);
@@ -195,7 +195,7 @@ async function load_estoque_limitado() {
 
         let imagem = document.createElement("img");
         imagem.addEventListener("click", produtoclicado);
-        imagem.dataset.src = `img/${item.PARENT}.png`
+        imagem.dataset.src = `${item.IMAGEM}`
         imagem.loading = "lazy";
         imagem.alt = item.DESCRICAO;
         imageLink.appendChild(imagem);
