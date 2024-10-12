@@ -30,7 +30,7 @@ body{
     background-color: var(--cor-bg);
     font-family: 'MinhaFonte', sans-serif;
     height: 100vh;
-    /* min-height: 720px; */
+    min-height: 100vh;
 }   
 
 header{
@@ -525,7 +525,6 @@ section{
     
 }
 
-
 .departamentos h2{
     color: var(--cor-principal);
     font-size: 2vw;
@@ -546,7 +545,7 @@ section{
     border-radius: 0.5vw;
     box-shadow: 3px 7px 5px 2px rgba(0, 0, 0, 0.2);
 }
-
+/* RODAPE----------------------------------------------------------------------- */
 footer{
     background-color: var(--cor-principal);
     display: flex;
@@ -555,7 +554,7 @@ footer{
     justify-content: space-around;
     align-items: center;
     height: 12vw;
-    bottom: 0;
+    margin-bottom: 0;
 }
 
 footer img{
@@ -578,3 +577,4 @@ footer img{
     color: var(--cor-text);
 
 }
+/* FIM--------------------------------------------------------------------------- */

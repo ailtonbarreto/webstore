@@ -1,5 +1,5 @@
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
-let data = []; // Array global para armazenar os dados do CSV
+let data = [];
 
 // CARREGAR DADOS DA FONTE----------------------------------------------
 async function carregar_dados() {
@@ -20,7 +20,7 @@ async function carregar_dados() {
   } catch (error) {
     console.error("Erro ao carregar os produtos: ", error);
   }
-}
+};
 
 // CARREGAR DADOS NA PAGINA---------------------------------------------------
 async function carregar_produtos() {
@@ -29,10 +29,9 @@ async function carregar_produtos() {
   let product_name = document.querySelector(".prod");
   let categoria = document.querySelector("#category").textContent.trim();
 
-  // Filtra os dados baseados na categoria e no status ATIVO
   let filteredData = data.filter(item => item.CATEGORIA === categoria && (item.ATIVO === 1 || item.ATIVO === "1"));
 
-  // Processa e exibe os produtos filtrados
+
   filteredData.forEach(item => {
     let card = document.createElement("figure");
     card.id = `${item.PARENT}`;
@@ -54,6 +53,7 @@ async function carregar_produtos() {
     let imagem = document.createElement("img");
     imagem.src = `img/${item.PARENT}.png`;
     imagem.loading = "lazy";
+    imagem.addEventListener("click",produtoclicado);
     imagem.alt = item.DESCRICAO;
     imageLink.appendChild(imagem);
     card.appendChild(imageLink);
@@ -117,8 +117,8 @@ function lazyLoadImages() {
       });
   }
 };
-// ---------------------------------------------------------------------------------
 
+// FUNCAO CLICAR NO PRODUTO---------------------------------------------------------
 
 function produtoclicado(event) {
 
@@ -162,3 +162,5 @@ produtos.forEach(produto => {
 carregar_produtos().then(() => {
   lazyLoadImages();
 });
+
+produtoclicado();

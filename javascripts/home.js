@@ -1,11 +1,9 @@
 
 let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 let data = [];
-let filteredData = [];
 
-
-
-async function load_best_sellers() {
+// CARREGAR DADOS DA FONTE----------------------------------------------
+async function carregar_dados() {
     try {
         const response = await fetch(url);
         const text = await response.text();
@@ -16,252 +14,228 @@ async function load_best_sellers() {
             dynamicTyping: true,
         });
 
-        const data = resultados.data;
+        data = resultados.data;
+        console.log("Dados carregados:", data)
+        return data;
 
-        let categoria = "best_sellers";
-
-        let filteredData = data.filter(item => item.HOME === categoria);
-
-        let productContainer = document.querySelector(".best_sellers");
-
-        filteredData.forEach(item => {
-            let card = document.createElement("figure");
-            card.id = `${item.PARENT}`;
-            card.classList.add("card");
-
-            let cartButton = document.createElement("button");
-            cartButton.classList.add("add-to-cart-btn");
-            cartButton.textContent = "+ Add";
-            card.appendChild(cartButton);
-
-            let list_name = document.createElement("a");
-            list_name.classList.add("product-name");
-            list_name.textContent = `${item.DESCRICAO}`;
-            card.appendChild(list_name);
-
-            let imageLink = document.createElement("a");
-            imageLink.classList.add("produto");
-
-            let imagem = document.createElement("img");
-            imagem.addEventListener("click",produtoclicado);
-            imagem.dataset.src = `img/${item.PARENT}.png`
-            imagem.loading = "lazy";
-            imagem.alt = item.DESCRICAO;
-            imageLink.appendChild(imagem);
-            card.appendChild(imageLink);
-      
-
-            let priceLink = document.createElement("a");
-            priceLink.classList.add("preco-label");
-            priceLink.href = "login.html";
-            card.appendChild(priceLink);
-
-            let priceButton = document.createElement("button");
-            priceButton.classList.add("btn-prod");
-            priceButton.textContent = "Ver Preço";
-            priceLink.appendChild(priceButton);
-
-            let priceContainer = document.createElement("div");
-            priceContainer.classList.add("preco-container");
-
-            let label = document.createElement("p");
-            label.classList.add("preco_de");
-            label.innerHTML = `De: R$ ${item.PRECO_DE}`;
-            priceContainer.appendChild(label);
-
-            let label_por = document.createElement("p");
-            label_por.classList.add("preco_por");
-            label_por.setAttribute("valor", item.PRECO_POR);
-            label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
-            priceContainer.appendChild(label_por);
-
-            card.appendChild(priceContainer);
-
-            productContainer.appendChild(card);
-        });
     } catch (error) {
-        console.error("Erro ao buscar os dados:", error);
+        console.error("Erro ao carregar os produtos: ", error);
     }
-}
+};
 
+// CARREGAR BEST SELLERS-----------------------------------------------
+async function load_best_sellers() {
+    await carregar_dados();
+
+    let categoria = "best_sellers";
+
+    let filteredData = data.filter(item => item.HOME === categoria);
+
+    let productContainer = document.querySelector(".best_sellers");
+
+    filteredData.forEach(item => {
+        let card = document.createElement("figure");
+        card.id = `${item.PARENT}`;
+        card.classList.add("card");
+
+        let cartButton = document.createElement("button");
+        cartButton.classList.add("add-to-cart-btn");
+        cartButton.textContent = "+ Add";
+        card.appendChild(cartButton);
+
+        let list_name = document.createElement("a");
+        list_name.classList.add("product-name");
+        list_name.textContent = `${item.DESCRICAO}`;
+        card.appendChild(list_name);
+
+        let imageLink = document.createElement("a");
+        imageLink.classList.add("produto");
+
+        let imagem = document.createElement("img");
+        imagem.addEventListener("click", produtoclicado);
+        imagem.dataset.src = `img/${item.PARENT}.png`
+        imagem.loading = "lazy";
+        imagem.alt = item.DESCRICAO;
+        imageLink.appendChild(imagem);
+        card.appendChild(imageLink);
+
+
+        let priceLink = document.createElement("a");
+        priceLink.classList.add("preco-label");
+        priceLink.href = "login.html";
+        card.appendChild(priceLink);
+
+        let priceButton = document.createElement("button");
+        priceButton.classList.add("btn-prod");
+        priceButton.textContent = "Ver Preço";
+        priceLink.appendChild(priceButton);
+
+        let priceContainer = document.createElement("div");
+        priceContainer.classList.add("preco-container");
+
+        let label = document.createElement("p");
+        label.classList.add("preco_de");
+        label.innerHTML = `De: R$ ${item.PRECO_DE}`;
+        priceContainer.appendChild(label);
+
+        let label_por = document.createElement("p");
+        label_por.classList.add("preco_por");
+        label_por.setAttribute("valor", item.PRECO_POR);
+        label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
+        priceContainer.appendChild(label_por);
+
+        card.appendChild(priceContainer);
+
+        productContainer.appendChild(card);
+    });
+};
+
+// CARREGAR DESTAQUES-----------------------------------------------------------
 
 async function load_destaques() {
-    try {
-        const response = await fetch(url);
-        const text = await response.text();
+    await carregar_dados();
 
-        const resultados = Papa.parse(text, {
-            header: true,
-            skipEmptyLines: true,
-            dynamicTyping: true,
-        });
+    let categoria = "destaques";
 
-        const data = resultados.data;
+    let filteredData = data.filter(item => item.HOME === categoria);
 
-        let categoria = "destaques";
+    let productContainer = document.querySelector(".destaques");
 
 
-        let filteredData = data.filter(item => item.HOME === categoria);
+    filteredData.forEach(item => {
+        let card = document.createElement("figure");
+        card.id = `${item.PARENT}`;
+        card.classList.add("card");
+
+        let cartButton = document.createElement("button");
+        cartButton.classList.add("add-to-cart-btn");
+        cartButton.textContent = "+ Add";
+        card.appendChild(cartButton);
+
+        let list_name = document.createElement("a");
+        list_name.classList.add("product-name");
+        list_name.textContent = `${item.DESCRICAO}`;
+        card.appendChild(list_name);
+
+        let imageLink = document.createElement("a");
+        imageLink.classList.add("produto");
+
+        let imagem = document.createElement("img");
+        imagem.addEventListener("click", produtoclicado);
+        imagem.dataset.src = `img/${item.PARENT}.png`
+        imagem.loading = "lazy";
+        imagem.alt = item.DESCRICAO;
+        imageLink.appendChild(imagem);
+        card.appendChild(imageLink);
 
 
-        // Certifique-se de que existe um container no HTML para adicionar os cards
-        let productContainer = document.querySelector(".destaques");
+        let priceLink = document.createElement("a");
+        priceLink.classList.add("preco-label");
+        priceLink.href = "login.html";
+        card.appendChild(priceLink);
 
-        filteredData.forEach(item => {
-            let card = document.createElement("figure");
-            card.id = `${item.PARENT}`;
-            card.classList.add("card");
+        let priceButton = document.createElement("button");
+        priceButton.classList.add("btn-prod");
+        priceButton.textContent = "Ver Preço";
+        priceLink.appendChild(priceButton);
 
-            let cartButton = document.createElement("button");
-            cartButton.classList.add("add-to-cart-btn");
-            cartButton.textContent = "+ Add";
-            card.appendChild(cartButton);
+        let priceContainer = document.createElement("div");
+        priceContainer.classList.add("preco-container");
 
+        let label = document.createElement("p");
+        label.classList.add("preco_de");
+        label.innerHTML = `De: R$ ${item.PRECO_DE}`;
+        priceContainer.appendChild(label);
 
-            // Nome do produto
-            let list_name = document.createElement("a");
-            list_name.classList.add("product-name");
-            list_name.textContent = `${item.DESCRICAO}`;
-            card.appendChild(list_name);
+        let label_por = document.createElement("p");
+        label_por.classList.add("preco_por");
+        label_por.setAttribute("valor", item.PRECO_POR);
+        label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
+        priceContainer.appendChild(label_por);
 
-            let imageLink = document.createElement("a");
-            imageLink.classList.add("produto");
+        card.appendChild(priceContainer);
 
-            let imagem = document.createElement("img");
-            imagem.addEventListener("click",produtoclicado);
-            imagem.dataset.src = `img/${item.PARENT}.png`
-            imagem.loading = "lazy";
-            imagem.alt = item.DESCRICAO;
-            imageLink.appendChild(imagem);
-            card.appendChild(imageLink);
+        productContainer.appendChild(card);
+    });
+};
 
-            let priceLink = document.createElement("a");
-            priceLink.classList.add("preco-label");
-            priceLink.href = "./login.html";
-            card.appendChild(priceLink);
-
-            let priceButton = document.createElement("button");
-            priceButton.classList.add("btn-prod");
-            priceButton.textContent = "Ver Preço";
-            priceLink.appendChild(priceButton);
-
-
-            let priceContainer = document.createElement("div");
-            priceContainer.classList.add("preco-container");
-
-            let label = document.createElement("p");
-            label.classList.add("preco_de");
-            label.innerHTML = `De: R$ ${item.PRECO_DE}`;
-            priceContainer.appendChild(label);
-
-            let label_por = document.createElement("p");
-            label_por.classList.add("preco_por");
-            label_por.setAttribute("valor", item.PRECO_POR);
-            label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
-            priceContainer.appendChild(label_por);
-
-            card.appendChild(priceContainer);
-
-            productContainer.appendChild(card);
-        });
-    } catch (error) {
-        console.error("Erro ao buscar os dados:", error);
-    }
-}
-
+// ------------------------------------------------------------------
 
 async function load_estoque_limitado() {
-    try {
-        const response = await fetch(url);
-        const text = await response.text();
+    await carregar_dados();
 
-        const resultados = Papa.parse(text, {
-            header: true,
-            skipEmptyLines: true,
-            dynamicTyping: true,
-        });
-
-            const data = resultados.data;
-
-            let categoria = "estoque_limitado";
+    let categoria = "estoque_limitado";
 
 
-            let filteredData = data.filter(item => item.HOME === categoria);
+    let filteredData = data.filter(item => item.HOME === categoria);
 
 
-            let productContainer = document.querySelector(".estoque_limitado");
+    let productContainer = document.querySelector(".estoque_limitado");
 
-            filteredData.forEach(item => {
-                let card = document.createElement("figure");
-                card.id = `${item.PARENT}`;
-                card.classList.add("card");
+    filteredData.forEach(item => {
+        let card = document.createElement("figure");
+        card.id = `${item.PARENT}`;
+        card.classList.add("card");
 
-                let cartButton = document.createElement("button");
-                cartButton.classList.add("add-to-cart-btn");
-                cartButton.textContent = "+ Add";
-                card.appendChild(cartButton);
-
-
-                // Nome do produto
-                let list_name = document.createElement("a");
-                list_name.classList.add("product-name");
-                list_name.textContent = `${item.DESCRICAO}`;
-                card.appendChild(list_name);
-
-                // ------------------------------------------------------------------------------------
-                let imageLink = document.createElement("a");
-                imageLink.classList.add("produto");
+        let cartButton = document.createElement("button");
+        cartButton.classList.add("add-to-cart-btn");
+        cartButton.textContent = "+ Add";
+        card.appendChild(cartButton);
 
 
-                let imagem = document.createElement("img");
-                imagem.addEventListener("click",produtoclicado);
-                imagem.dataset.src = `img/${item.PARENT}.png`
-                imagem.loading = "lazy";
-                imagem.alt = item.DESCRICAO;
-                imageLink.appendChild(imagem);
-                card.appendChild(imageLink);
-          
-                // ------------------------------------------------------------------------------------
-                // Link para login com botão "Ver Preço"
-                let priceLink = document.createElement("a");
-                priceLink.classList.add("preco-label");
-                priceLink.href = "./login.html";
-                card.appendChild(priceLink);
+        let list_name = document.createElement("a");
+        list_name.classList.add("product-name");
+        list_name.textContent = `${item.DESCRICAO}`;
+        card.appendChild(list_name);
 
-                let priceButton = document.createElement("button");
-                priceButton.classList.add("btn-prod");
-                priceButton.textContent = "Ver Preço";
-                priceLink.appendChild(priceButton);
 
-                // Container de preço
-                let priceContainer = document.createElement("div");
-                priceContainer.classList.add("preco-container");
+        let imageLink = document.createElement("a");
+        imageLink.classList.add("produto");
 
-                let label = document.createElement("p");
-                label.classList.add("preco_de");
-                label.innerHTML = `De: R$ ${item.PRECO_DE}`;
-                priceContainer.appendChild(label);
 
-                let label_por = document.createElement("p");
-                label_por.classList.add("preco_por");
-                label_por.setAttribute("valor", item.PRECO_POR);
-                label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
-                priceContainer.appendChild(label_por);
+        let imagem = document.createElement("img");
+        imagem.addEventListener("click", produtoclicado);
+        imagem.dataset.src = `img/${item.PARENT}.png`
+        imagem.loading = "lazy";
+        imagem.alt = item.DESCRICAO;
+        imageLink.appendChild(imagem);
+        card.appendChild(imageLink);
 
-                card.appendChild(priceContainer);
+        let priceLink = document.createElement("a");
+        priceLink.classList.add("preco-label");
+        priceLink.href = "./login.html";
+        card.appendChild(priceLink);
 
-                // Adiciona o card ao container de produtos
-                productContainer.appendChild(card);
-            });
-    } catch (error) {
-        console.error("Erro ao buscar os dados:", error);
-    }
-}
+        let priceButton = document.createElement("button");
+        priceButton.classList.add("btn-prod");
+        priceButton.textContent = "Ver Preço";
+        priceLink.appendChild(priceButton);
+
+        // Container de preço
+        let priceContainer = document.createElement("div");
+        priceContainer.classList.add("preco-container");
+
+        let label = document.createElement("p");
+        label.classList.add("preco_de");
+        label.innerHTML = `De: R$ ${item.PRECO_DE}`;
+        priceContainer.appendChild(label);
+
+        let label_por = document.createElement("p");
+        label_por.classList.add("preco_por");
+        label_por.setAttribute("valor", item.PRECO_POR);
+        label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
+        priceContainer.appendChild(label_por);
+
+        card.appendChild(priceContainer);
+
+        productContainer.appendChild(card);
+    });
+};
 
 // CARREGAR IMAGENS-------------------------------------------------------------
 function lazyLoadImages() {
     const images = document.querySelectorAll("img[data-src]");
-  
+
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -278,7 +252,7 @@ function lazyLoadImages() {
             rootMargin: "0px 0px 100px 0px",
             threshold: 0.1
         });
-  
+
         images.forEach(img => {
             observer.observe(img);
         });
@@ -287,20 +261,63 @@ function lazyLoadImages() {
             img.src = img.dataset.src;
         });
     }
+};
+
+// FUNCAO CLICAR NO PRODUTO---------------------------------------------------------
+
+function produtoclicado(event) {
+
+    let selected_product = event.target;
+
+
+    let elementoPai = selected_product.parentElement.parentElement;
+
+
+    let foto = elementoPai.querySelector("img").src;
+    let produtonome = elementoPai.querySelector("img").alt;
+    let precoDe = elementoPai.querySelector(".preco_de").textContent;
+    let precoPor = elementoPai.querySelector(".preco_por").textContent;
+
+    console.log("Clicou no produto");
+    console.log("parent do produto", elementoPai.id);
+    console.log("foto do produto:", foto);
+    console.log("nome: ", produtonome);
+    console.log("Preço de:", precoDe);
+    console.log("Preço por:", precoPor);
+
+
+    localStorage.setItem("produtoSelecionado", elementoPai.id);
+    localStorage.setItem("foto", foto);
+    localStorage.setItem("nome", produtonome);
+    localStorage.setItem("preco_de", precoDe);
+    localStorage.setItem("preco_por", precoPor);
+
+
+    window.location.href = "./produto.html";
 }
+
+let produtos = document.querySelectorAll(".produto");
+
+
+produtos.forEach(produto => {
+    produto.addEventListener("click", produtoclicado);
+});
+
+
 // ---------------------------------------------------------------------------------
 
 load_best_sellers().then(() => {
     lazyLoadImages();
 });
 
+
 load_destaques().then(() => {
     lazyLoadImages();
 });
- 
+
 load_estoque_limitado().then(() => {
     lazyLoadImages();
 });
 
-
+produtoclicado();
 
