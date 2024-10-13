@@ -102,17 +102,7 @@ header{
     /* display: none; */
 }
   
-.item-carrinho{
-    margin-top: 2vw;
-    color: var(--cor-principal);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.8vw;
-    margin: 0 1vw 2vw;
-    cursor:default;
 
-}
 
 .remove-btn{
     width: 1vw;
@@ -147,6 +137,36 @@ header{
     text-align: center;
     font-size: 0.7vw;
 }
+
+/* TABELA----------------------------------- */
+
+
+.cart-table {
+    width: 100%;
+    border-collapse: none;
+  }
+  
+  .cart-table th, .cart-table td {
+    border: none;
+    padding: 0.4vw;
+    text-align: left;
+    font-size: 0.9vw;
+    color: var(--cor-principal);
+  }
+  
+  .cart-table th {
+    background-color: none;
+  }
+  
+  .cart-table td img {
+    cursor: pointer;
+
+}
+
+.cart-table input[type="number"] {
+    width: 50px;
+    text-align: center;
+  }
 
 
 .subtotal{

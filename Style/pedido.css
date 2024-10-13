@@ -154,6 +154,7 @@ table {
     width: 90%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    min-height: 20vw;
 }
 
 table, th, td {
