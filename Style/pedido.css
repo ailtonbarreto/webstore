@@ -168,6 +168,21 @@ th {
     font-weight: bolder;
 }
 
+
+td:nth-child(3), th:nth-child(3) {
+    text-align: center;
+}
+
+td:nth-child(4), th:nth-child(4) {
+    text-align: center;
+}
+
+td:nth-child(5), th:nth-child(5) {
+    text-align: center;
+}
+
+
+
 tr:nth-child(even) {
     background-color: transparent;
 }

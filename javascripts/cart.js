@@ -32,8 +32,9 @@ function handleAddToCart(event) {
   const preco = parentElement.querySelector(".preco_por").textContent;
   const container = parentElement.querySelector(".preco_por");
   const valor = container.getAttribute("valor");
+  const imagem = parentElement.querySelector("img").getAttribute("src");
 
-  add_to_cart({ nome, valor, quantidade: 1 });
+  add_to_cart({imagem,nome, valor, quantidade: 1 });
 }
 
 // ---------------------------------------------------------------------------
@@ -59,45 +60,77 @@ function add_to_cart(product) {
 // ---------------------------------------------------------------------------
 // RENDERIZAR ITENS DO CARRINHO
 function renderCartItems() {
-  cartItems.innerHTML = ""; // Limpa os itens anteriores
+  cartItems.innerHTML = "";
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
 
   const table = document.createElement('table');
   table.classList.add("cart-table");
 
-
   const tableHeader = `
     <tr>
+      <th>imagem</th>
       <th>Produto</th>
       <th>Preço</th>
       <th>Quantidade</th>
       <th>Remover</th>
     </tr>
   `;
-  // table.innerHTML = tableHeader;
+  // table.innerHTML = tableHeader; 
 
   cart.forEach((item, index) => {
     const row = document.createElement('tr');
 
+    const imagemColuna = document.createElement('td');
+    const imgElement = document.createElement('img');
+    imgElement.src = item.imagem;
+    imgElement.alt = item.nome;
+    imgElement.style.width = '50px';
+    imagemColuna.appendChild(imgElement);
+    row.appendChild(imagemColuna);
  
+  
     const nomeColuna = document.createElement('td');
     nomeColuna.textContent = item.nome;
     row.appendChild(nomeColuna);
+
 
     const valorColuna = document.createElement('td');
     valorColuna.textContent = `R$: ${parseFloat(item.valor).toFixed(2)}`;
     row.appendChild(valorColuna);
 
+  
     const quantidadeColuna = document.createElement('td');
+    const quantidadeWrapper = document.createElement('div');
+    quantidadeWrapper.classList.add('quantity-control');
+
+    const minusButton = document.createElement('button');
+    minusButton.textContent = "-";
+    minusButton.classList.add('quantity-btn');
+    minusButton.disabled = item.quantidade === 1;
+    minusButton.addEventListener('click', () => {
+      updateQuantity(index, item.quantidade - 1);
+    });
+
     const quantidadeInput = document.createElement('input');
     quantidadeInput.type = 'number';
     quantidadeInput.min = '1';
     quantidadeInput.value = item.quantidade || 1;
+    quantidadeInput.classList.add('quantity-input');
     quantidadeInput.addEventListener('change', (event) => {
-      updateQuantity(index, event.target.value);
+      updateQuantity(index, parseInt(event.target.value));
     });
-    quantidadeColuna.appendChild(quantidadeInput);
+
+    const plusButton = document.createElement('button');
+    plusButton.textContent = "+";
+    plusButton.classList.add('quantity-btn');
+    plusButton.addEventListener('click', () => {
+      updateQuantity(index, item.quantidade + 1);
+    });
+
+    quantidadeWrapper.appendChild(minusButton);
+    quantidadeWrapper.appendChild(quantidadeInput);
+    quantidadeWrapper.appendChild(plusButton);
+    quantidadeColuna.appendChild(quantidadeWrapper);
     row.appendChild(quantidadeColuna);
 
     const removeColuna = document.createElement('td');
@@ -110,15 +143,16 @@ function renderCartItems() {
     removeColuna.appendChild(removeButton);
     row.appendChild(removeColuna);
 
-
     table.appendChild(row);
   });
 
- 
+
   cartItems.appendChild(table);
+
 
   calcularSubtotal();
 }
+
 
 // ---------------------------------------------------------------------------
 // FUNCAO ATUALIZAR QUANTIDADE

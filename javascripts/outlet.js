@@ -34,8 +34,6 @@ async function load_outlet() {
 
     let filteredData = data.filter(item => item.HOME === categoria && item.ATIVO === 1);
 
-
-
     filteredData.forEach(item => {
         let card = document.createElement("figure");
         card.id = `${item.PARENT}`;
@@ -46,13 +44,16 @@ async function load_outlet() {
         cartButton.textContent = "+ Add";
         card.appendChild(cartButton);
 
+
         let list_name = document.createElement("a");
-        list_name.classList.add("prodct-name");
+        list_name.classList.add("product-name");
         list_name.textContent = `${item.DESCRICAO}`;
         card.appendChild(list_name);
 
+
         let imageLink = document.createElement("a");
         imageLink.classList.add("produto");
+
 
         let imagem = document.createElement("img");
         imagem.addEventListener("click", produtoclicado);
@@ -62,16 +63,16 @@ async function load_outlet() {
         imageLink.appendChild(imagem);
         card.appendChild(imageLink);
 
-
         let priceLink = document.createElement("a");
         priceLink.classList.add("preco-label");
-        priceLink.href = "../login.html";
+        priceLink.href = "./login.html";
         card.appendChild(priceLink);
 
         let priceButton = document.createElement("button");
         priceButton.classList.add("btn-prod");
         priceButton.textContent = "Ver Preço";
         priceLink.appendChild(priceButton);
+
 
         let priceContainer = document.createElement("div");
         priceContainer.classList.add("preco-container");
@@ -88,6 +89,7 @@ async function load_outlet() {
         priceContainer.appendChild(label_por);
 
         card.appendChild(priceContainer);
+
         product_name.appendChild(card);
     });
 };
@@ -125,9 +127,11 @@ function produtoclicado(event) {
 
 let produtos = document.querySelectorAll(".produto");
 
+
 produtos.forEach(produto => {
     produto.addEventListener("click", produtoclicado);
 });
+
 
 // CARREGAR IMAGENS-------------------------------------------------------------
 function lazyLoadImages() {

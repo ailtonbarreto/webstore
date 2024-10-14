@@ -3,8 +3,6 @@ let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6
 let data = [];
 
 
-
-
 window.addEventListener('load', function() {
     let statusValue = localStorage.getItem("logged");
     if (statusValue === "1") {
