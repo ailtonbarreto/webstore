@@ -94,7 +94,6 @@ li a:hover::after{
 
 /* -------------------------------------------------------------------------------- */
 /* COMECO DA DIV CADASTRO */
-
 .cadastro{
     display: flex;
     align-items: center;
@@ -110,30 +109,44 @@ li a:hover::after{
 }
 
 .cart-icon{
-    width: 1.7vw;
+    width: 1.2vw;
     cursor: pointer;
-    margin-left: -0.2vw;
 }
 
 .login{
     width: 1.2vw;
 }
 
-/* FIM DO CADASTRO */
-/* -------------------------------------------------------------------------------- */
+.cart-counter {
+    position: absolute;
+    bottom: 2.4vw;
+    right: 0.9vw;
+    background-color: var(--cor-btn-addToCard);
+    color: white;
+    border-radius: 50%;
+    padding: 0.2vw 0.4vw;
+    font-size: 0.6vw;
+}
+
+/* --------------------------------------- */
 /* comeco do carrinho */
 .cart {
     position: fixed;
     top: 0;
-    right: -30vw;
-    width: 30vw;
+    right: -35vw;
+    width: 35vw;
     height: 100vh;
     background-color: var(--cor-bg);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     transition: right 0.3s ease;
     z-index: 1000;
-    overflow-y:scroll;
+    overflow-y: scroll;
     height: 100vh;
+}
+
+.cart-items{
+    overflow: scroll;
+
 }
   
 .cart.active {
@@ -159,21 +172,11 @@ li a:hover::after{
 
 }
   
-  
-.item-carrinho{
-    margin-top: 2vw;
-    color: var(--cor-principal);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.8vw;
-    margin: 0 1vw 2vw;
 
-}
 
 .remove-btn{
-    font-size: var(--font-size);
     width: 1vw;
+    cursor: pointer;
 }
 
 .finish-btn{
@@ -184,7 +187,7 @@ li a:hover::after{
     height: 3vw;
     bottom: 0vw;
     border: none;
-    width: 30vw;
+    width: 35vw;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -192,22 +195,104 @@ li a:hover::after{
 }
 
 .finish{
-    background-color:  #29be4e;
+    background-color: var(--cor-btn-addToCard);
     border-radius: 0.3vw;
     color: var(--cor-text);
     position: relative;
-    height: 1.5vw;
-    text-align: center;
     border: none;
+    padding: 0.3vw;
     align-items: center;
     justify-content: center;
     width: 30%;
-    cursor: pointer;
+    text-align: center;
+    font-size: 0.7vw;
 }
+
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+  
+.quantity-btn {
+    width: 1.5vw;
+    height: 1.5vw;
+    background-color: var(--cor-principal);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.quantity-btn:hover {
+    background-color: var(--cor-btn-addToCard);
+}
+  
+.quantity-btn:disabled {
+    cursor: not-allowed;
+}
+  
+.quantity-input {
+    width: 1vw;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 0.8vw;
+    margin: 0 5px;
+    height: 1.5vw;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  
+
+
+/* TABELA----------------------------------- */
+
+
+.cart-table {
+    width: 100%;
+    border-collapse: none;
+    margin-bottom: 3vw;
+
+  }
+  
+  .cart-table th, .cart-table td {
+    border: none;
+    padding: 0.5vw;
+    text-align: left;
+    font-size: 0.7vw;
+    color: var(--cor-principal);
+
+  }
+  
+  .cart-table th {
+    background-color: none;
+    
+  }
+  
+  .cart-table td img {
+    cursor: pointer;
+
+}
+
+.cart-table input[type="number"] {
+    width: 1vw;
+    text-align: center;
+  }
 
 
 .subtotal{
     color: var(--cor-text);
+    width: 50%;
+    font-size: 0.9vw;
 }
 
 /* fim do carrinho */

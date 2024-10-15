@@ -24,6 +24,19 @@ document.addEventListener('click', (event) => {
   }
 });
 
+
+function updateCartCounter() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let totalItems = cart.reduce((total, item) => total + item.quantidade, 0);
+
+  const cartCounter = document.querySelector('.cart-counter');
+  cartCounter.textContent = totalItems;
+}
+
+// Chame a função sempre que o carrinho for alterado
+document.addEventListener('DOMContentLoaded', updateCartCounter);
+
+
 // ---------------------------------------------------------------------------
 // ADICIONAR ITEM AO CARRINHO
 function handleAddToCart(event) {
@@ -35,27 +48,44 @@ function handleAddToCart(event) {
   const imagem = parentElement.querySelector("img").getAttribute("src");
 
   add_to_cart({imagem,nome, valor, quantidade: 1 });
+  updateCartCounter();
 }
 
 // ---------------------------------------------------------------------------
 // FUNÇÃO PARA ADICIONAR ITEM AO CARRINHO E SALVAR NO LOCALSTORAGE
+// function add_to_cart(product) {
+//   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+
+//   const existingProductIndex = cart.findIndex(item => item.nome === product.nome);
+  
+//   if (existingProductIndex >= 0) {
+
+//     cart[existingProductIndex].quantidade += 1;
+//   } else {
+
+//     cart.push(product);
+//   }
+
+//   localStorage.setItem('cart', JSON.stringify(cart));
+//   renderCartItems();
+// }
+
 function add_to_cart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-
   const existingProductIndex = cart.findIndex(item => item.nome === product.nome);
-  
+
   if (existingProductIndex >= 0) {
-
-    cart[existingProductIndex].quantidade += 1;
+      cart[existingProductIndex].quantidade += 1;
   } else {
-
-    cart.push(product);
+      cart.push(product);
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCartItems();
+  updateCartCounter();
 }
+
 
 // ---------------------------------------------------------------------------
 // RENDERIZAR ITENS DO CARRINHO
@@ -151,6 +181,7 @@ function renderCartItems() {
 
 
   calcularSubtotal();
+  updateCartCounter();
 }
 
 
@@ -161,6 +192,7 @@ function updateQuantity(index, newQuantity) {
   cart[index].quantidade = parseInt(newQuantity);
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCartItems();
+  updateCartCounter();
 }
 
 // ---------------------------------------------------------------------------
@@ -170,6 +202,7 @@ function removeFromCart(index) {
   cart.splice(index, 1);
   localStorage.setItem('cart', JSON.stringify(cart))
   renderCartItems();
+  updateCartCounter();
 }
 
 // ---------------------------------------------------------------------------
