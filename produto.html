@@ -5,72 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./Assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./Style/produto.css">
-    <script async src="./javascripts/cart.js"></script>
+    <script src="./javascripts/papaparse.min.js"></script>
+    <script src="./javascripts/cart.js"></script>
+    <script src="./javascripts/produto.js"></script>
+    
     <title>Ver Produto</title>
-    <script>
-        window.onload = function() {
-
-            const img = localStorage.getItem("foto");
-            const nome = localStorage.getItem("nome");
-            const preco_de = localStorage.getItem("preco_de");
-            const preco_por = localStorage.getItem("preco_por");
-            
-            if (img) {
-                document.getElementById("imagemProduto").src = img;
-            } else {
-                console.log("Nenhuma imagem foi encontrada");
-            }
-
-            if (nome) {
-                document.getElementById("nome").innerHTML = nome;
-            } else {
-                console.log("Nenhuma imagem foi encontrada");
-            }
-
-            if(preco_de){
-                document.getElementById("precode").innerHTML = preco_de; 
-            } else{
-                console.log(" ");
-            }
-
-            if(preco_por){
-                document.getElementById("precopor").innerHTML = preco_por; 
-            } else{
-                console.log(" ");
-            }
-
-        }
-
-    </script>
 </head>
 <body>
 
     <div id="cart" class="cart">
-        
         <button id="close-cart">X</button>
         <h2 style="color:#0f8f8f">Meu Carrinho</h2>
         <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
-        <ul id="cart-items"></ul>
-  
+        <table>
+            <thead>
+                <!-- <tr>
+                    <th>Imagem</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                </tr> -->
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
         <div class="finish-btn">
-  
-          <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
-  
-          <a href="./pedido.html" class="finish">Finalizar Pedido</a>
-  
+            <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
+            <a href="./pedido.html" class="finish">Finalizar Pedido</a>
         </div>
-  
-      </div>
-
+    </div>
 
     <header>
-
         <div class="div-logo">
-
             <a href="./index.html"><img class="logo" src="./Assets/logo.png" alt=""></a>
-
         </div>
-        
         <div class="navbar">
             <ul class="navlist">
                 <li><a href="./roupas.html">Roupas</a></li>
@@ -80,7 +48,6 @@
                 <li><a href="./outlet.html" style="color: rgb(235, 200, 3);">Outlet</a></li>
             </ul>
         </div>
-
         <div class="cadastro">
             <a href="#"><img class="search-icon" src="./Assets/search-icon.png" alt=""></a>
             <a href="./login.html"><img class="login" src="./Assets/user-icon.png" alt=""></a>
@@ -92,62 +59,35 @@
     <h2 id="nome" class="title"></h2>
 
     <section class="container">
-
         <div class="produto-box">
-
             <img id="imagemProduto" src="" alt="Imagem do Produto">
-
             <h2 class="grade">Grade</h2>
-
-            
-
         </div>
 
-
-
         <div class="preco-box">
-
-
             <p class="descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
             Obcaecati, qui omnis dolor expedita illum hic 
             consectetur magnam asperiores architecto doloribus. Ipsa, enim eligendi.<br>
-            Corporis velit saepe, consequuntur maxime eos eveniet!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
-            Obcaecati, qui omnis dolor expedita illum hic 
-            consectetur magnam asperiores architecto doloribus. Ipsa, enim eligendi.<br>
             Corporis velit saepe, consequuntur maxime eos eveniet!</p>
-            
             <ul class="descricao">
                 <li>Caracteristica 1</li>
                 <li>Caracteristica 2</li>
                 <li>Caracteristica 3</li>
                 <li>Caracteristica 4</li>
-
             </ul>
-            
             <hr style="border: 1px solid #0f8f8f; width: 100%;">
-
             <div class="preco-div">
-
-                <h2 id="precode">preco</h2>
-
-                <h2 id="precopor">preco</h2>
-
-                <a href="#" class="add-to-cart-btn">+ Add</a>
-
+                <h2 id="precode">R$ 0,00</h2>
+                <h2 id="precopor">R$ 0,00</h2>
+                <a class="add-to-cart-btn">+ Add</a>
             </div>
-
         </div>
-
-
     </section>
 
     <footer>
-
         <div class="container-footer">
             <h3>INSTITUCIONAL</h3>
             <div>
-
                 <nav>
                     <ul>
                         <li class="item-lista">Quem Somos</li>
@@ -156,15 +96,11 @@
                         <li class="item-lista">Política de Privacidade</li>
                     </ul>
                 </nav>
-
             </div>
-
         </div>
-
         <div class="container-footer">
             <h3>AJUDA</h3>
             <div>
-
                 <nav>
                     <ul>
                         <li class="item-lista">Meus Pedidos</li>
@@ -173,22 +109,13 @@
                         <li class="item-lista">Fale conosco</li>
                     </ul>
                 </nav>
-
             </div>
-
         </div>
-
         <div class="container-footer">
-
             <img src="./Assets/logo.png" alt="">
-
             <p class="assinatura">Desenvolvido Por Ailton Barreto</p>
-
         </div>
-
     </footer>
 
 </body>
-
-
 </html>

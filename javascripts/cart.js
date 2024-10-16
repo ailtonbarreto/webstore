@@ -52,24 +52,6 @@ function handleAddToCart(event) {
 }
 
 // ---------------------------------------------------------------------------
-// FUNÇÃO PARA ADICIONAR ITEM AO CARRINHO E SALVAR NO LOCALSTORAGE
-// function add_to_cart(product) {
-//   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-
-//   const existingProductIndex = cart.findIndex(item => item.nome === product.nome);
-  
-//   if (existingProductIndex >= 0) {
-
-//     cart[existingProductIndex].quantidade += 1;
-//   } else {
-
-//     cart.push(product);
-//   }
-
-//   localStorage.setItem('cart', JSON.stringify(cart));
-//   renderCartItems();
-// }
 
 function add_to_cart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];

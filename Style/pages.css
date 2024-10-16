@@ -172,10 +172,12 @@ header{
 }
   
 .quantity-input {
-    width: 1vw;
+    width: 2vw;
     border: none;
     background-color: transparent;
     text-align: center;
+    color: var(--cor-principal);
+    font-weight: bolder;
     font-size: 0.8vw;
     margin: 0 5px;
     height: 1.5vw;
@@ -359,15 +361,14 @@ li a:hover::after{
 }
 
 .prev, .next {
-    color: var(--cor-text);
+    color: var(--cor-principal);
     position: absolute;
     top: 50%;
-    background-color: var(--cor-principal);
+    background-color: transparent;
     border: none;
-    padding: 10px;
-    height: 5vh;
-    width: 2vw;
-    margin: 0.5vw;
+    font-size: 1vw;
+    padding: 0.5vw;
+    margin: 0.4vw;
     cursor: pointer;
     text-align: center;
     font-weight: bold;
