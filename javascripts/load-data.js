@@ -1,10 +1,14 @@
-let url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAEct5jF2nnOSaqoR7i6Fcz2pOLXN4oifn5G2CeO3k7N3uU0C3-B-exrtzS5Ufjul32tAZ1R8KcS8N/pub?gid=0&single=true&output=csv';
 let data = [];
 
-// CARREGAR DADOS DA FONTE----------------------------------------------
+// CARREGAR CONFIG JSON E DADOS DA FONTE --------------------------------------
 async function carregar_dados() {
   try {
-    const response = await fetch(url);
+ 
+    const configResponse = await fetch('database/db.json');
+    const config = await configResponse.json();
+
+
+    const response = await fetch(config.spreadsheetUrl);
     const text = await response.text();
 
     const resultados = Papa.parse(text, {
@@ -14,13 +18,14 @@ async function carregar_dados() {
     });
 
     data = resultados.data;
-    console.log("Dados carregados:", data)
+    console.log("Dados carregados:", data);
     return data;
 
   } catch (error) {
     console.error("Erro ao carregar os produtos: ", error);
   }
 };
+
 
 // CARREGAR DADOS NA PAGINA---------------------------------------------------
 async function carregar_produtos() {
