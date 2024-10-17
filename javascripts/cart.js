@@ -6,6 +6,9 @@ const closeCartBtn = document.getElementById('close-cart');
 const cartItems = document.getElementById('cart-items');
 const subtotalElement = document.querySelector(".subtotal");
 
+// localStorage.clear();
+
+
 // ---------------------------------------------------------------------------
 // ABRIR E FECHAR CARRINHO
 openCartBtn.addEventListener('click', () => {
