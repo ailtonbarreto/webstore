@@ -87,7 +87,7 @@ function renderCartItems() {
       <th>Remover</th>
     </tr>
   `;
-  // table.innerHTML = tableHeader; 
+  table.innerHTML = tableHeader; 
 
   cart.forEach((item, index) => {
     const row = document.createElement('tr');
