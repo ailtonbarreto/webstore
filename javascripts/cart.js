@@ -47,7 +47,7 @@ function handleAddToCart(event) {
   const valor = container.getAttribute("valor");
   const imagem = parentElement.querySelector("img").getAttribute("src");
 
-  add_to_cart({imagem, nome, valor, quantidade: 1 });
+  add_to_cart({imagem,nome, valor, quantidade: 1 });
   updateCartCounter();
 }
 
@@ -87,7 +87,7 @@ function renderCartItems() {
       <th>Remover</th>
     </tr>
   `;
-  table.innerHTML = tableHeader; 
+  // table.innerHTML = tableHeader; 
 
   cart.forEach((item, index) => {
     const row = document.createElement('tr');

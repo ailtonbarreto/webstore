@@ -18,7 +18,6 @@ async function carregar_dados() {
     });
 
     data = resultados.data;
-    console.log("Dados carregados:", data);
     return data;
 
   } catch (error) {
