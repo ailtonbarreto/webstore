@@ -39,8 +39,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding: 0 6vw;
     position: fixed;
     width: 100%;
     z-index: 100;
@@ -311,7 +310,7 @@ li a:hover::after{
 .cart-counter {
     position: absolute;
     bottom: 2.4vw;
-    right: 0.9vw;
+    right: 5vw;
     background-color: var(--cor-btn-addToCard);
     color: white;
     border-radius: 50%;
@@ -320,7 +319,6 @@ li a:hover::after{
 }
 
 /* INICIO DO CARROSSEL----------------------------- */
-
 .carousel {
     position: relative;
     width: 100%;
@@ -396,6 +394,7 @@ li a:hover::after{
 .slide.active{
     animation: toActive 2s ease-in-out 1;
 }
+
 
 /* FIM DO CARROSSEL----------------------------- */
 

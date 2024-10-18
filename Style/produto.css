@@ -37,8 +37,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding: 0 6vw;
     position: fixed;
     width: 100%;
     top: 0;
@@ -121,7 +120,7 @@ li a:hover::after{
 .cart-counter {
     position: absolute;
     bottom: 2.4vw;
-    right: 0.9vw;
+    right: 5vw;
     background-color: var(--cor-btn-addToCard);
     color: white;
     border-radius: 50%;
@@ -238,10 +237,12 @@ li a:hover::after{
 }
   
 .quantity-input {
-    width: 1vw;
+    width: 2vw;
     border: none;
     background-color: transparent;
     text-align: center;
+    color: var(--cor-principal);
+    font-weight: bolder;
     font-size: 0.8vw;
     margin: 0 5px;
     height: 1.5vw;

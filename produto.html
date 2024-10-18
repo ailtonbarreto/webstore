@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./Assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./Style/produto.css">
-    <script src="./javascripts/papaparse.min.js"></script>
-    <script src="./javascripts/cart.js"></script>
-    <script src="./javascripts/produto.js"></script>
-    
+    <script async src="./javascripts/papaparse.min.js"></script>
+    <script async src="./javascripts/cart.js"></script>
+    <script async src="./javascripts/produto.js"></script>
+
     <title>Ver Produto</title>
 </head>
-<body>
 
+<body>
+    
     <div id="cart" class="cart">
+        
         <button id="close-cart">X</button>
         <h2 style="color:#0f8f8f">Meu Carrinho</h2>
         <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
-        <table>
-            <thead>
-                <!-- <tr>
-                    <th>Imagem</th>
-                    <th>Produto</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    <th>Subtotal</th>
-                </tr> -->
-            </thead>
-            <tbody id="cart-items"></tbody>
-        </table>
-        <div class="finish-btn">
-            <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
-            <a href="./pedido.html" class="finish">Finalizar Pedido</a>
+        <div id="cart-items">
+          <!-- <table>
+              <tr>
+                  <th>imagem</th>
+                  <th>Produto</th>
+                  <th>Preço</th>
+                  <th>Quantidade</th>
+                  <th>Remover</th>
+                </tr>
+  
+          </table> -->
+  
         </div>
-    </div>
+      
+        <div class="finish-btn">
+  
+          <p class="subtotal"><span>Subtotal: </span></p>
+  
+          <a href="./pedido.html" class="finish">Finalizar Pedido</a>
+  
+        </div>
+  
+      </div>
+
 
     <header>
         <div class="div-logo">
@@ -66,9 +76,9 @@
 
         <div class="preco-box">
             <p class="descricao">Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
-            Obcaecati, qui omnis dolor expedita illum hic 
-            consectetur magnam asperiores architecto doloribus. Ipsa, enim eligendi.<br>
-            Corporis velit saepe, consequuntur maxime eos eveniet!</p>
+                Obcaecati, qui omnis dolor expedita illum hic
+                consectetur magnam asperiores architecto doloribus. Ipsa, enim eligendi.<br>
+                Corporis velit saepe, consequuntur maxime eos eveniet!</p>
             <ul class="descricao">
                 <li>Caracteristica 1</li>
                 <li>Caracteristica 2</li>
@@ -118,4 +128,5 @@
     </footer>
 
 </body>
+
 </html>
