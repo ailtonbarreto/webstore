@@ -1,87 +1,40 @@
-
 let data = [];
+
+// localStorage.clear();
 
 console.log(localStorage.getItem("logged"));
 
 window.addEventListener('load', function() {
-  let statusValue = localStorage.getItem("logged");
-  
-  let observer = new MutationObserver(function(mutations) {
-      let btns = document.querySelectorAll(".add-to-cart-btn");
-      let precos = document.querySelectorAll(".preco-container"); 
-      let prod_btn = document.querySelectorAll(".btn-prod");
-      if (btns.length > 0 && precos.length > 0 && prod_btn.length > 0) {
-
-          btns.forEach(function(btn) {
-  
-              if (statusValue === "1") {
-                  btn.style.visibility = "";
-              } else if (statusValue === "0") {
-                  btn.style.visibility = "hidden";
-              }
-          });
-
-          precos.forEach(function(preco) {
-
-              if (statusValue === "1") {
-                  preco.style.display = "flex";
-              } else if (statusValue === "0") {
-                  preco.style.display = "none";
-              }
-          });
-
-          prod_btn.forEach(function(prod_btn) {
-
-              if (statusValue === "0") {
-                  prod_btn.style.display = "";
-              } else if (statusValue === "1") {
-                  prod_btn.style.display = "none";
-              }
-          });
-
-          observer.disconnect();
-      }
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
+    let statusValue = localStorage.getItem("logged");
+    atualizarVisibilidade(statusValue);
+    load_products("outlet"); // Carregar produtos após o carregamento da página
 });
 
-
-// CARREGAR CONFIG JSON E DADOS DA FONTE --------------------------------------
 async function carregar_dados() {
-  try {
-    // Carregar o arquivo config.json
-    const configResponse = await fetch('database/db.json');
-    const config = await configResponse.json();
+    try {
+        const configResponse = await fetch('database/db.json');
+        const config = await configResponse.json();
+        const response = await fetch(config.spreadsheetUrl);
+        const text = await response.text();
 
-    // Usar a URL do JSON
-    const response = await fetch(config.spreadsheetUrl);
-    const text = await response.text();
+        const resultados = Papa.parse(text, {
+            header: true,
+            skipEmptyLines: true,
+            dynamicTyping: true,
+        });
 
-    const resultados = Papa.parse(text, {
-      header: true,
-      skipEmptyLines: true,
-      dynamicTyping: true,
-    });
+        data = resultados.data;
+    } catch (error) {
+        console.error("Erro ao carregar os produtos: ", error);
+    }
+}
 
-    data = resultados.data;
-    return data;
-
-  } catch (error) {
-    console.error("Erro ao carregar os produtos: ", error);
-  }
-};
-
-// CARREGAR OUTLET---------------------------------------------
-async function load_outlet() {
+async function load_products(categoria) {
     await carregar_dados();
 
-    let product_name = document.querySelector(".prod");
+    let filteredData = data.filter(item => item.HOME === "Outlet" && item.ATIVO === 1);
+    let productContainer = document.querySelector(".Outlet");
 
-
-    let categoria = document.querySelector("#category").textContent.trim();
-
-    let filteredData = data.filter(item => item.HOME === categoria && item.ATIVO === 1);
 
     filteredData.forEach(item => {
         let card = document.createElement("figure");
@@ -93,20 +46,16 @@ async function load_outlet() {
         cartButton.textContent = "+ Add";
         card.appendChild(cartButton);
 
-
         let list_name = document.createElement("a");
         list_name.classList.add("product-name");
         list_name.textContent = `${item.DESCRICAO}`;
         card.appendChild(list_name);
 
-
         let imageLink = document.createElement("a");
         imageLink.classList.add("produto");
 
-
         let imagem = document.createElement("img");
-        imagem.addEventListener("click", produtoclicado);
-        imagem.dataset.src = `${item.IMAGEM}`
+        imagem.src = `${item.IMAGEM}`;
         imagem.loading = "lazy";
         imagem.alt = item.DESCRICAO;
         imageLink.appendChild(imagem);
@@ -121,7 +70,6 @@ async function load_outlet() {
         priceButton.classList.add("btn-prod");
         priceButton.textContent = "Ver Preço";
         priceLink.appendChild(priceButton);
-
 
         let priceContainer = document.createElement("div");
         priceContainer.classList.add("preco-container");
@@ -138,31 +86,45 @@ async function load_outlet() {
         priceContainer.appendChild(label_por);
 
         card.appendChild(priceContainer);
-
-        product_name.appendChild(card);
+        productContainer.appendChild(card);
     });
-};
 
-// FUNCAO CLICAR NO PRODUTO------------------------------------
+    atualizarVisibilidade(localStorage.getItem("logged"));
+
+    // Adicione o evento de clique para os produtos aqui
+    document.querySelectorAll('.produto img').forEach(img => {
+        img.addEventListener("click", produtoclicado);
+    });
+}
+
+function atualizarVisibilidade(statusValue) {
+    let btns = document.querySelectorAll(".add-to-cart-btn");
+    let precos = document.querySelectorAll(".preco-container");
+    let prod_btns = document.querySelectorAll(".btn-prod");
+
+    btns.forEach(btn => {
+        btn.style.display = (statusValue === "1") ? "block" : "none";
+    });
+
+    precos.forEach(preco => {
+        preco.style.display = (statusValue === "1") ? "flex" : "none";
+    });
+
+    prod_btns.forEach(prod_btn => {
+        prod_btn.style.display = (statusValue === "1") ? "none" : "block";
+    });
+}
+
+// FUNÇÃO CLICAR NO PRODUTO---------------------------------------------------------
+
 function produtoclicado(event) {
-
     let selected_product = event.target;
-
-
-    let elementoPai = selected_product.parentElement.parentElement;
-
+    let elementoPai = selected_product.closest('figure'); // Alterado para pegar o pai mais próximo
 
     let foto = elementoPai.querySelector("img").src;
     let produtonome = elementoPai.querySelector("img").alt;
     let precoDe = elementoPai.querySelector(".preco_de").textContent;
     let precoPor = elementoPai.querySelector(".preco_por").textContent;
-
-    console.log("parent do produto", elementoPai.id);
-    console.log("foto do produto:", foto);
-    console.log("nome: ", produtonome);
-    console.log("Preço de:", precoDe);
-    console.log("Preço por:", precoPor);
-
 
     localStorage.setItem("produtoSelecionado", elementoPai.id);
     localStorage.setItem("foto", foto);
@@ -170,51 +132,5 @@ function produtoclicado(event) {
     localStorage.setItem("preco_de", precoDe);
     localStorage.setItem("preco_por", precoPor);
 
-
     window.location.href = "./produto.html";
 }
-
-let produtos = document.querySelectorAll(".produto");
-
-
-produtos.forEach(produto => {
-    produto.addEventListener("click", produtoclicado);
-});
-
-
-// CARREGAR IMAGENS-------------------------------------------------------------
-function lazyLoadImages() {
-    const images = document.querySelectorAll("img[data-src]");
-
-    if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.removeAttribute("data-src");
-                        observer.unobserve(img);
-                    }
-                }
-            });
-        }, {
-            rootMargin: "0px 0px 100px 0px",
-            threshold: 0.1
-        });
-
-        images.forEach(img => {
-            observer.observe(img);
-        });
-    } else {
-        images.forEach(img => {
-            img.src = img.dataset.src;
-        });
-    }
-};
-
-// ---------------------------------------------------------------------------------
-
-load_outlet().then(() => {
-    lazyLoadImages();
-});
