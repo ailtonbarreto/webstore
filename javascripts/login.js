@@ -3,7 +3,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    let logged = ""; // Defina a variável fora do escopo do if/else
+    let logged = "";
 
     fetch('./database/keys.json')
         .then(response => response.json())
@@ -13,14 +13,14 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
             if (username === validUsername && password === validPassword) {
                 window.location.href = './index.html';
-                logged = "1"; // Modifique a variável aqui
+                logged = "1";
             } else {
-                // document.getElementById('message').innerText = "Usuário ou senha incorretos!";
+            
                 window.location.href = './index.html';
-                logged = "0"; // Modifique a variável aqui
+                logged = "0";
             }
 
-            localStorage.setItem("logged", logged); // Agora 'logged' será setada corretamente
+            localStorage.setItem("logged", logged);
         })
         .catch(error => console.error('Erro ao carregar o JSON:', error));
 });

@@ -189,10 +189,6 @@ input[type="number"]::-webkit-inner-spin-button {
 }
   
 
-
-/* TABELA----------------------------------- */
-
-
 .cart-table {
     width: 100%;
     border-collapse: none;
@@ -231,9 +227,8 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 0.9vw;
 }
 
-/* fim do carrinho */
-/* ------------------------------------- */
 
+/* FIM DO CARRINHO------------------------------------- */
 
 .div-logo{
     display: flex;
@@ -282,7 +277,7 @@ li a:hover::after{
     width: 100%;
 }
 
-/* div cadastro -------------------------------*/
+/* --------------CONTAINER USUARIO-----------------*/
 
 .cadastro{
     display: flex;
@@ -441,7 +436,7 @@ section{
 .card{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background: var(--cor-card);
     padding: 0.1vw 2vw 1vw;
@@ -480,7 +475,6 @@ section{
     gap: 0.2vw;
     width: 100%;
 
-    /* display: none; */
 }
 
 .preco_de{
@@ -516,6 +510,8 @@ section{
 
 .preco-label{
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -530,7 +526,7 @@ section{
     font-weight: bolder;
     font-size: var(--card-font-size);
     
-    display: none;
+    /* display: none; */
 }
 
 .departamentos{

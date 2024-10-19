@@ -1,6 +1,52 @@
 
 let data = [];
 
+console.log(localStorage.getItem("logged"));
+
+window.addEventListener('load', function() {
+  let statusValue = localStorage.getItem("logged");
+  
+  let observer = new MutationObserver(function(mutations) {
+      let btns = document.querySelectorAll(".add-to-cart-btn");
+      let precos = document.querySelectorAll(".preco-container"); 
+      let prod_btn = document.querySelectorAll(".btn-prod");
+      if (btns.length > 0 && precos.length > 0 && prod_btn.length > 0) {
+
+          btns.forEach(function(btn) {
+  
+              if (statusValue === "1") {
+                  btn.style.visibility = "";
+              } else if (statusValue === "0") {
+                  btn.style.visibility = "hidden";
+              }
+          });
+
+          precos.forEach(function(preco) {
+
+              if (statusValue === "1") {
+                  preco.style.display = "flex";
+              } else if (statusValue === "0") {
+                  preco.style.display = "none";
+              }
+          });
+
+          prod_btn.forEach(function(prod_btn) {
+
+              if (statusValue === "0") {
+                  prod_btn.style.display = "";
+              } else if (statusValue === "1") {
+                  prod_btn.style.display = "none";
+              }
+          });
+
+          observer.disconnect();
+      }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+
+
 // CARREGAR CONFIG JSON E DADOS DA FONTE --------------------------------------
 async function carregar_dados() {
   try {
@@ -19,7 +65,6 @@ async function carregar_dados() {
     });
 
     data = resultados.data;
-    console.log("Dados carregados:", data);
     return data;
 
   } catch (error) {
