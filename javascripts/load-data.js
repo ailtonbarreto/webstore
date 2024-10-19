@@ -24,7 +24,7 @@ window.addEventListener('load', function() {
 
  
           prod_btn.forEach(function(prod_btn) {
-              prod_btn.style.display = (statusValue === "0") ? "flex" : "none";
+              prod_btn.style.display = (statusValue === "0") ? "block" : "none";
           });
 
           observer.disconnect();
