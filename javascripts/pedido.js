@@ -16,7 +16,7 @@ function loadCart() {
             <tr>
                 <th>Imagem</th>
                 <th>Produto</th>
-                <th>Valor</th>
+                <th>Valor Un</th>
                 <th>Quantidade</th>
                 <th>Subtotal</th>
             </tr>

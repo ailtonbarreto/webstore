@@ -1,0 +1,20 @@
+@media  screen and (max-width: 700px){
+    .cart {
+        position: fixed;
+        top: 0;
+        right: -99vw;
+        width: 99vw;
+        height: 100vh;
+        background-color: var(--cor-bg);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        overflow-y: scroll;
+        height: 100vh;
+    }
+
+    .carousel{
+        display: none;
+    }
+    
+}

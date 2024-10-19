@@ -3,7 +3,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    let logged = "";
+    let logged = 0;
 
     fetch('./database/keys.json')
         .then(response => response.json())
@@ -16,8 +16,9 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
                 logged = "1";
             } else {
             
-                window.location.href = './index.html';
+                // window.location.href = './index.html';
                 logged = "0";
+                alert("Usuário ou Senha incorretos!")
             }
 
             localStorage.setItem("logged", logged);

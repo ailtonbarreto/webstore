@@ -1,6 +1,6 @@
 let data = [];
 
-
+// localStorage.clear()
 console.log(localStorage.getItem("logged"));
 
 window.addEventListener('load', function() {
