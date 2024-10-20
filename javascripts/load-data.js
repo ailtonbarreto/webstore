@@ -1,7 +1,11 @@
 let data = [];
 
 // localStorage.clear()
-console.log(localStorage.getItem("logged"));
+
+if(localStorage.getItem("logged") === null){
+  let logged = 0
+}
+console.log(logged);
 
 window.addEventListener('load', function() {
   let statusValue = localStorage.getItem("logged");
