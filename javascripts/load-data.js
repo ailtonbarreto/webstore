@@ -2,9 +2,10 @@ let data = [];
 
 // localStorage.clear()
 
-if(localStorage.getItem("logged") === null){
-  let logged = 0
+if (localStorage.getItem("logged") === null) {
+  localStorage.setItem("logged", 0); // Armazena como 0 no localStorage
 }
+
 // console.log(logged);
 
 window.addEventListener('load', function() {
