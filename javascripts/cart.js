@@ -36,7 +36,9 @@ function updateCartCounter() {
   cartCounter.textContent = totalItems;
 }
 
-// Chame a função sempre que o carrinho for alterado
+
+// ---------------------------------------------------------------------------
+// ATUALIZAR CARRINHO SEMPRE QUE HAVER ALTERACAO
 document.addEventListener('DOMContentLoaded', updateCartCounter);
 
 

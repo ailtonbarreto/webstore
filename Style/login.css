@@ -95,7 +95,7 @@ label{
 .btn{
     margin-top: 2vw;
     margin-bottom: 2vw;
-    background-color: var(--cor-text);
+    background-color: var(--cor-bg);
     border: none;
     width: 50%;
     height: 2vw;

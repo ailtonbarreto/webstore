@@ -3,15 +3,18 @@ let data = [];
 // localStorage.clear()
 
 if (localStorage.getItem("logged") === null) {
-  localStorage.setItem("logged", 0); // Armazena como 0 no localStorage
+  localStorage.setItem("logged", 0);
 }
 
-// console.log(logged);
+
+
+
+
+// CARREGAMENTO DA PAGINA-----------------------------------------------------
 
 window.addEventListener('load', function() {
   let statusValue = localStorage.getItem("logged");
   
-  // CARREGAR CONFIG JSON E DADOS DA FONTE --------------------------------------
   async function carregar_dados() {
     try {
       const configResponse = await fetch('database/db.json');
@@ -27,15 +30,48 @@ window.addEventListener('load', function() {
       });
 
       data = resultados.data;
+      
+      console.log(data);
+
       return data;
     } catch (error) {
       console.error("Erro ao carregar os produtos: ", error);
     }
+
   };
+
+
+    // // CARREGAR DADOS DA API LOCAL---------------------------------------------------
+    // async function carregar_dados_local() {
+    //   try {
+
+    //     const response = await fetch('database/api.json');
+        
+
+    //     if (!response.ok) {
+    //       throw new Error(`Erro na rede: ${response.status}`);
+    //     }
+  
+    //     const produtos = await response.json();
+  
+
+    //     if (produtos.length === 0) {
+    //       console.warn("Nenhum produto encontrado.");
+    //     } else {
+    //       console.log(produtos);
+    //     }
+  
+    //     return produtos;
+    //   } catch (error) {
+    //     console.error("Erro ao carregar os produtos: ", error);
+    //   }
+    // }
+
 
   // CARREGAR DADOS NA PÁGINA---------------------------------------------------
   async function carregar_produtos() {
     await carregar_dados();
+    // await carregar_dados_local();
 
     let product_name = document.querySelector(".prod");
     let categoria = document.querySelector("#category").textContent.trim();
@@ -160,5 +196,7 @@ window.addEventListener('load', function() {
   // CHAMAR FUNÇÕES NA ORDEM CORRETA----------------------------------------------
   carregar_produtos().then(() => {
     lazyLoadImages();
+
   });
+
 });

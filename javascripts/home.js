@@ -1,12 +1,13 @@
 let data = [];
 let statusValue = localStorage.getItem("logged");
 
-// Limpar o localStorage se necessário
+
+
 // localStorage.clear();
 
 if (statusValue === null) {
-    localStorage.setItem("logged", 0); // Armazena como 0 no localStorage
-    statusValue = "0"; // Define o valor localmente
+    localStorage.setItem("logged", 0);
+    statusValue = "0";
 }
 
 window.addEventListener('load', async function() {
@@ -53,7 +54,6 @@ function criarCardProduto(item) {
     card.id = `${item.PARENT}`;
     card.classList.add("card");
 
-    // Criar o botão de adicionar ao carrinho, controlando visibilidade
     if (statusValue === "1") {
         let cartButton = document.createElement("button");
         cartButton.classList.add("add-to-cart-btn");
@@ -68,6 +68,7 @@ function criarCardProduto(item) {
 
     let imageLink = document.createElement("a");
     imageLink.classList.add("produto");
+   
 
     let imagem = document.createElement("img");
     imagem.src = `${item.IMAGEM}`;
