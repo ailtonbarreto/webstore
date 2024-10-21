@@ -208,7 +208,6 @@ window.addEventListener('load', function () {
       const response = await fetch("database/api.json");
       const jsonData = await response.json();
       data = jsonData;
-      console.log(data);
       return data;
     } catch (error) {
       console.error("Erro ao carregar os dados locais: ", error);
