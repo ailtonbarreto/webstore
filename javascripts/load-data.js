@@ -214,9 +214,11 @@ window.addEventListener('load', function () {
     }
   };
 
+
   // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
   async function carregar_produtos() {
     await carregar_dados_local(); // Chama a função corretamente e espera ela carregar os dados
+
 
     let product_name = document.querySelector(".prod");
     let categoria = document.querySelector("#category").textContent.trim();
