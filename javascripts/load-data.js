@@ -59,8 +59,8 @@
 
 //   // CARREGAR DADOS NA PÁGINA---------------------------------------------------
 //   async function carregar_produtos() {
-//     // await carregar_dados();
-//     carregar_dados_local;
+//     await carregar_dados();
+
 
 //     let product_name = document.querySelector(".prod");
 //     let categoria = document.querySelector("#category").textContent.trim();
@@ -190,6 +190,7 @@
 
 // });
 
+// -----------------------------------------------------------------------------------
 
 let data = [];
 
