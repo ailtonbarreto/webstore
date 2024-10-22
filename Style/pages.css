@@ -300,6 +300,7 @@ li a:hover::after{
 
 .login{
     width: 1.2vw;
+    cursor: pointer;
 }
 
 .cart-counter {
@@ -311,6 +312,24 @@ li a:hover::after{
     border-radius: 50%;
     padding: 0.2vw 0.4vw;
     font-size: 0.6vw;
+}
+
+.menu_user{
+    position: absolute;
+    width: 8vw;
+    right: 4.9vw;
+    top: 3.2vw;
+    align-items: center;
+    background-color: var(--cor-btn-addToCard);
+    border-radius: 0.3vw;
+    display: none;
+}
+
+.menu_user li{
+    font-size: 0.7vw;
+    color: var(--cor-text);
+    margin: 0.5vw 0;
+    text-align: center;
 }
 
 /* INICIO DO CARROSSEL----------------------------- */
@@ -639,9 +658,10 @@ footer img{
 
 .assinatura{
     font-weight: thin;
-    margin-top: 1vw;
-    background-color: var(--cor-principal);
-    color: var(--cor-text);
+    /* margin-top: 1vw; */
+    background-color: var(--cor-bg);
+    color: var(--cor-principal);
+    text-align: center;
 
 }
 /* FIM--------------------------------------------------------------------------- */

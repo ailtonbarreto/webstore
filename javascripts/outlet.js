@@ -1,76 +1,107 @@
 let data = [];
+let statusValue = localStorage.getItem("logged");
+
+
 
 // localStorage.clear();
 
-console.log(localStorage.getItem("logged"));
-
-window.addEventListener('load', function() {
-    let statusValue = localStorage.getItem("logged");
-    atualizarVisibilidade(statusValue);
-    load_products("outlet"); // Carregar produtos após o carregamento da página
-});
-
-async function carregar_dados() {
-    try {
-        const configResponse = await fetch('database/db.json');
-        const config = await configResponse.json();
-        const response = await fetch(config.spreadsheetUrl);
-        const text = await response.text();
-
-        const resultados = Papa.parse(text, {
-            header: true,
-            skipEmptyLines: true,
-            dynamicTyping: true,
-        });
-
-        data = resultados.data;
-    } catch (error) {
-        console.error("Erro ao carregar os produtos: ", error);
-    }
+if (statusValue === null) {
+    localStorage.setItem("logged", 0);
+    statusValue = "0";
 }
 
+window.addEventListener('load', async function() {
+    await load_products("Outlet");
+});
+
+
+async function carregar_dados_local() {
+    try {
+      const response = await fetch("database/api.json");
+      const jsonData = await response.json();
+      data = jsonData;
+      return data;
+    } catch (error) {
+      console.error("Erro ao carregar os dados locais: ", error);
+    }
+};
+
+
+// async function carregar_dados() {
+//     try {
+//         const configResponse = await fetch('database/db.json');
+//         const config = await configResponse.json();
+//         const response = await fetch(config.spreadsheetUrl);
+//         const text = await response.text();
+
+//         const resultados = Papa.parse(text, {
+//             header: true,
+//             skipEmptyLines: true,
+//             dynamicTyping: true,
+//         });
+
+//         data = resultados.data;
+//     } catch (error) {
+//         console.error("Erro ao carregar os produtos: ", error);
+//     }
+// }
+
+
 async function load_products(categoria) {
-    await carregar_dados();
+    await carregar_dados_local();
 
-    let filteredData = data.filter(item => item.HOME === "Outlet" && item.ATIVO === 1);
-    let productContainer = document.querySelector(".Outlet");
-
+    let filteredData = data.filter(item => item.HOME === categoria && item.ATIVO === 1);
+    let product_name = document.querySelector(`.${categoria}`);
 
     filteredData.forEach(item => {
-        let card = document.createElement("figure");
-        card.id = `${item.PARENT}`;
-        card.classList.add("card");
+        let card = criarCardProduto(item);
+        product_name.appendChild(card);
+    });
 
+    atualizarVisibilidade(statusValue);
+}
+
+function criarCardProduto(item) {
+    let card = document.createElement("figure");
+    card.id = `${item.PARENT}`;
+    card.classList.add("card");
+
+    if (statusValue === "1") {
         let cartButton = document.createElement("button");
         cartButton.classList.add("add-to-cart-btn");
         cartButton.textContent = "+ Add";
         card.appendChild(cartButton);
+    }
 
-        let list_name = document.createElement("a");
-        list_name.classList.add("product-name");
-        list_name.textContent = `${item.DESCRICAO}`;
-        card.appendChild(list_name);
+    let list_name = document.createElement("a");
+    list_name.classList.add("product-name");
+    list_name.textContent = `${item.DESCRICAO}`;
+    card.appendChild(list_name);
 
-        let imageLink = document.createElement("a");
-        imageLink.classList.add("produto");
+    let imageLink = document.createElement("a");
+    imageLink.classList.add("produto");
+   
 
-        let imagem = document.createElement("img");
-        imagem.src = `${item.IMAGEM}`;
-        imagem.loading = "lazy";
-        imagem.alt = item.DESCRICAO;
-        imageLink.appendChild(imagem);
-        card.appendChild(imageLink);
+    let imagem = document.createElement("img");
+    imagem.src = `${item.IMAGEM}`;
+    imagem.loading = "lazy";
+    imagem.addEventListener("click", produtoclicado);
+    imagem.alt = item.DESCRICAO;
+    imageLink.appendChild(imagem);
+    card.appendChild(imageLink);
 
-        let priceLink = document.createElement("a");
-        priceLink.classList.add("preco-label");
-        priceLink.href = "./login.html";
-        card.appendChild(priceLink);
+    let priceLink = document.createElement("a");
+    priceLink.classList.add("preco-label");
+    priceLink.href = "./login.html";
+    card.appendChild(priceLink);
 
-        let priceButton = document.createElement("button");
-        priceButton.classList.add("btn-prod");
-        priceButton.textContent = "Ver Preço";
-        priceLink.appendChild(priceButton);
+    let priceButton = document.createElement("button");
+    priceButton.classList.add("btn-prod");
+    priceButton.textContent = "Ver Preço";
+    priceButton.style.display = (statusValue === "0") ? "block" : "none";
+    priceLink.appendChild(priceButton);
 
+    if (statusValue === "1") {
         let priceContainer = document.createElement("div");
         priceContainer.classList.add("preco-container");
 
@@ -86,15 +117,9 @@ async function load_products(categoria) {
         priceContainer.appendChild(label_por);
 
         card.appendChild(priceContainer);
-        productContainer.appendChild(card);
-    });
+    }
 
-    atualizarVisibilidade(localStorage.getItem("logged"));
-
-    // Adicione o evento de clique para os produtos aqui
-    document.querySelectorAll('.produto img').forEach(img => {
-        img.addEventListener("click", produtoclicado);
-    });
+    return card;
 }
 
 function atualizarVisibilidade(statusValue) {
@@ -115,11 +140,10 @@ function atualizarVisibilidade(statusValue) {
     });
 }
 
-// FUNÇÃO CLICAR NO PRODUTO---------------------------------------------------------
-
+// FUNÇÃO CLICAR NO PRODUTO
 function produtoclicado(event) {
     let selected_product = event.target;
-    let elementoPai = selected_product.closest('figure'); // Alterado para pegar o pai mais próximo
+    let elementoPai = selected_product.closest('figure');
 
     let foto = elementoPai.querySelector("img").src;
     let produtonome = elementoPai.querySelector("img").alt;
@@ -134,3 +158,5 @@ function produtoclicado(event) {
 
     window.location.href = "./produto.html";
 }
+
+
