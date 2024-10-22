@@ -314,6 +314,7 @@ li a:hover::after{
     font-size: 0.6vw;
 }
 
+/* ---------------------------------------------------- */
 .menu_user{
     position: absolute;
     width: 8vw;
@@ -330,6 +331,10 @@ li a:hover::after{
     color: var(--cor-text);
     margin: 0.5vw 0;
     text-align: center;
+}
+
+.item_sair{
+    display: none;
 }
 
 /* INICIO DO CARROSSEL----------------------------- */

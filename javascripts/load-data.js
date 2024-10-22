@@ -1,7 +1,7 @@
 let data = [];
 let statusValue = localStorage.getItem("logged");
 
-// localStorage.clear()
+// localStorage.clear();
 
 if (statusValue === null) {
   localStorage.setItem("logged", 0);
@@ -17,48 +17,39 @@ window.addEventListener('load', function () {
       const response = await fetch("database/api.json");
       const jsonData = await response.json();
       data = jsonData;
+
+      // Salva os dados no localStorage
+      localStorage.setItem("dados", JSON.stringify(data));
       return data;
     } catch (error) {
       console.error("Erro ao carregar os dados locais: ", error);
     }
-  };
-
-//   async function carregar_dados() {
-//     try {
-//         const configResponse = await fetch('database/db.json');
-//         const config = await configResponse.json();
-//         const response = await fetch(config.spreadsheetUrl);
-//         const text = await response.text();
-
-//         const resultados = Papa.parse(text, {
-//             header: true,
-//             skipEmptyLines: true,
-//             dynamicTyping: true,
-//         });
-
-//         data = resultados.data;
-//     } catch (error) {
-//         console.error("Erro ao carregar os produtos: ", error);
-//     }
-// }
-
+  }
 
   // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
   async function carregar_produtos() {
-    await carregar_dados_local();
+ 
+    let dadosSalvos = JSON.parse(localStorage.getItem('dados'));
+
+   
+    if (!dadosSalvos) {
+      await carregar_dados_local(); 
+      dadosSalvos = JSON.parse(localStorage.getItem('dados'));
+    }
 
     let product_name = document.querySelector(".prod");
     let categoria = document.querySelector("#category").textContent.trim();
 
-  
-    let filteredData = data.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
+    // Filtra os dados carregados
+    let filteredData = dadosSalvos.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
 
+    
+    product_name.innerHTML = '';
 
     filteredData.forEach(item => {
       let card = document.createElement("figure");
       card.id = `${item.PARENT}`;
       card.classList.add("card");
-
 
       if (statusValue === "1") {
         let cartButton = document.createElement("button");
@@ -92,7 +83,6 @@ window.addEventListener('load', function () {
       priceButton.classList.add("btn-prod");
       priceButton.textContent = "Ver Preço";
 
-   
       priceButton.style.display = (statusValue === "0") ? "block" : "none";
       priceLink.appendChild(priceButton);
 
