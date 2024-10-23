@@ -209,7 +209,8 @@ function calcularSubtotal() {
     
   });
 
-  subtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2).replace(".",",")}`;
+  subtotalElement.textContent = `Subtotal: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}`;
+
 
   localStorage.setItem("Subtotal", subtotal.toFixed(2));
 }

@@ -39,17 +39,22 @@ function loadCart() {
                 <td><img src="${item.imagem}" alt="${item.nome}" style="width: 50px; height: auto;"></td>
                 <td>${item.nome}</td>
                 <td>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}</td>
-
+                
                 <td>${quantidade}</td>
-                <td>R$ ${subtotal.toFixed(2)}</td>
+                
+
+                <td>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}</td>
             `;
             cartItemsContainer.appendChild(tableRow);
 
             total += subtotal;
         });
 
-        totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
+        totalElement.textContent = `Total: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}`;
+
     }
 }
+
+// <td>R$ ${subtotal.toFixed(2)}</td>
 
 document.addEventListener('DOMContentLoaded', loadCart);
