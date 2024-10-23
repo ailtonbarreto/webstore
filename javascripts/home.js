@@ -97,18 +97,21 @@ const dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
 // ----------------------------------------------------------------------------
 
 function toggle_menu() {
-
     if (menu_user.style.display === "block") {
-
         menu_user.style.display = "none";
     } else {
-
         menu_user.style.display = "block";
     }
+}
 
-};
+user_icon.addEventListener("mouseover", () => {
+    menu_user.style.display = "block";
+});
 
-user_icon.addEventListener("click", toggle_menu);
+menu_user.addEventListener("mouseleave", () => {
+    menu_user.style.display = "none";
+});
+
 
 
 // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
