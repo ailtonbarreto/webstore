@@ -6,6 +6,8 @@ let item_sair = document.querySelector(".item_sair");
 let item_cadastro = document.querySelector(".item_cadastro");
 let item_entrar = document.querySelector(".item_entrar");
 let item_pedidos = document.querySelector(".item_pedidos");
+let cart_counter = document.querySelector(".cart-counter");
+
 
 // localStorage.clear();
 
@@ -17,6 +19,7 @@ if (statusValue === null) {
 if (statusValue === "0") {
     item_sair.style.display = "none";
     item_pedidos.style.display = "none";
+    cart_counter.style.display = "none";
 } else {
     item_sair.style.display = "block";
     item_cadastro.style.display = "none";
