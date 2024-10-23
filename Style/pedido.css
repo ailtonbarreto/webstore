@@ -239,9 +239,8 @@ footer{
     font-size: var(--font-size);
     justify-content: space-around;
     align-items: center;
-    height: 14vw;
-    margin-bottom: 1vw;
-    display: none;
+    height: 12vw;
+    bottom: 0;
 }
 
 footer img{
@@ -259,9 +258,11 @@ footer img{
 
 .assinatura{
     font-weight: thin;
-    margin-top: 1vw;
-    background-color: var(--cor-principal);
-    color: var(--cor-text);
+    /* margin-top: 1vw; */
+    background-color: var(--cor-bg);
+    color: var(--cor-principal);
+    text-align: center;
 
 }
+/* FIM--------------------------------------------------------------------------- */
 
