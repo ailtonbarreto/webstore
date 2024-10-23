@@ -48,7 +48,7 @@ async function carregar_dados() {
         const data = resultados.data;
 
        
-        localStorage.setItem('dados', JSON.stringify(data));
+        sessionStorage.setItem('dados', JSON.stringify(data));
         
     } catch (error) {
         console.error("Erro ao carregar os produtos: ", error);
@@ -118,13 +118,13 @@ menu_user.addEventListener("mouseleave", () => {
 
 async function load_products(categoria) {
 
-    let dadosSalvos = JSON.parse(localStorage.getItem('dados'));
+    let dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
 
 
     if (!dadosSalvos) {
 
         await carregar_dados();
-        dadosSalvos = JSON.parse(localStorage.getItem('dados'));
+        dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
     }
 
 

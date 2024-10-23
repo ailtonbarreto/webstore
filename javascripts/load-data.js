@@ -19,7 +19,7 @@ window.addEventListener('load', function () {
       data = jsonData;
 
       // Salva os dados no localStorage
-      localStorage.setItem("dados", JSON.stringify(data));
+      sessionStorage.setItem("dados", JSON.stringify(data));
       return data;
     } catch (error) {
       console.error("Erro ao carregar os dados locais: ", error);
@@ -29,12 +29,12 @@ window.addEventListener('load', function () {
   // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
   async function carregar_produtos() {
  
-    let dadosSalvos = JSON.parse(localStorage.getItem('dados'));
+    let dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
 
    
     if (!dadosSalvos) {
       await carregar_dados_local(); 
-      dadosSalvos = JSON.parse(localStorage.getItem('dados'));
+      dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
     }
 
     let product_name = document.querySelector(".prod");
