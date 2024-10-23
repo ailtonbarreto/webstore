@@ -107,7 +107,7 @@ function toggle_menu() {
     }
 }
 
-user_icon.addEventListener("mouseover", () => {
+user_icon.addEventListener("click", () => {
     menu_user.style.display = "block";
 });
 
