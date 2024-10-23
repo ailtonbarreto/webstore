@@ -49,8 +49,10 @@ function handleAddToCart(event) {
   const nome = parentElement.querySelector(".product-name").textContent;
   const preco = parentElement.querySelector(".preco_por").textContent;
   const container = parentElement.querySelector(".preco_por");
-  const valor = container.getAttribute("valor");
+  const valor = container.getAttribute("valor").replace(',', '.');
   const imagem = parentElement.querySelector("img").getAttribute("src");
+
+
 
   add_to_cart({imagem,nome, valor, quantidade: 1 });
   updateCartCounter();
@@ -112,9 +114,10 @@ function renderCartItems() {
 
 
     const valorColuna = document.createElement('td');
-    valorColuna.textContent = `R$: ${parseFloat(item.valor).toFixed(2)}`;
-    row.appendChild(valorColuna);
+    
+    valorColuna.textContent = (`RS ${item.valor}`).replace(".",",");
 
+    row.appendChild(valorColuna);
   
     const quantidadeColuna = document.createElement('td');
     const quantidadeWrapper = document.createElement('div');
@@ -192,6 +195,7 @@ function removeFromCart(index) {
   updateCartCounter();
 }
 
+
 // ---------------------------------------------------------------------------
 // CALCULAR O SUBTOTAL DOS ITENS
 function calcularSubtotal() {
@@ -200,12 +204,13 @@ function calcularSubtotal() {
 
   cart.forEach((item) => {
     const quantidade = item.quantidade || 1;
-    subtotal += parseFloat(item.valor) * quantidade;
+    const precoNumerico = parseFloat(item.valor);
+    subtotal += precoNumerico * quantidade;
+    
   });
 
-  subtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2)}`;
+  subtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2).replace(".",",")}`;
 
- 
   localStorage.setItem("Subtotal", subtotal.toFixed(2));
 }
 

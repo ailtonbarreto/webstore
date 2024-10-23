@@ -1,3 +1,6 @@
+
+
+
 // PEDIDO DO CLIENTE----------------------------------------------
 function loadCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -26,16 +29,17 @@ function loadCart() {
         // Itera sobre os itens do carrinho
         cart.forEach(item => {
             let tableRow = document.createElement('tr');
-            let valor = parseFloat(item.valor.replace(',', '.'));
+            let valor = item.valor;
             let quantidade = parseInt(item.quantidade);
 
             let subtotal = valor * quantidade;
 
   
             tableRow.innerHTML = `
-                <td><img src="${item.imagem}" alt="${item.nome}" style="width: 50px; height: auto;"></td> <!-- Exibe a imagem -->
+                <td><img src="${item.imagem}" alt="${item.nome}" style="width: 50px; height: auto;"></td>
                 <td>${item.nome}</td>
-                <td>R$ ${valor.toFixed(2)}</td>
+                <td>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}</td>
+
                 <td>${quantidade}</td>
                 <td>R$ ${subtotal.toFixed(2)}</td>
             `;

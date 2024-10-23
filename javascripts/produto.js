@@ -1,4 +1,4 @@
-
+// localStorage.clear()
 
 window.onload = function () {
   const img = localStorage.getItem("foto");
@@ -42,12 +42,14 @@ function handleAddToCart(event) {
   // Capturar o valor direto do texto do elemento #precopor
   const precoText = document.getElementById("precopor").textContent;
   
-  // Extrair apenas o número do texto
-  const valor = parseFloat(precoText.replace("Por: R$", "").trim());
+  // Extrair apenas o número do texto Por: R$ 68,39
+  const valor = parseFloat(precoText.replace("Por: R$ ", "").replace(",", ".").trim());
+
+ 
 
   if (isNaN(valor)) {
       console.log("Erro ao capturar o valor do preço");
-      return; // Não adiciona o item se o preço não for válido
+      return; 
   }
 
   const imagem = document.getElementById("imagemProduto").getAttribute("src");
