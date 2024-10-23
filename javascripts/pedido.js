@@ -17,7 +17,7 @@ function loadCart() {
     } else {
         let tableHeader = `
             <tr>
-                <th>Imagem</th>
+                <th></th>
                 <th>Produto</th>
                 <th>Valor Un</th>
                 <th>Quantidade</th>
@@ -36,7 +36,7 @@ function loadCart() {
 
   
             tableRow.innerHTML = `
-                <td><img src="${item.imagem}" alt="${item.nome}" style="width: 50px; height: auto;"></td>
+                <td><img src="${item.imagem}" alt="${item.nome}" style="width: 5vw; height: auto;"></td>
                 <td>${item.nome}</td>
                 <td>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}</td>
                 
