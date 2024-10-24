@@ -42,7 +42,7 @@ function handleAddToCart(event) {
   // Capturar o valor direto do texto do elemento #precopor
   const precoText = document.getElementById("precopor").textContent;
   
-  // Extrair apenas o número do texto Por: R$ 68,39
+  
   const valor = parseFloat(precoText.replace("Por: R$ ", "").replace(",", ".").trim());
 
  
@@ -118,7 +118,7 @@ function renderCartItems() {
 
 
     const valorColuna = document.createElement('td');
-    valorColuna.textContent = `R$: ${parseFloat(item.valor).toFixed(2)}`;
+    valorColuna.textContent = (`RS ${item.valor}`).replace(".",",");
     row.appendChild(valorColuna);
 
   
@@ -208,7 +208,7 @@ cart.forEach((item) => {
   subtotal += parseFloat(item.valor) * quantidade;
 });
 
-subtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2)}`;
+subtotalElement.textContent = `Subtotal: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}`;
 
 
 localStorage.setItem("Subtotal", subtotal.toFixed(2));
