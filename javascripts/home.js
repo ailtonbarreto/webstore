@@ -220,7 +220,7 @@ function atualizarVisibilidade(statusValue) {
         prod_btn.style.display = (statusValue === "1") ? "none" : "block";
     });
 }
-
+// ---------------------------------------------------------------------------------------
 // FUNÇÃO CLICAR NO PRODUTO
 function produtoclicado(event) {
     let selected_product = event.target;
