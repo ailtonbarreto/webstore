@@ -400,9 +400,7 @@ input[type="number"]::-webkit-inner-spin-button {
     /* display: none; */
 }
 
-/* -------------------------------------------------------------------------------- */
-/* RODAPE */
-
+/* RODAPE----------------------------------------------------------------------- */
 footer{
     background-color: var(--cor-principal);
     display: flex;
@@ -411,7 +409,7 @@ footer{
     justify-content: space-around;
     align-items: center;
     height: 12vw;
-    margin-bottom: 0;
+    bottom: 0;
 }
 
 footer img{
@@ -429,7 +427,9 @@ footer img{
 
 .assinatura{
     font-weight: thin;
-    margin-top: 1vw;
-    background-color: var(--cor-principal);
-    color: var(--cor-text);
+    background-color: var(--cor-bg);
+    color: var(--cor-principal);
+    text-align: center;
+
 }
+/* FIM--------------------------------------------------------------------------- */
