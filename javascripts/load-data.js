@@ -8,24 +8,6 @@ if (statusValue === null) {
   statusValue = "0";
 }
 
-// CARREGAMENTO DA PÁGINA-----------------------------------------------------
-window.addEventListener('load', function () {
-  let statusValue = localStorage.getItem("logged");
-
-  async function carregar_dados_local() {
-    try {
-      const response = await fetch("database/api.json");
-      const jsonData = await response.json();
-      data = jsonData;
-
-      // Salva os dados no localStorage
-      sessionStorage.setItem("dados", JSON.stringify(data));
-      return data;
-    } catch (error) {
-      console.error("Erro ao carregar os dados locais: ", error);
-    }
-  }
-
   // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
   async function carregar_produtos() {
  
@@ -163,4 +145,4 @@ window.addEventListener('load', function () {
     lazyLoadImages();
   });
 
-});
+

@@ -37,65 +37,28 @@ window.addEventListener('load', async function() {
 
 async function carregar_dados() {
     try {
-        const configResponse = await fetch('database/db.json');
-        const config = await configResponse.json();
-        const response = await fetch(config.spreadsheetUrl);
-        const text = await response.text();
 
-        const resultados = Papa.parse(text, {
-            header: true,
-            skipEmptyLines: true,
-            dynamicTyping: true,
-        });
+        const configResponse = await fetch('db.json');
+        const configData = await configResponse.json();
+        
+ 
+        const url = configData.api;
 
-        const data = resultados.data;
+        const response = await fetch(url);
 
-       
+        const data = await response.json();
+        
         sessionStorage.setItem('dados', JSON.stringify(data));
         
     } catch (error) {
-        console.error("Erro ao carregar os produtos: ", error);
+        console.error("Erro ao carregar os produtos:", error);
     }
-}
+};
+
 
 carregar_dados();
 
 const dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
-
-
-// ----------------------------------------------------------------------------
-
-
-// async function carregar_dados_local() {
-//     try {
-//       const response = await fetch("database/api.json");
-//       const jsonData = await response.json();
-//       data = jsonData;
-//       return data;
-//     } catch (error) {
-//       console.error("Erro ao carregar os dados locais: ", error);
-//     }
-// };
-
-
-//   async function carregar_dados() {
-//     try {
-//         const configResponse = await fetch('database/db.json');
-//         const config = await configResponse.json();
-//         const response = await fetch(config.spreadsheetUrl);
-//         const text = await response.text();
-
-//         const resultados = Papa.parse(text, {
-//             header: true,
-//             skipEmptyLines: true,
-//             dynamicTyping: true,
-//         });
-
-//         data = resultados.data;
-//     } catch (error) {
-//         console.error("Erro ao carregar os produtos: ", error);
-//     }
-// }
 
 // ----------------------------------------------------------------------------
 
@@ -240,5 +203,5 @@ function produtoclicado(event) {
     window.location.href = "./produto.html";
 }
 
-
+// --------------------------------------FIM------------------------------------------------
 
