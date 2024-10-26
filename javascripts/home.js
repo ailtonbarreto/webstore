@@ -37,28 +37,31 @@ window.addEventListener('load', async function() {
 
 async function carregar_dados() {
     try {
-
-        const configResponse = await fetch('db.json');
-        const configData = await configResponse.json();
-        
  
+        const configResponse = await fetch('./database/db.json');
+        
+        if (!configResponse.ok) {
+            throw new Error("Erro ao carregar o arquivo de configuração.");
+        }
+
+        const configData = await configResponse.json();
         const url = configData.api;
 
         const response = await fetch(url);
 
+        if (!response.ok) {
+            throw new Error("Erro ao carregar os dados da API.");
+        }
+
         const data = await response.json();
-        
+
         sessionStorage.setItem('dados', JSON.stringify(data));
-        
+
     } catch (error) {
         console.error("Erro ao carregar os produtos:", error);
+        alert("Ocorreu um erro ao carregar os dados. Tente novamente mais tarde.");
     }
 };
-
-
-carregar_dados();
-
-const dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
 
 // ----------------------------------------------------------------------------
 
