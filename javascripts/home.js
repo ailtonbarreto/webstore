@@ -32,7 +32,7 @@ if (statusValue === "0") {
 // CARREGAR OS DADOS DA API DO CRIADA
 window.addEventListener('load', async function() {
     try {
-        const response = await fetch('http://localhost:3000/dados');
+        const response = await fetch("https://api-webstore.onrender.com/dados");
         if (!response.ok) {
             throw new Error('Erro ao obter os dados da API.');
         }
