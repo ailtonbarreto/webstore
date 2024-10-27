@@ -9,6 +9,7 @@ let item_pedidos = document.querySelector(".item_pedidos");
 let cart_counter = document.querySelector(".cart-counter");
 
 
+
 // localStorage.clear();
 
 if (statusValue === null) {
@@ -34,34 +35,37 @@ window.addEventListener('load', async function() {
 });
 
 // ----------------------------------------------------------------------------
-
-async function carregar_dados() {
-    try {
- 
-        const configResponse = await fetch('./database/db.json');
-        
-        if (!configResponse.ok) {
-            throw new Error("Erro ao carregar o arquivo de configuração.");
-        }
-
-        const configData = await configResponse.json();
-        const url = configData.api;
-
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            throw new Error("Erro ao carregar os dados da API.");
-        }
-
-        const data = await response.json();
-
-        sessionStorage.setItem('dados', JSON.stringify(data));
-
-    } catch (error) {
-        console.error("Erro ao carregar os produtos:", error);
-        alert("Ocorreu um erro ao carregar os dados. Tente novamente mais tarde.");
+// CARREGAR OS DADOS DA API DO CRIADA
+fetch('http://localhost:3000/dados')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro ao obter os dados da API.');
     }
-};
+    return response.json();
+  })
+  .then(dadosArray => {
+    sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
+
+  })
+  .catch(error => console.error('Erro ao obter os dados:', error));
+
+
+function carregarDadosDoSessionStorage() {
+  const dadosSalvos = sessionStorage.getItem('dadosConsulta');
+
+  if (dadosSalvos) {
+    const dadosArray = JSON.parse(dadosSalvos);
+
+    return dadosArray;
+  } else {
+    console.log('Nenhum dado encontrado no sessionStorage.');
+    return [];
+  }
+}
+
+// Chamada para carregar os dados do sessionStorage
+const dadosCarregados = carregarDadosDoSessionStorage();
+
 
 // ----------------------------------------------------------------------------
 
@@ -87,13 +91,13 @@ menu_user.addEventListener("mouseleave", () => {
 
 async function load_products(categoria) {
 
-    let dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
+    let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
 
 
     if (!dadosSalvos) {
 
         await carregar_dados();
-        dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
+        dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
     }
 
 
@@ -153,13 +157,13 @@ function criarCardProduto(item) {
 
         let label = document.createElement("p");
         label.classList.add("preco_de");
-        label.innerHTML = `De: R$ ${item.PRECO_DE}`;
+        label.innerHTML = `De: R$ ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_DE)}`
         priceContainer.appendChild(label);
 
         let label_por = document.createElement("p");
         label_por.classList.add("preco_por");
         label_por.setAttribute("valor", item.PRECO_POR);
-        label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
+        label_por.innerHTML = `Por: R$ ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
         priceContainer.appendChild(label_por);
 
         card.appendChild(priceContainer);
