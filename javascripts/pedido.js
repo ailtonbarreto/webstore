@@ -1,4 +1,41 @@
 
+// console.log(JSON.parse(localStorage.getItem('cart')));
+
+// function enviarPedido() {
+//     const novoDado = {
+//         "PEDIDO": "pedteste001",
+//         "EMISSAO": "2024-10-30",
+//         "ENTREGA": "2024-12-31",
+//         "CLIENTE": "pedteste001",
+//         "CIDADE": "FRANCA",
+//         "UF": "SP",
+//         "SKU": `"${cart.SKU}"`,
+//         "PARENT": "1",
+//         "DESCRICAO": `${cart.none}`,
+//         "CATEGORIA": "pedteste001",
+//         "QTD": `${cart.quantidade}`,
+//         "VR_UNIT": `${cart.valor}`
+//     };
+
+//     fetch('https://api-webstore.onrender.com/tb_vendas', { 
+
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(novoDado)
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Erro ao adicionar dados.');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         console.log('Dados adicionados com sucesso:', data);
+//     })
+//     .catch(error => console.error('Erro:', error));
+// };
 
 
 // PEDIDO DO CLIENTE----------------------------------------------

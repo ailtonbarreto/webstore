@@ -14,7 +14,7 @@ if (statusValue === null) {
     let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
 
    
-    if (!dadosSalvos) {
+    if (dadosSalvos) {
       await carregar_dados_local(); 
       dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
     }
