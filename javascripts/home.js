@@ -8,8 +8,6 @@ let item_entrar = document.querySelector(".item_entrar");
 let item_pedidos = document.querySelector(".item_pedidos");
 let cart_counter = document.querySelector(".cart-counter");
 
-
-
 // localStorage.clear();
 
 if (statusValue === null) {
