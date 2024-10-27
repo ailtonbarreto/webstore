@@ -173,7 +173,6 @@ li a:hover::after{
 }
   
 
-
 .remove-btn{
     width: 1vw;
     cursor: pointer;
@@ -329,6 +328,11 @@ input[type="number"]::-webkit-inner-spin-button {
 .grade{
     color: var(--cor-principal);
     font-size: 2vw;
+}
+
+#produtoSelecionado{
+    color: var(--cor-principal);
+    font-size: 1vw;
 }
 
 .preco-div{

@@ -1,11 +1,18 @@
 // localStorage.clear()
 
 window.onload = function () {
+  const produto = localStorage.getItem("produtoSelecionado");
   const img = localStorage.getItem("foto");
   const nome = localStorage.getItem("nome");
   const preco_de = localStorage.getItem("preco_de");
   const preco_por = localStorage.getItem("preco_por");
   
+
+  if (img) {
+    document.getElementById("produtoSelecionado").innerHTML = `Parent: ${produto}`;
+  } else {
+    console.log("nenhum produto encontrado");
+  }
 
   if (img) {
       document.getElementById("imagemProduto").src = img;
