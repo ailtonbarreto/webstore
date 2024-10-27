@@ -13,8 +13,6 @@ if (statusValue === null) {
  
     let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
 
-
-
     let product_name = document.querySelector(".prod");
     let categoria = "Outlet";
 
