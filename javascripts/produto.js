@@ -34,6 +34,7 @@ window.onload = function () {
 
   if (preco_por) {
       document.getElementById("precopor").innerHTML = preco_por;
+      console.log(preco_por)
   } else {
       console.log(" ");
   }
@@ -50,10 +51,10 @@ function handleAddToCart(event) {
   const precoText = document.getElementById("precopor").textContent;
   
   
-  const valor = parseFloat(precoText.replace("Por: R$ ", "").replace(",", ".").trim());
+  const valor = parseFloat(precoText.replace("Por: R$", "").replace(",", ".").trim());
+
 
  
-
   if (isNaN(valor)) {
       console.log("Erro ao capturar o valor do preço");
       return; 
