@@ -74,13 +74,13 @@ if (statusValue === null) {
 
         let label = document.createElement("p");
         label.classList.add("preco_de");
-        label.innerHTML = `De: R$ ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_DE)}`
+        label.innerHTML = `De: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_DE)}`
         priceContainer.appendChild(label);
 
         let label_por = document.createElement("p");
         label_por.classList.add("preco_por");
         label_por.setAttribute("valor", item.PRECO_POR);
-        label_por.innerHTML = `Por: R$ ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
+        label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
         priceContainer.appendChild(label_por);
 
         card.appendChild(priceContainer);
