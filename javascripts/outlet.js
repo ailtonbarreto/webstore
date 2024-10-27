@@ -13,11 +13,7 @@ if (statusValue === null) {
  
     let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
 
-   
-    if (dadosSalvos) {
-      await carregar_dados_local(); 
-      dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
-    }
+
 
     let product_name = document.querySelector(".prod");
     let categoria = "Outlet";
