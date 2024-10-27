@@ -28,43 +28,42 @@ if (statusValue === "0") {
     
 }
 
-window.addEventListener('load', async function() {
-    await load_products("best_sellers");
-    await load_products("destaques");
-    await load_products("estoque_limitado");
-});
-
 // ----------------------------------------------------------------------------
 // CARREGAR OS DADOS DA API DO CRIADA
-fetch('http://localhost:3000/dados')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao obter os dados da API.');
+window.addEventListener('load', async function() {
+    try {
+        const response = await fetch('http://localhost:3000/dados');
+        if (!response.ok) {
+            throw new Error('Erro ao obter os dados da API.');
+        }
+        
+        const dadosArray = await response.json();
+        sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
+    } catch (error) {
+        console.error('Erro ao obter os dados:', error);
     }
-    return response.json();
-  })
-  .then(dadosArray => {
-    sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
 
-  })
-  .catch(error => console.error('Erro ao obter os dados:', error));
+    function carregarDadosDoSessionStorage() {
+        const dadosSalvos = sessionStorage.getItem('dadosConsulta');
+        if (dadosSalvos) {
+            return JSON.parse(dadosSalvos);
+        } else {
+            console.log('Nenhum dado encontrado no sessionStorage.');
+            return [];
+        }
+    }
 
+    const dadosCarregados = carregarDadosDoSessionStorage();
 
-function carregarDadosDoSessionStorage() {
-  const dadosSalvos = sessionStorage.getItem('dadosConsulta');
-
-  if (dadosSalvos) {
-    const dadosArray = JSON.parse(dadosSalvos);
-
-    return dadosArray;
-  } else {
-    console.log('Nenhum dado encontrado no sessionStorage.');
-    return [];
-  }
-}
-
-// Chamada para carregar os dados do sessionStorage
-const dadosCarregados = carregarDadosDoSessionStorage();
+    // Verifique se os dados foram carregados e chame load_products
+    if (dadosCarregados.length > 0) {
+        await load_products("best_sellers", dadosCarregados);
+        await load_products("destaques", dadosCarregados);
+        await load_products("estoque_limitado", dadosCarregados);
+    } else {
+        console.log('Dados vazios, não é possível carregar produtos.');
+    }
+});
 
 
 // ----------------------------------------------------------------------------
