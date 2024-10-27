@@ -9,30 +9,30 @@ if (statusValue === null) {
 }
 
 // CARREGAMENTO DA PÁGINA-----------------------------------------------------
-window.addEventListener('load', async function() {
-  try {
-      const response = await fetch('http://localhost:3000/dados');
-      if (!response.ok) {
-          throw new Error('Erro ao obter os dados da API.');
-      }
+// window.addEventListener('load', async function() {
+//   try {
+//       const response = await fetch('http://localhost:3000/dados');
+//       if (!response.ok) {
+//           throw new Error('Erro ao obter os dados da API.');
+//       }
       
-      const dadosArray = await response.json();
-      sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
-  } catch (error) {
-      console.error('Erro ao obter os dados:', error);
-  }
+//       const dadosArray = await response.json();
+//       sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
+//   } catch (error) {
+//       console.error('Erro ao obter os dados:', error);
+//   }
 
-  function carregarDadosDoSessionStorage() {
-      const dadosSalvos = sessionStorage.getItem('dadosConsulta');
-      if (dadosSalvos) {
-          return JSON.parse(dadosSalvos);
-      } else {
-          console.log('Nenhum dado encontrado no sessionStorage.');
-          return [];
-      }
-  }
+//   function carregarDadosDoSessionStorage() {
+//       const dadosSalvos = sessionStorage.getItem('dadosConsulta');
+//       if (dadosSalvos) {
+//           return JSON.parse(dadosSalvos);
+//       } else {
+//           console.log('Nenhum dado encontrado no sessionStorage.');
+//           return [];
+//       }
+//   }
 
-});
+// });
 
   // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
   async function carregar_produtos() {
