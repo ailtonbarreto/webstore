@@ -9,32 +9,40 @@ if (statusValue === null) {
 }
 
 // CARREGAMENTO DA PÁGINA-----------------------------------------------------
-window.addEventListener('load', function () {
-  let statusValue = localStorage.getItem("logged");
-
-  async function carregar_dados_local() {
-    try {
-      const response = await fetch("database/api.json");
-      const jsonData = await response.json();
-      data = jsonData;
-
-      // Salva os dados no localStorage
-      sessionStorage.setItem("dados", JSON.stringify(data));
-      return data;
-    } catch (error) {
-      console.error("Erro ao carregar os dados locais: ", error);
-    }
+window.addEventListener('load', async function() {
+  try {
+      const response = await fetch('http://localhost:3000/dados');
+      if (!response.ok) {
+          throw new Error('Erro ao obter os dados da API.');
+      }
+      
+      const dadosArray = await response.json();
+      sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
+  } catch (error) {
+      console.error('Erro ao obter os dados:', error);
   }
+
+  function carregarDadosDoSessionStorage() {
+      const dadosSalvos = sessionStorage.getItem('dadosConsulta');
+      if (dadosSalvos) {
+          return JSON.parse(dadosSalvos);
+      } else {
+          console.log('Nenhum dado encontrado no sessionStorage.');
+          return [];
+      }
+  }
+
+});
 
   // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
   async function carregar_produtos() {
  
-    let dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
+    let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
 
    
     if (!dadosSalvos) {
       await carregar_dados_local(); 
-      dadosSalvos = JSON.parse(sessionStorage.getItem('dados'));
+      dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
     }
 
     let product_name = document.querySelector(".prod");
@@ -92,13 +100,13 @@ window.addEventListener('load', function () {
 
         let label = document.createElement("p");
         label.classList.add("preco_de");
-        label.innerHTML = `De: R$ ${item.PRECO_DE}`;
+        label.innerHTML = `De: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_DE)}`
         priceContainer.appendChild(label);
 
         let label_por = document.createElement("p");
         label_por.classList.add("preco_por");
         label_por.setAttribute("valor", item.PRECO_POR);
-        label_por.innerHTML = `Por: R$ ${item.PRECO_POR}`;
+        label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
         priceContainer.appendChild(label_por);
 
         card.appendChild(priceContainer);
@@ -161,6 +169,5 @@ window.addEventListener('load', function () {
   // CHAMAR FUNÇÕES NA ORDEM CORRETA--------------------------------------------
   carregar_produtos().then(() => {
     lazyLoadImages();
-  });
-
 });
+
