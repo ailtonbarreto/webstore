@@ -50,9 +50,20 @@
             </ul>
         </div>
 
+        <div class="menu_user">
+
+            <ul>
+                <a class="item_entrar" href="./login.html"><li>Entrar</li></a>
+                <a class="item_cadastro" href="./cadastro.html"><li>Cadastrar</li></a>
+                <a class="item_pedidos" href="#"><li>Meus Pedidos</li></a>
+                <li class="item_sair" onclick="localStorage.setItem('logged', 0); window.location.reload();">Sair</li>
+            </ul>
+
+        </div>
+
         <div class="cadastro">
             <a href="#"><img class="search-icon" src="./Assets/search-icon.png" alt=""></a>
-            <a href="./login.html"><img class="login" src="./Assets/user-icon.png" alt=""></a>
+            <a><img class="login" src="./Assets/user-icon.png" alt=""></a>
             <a id="open-cart"><img class="cart-icon" src="./Assets/carrinho.png" alt=""></a>
             <span class="cart-counter">0</span>
         </div>
@@ -70,6 +81,44 @@
 
         
     </section>
+
+    
+    <div class="newsletter">
+
+
+        <div class="text-newsletter">
+
+            <div>
+
+                <p class="wetext"><strong class="web-text">WebStore B2B </strong>Newsletter</p>
+
+            </div>
+
+
+            <p class="wetext1">
+
+                Se inscreva na nossa newsletter e receba nossas promoções<br>
+                e novidades
+    
+            </p>
+
+
+        </div>
+        
+
+        <form class="newsletter_form">
+
+            <input type="text" placeholder="Nome">
+
+            <input type="number" placeholder="Fone">
+
+            <input type="email" placeholder="Email">
+
+            <button type="submit">Cadastrar</button>
+
+        </form>
+
+    </div>
 
     <footer>
 

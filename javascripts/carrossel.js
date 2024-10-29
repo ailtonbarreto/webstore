@@ -1,30 +1,27 @@
-let currentSlide = 0;
-let slideInterval;
+let currentIndex = 0;
+const slides = document.querySelectorAll('.carousel-images a');
+const totalSlides = slides.length;
+let autoSlideInterval;
 
 function showSlide(index) {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach(slide => slide.classList.remove('active'));
-
-    currentSlide = (index + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
+    const carouselImages = document.querySelector('.carousel-images');
+    carouselImages.style.transform = `translateX(-${index * 100}%)`;
 }
 
-function changeSlide(direction) {
-    showSlide(currentSlide + direction);
+function changeSlide(step) {
+    currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+    resetAutoSlide();
 }
 
-function startAutoSlide() {
-    slideInterval = setInterval(() => {
-        changeSlide(1);
-    }, 8000);
+function autoSlide() {
+    changeSlide(1);
 }
 
-function stopAutoSlide() {
-    clearInterval(slideInterval);
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(autoSlide, 8000);
 }
 
-
-showSlide(currentSlide);
-startAutoSlide();
-
-
+showSlide(currentIndex);
+resetAutoSlide();

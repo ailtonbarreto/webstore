@@ -1,12 +1,55 @@
 let data = [];
 let statusValue = localStorage.getItem("logged");
+let menu_user = document.querySelector(".menu_user");
+let user_icon = document.querySelector(".login");
+let item_sair = document.querySelector(".item_sair");
+let item_cadastro = document.querySelector(".item_cadastro");
+let item_entrar = document.querySelector(".item_entrar");
+let item_pedidos = document.querySelector(".item_pedidos");
+let cart_counter = document.querySelector(".cart-counter");
 
 // localStorage.clear();
+
+// ----------------------------------------------------------------------------
+// USER
 
 if (statusValue === null) {
   localStorage.setItem("logged", 0);
   statusValue = "0";
 }
+
+if (statusValue === "0") {
+  item_sair.style.display = "none";
+  item_pedidos.style.display = "none";
+  cart_counter.style.display = "none";
+} else {
+  item_sair.style.display = "block";
+  item_cadastro.style.display = "none";
+  item_entrar.style.display = "none";
+  
+}
+
+if (statusValue === null) {
+  localStorage.setItem("logged", 0);
+  statusValue = "0";
+}
+
+
+function toggle_menu() {
+  if (menu_user.style.display === "block") {
+      menu_user.style.display = "none";
+  } else {
+      menu_user.style.display = "block";
+  }
+}
+
+user_icon.addEventListener("click", () => {
+  menu_user.style.display = "block";
+});
+
+menu_user.addEventListener("mouseleave", () => {
+  menu_user.style.display = "none";
+});
 
   // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
   async function carregar_produtos() {
@@ -137,5 +180,5 @@ if (statusValue === null) {
   // CHAMAR FUNÇÕES NA ORDEM CORRETA--------------------------------------------
   carregar_produtos().then(() => {
     lazyLoadImages();
-});
+  });
 
