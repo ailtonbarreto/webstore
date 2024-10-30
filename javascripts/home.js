@@ -66,6 +66,7 @@ window.addEventListener('load', async function() {
 
 // ----------------------------------------------------------------------------
 // USER
+
 function toggle_menu() {
     if (menu_user.style.display === "block") {
         menu_user.style.display = "none";
@@ -81,7 +82,6 @@ user_icon.addEventListener("click", () => {
 menu_user.addEventListener("mouseleave", () => {
     menu_user.style.display = "none";
 });
-
 
 // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
 
@@ -188,6 +188,7 @@ function atualizarVisibilidade(statusValue) {
 }
 // ---------------------------------------------------------------------------------------
 // FUNÇÃO CLICAR NO PRODUTO
+
 function produtoclicado(event) {
     let selected_product = event.target;
     let elementoPai = selected_product.closest('figure');
