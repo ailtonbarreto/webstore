@@ -1,44 +1,42 @@
 
-// console.log(JSON.parse(localStorage.getItem('cart')));
-
-// function enviarPedido() {
-//     const novoDado = {
-//         "PEDIDO": "pedteste001",
-//         "EMISSAO": "2024-10-30",
-//         "ENTREGA": "2024-12-31",
-//         "CLIENTE": "pedteste001",
-//         "CIDADE": "FRANCA",
-//         "UF": "SP",
-//         "SKU": `"${cart.SKU}"`,
-//         "PARENT": "1",
-//         "DESCRICAO": `${cart.none}`,
-//         "CATEGORIA": "pedteste001",
-//         "QTD": `${cart.quantidade}`,
-//         "VR_UNIT": `${cart.valor}`
+// async function enviarPedido() {
+   
+//     const pedidoData = {
+//         pedido: "PEDTESTE",
+//         emissao: "2024-10-30",
+//         entrega: "2024-10-30",
+//         sku_cliente: 9999999,
+//         sku: "49-44",
+//         parent: 49,
+//         qtd: 12,
+//         vr_unit: 233.99
 //     };
 
-//     fetch('https://api-webstore.onrender.com/tb_vendas', { 
+//     try {
+//         // Envio da requisição POST
+//         const response = await fetch("https://api-53jr.onrender.com/pedido/", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify(pedidoData)
+//         });
 
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(novoDado)
-//     })
-//     .then(response => {
+//         // Verificação da resposta
 //         if (!response.ok) {
-//             throw new Error('Erro ao adicionar dados.');
+//             const errorData = await response.json();
+//             console.error("Erro:", errorData.detail);
+//         } else {
+//             const result = await response.json();
+//             console.log("Resposta da API:", result.message);
+//             alert("Pedido enviado com sucesso!");
 //         }
-//         return response.json();
-//     })
-//     .then(data => {
-//         console.log('Dados adicionados com sucesso:', data);
-//     })
-//     .catch(error => console.error('Erro:', error));
-// };
+//     } catch (error) {
+//         console.error("Erro na conexão:", error);
+//     }
+// }
 
-
-// PEDIDO DO CLIENTE----------------------------------------------
+// PEDIDO DO CLIENTE---------------------------------------------------------------------
 function loadCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let cartItemsContainer = document.querySelector('#cart-items');
@@ -91,7 +89,5 @@ function loadCart() {
 
     }
 }
-
-// <td>R$ ${subtotal.toFixed(2)}</td>
 
 document.addEventListener('DOMContentLoaded', loadCart);
