@@ -1,40 +1,4 @@
 
-// async function enviarPedido() {
-   
-//     const pedidoData = {
-//         pedido: "PEDTESTE",
-//         emissao: "2024-10-30",
-//         entrega: "2024-10-30",
-//         sku_cliente: 9999999,
-//         sku: "49-44",
-//         parent: 49,
-//         qtd: 12,
-//         vr_unit: 233.99
-//     };
-
-//     try {
-//         // Envio da requisição POST
-//         const response = await fetch("https://api-53jr.onrender.com/pedido/", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(pedidoData)
-//         });
-
-//         // Verificação da resposta
-//         if (!response.ok) {
-//             const errorData = await response.json();
-//             console.error("Erro:", errorData.detail);
-//         } else {
-//             const result = await response.json();
-//             console.log("Resposta da API:", result.message);
-//             alert("Pedido enviado com sucesso!");
-//         }
-//     } catch (error) {
-//         console.error("Erro na conexão:", error);
-//     }
-// }
 
 // PEDIDO DO CLIENTE---------------------------------------------------------------------
 function loadCart() {
@@ -91,3 +55,32 @@ function loadCart() {
 }
 
 document.addEventListener('DOMContentLoaded', loadCart);
+
+
+
+// ENVIAR PEDIDO DO CLIENTE---------------------------------------------------------------------
+
+function EnviarPedido(){
+
+    fetch('http://localhost:3000/inserir/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+            {
+                PEDIDO: 'PEDTESTE',
+                EMISSAO: '2024-10-31',
+                ENTREGA: '2024-10-31',
+                SKU_CLIENTE: 7,
+                SKU: "1-UN",
+                PARENT: 1,
+                QTD: 18, 
+                VR_UNIT: 113.4
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log('Sucesso:', data))
+    .catch(error => console.error('Erro:', error));
+
+}
