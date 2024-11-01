@@ -64,6 +64,8 @@ function EnviarPedido(){
 
     fetch('https://api-webstore.onrender.com/inserir/', {
         method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
         },
@@ -84,3 +86,4 @@ function EnviarPedido(){
     .catch(error => console.error('Erro:', error));
 
 }
+
