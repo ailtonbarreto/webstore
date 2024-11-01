@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', loadCart);
 
 function EnviarPedido(){
 
-    fetch('http://localhost:3000/inserir/', {
+    fetch('https://api-webstore.onrender.com/inserir/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
