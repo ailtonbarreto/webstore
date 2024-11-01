@@ -65,7 +65,7 @@ function EnviarPedido(){
     fetch('https://api-webstore.onrender.com/inserir/', {
         method: 'POST',
         mode: 'no-cors',
-        body: JSON.stringify(data),
+        // body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
         },
@@ -82,8 +82,8 @@ function EnviarPedido(){
         })
     })
     .then(response => response.json())
-    .then(data => console.log('Sucesso:', data))
-    .catch(error => console.error('Erro:', error));
+    .then(console.log('Sucesso:',response));
+    // .catch(error => console.error('Erro:', error));
 
 }
 
