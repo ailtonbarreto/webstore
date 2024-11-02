@@ -1,4 +1,3 @@
 {
-    "user": "cliente0",
-    "password": "123"
+    "tb_cliente" : "https://api-webstore.onrender.com/clientes"
 }
