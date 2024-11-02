@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function EnviarPedido() {
-        // fetch('https://api-webstore.onrender.com/inserir/', {
-        fetch('http://localhost:3000/inserir/', {
+        fetch('https://api-webstore.onrender.com/inserir/', {
+        // fetch('http://localhost:3000/inserir/', {
         
             method: 'POST',
             headers: {
