@@ -161,6 +161,8 @@ function criarCardProduto(item) {
         label_por.setAttribute("valor", item.PRECO_POR);
         label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
         priceContainer.appendChild(label_por);
+        
+
 
         card.appendChild(priceContainer);
     }

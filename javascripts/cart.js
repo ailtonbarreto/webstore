@@ -166,9 +166,7 @@ function renderCartItems() {
     table.appendChild(row);
   });
 
-
   cartItems.appendChild(table);
-
 
   calcularSubtotal();
   updateCartCounter();

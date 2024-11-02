@@ -154,9 +154,7 @@ li a:hover::after{
     border-radius: 0.5vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-
 }
-
 
 
 table {
@@ -227,6 +225,7 @@ td {
     width: 12%;
     font-size: var(--font-size);
     text-align: center;
+    cursor: pointer;
 }
 
 

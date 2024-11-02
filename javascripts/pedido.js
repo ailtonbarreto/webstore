@@ -55,35 +55,46 @@ function loadCart() {
 }
 
 document.addEventListener('DOMContentLoaded', loadCart);
-
+console.log(JSON.parse(localStorage.getItem("cart")));
 
 
 // ENVIAR PEDIDO DO CLIENTE---------------------------------------------------------------------
+const order = JSON.parse(localStorage.getItem("cart"))
 
-function EnviarPedido(){
+document.addEventListener('DOMContentLoaded', function() {
+    const enviar = document.querySelector(".enviar");
 
-    fetch('https://api-webstore.onrender.com/inserir/', {
-        method: 'POST',
-        mode: 'no-cors',
-        // body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(
-            {
+    if (enviar) {
+        enviar.addEventListener('click', EnviarPedido);
+    } else {
+        console.error("Elemento '.enviar' não encontrado");
+    }
+
+    function EnviarPedido() {
+        // fetch('https://api-webstore.onrender.com/inserir/', {
+        fetch('http://localhost:3000/inserir/', {
+        
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
                 PEDIDO: 'PEDTESTE',
                 EMISSAO: '2024-10-31',
                 ENTREGA: '2024-10-31',
                 SKU_CLIENTE: 7,
                 SKU: "1-UN",
                 PARENT: 1,
-                QTD: 18, 
+                QTD: 1,
                 VR_UNIT: 113.4
+            })
         })
-    })
-    .then(response => response.json())
-    .then(console.log('Sucesso:',response));
-    // .catch(error => console.error('Erro:', error));
-
-}
+        .then(response => {
+            if (!response.ok) throw new Error('Erro na requisição');
+            return response.json();
+        })
+        .then(data => console.log('Sucesso:', data))
+        .catch(error => console.error('Erro:', error));
+    }
+});
 
