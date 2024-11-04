@@ -25,9 +25,11 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
                 // Login bem-sucedido
                 logged = "1";
                 window.location.href = './index.html';
+                sku_cliente = localStorage.setItem("sku_cliente", user.SKU_CLIENTE);
             } else {
                 // Login falhou (usuário/senha incorretos ou status inativo)
                 alert("Usuário ou Senha incorretos ou conta inativa!");
+     
             }
 
             localStorage.setItem("logged", logged);

@@ -47,14 +47,16 @@ document.addEventListener('DOMContentLoaded', updateCartCounter);
 function handleAddToCart(event) {
   const parentElement = event.target.parentElement;
   const nome = parentElement.querySelector(".product-name").textContent;
-  const preco = parentElement.querySelector(".preco_por").textContent;
   const container = parentElement.querySelector(".preco_por");
   const valor = container.getAttribute("valor").replace(',', '.');
   const imagem = parentElement.querySelector("img").getAttribute("src");
+  const sku_cliente = localStorage.getItem("sku_cliente");
+  const emissao = new Date().toISOString().slice(0, 10);
+  let entrega = new Date();
+  entrega.setDate(entrega.getDate() + 30);
+  entrega = entrega.toISOString().slice(0, 10);
 
-
-
-  add_to_cart({imagem,nome, valor, quantidade: 1 });
+  add_to_cart({imagem,nome, valor, quantidade: 1,sku_cliente,emissao,entrega});
   updateCartCounter();
 }
 

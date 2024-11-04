@@ -1,5 +1,6 @@
 let data = [];
 let statusValue = localStorage.getItem("logged");
+// let sku_cliente = localStorage.getItem("sku_cliente");
 let menu_user = document.querySelector(".menu_user");
 let user_icon = document.querySelector(".login");
 let item_sair = document.querySelector(".item_sair");
@@ -13,12 +14,16 @@ let cart_counter = document.querySelector(".cart-counter");
 if (statusValue === null) {
     localStorage.setItem("logged", 0);
     statusValue = "0";
+    sku_cliente = localStorage.setItem("sku_cliente", null)
 }
 
 if (statusValue === "0") {
     item_sair.style.display = "none";
     item_pedidos.style.display = "none";
     cart_counter.style.display = "none";
+    sku_cliente = localStorage.setItem("sku_cliente", null)
+
+    
 } else {
     item_sair.style.display = "block";
     item_cadastro.style.display = "none";
@@ -162,7 +167,7 @@ function criarCardProduto(item) {
         label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
         priceContainer.appendChild(label_por);
         
-
+        
 
         card.appendChild(priceContainer);
     }

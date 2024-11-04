@@ -5,6 +5,7 @@ function loadCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let cartItemsContainer = document.querySelector('#cart-items');
     let totalElement = document.getElementById("total");
+    
 
     cartItemsContainer.innerHTML = '';
     let total = 0;
@@ -58,8 +59,27 @@ document.addEventListener('DOMContentLoaded', loadCart);
 console.log(JSON.parse(localStorage.getItem("cart")));
 
 
+
 // ENVIAR PEDIDO DO CLIENTE---------------------------------------------------------------------
 const order = JSON.parse(localStorage.getItem("cart"))
+const sku_cliente = localStorage.getItem("sku_cliente");
+
+
+const pedido = order.map(item => ({
+    pedido: "PEDTESTE",
+    emissao : item.emissao,
+    entrega: item.entrega,
+    sku_cliente: item.sku_cliente,
+    parent: 1,
+    produto: "1-UNIDADE",
+    quantidade: item.quantidade,
+    valor_unit: item.valor,
+    
+  }));
+  
+  const pedidoJson = JSON.stringify(pedido);
+
+// console.log(pedidoJson)
 
 document.addEventListener('DOMContentLoaded', function() {
     const enviar = document.querySelector(".enviar");
@@ -72,22 +92,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function EnviarPedido() {
         fetch('https://api-webstore.onrender.com/inserir/', {
-        // fetch('http://localhost:3000/inserir/', {
+
+        // fetch('http://localhost:3000/inserir', {
+
         
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                PEDIDO: 'PEDTESTE',
-                EMISSAO: '2024-10-31',
-                ENTREGA: '2024-10-31',
-                SKU_CLIENTE: 7,
-                SKU: "1-UN",
-                PARENT: 1,
-                QTD: 1,
-                VR_UNIT: 113.4
-            })
+            body:
+            pedidoJson
+
         })
         .then(response => {
             if (!response.ok) throw new Error('Erro na requisição');
