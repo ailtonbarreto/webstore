@@ -6,6 +6,7 @@ window.onload = function () {
   const nome = localStorage.getItem("nome");
   const preco_de = localStorage.getItem("preco_de");
   const preco_por = localStorage.getItem("preco_por");
+ 
   
 
   if (img) {
@@ -46,10 +47,13 @@ document.addEventListener('DOMContentLoaded', updateCartCounter);
 function handleAddToCart(event) {
   const parentElement = event.target.parentElement;
   const nome = document.getElementById("nome").textContent;
-  
+  const emissao = new Date().toISOString().slice(0, 10);
+  let entrega = new Date();
+  entrega.setDate(entrega.getDate() + 30);
+  entrega = entrega.toISOString().slice(0, 10);
   // Capturar o valor direto do texto do elemento #precopor
   const precoText = document.getElementById("precopor").textContent;
-  
+  const sku_cliente = localStorage.getItem("sku_cliente");
   
   const valor = parseFloat(precoText.replace("Por: R$", "").replace(",", ".").trim());
 
@@ -62,7 +66,7 @@ function handleAddToCart(event) {
 
   const imagem = document.getElementById("imagemProduto").getAttribute("src");
 
-  add_to_cart({ imagem, nome, valor, quantidade: 1 });
+  add_to_cart({ imagem, nome, valor, quantidade: 1,sku_cliente,emissao,entrega});
   updateCartCounter();
 }
 

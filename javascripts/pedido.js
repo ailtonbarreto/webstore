@@ -70,7 +70,7 @@ const pedido = order.map(item => ({
     emissao : item.emissao,
     entrega: item.entrega,
     sku_cliente: item.sku_cliente,
-    parent: 1,
+    parent: "1",
     produto: "1-UN",
     quantidade: item.quantidade,
     valor_unit: item.valor,
