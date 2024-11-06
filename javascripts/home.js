@@ -166,9 +166,8 @@ function criarCardProduto(item) {
         label_por.setAttribute("valor", item.PRECO_POR);
         label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
         priceContainer.appendChild(label_por);
+        label_por.setAttribute("Parent", item.PARENT);
         
-        
-
         card.appendChild(priceContainer);
     }
 
@@ -210,6 +209,7 @@ function produtoclicado(event) {
     localStorage.setItem("nome", produtonome);
     localStorage.setItem("preco_de", precoDe);
     localStorage.setItem("preco_por", precoPor);
+    
 
     window.location.href = "./produto.html";
 }

@@ -35,7 +35,7 @@ window.onload = function () {
 
   if (preco_por) {
       document.getElementById("precopor").innerHTML = preco_por;
-      console.log(preco_por)
+      
   } else {
       console.log(" ");
   }
@@ -54,6 +54,7 @@ function handleAddToCart(event) {
   // Capturar o valor direto do texto do elemento #precopor
   const precoText = document.getElementById("precopor").textContent;
   const sku_cliente = localStorage.getItem("sku_cliente");
+  const parent = document.getElementById("produtoSelecionado").textContent.replace("Parent: ", "");
   
   const valor = parseFloat(precoText.replace("Por: R$", "").replace(",", ".").trim());
 
@@ -66,7 +67,7 @@ function handleAddToCart(event) {
 
   const imagem = document.getElementById("imagemProduto").getAttribute("src");
 
-  add_to_cart({ imagem, nome, valor, quantidade: 1,sku_cliente,emissao,entrega});
+  add_to_cart({ imagem, nome, valor, quantidade: 1,sku_cliente,emissao,entrega,parent});
   updateCartCounter();
 }
 

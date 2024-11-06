@@ -49,6 +49,7 @@ function handleAddToCart(event) {
   const nome = parentElement.querySelector(".product-name").textContent;
   const container = parentElement.querySelector(".preco_por");
   const valor = container.getAttribute("valor").replace(',', '.');
+  const parent = container.getAttribute("parent");
   const imagem = parentElement.querySelector("img").getAttribute("src");
   const sku_cliente = localStorage.getItem("sku_cliente");
   const emissao = new Date().toISOString().slice(0, 10);
@@ -56,7 +57,7 @@ function handleAddToCart(event) {
   entrega.setDate(entrega.getDate() + 30);
   entrega = entrega.toISOString().slice(0, 10);
 
-  add_to_cart({imagem,nome, valor, quantidade: 1,sku_cliente,emissao,entrega});
+  add_to_cart({imagem,nome, valor, quantidade: 1,sku_cliente,emissao,entrega,parent});
   updateCartCounter();
 }
 

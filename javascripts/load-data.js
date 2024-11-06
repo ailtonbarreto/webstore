@@ -127,6 +127,7 @@ async function carregar_produtos() {
       label_por.setAttribute("valor", item.PRECO_POR);
       label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
       priceContainer.appendChild(label_por);
+      label_por.setAttribute("Parent", item.PARENT);
 
       card.appendChild(priceContainer);
     }
