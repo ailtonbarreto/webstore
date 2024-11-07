@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Style/pages.css">
     <link rel="shortcut icon" href="./Assets/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./Style/mobile.css">
     <script src="./javascripts/papaparse.min.js"></script>
     <script async src="./javascripts/home.js"></script>
     <script async src="./javascripts/carrossel.js"></script>
@@ -22,18 +21,10 @@
       <button id="close-cart">X</button>
       <h2 style="color:#0f8f8f">Meu Carrinho</h2>
       <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
+
       <div id="cart-items">
         
-        <!-- <table>
-            <tr>
-                <th>imagem</th>
-                <th>Produto</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Remover</th>
-              </tr>
 
-        </table> -->
 
       </div>
     
@@ -70,7 +61,7 @@
             <ul>
                 <a class="item_entrar" href="./login.html"><li>Entrar</li></a>
                 <a class="item_cadastro" href="./cadastro.html"><li>Cadastrar</li></a>
-                <a class="item_pedidos" href="#"><li>Meus Pedidos</li></a>
+                <a class="item_pedidos" href="./meuspedidos.html"><li>Meus Pedidos</li></a>
                 <li class="item_sair" onclick="localStorage.setItem('logged', 0); window.location.reload();">Sair</li>
             </ul>
 
@@ -110,8 +101,6 @@
 
     <section  id="best_sellers" class="best_sellers">
   
-
-
     </section>
 
 

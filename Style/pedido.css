@@ -212,7 +212,7 @@ td {
 }
 
 
-.enviar{
+#enviar-btn{
     display: flex;
     background-color:  #29be4e;
     border-radius: 0.3vw;

@@ -1,6 +1,5 @@
 let data = [];
 let statusValue = localStorage.getItem("logged");
-// let sku_cliente = localStorage.getItem("sku_cliente");
 let menu_user = document.querySelector(".menu_user");
 let user_icon = document.querySelector(".login");
 let item_sair = document.querySelector(".item_sair");
@@ -14,15 +13,15 @@ let cart_counter = document.querySelector(".cart-counter");
 if (statusValue === null) {
     localStorage.setItem("logged", 0);
     statusValue = "0";
-    sku_cliente = localStorage.setItem("sku_cliente", null)
+    localStorage.removeItem("sku_cliente");
+
 }
 
 if (statusValue === "0") {
     item_sair.style.display = "none";
     item_pedidos.style.display = "none";
     cart_counter.style.display = "none";
-    sku_cliente = localStorage.setItem("sku_cliente", null)
-
+    localStorage.removeItem("sku_cliente");
     
 } else {
     item_sair.style.display = "block";
@@ -30,6 +29,7 @@ if (statusValue === "0") {
     item_entrar.style.display = "none";
     
 }
+
 
 // ----------------------------------------------------------------------------
 // CARREGAR OS DADOS DA API DO CRIADA
@@ -70,6 +70,22 @@ window.addEventListener('load', async function() {
 
 
 // ----------------------------------------------------------------------------
+// CARREGAR OS DADOS DA API DO CRIADA
+async function carregarDados() {
+    try {
+        const response = await fetch("https://api-webstore.onrender.com/integracao");
+        if (!response.ok) {
+            throw new Error('Erro ao obter os dados da API.');
+        }
+        const dadosArray = await response.json();
+        sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
+    } catch (error) {
+        console.error('Erro ao obter os dados:', error);
+    }
+}
+
+
+// ----------------------------------------------------------------------------
 // USER
 
 function toggle_menu() {
@@ -91,27 +107,23 @@ menu_user.addEventListener("mouseleave", () => {
 // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
 
 async function load_products(categoria) {
-
     let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
-
-
     if (!dadosSalvos) {
-
-        await carregar_dados();
+        await carregarDados();
         dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
     }
-
 
     let filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1);
     let product_name = document.querySelector(`.${categoria}`);
 
-    filteredData.forEach(item => {
+    for (let item of filteredData) {
         let card = criarCardProduto(item);
         product_name.appendChild(card);
-    });
+    }
 
     atualizarVisibilidade(statusValue);
 }
+
 
 function criarCardProduto(item) {
     let card = document.createElement("figure");
@@ -134,10 +146,12 @@ function criarCardProduto(item) {
     imageLink.classList.add("produto");
 
     let imagem = document.createElement("img");
-    imagem.src = `${item.IMAGEM}`;
-    imagem.loading = "lazy";
+    imagem.src = item.IMAGEM;
+    imagem.setAttribute('loading', 'lazy')
     imagem.addEventListener("click", produtoclicado);
     imagem.alt = item.DESCRICAO;
+    
+    
     imageLink.appendChild(imagem);
     card.appendChild(imageLink);
 

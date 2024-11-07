@@ -66,7 +66,6 @@ const sku_cliente = localStorage.getItem("sku_cliente");
 
 
 const pedido = order.map(item => ({
-    pedido: "PEDTESTE",
     emissao : item.emissao,
     entrega: item.entrega,
     sku_cliente: item.sku_cliente,
@@ -80,10 +79,9 @@ const pedido = order.map(item => ({
   
   const pedidoJson = JSON.stringify(pedido);
 
-// console.log(pedidoJson)
 
 document.addEventListener('DOMContentLoaded', function() {
-    const enviar = document.querySelector(".enviar");
+    const enviar = document.getElementById("enviar-btn");
 
     if (enviar) {
         enviar.addEventListener('click', EnviarPedido);
@@ -102,15 +100,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Content-Type': 'application/json'
             },
             body:
-            pedidoJson
-
+            pedidoJson,
+            
         })
         .then(response => {
             if (!response.ok) throw new Error('Erro na requisição');
             return response.json();
+            
         })
         .then(data => console.log('Sucesso:', data))
-        .catch(error => console.error('Erro:', error));
+        
+        
     }
 });
 
