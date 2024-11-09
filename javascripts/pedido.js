@@ -91,9 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function EnviarPedido() {
         fetch('https://api-webstore.onrender.com/inserir/', {
-
-        // fetch('http://localhost:3000/inserir', {
-
         
             method: 'POST',
             headers: {
@@ -108,9 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
             
         })
-        .then(data => console.log('Sucesso:', data))
-        
-        
+        .then(console.log('Pedido inserido com sucesso!'))
     }
 });
 
