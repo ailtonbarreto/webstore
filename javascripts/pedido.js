@@ -26,7 +26,6 @@ function loadCart() {
         `;
         cartItemsContainer.innerHTML = tableHeader;
 
-        // Itera sobre os itens do carrinho
         cart.forEach(item => {
             let tableRow = document.createElement('tr');
             let valor = item.valor;
@@ -59,7 +58,6 @@ document.addEventListener('DOMContentLoaded', loadCart);
 console.log(JSON.parse(localStorage.getItem("cart")));
 
 
-
 // ENVIAR PEDIDO DO CLIENTE---------------------------------------------------------------------
 const order = JSON.parse(localStorage.getItem("cart"))
 const sku_cliente = localStorage.getItem("sku_cliente");
@@ -78,7 +76,6 @@ const pedido = order.map(item => ({
   }));
   
   const pedidoJson = JSON.stringify(pedido);
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const enviar = document.getElementById("enviar-btn");

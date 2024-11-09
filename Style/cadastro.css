@@ -32,24 +32,44 @@ body{
 
 .container{
     background-color: var(--cor-principal);
-    position: relative;
     display: flex;
+    justify-content: space-evenly;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     border-radius: 0.5vw;
     color: var(--cor-text);
-    width: 90vw;
-    height: 90vh;
+    width: 40vw;
     padding: 1vw;
+    height: 80%;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 img{
-    width: 10vw;
-    
+    width: 5vw;
 }
 
 h1{
     font-size: 3vw;
+}
+
+#loginForm{
+    display: flex;
+    gap: 0.5vw;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label, input{
+    margin: 0;
+}
+
+button{
+
+    border: none;
+    width: 50%;
+    height: 2vw;
+    border-radius: 0.2vw;
+    color: var(--cor-principal);
+    font-weight: bolder;
 }
