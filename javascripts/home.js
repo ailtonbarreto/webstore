@@ -1,186 +1,125 @@
 let data = [];
-let statusValue = localStorage.getItem("logged");
-let menu_user = document.querySelector(".menu_user");
-let user_icon = document.querySelector(".login");
-let item_sair = document.querySelector(".item_sair");
-let item_cadastro = document.querySelector(".item_cadastro");
-let item_entrar = document.querySelector(".item_entrar");
-let item_pedidos = document.querySelector(".item_pedidos");
-let cart_counter = document.querySelector(".cart-counter");
+let statusValue = localStorage.getItem("logged") || "0";
+localStorage.setItem("logged", statusValue);
+if (statusValue === "0") localStorage.removeItem("sku_cliente");
 
-// localStorage.clear();
-
-if (statusValue === null) {
-    localStorage.setItem("logged", 0);
-    statusValue = "0";
-    localStorage.removeItem("sku_cliente");
-
-}
+const elements = {
+    menu_user: document.querySelector(".menu_user"),
+    user_icon: document.querySelector(".login"),
+    item_sair: document.querySelector(".item_sair"),
+    item_cadastro: document.querySelector(".item_cadastro"),
+    item_entrar: document.querySelector(".item_entrar"),
+    item_pedidos: document.querySelector(".item_pedidos"),
+    cart_counter: document.querySelector(".cart-counter"),
+};
 
 if (statusValue === "0") {
-    item_sair.style.display = "none";
-    item_pedidos.style.display = "none";
-    cart_counter.style.display = "none";
-    localStorage.removeItem("sku_cliente");
-    
+    elements.item_sair.style.display = "none";
+    elements.item_pedidos.style.display = "none";
+    elements.cart_counter.style.display = "none";
 } else {
-    item_sair.style.display = "block";
-    item_cadastro.style.display = "none";
-    item_entrar.style.display = "none";
-    
+    elements.item_sair.style.display = "block";
+    elements.item_cadastro.style.display = "none";
+    elements.item_entrar.style.display = "none";
 }
 
-
-// ----------------------------------------------------------------------------
-// CARREGAR OS DADOS DA API DO CRIADA
-window.addEventListener('load', async function() {
-    try {
-        const response = await fetch("https://api-webstore.onrender.com/integracao");
-        if (!response.ok) {
-            throw new Error('Erro ao obter os dados da API.');
-        }
-        
-        const dadosArray = await response.json();
-        sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
-    } catch (error) {
-        console.error('Erro ao obter os dados:', error);
-    }
-
-    function carregarDadosDoSessionStorage() {
-        const dadosSalvos = sessionStorage.getItem('dadosConsulta');
-        if (dadosSalvos) {
-            return JSON.parse(dadosSalvos);
-        } else {
-            console.log('Nenhum dado encontrado no sessionStorage.');
-            return [];
-        }
-    }
-
-    const dadosCarregados = carregarDadosDoSessionStorage();
-
-    // Verifique se os dados foram carregados e chame load_products
-    if (dadosCarregados.length > 0) {
-        await load_products("best_sellers", dadosCarregados);
-        await load_products("destaques", dadosCarregados);
-        await load_products("estoque_limitado", dadosCarregados);
-    } else {
-        console.log('Dados vazios, não é possível carregar produtos.');
-    }
+// USER MENU
+elements.user_icon.addEventListener("click", () => {
+    elements.menu_user.classList.toggle("active");
+});
+elements.menu_user.addEventListener("mouseleave", () => {
+    elements.menu_user.classList.remove("active");
 });
 
-
-// ----------------------------------------------------------------------------
-// CARREGAR OS DADOS DA API DO CRIADA
+// CARREGAR DADOS DA API
 async function carregarDados() {
     try {
         const response = await fetch("https://api-webstore.onrender.com/integracao");
-        if (!response.ok) {
-            throw new Error('Erro ao obter os dados da API.');
-        }
+        if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         const dadosArray = await response.json();
-        sessionStorage.setItem('dadosConsulta', JSON.stringify(dadosArray));
+        sessionStorage.setItem("dadosConsulta", JSON.stringify(dadosArray));
+        return dadosArray;
     } catch (error) {
-        console.error('Erro ao obter os dados:', error);
+        console.error("Erro ao obter os dados:", error);
+        return [];
     }
 }
 
-
-// ----------------------------------------------------------------------------
-// USER
-
-function toggle_menu() {
-    if (menu_user.style.display === "block") {
-        menu_user.style.display = "none";
-    } else {
-        menu_user.style.display = "block";
-    }
+function carregarDadosDoSessionStorage() {
+    const dadosSalvos = sessionStorage.getItem("dadosConsulta");
+    return dadosSalvos ? JSON.parse(dadosSalvos) : [];
 }
 
-user_icon.addEventListener("click", () => {
-    menu_user.style.display = "block";
-});
-
-menu_user.addEventListener("mouseleave", () => {
-    menu_user.style.display = "none";
-});
-
-// CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
-
+// CARREGAR PRODUTOS
 async function load_products(categoria) {
-    let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
-    if (!dadosSalvos) {
-        await carregarDados();
-        dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
-    }
+    let dadosSalvos = carregarDadosDoSessionStorage();
+    if (!dadosSalvos.length) dadosSalvos = await carregarDados();
 
-    let filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1);
-    let product_name = document.querySelector(`.${categoria}`);
+    const filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1);
+    const productContainer = document.querySelector(`.${categoria}`);
 
-    for (let item of filteredData) {
-        let card = criarCardProduto(item);
-        product_name.appendChild(card);
-    }
+    filteredData.forEach(item => {
+        const card = criarCardProduto(item);
+        productContainer.appendChild(card);
+    });
 
-    atualizarVisibilidade(statusValue);
+    atualizarVisibilidade();
 }
-
 
 function criarCardProduto(item) {
-    let card = document.createElement("figure");
-    card.id = `${item.PARENT}`;
+    const card = document.createElement("figure");
+    card.id = item.PARENT;
     card.classList.add("card");
 
     if (statusValue === "1") {
-        let cartButton = document.createElement("button");
+        const cartButton = document.createElement("button");
         cartButton.classList.add("add-to-cart-btn");
         cartButton.textContent = "+ Add";
         card.appendChild(cartButton);
     }
 
-    let list_name = document.createElement("a");
+    const list_name = document.createElement("a");
     list_name.classList.add("product-name");
-    list_name.textContent = `${item.DESCRICAO}`;
+    list_name.textContent = item.DESCRICAO;
     card.appendChild(list_name);
 
-    let imageLink = document.createElement("a");
+    const imageLink = document.createElement("a");
     imageLink.classList.add("produto");
 
-    let imagem = document.createElement("img");
+    const imagem = document.createElement("img");
     imagem.src = item.IMAGEM;
-    imagem.setAttribute('loading', 'lazy')
-    imagem.addEventListener("click", produtoclicado);
+    imagem.loading = "lazy";
     imagem.alt = item.DESCRICAO;
-    
+    imagem.addEventListener("click", produtoclicado);
     
     imageLink.appendChild(imagem);
     card.appendChild(imageLink);
 
-    let priceLink = document.createElement("a");
+    const priceLink = document.createElement("a");
     priceLink.classList.add("preco-label");
     priceLink.href = "./login.html";
     card.appendChild(priceLink);
 
-    let priceButton = document.createElement("button");
+    const priceButton = document.createElement("button");
     priceButton.classList.add("btn-prod");
     priceButton.textContent = "Ver Preço";
     priceButton.style.display = (statusValue === "0") ? "block" : "none";
     priceLink.appendChild(priceButton);
 
     if (statusValue === "1") {
-        let priceContainer = document.createElement("div");
+        const priceContainer = document.createElement("div");
         priceContainer.classList.add("preco-container");
 
-        let label = document.createElement("p");
+        const label = document.createElement("p");
         label.classList.add("preco_de");
-        label.innerHTML = `De: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_DE)}`
+        label.innerHTML = `De: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_DE)}`;
         priceContainer.appendChild(label);
 
-        let label_por = document.createElement("p");
+        const label_por = document.createElement("p");
         label_por.classList.add("preco_por");
         label_por.setAttribute("valor", item.PRECO_POR);
-        label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`
+        label_por.innerHTML = `Por: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.PRECO_POR)}`;
         priceContainer.appendChild(label_por);
-        label_por.setAttribute("Parent", item.PARENT);
         
         card.appendChild(priceContainer);
     }
@@ -188,45 +127,31 @@ function criarCardProduto(item) {
     return card;
 }
 
-
-function atualizarVisibilidade(statusValue) {
-    let btns = document.querySelectorAll(".add-to-cart-btn");
-    let precos = document.querySelectorAll(".preco-container");
-    let prod_btns = document.querySelectorAll(".btn-prod");
-
-    btns.forEach(btn => {
+function atualizarVisibilidade() {
+    document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
         btn.style.display = (statusValue === "1") ? "block" : "none";
     });
-
-    precos.forEach(preco => {
+    document.querySelectorAll(".preco-container").forEach(preco => {
         preco.style.display = (statusValue === "1") ? "flex" : "none";
     });
-
-    prod_btns.forEach(prod_btn => {
+    document.querySelectorAll(".btn-prod").forEach(prod_btn => {
         prod_btn.style.display = (statusValue === "1") ? "none" : "block";
     });
 }
-// ---------------------------------------------------------------------------------------
-// FUNÇÃO CLICAR NO PRODUTO
 
 function produtoclicado(event) {
-    let selected_product = event.target;
-    let elementoPai = selected_product.closest('figure');
-
-    let foto = elementoPai.querySelector("img").src;
-    let produtonome = elementoPai.querySelector("img").alt;
-    let precoDe = elementoPai.querySelector(".preco_de").textContent;
-    let precoPor = elementoPai.querySelector(".preco_por").textContent;
-
+    const elementoPai = event.target.closest("figure");
     localStorage.setItem("produtoSelecionado", elementoPai.id);
-    localStorage.setItem("foto", foto);
-    localStorage.setItem("nome", produtonome);
-    localStorage.setItem("preco_de", precoDe);
-    localStorage.setItem("preco_por", precoPor);
-    
-
+    localStorage.setItem("foto", elementoPai.querySelector("img").src);
+    localStorage.setItem("nome", elementoPai.querySelector("img").alt);
+    localStorage.setItem("preco_de", elementoPai.querySelector(".preco_de").textContent);
+    localStorage.setItem("preco_por", elementoPai.querySelector(".preco_por").textContent);
     window.location.href = "./produto.html";
 }
 
-// --------------------------------------FIM------------------------------------------------
-
+// INICIALIZAR CARREGAMENTO DE PRODUTOS AO CARREGAR A PÁGINA
+window.addEventListener("load", async () => {
+    await load_products("best_sellers");
+    await load_products("destaques");
+    await load_products("estoque_limitado");
+});
