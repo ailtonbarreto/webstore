@@ -59,23 +59,22 @@ console.log(JSON.parse(localStorage.getItem("cart")));
 
 
 // ENVIAR PEDIDO DO CLIENTE---------------------------------------------------------------------
-const order = JSON.parse(localStorage.getItem("cart"))
+const order = JSON.parse(localStorage.getItem("cart"));
 const sku_cliente = localStorage.getItem("sku_cliente");
 
-
 const pedido = order.map(item => ({
-    emissao : item.emissao,
+    emissao: item.emissao,
     entrega: item.entrega,
-    sku_cliente: item.sku_cliente,
+    sku_cliente: sku_cliente, // Define o sku_cliente do localStorage
     parent: item.parent,
     produto: "1-UN",
     quantidade: item.quantidade,
     valor_unit: item.valor,
     sequencia: 50000,
     situacao: "AGUARDANDO CONFIRMACAO"
-  }));
-  
-  const pedidoJson = JSON.stringify(pedido);
+}));
+
+const pedidoJson = JSON.stringify(pedido);
 
 document.addEventListener('DOMContentLoaded', function() {
     const enviar = document.getElementById("enviar-btn");
@@ -88,21 +87,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function EnviarPedido() {
         fetch('https://api-webstore.onrender.com/inserir/', {
-        
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body:
-            pedidoJson,
-            
+            body: pedidoJson,
         })
         .then(response => {
             if (!response.ok) throw new Error('Erro na requisição');
             return response.json();
-            
         })
-        .then(console.log('Pedido inserido com sucesso!'))
+        .then(data => {
+            console.log('Pedido inserido com sucesso!', data);
+            alert('Pedido inserido com sucesso!'); // Exibe o alerta
+        })
+        .catch(error => {
+            console.error('Erro ao inserir pedido:', error);
+            alert('Erro ao inserir o pedido. Tente novamente.'); // Alerta em caso de erro
+        });
     }
 });
-

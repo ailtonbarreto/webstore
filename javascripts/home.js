@@ -1,37 +1,56 @@
 let data = [];
-let statusValue = localStorage.getItem("logged") || "0";
-localStorage.setItem("logged", statusValue);
-if (statusValue === "0") localStorage.removeItem("sku_cliente");
+let statusValue = localStorage.getItem("logged");
+let menu_user = document.querySelector(".menu_user");
+let user_icon = document.querySelector(".login");
+let item_sair = document.querySelector(".item_sair");
+let item_cadastro = document.querySelector(".item_cadastro");
+let item_entrar = document.querySelector(".item_entrar");
+let item_pedidos = document.querySelector(".item_pedidos");
+let cart_counter = document.querySelector(".cart-counter");
 
-const elements = {
-    menu_user: document.querySelector(".menu_user"),
-    user_icon: document.querySelector(".login"),
-    item_sair: document.querySelector(".item_sair"),
-    item_cadastro: document.querySelector(".item_cadastro"),
-    item_entrar: document.querySelector(".item_entrar"),
-    item_pedidos: document.querySelector(".item_pedidos"),
-    cart_counter: document.querySelector(".cart-counter"),
-};
+// localStorage.clear();
 
-if (statusValue === "0") {
-    elements.item_sair.style.display = "none";
-    elements.item_pedidos.style.display = "none";
-    elements.cart_counter.style.display = "none";
-} else {
-    elements.item_sair.style.display = "block";
-    elements.item_cadastro.style.display = "none";
-    elements.item_entrar.style.display = "none";
+if (statusValue === null) {
+    localStorage.setItem("logged", 0);
+    statusValue = "0";
+    localStorage.removeItem("sku_cliente");
+
 }
 
-// USER MENU
-elements.user_icon.addEventListener("click", () => {
-    elements.menu_user.classList.toggle("active");
-});
-elements.menu_user.addEventListener("mouseleave", () => {
-    elements.menu_user.classList.remove("active");
+if (statusValue === "0") {
+    item_sair.style.display = "none";
+    item_pedidos.style.display = "none";
+    cart_counter.style.display = "none";
+    localStorage.removeItem("sku_cliente");
+    
+} else {
+    item_sair.style.display = "block";
+    item_cadastro.style.display = "none";
+    item_entrar.style.display = "none";
+    
+}
+
+// ----------------------------------------------------------------------------
+// USER
+
+function toggle_menu() {
+    if (menu_user.style.display === "block") {
+        menu_user.style.display = "none";
+    } else {
+        menu_user.style.display = "block";
+    }
+}
+
+user_icon.addEventListener("click", () => {
+    menu_user.style.display = "block";
 });
 
-// CARREGAR DADOS DA API
+menu_user.addEventListener("mouseleave", () => {
+    menu_user.style.display = "none";
+});
+
+
+/// CARREGAR DADOS DA API
 async function carregarDados() {
     try {
         const response = await fetch("https://api-webstore.onrender.com/integracao");
