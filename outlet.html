@@ -16,30 +16,30 @@
 <body>
 
     <div id="cart" class="cart">
-        
+
         <button id="close-cart">X</button>
         <h2 style="color:#0f8f8f">Meu Carrinho</h2>
-        <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
+        <hr style="border: 1px solid #0f8f8f; margin: 1vw">
         <ul id="cart-items"></ul>
-  
+
         <div class="finish-btn">
-  
-          <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
-  
-          <a href="./pedido.html" class="finish">Finalizar Pedido</a>
-  
+
+            <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
+
+            <a href="./pedido.html" class="finish">Finalizar Pedido</a>
+
         </div>
-  
-      </div>
+
+    </div>
 
     <header>
 
         <div class="div-logo">
 
-            <a href="./index.html"><img class="logo" src="./Assets/logo.png" alt=""></a> 
+            <a href="./index.html"><img class="logo" src="./Assets/logo.png" alt=""></a>
 
         </div>
-    
+
 
         <div class="navbar">
             <ul class="navlist">
@@ -54,9 +54,15 @@
         <div class="menu_user">
 
             <ul>
-                <a class="item_entrar" href="./login.html"><li>Entrar</li></a>
-                <a class="item_cadastro" href="./cadastro.html"><li>Cadastrar</li></a>
-                <a class="item_pedidos" href="./meuspedidos.html"><li>Meus Pedidos</li></a>
+                <a class="item_entrar" href="./login.html">
+                    <li>Entrar</li>
+                </a>
+                <a class="item_cadastro" href="./cadastro.html">
+                    <li>Cadastrar</li>
+                </a>
+                <a class="item_pedidos" href="./meuspedidos.html">
+                    <li>Meus Pedidos</li>
+                </a>
                 <li class="item_sair" onclick="localStorage.setItem('logged', 0); window.location.reload();">Sair</li>
             </ul>
 
@@ -70,20 +76,21 @@
         </div>
 
     </header>
-  
-    <div class="texto-home"><h1>Outlet</h1></div>
+
+    <div class="texto-home">
+        <h1>Outlet</h1>
+    </div>
 
     <div class="logowhats">
         <a href="https://wa.me/5516994632838" target="_blank"><img src="./Assets/logo-whatsapp.png" alt=""></a>
     </div>
 
 
-    <section  class="prod">
+    <section class="prod">
 
-        
+
     </section>
 
-    
     <div class="newsletter">
 
 
@@ -100,20 +107,20 @@
 
                 Se inscreva na nossa newsletter e receba nossas promoções<br>
                 e novidades
-    
+
             </p>
 
 
         </div>
-        
 
-        <form class="newsletter_form">
 
-            <input type="text" placeholder="Nome">
+        <form class="newsletter_form" id="newsletterForm">
 
-            <input type="number" placeholder="Fone">
+            <input id="nome" type="text" placeholder="Nome">
 
-            <input type="email" placeholder="Email">
+            <input id="fone" type="number" placeholder="Fone">
+
+            <input id="email" type="email" placeholder="Email">
 
             <button type="submit">Cadastrar</button>
 
@@ -164,7 +171,7 @@
             <p>WebStore B2B</p>
 
         </div>
-        
+
     </footer>
 
     <a href="https://www.ailtonbarreto.com.br/">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,30 +13,31 @@
     <title>WebStore - Roupas</title>
 
 </head>
+
 <body>
 
     <div id="cart" class="cart">
-        
+
         <button id="close-cart">X</button>
         <h2 style="color:#0f8f8f">Meu Carrinho</h2>
-        <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
+        <hr style="border: 1px solid #0f8f8f; margin: 1vw">
         <ul id="cart-items"></ul>
-  
+
         <div class="finish-btn">
-  
-          <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
-  
-          <a href="./pedido.html" class="finish">Finalizar Pedido</a>
-  
+
+            <p class="subtotal"><span>Subtotal: R$ 0,00</span></p>
+
+            <a href="./pedido.html" class="finish">Finalizar Pedido</a>
+
         </div>
-  
-      </div>
+
+    </div>
 
     <header>
-        
+
         <div class="div-logo">
 
-            <a href="./index.html"><img class="logo" src="./Assets/logo.png" alt=""></a> 
+            <a href="./index.html"><img class="logo" src="./Assets/logo.png" alt=""></a>
 
         </div>
 
@@ -52,9 +54,15 @@
         <div class="menu_user">
 
             <ul>
-                <a class="item_entrar" href="./login.html"><li>Entrar</li></a>
-                <a class="item_cadastro" href="./cadastro.html"><li>Cadastrar</li></a>
-                <a class="item_pedidos" href="./meuspedidos.html"><li>Meus Pedidos</li></a>
+                <a class="item_entrar" href="./login.html">
+                    <li>Entrar</li>
+                </a>
+                <a class="item_cadastro" href="./cadastro.html">
+                    <li>Cadastrar</li>
+                </a>
+                <a class="item_pedidos" href="./meuspedidos.html">
+                    <li>Meus Pedidos</li>
+                </a>
                 <li class="item_sair" onclick="localStorage.setItem('logged', 0); window.location.reload();">Sair</li>
             </ul>
 
@@ -88,10 +96,10 @@
             <a href="./login.html"><button class="btn-prod">Ver Preço</button></a>
         </figure> -->
 
-   
+
     </section>
 
-    
+
     <div class="newsletter">
 
 
@@ -108,20 +116,20 @@
 
                 Se inscreva na nossa newsletter e receba nossas promoções<br>
                 e novidades
-    
+
             </p>
 
 
         </div>
-        
 
-        <form class="newsletter_form">
 
-            <input type="text" placeholder="Nome">
+        <form class="newsletter_form" id="newsletterForm">
 
-            <input type="number" placeholder="Fone">
+            <input id="nome" type="text" placeholder="Nome">
 
-            <input type="email" placeholder="Email">
+            <input id="fone" type="number" placeholder="Fone">
+
+            <input id="email" type="email" placeholder="Email">
 
             <button type="submit">Cadastrar</button>
 
@@ -162,7 +170,7 @@
                 </nav>
 
             </div>
-            
+
         </div>
 
         <div class="container-footer">
@@ -172,7 +180,7 @@
             <p>WebStore B2B</p>
 
         </div>
-    
+
     </footer>
 
     <a href="https://www.ailtonbarreto.com.br/">

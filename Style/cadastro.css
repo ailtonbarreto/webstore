@@ -58,10 +58,26 @@ h1{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 80%;
+}
+
+
+input::-webkit-inner-spin-button{
+    display: none;
+}
+
+input{
+    outline: none;
+    font-size: var(--font-size);
+    border-radius: 0.3vw;
+    border: none;
+    height: 1.5vw;
+    color: var(--cor-principal);
 }
 
 label, input{
     margin: 0;
+    width: 100%;
 }
 
 button{
