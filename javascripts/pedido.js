@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function EnviarPedido() {
-        fetch('https://api-webstore.onrender.com/inserir', {
+        fetch('https://api-webstore.onrender.com/inserir/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
