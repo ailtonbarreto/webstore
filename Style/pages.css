@@ -455,7 +455,10 @@ section{
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.2s ease-in-out;
+    
 }
+
+
 
 .card:hover{
     transform: scale(1.04);
@@ -725,3 +728,64 @@ footer img{
 
 }
 /* FIM--------------------------------------------------------------------------- */
+/* MOBILE */
+@media (max-width: 768px) {
+
+    header{
+        display: none;
+    }
+
+    .carousel{
+        display: none;
+    }
+
+    /* .departamentos{
+        display: none;
+    } */
+
+    .logowhats{
+        width: 6vw;
+    }
+
+    .bannerhome2{
+        display: none;
+    }
+
+    .logowhats img{
+        width: 6vw;
+    }
+
+    section {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .card {
+        width: 40vw;
+        height: 50vw;
+    }
+
+    .btn-prod{
+        background-color: var(--cor-principal);
+        border: none;
+        padding: 1vw;
+        color: var(--cor-text);
+        width: 70%;
+        border-radius: 0.5vw;
+        cursor: pointer;
+        font-weight: bolder;
+        font-size: 2vw;
+    }
+
+    .card a{
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 60vw;
+        height: 80vw;
+    }
+}
+
