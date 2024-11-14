@@ -763,8 +763,8 @@ footer img{
     section {
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
-        gap: 2vw;
+        justify-content: center;
+        gap: 5vw;
         flex-wrap: wrap;
         padding: 1vw 1vw;
         align-items: center;
