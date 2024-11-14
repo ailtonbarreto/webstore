@@ -739,53 +739,89 @@ footer img{
         display: none;
     }
 
-    /* .departamentos{
+    .texto-home{
+        font-size: 5vw;
+    }
+
+    .texto-home-dep, .departamentos{
         display: none;
-    } */
+    }
 
     .logowhats{
-        width: 6vw;
+        display: none;
     }
 
     .bannerhome2{
         display: none;
     }
 
-    .logowhats img{
-        width: 6vw;
+    .card img{
+        width: 30vw;
     }
 
+    
     section {
-        padding: 1rem;
-        gap: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 2vw;
+        flex-wrap: wrap;
+        padding: 1vw 1vw;
+        align-items: center;
     }
-
+    
     .card {
-        width: 40vw;
-        height: 50vw;
-    }
-
-    .btn-prod{
-        background-color: var(--cor-principal);
-        border: none;
-        padding: 1vw;
-        color: var(--cor-text);
-        width: 70%;
-        border-radius: 0.5vw;
-        cursor: pointer;
-        font-weight: bolder;
-        font-size: 2vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background: var(--cor-card);
+        padding: 2vw 1vw;
+        border-radius: 8px;
+        width: 25vw;
+        height: 60vw;
+        box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+        min-width: 40vw;
+        max-width: 50vw;
     }
 
     .card a{
-        font-size: 2vw;
+        font-size: 3vw;
+    }
+
+    .preco_de{
+        font-size: 2.5vw;
+    }
+
+    .preco_por{
+        font-size: 4vw;
+    }
+    
+    .add-to-cart-btn{
+        width: 60%;
+        height: 5vw;
+        font-size: 2.5vw;
+        margin: 1vw 0vw;
+    }
+
+    .newsletter{
+        flex-direction: column;
+    }
+
+    .text-newsletter{
+        /* width: 100%; */
+        align-items: center;
+
+    }
+
+    .wetext, .web-text{
+        font-size: 5vw;
+    }
+
+    .newsletter_form{
+        width: 100%;
+        gap: 1vw;
     }
 }
-
-@media (max-width: 480px) {
-    .card {
-        width: 60vw;
-        height: 80vw;
-    }
-}
-
