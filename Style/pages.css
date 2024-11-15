@@ -455,9 +455,7 @@ section{
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.2s ease-in-out;
-    
 }
-
 
 
 .card:hover{
@@ -503,8 +501,6 @@ section{
     text-align: left;
     margin-left: 1vw;
     font-size: var(--font-size);
-    
-
 }
 
 
@@ -727,14 +723,29 @@ footer img{
     text-align: center;
 
 }
-/* FIM--------------------------------------------------------------------------- */
-/* MOBILE */
+/* MOBILE--------------------------------------------------------------------------- */
+
 @media (max-width: 768px) {
 
     header{
+        /* position: relative; */
         display: flex;
-        height: 7vw;
+        height: 20vw;
+        justify-content: space-between;
         margin-bottom: 1vw;
+    }
+
+    .logo{
+        width: 12vw;
+        margin: 0vw;
+    }
+
+    .cadastro{
+        width: 30vw;
+    }
+
+    .cadastro img{
+        width: 5vw;
     }
 
     .carousel{
@@ -749,6 +760,10 @@ footer img{
     .cart h2{
         padding: 4vw;
         text-align: center;
+    }
+
+    .navbar .navlist{
+        display: none;
     }
 
     #close-cart{
@@ -777,6 +792,10 @@ footer img{
         font-size: 5vw;
     }
 
+    #home1{
+        margin-top: 30vw;
+    }
+
     .texto-home-dep, .departamentos{
         display: none;
     }
@@ -793,26 +812,25 @@ footer img{
         width: 30vw;
     }
 
-    
     section {
         display: flex;
         flex-direction: row;
         justify-content: center;
         gap: 5vw;
         flex-wrap: wrap;
-        padding: 1vw 1vw;
+        padding: 5vw 0vw;
         align-items: center;
     }
     
     .card {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         background: var(--cor-card);
         padding: 2vw 1vw;
         border-radius: 8px;
-        width: 25vw;
+        width: 43vw;
         height: 60vw;
         box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
         text-align: center;
@@ -834,6 +852,14 @@ footer img{
     }
     
     .add-to-cart-btn{
+        display: none;
+        width: 60%;
+        height: 5vw;
+        font-size: 2.5vw;
+        margin: 1vw 0vw;
+    }
+
+    .btn-prod{
         width: 60%;
         height: 5vw;
         font-size: 2.5vw;
@@ -842,16 +868,22 @@ footer img{
 
     .newsletter{
         flex-direction: column;
+        margin: 10vw 2vw;
+        border-radius: 1vw;
+        
     }
 
     .text-newsletter{
-        /* width: 100%; */
         align-items: center;
-
     }
 
     .wetext, .web-text{
         font-size: 5vw;
+    }
+
+    .wetext1{
+        font-size: 3vw;
+        margin: 3vw 0vw;
     }
 
     .newsletter_form{
