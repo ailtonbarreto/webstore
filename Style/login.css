@@ -112,3 +112,73 @@ a{
     text-decoration-color: var(--cor-text);
     font-size: var(--font-size);
 }
+
+/* MOBILE------------------------------------------------------------------------ */
+
+@media (max-width: 768px) {
+
+    .container{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0%;
+
+    }
+
+    p{
+        display: none;
+    }
+
+    .msg, span{
+        display: block;
+        text-align: center;
+    }
+
+    .msg span{
+        font-size: large;
+    }
+
+
+    img{
+        margin-top: 1vw;
+        margin-bottom: 0;
+        width: 30vw;
+    }
+
+    #loginForm{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        padding: 5vw;
+        width: 100%;
+        height: 50%;
+    }
+
+    .btn{
+        display: flex;
+        border-radius: 0.5vw;
+        align-items: center;
+        justify-content: center;
+        height: 10vw;
+    }
+    
+    input{
+        margin-top: 0.4vw;
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 2px;
+        height: 10vw;
+        color: var(--cor-principal);
+        font-weight: bold;
+    }
+    
+    label{
+        margin-top: 0.5vw;
+    }
+    
+
+}

@@ -727,8 +727,8 @@ footer img{
 
 @media (max-width: 768px) {
 
+
     header{
-        /* position: relative; */
         display: flex;
         height: 20vw;
         justify-content: space-between;
@@ -741,11 +741,32 @@ footer img{
     }
 
     .cadastro{
-        width: 30vw;
+        width: 35vw;
     }
 
     .cadastro img{
-        width: 5vw;
+        width: 8vw;
+    }
+
+    .menu_user{
+        align-items: center;
+        top: 0vw;
+        width: 100vw;
+        margin: 0vw 0vw 0vw -200vw;
+        height: 100vh;
+        right: 0vw;
+    }
+
+    .menu_user ul{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 30vw;
+        height: 15vh;
+    }
+    .menu_user li{
+       font-size: 7vw;
     }
 
     .carousel{
@@ -760,6 +781,25 @@ footer img{
     .cart h2{
         padding: 4vw;
         text-align: center;
+    }
+
+    .cart-table td{
+        font-size: 3vw;
+    }
+
+    .cart-table img{
+        display: none;
+    }
+
+
+    .quantity-btn{
+        display: none;
+    }
+
+
+    .cart-table .remove-btn{
+        width: 5vw;
+        display: block;
     }
 
     .navbar .navlist{
@@ -781,11 +821,12 @@ footer img{
     .finish{
         padding: 2.5vw;
         font-size: medium;
-        width: 40%;
+        width: 50%;
     }
 
     .subtotal{
         font-size: 4vw;
+        width: 50%;
     }
 
     .texto-home{
@@ -810,6 +851,14 @@ footer img{
 
     .card img{
         width: 30vw;
+    }
+
+    .cart-counter{
+        font-size: 4vw;
+        width: 7vw;
+        top: 1vw;
+        height: 7vw;
+        right: 2vw;
     }
 
     section {
@@ -870,6 +919,7 @@ footer img{
         flex-direction: column;
         margin: 10vw 2vw;
         border-radius: 1vw;
+        gap: 4vw;
         
     }
 
@@ -888,6 +938,18 @@ footer img{
 
     .newsletter_form{
         width: 100%;
-        gap: 1vw;
+        gap: 5vw;
+    }
+
+    .newsletter_form input{
+        height: 10vw;
+    }
+
+    .newsletter_form button{
+        height: 9vw;
+    }
+
+    footer{
+        display: none;
     }
 }
