@@ -65,7 +65,7 @@ const sku_cliente = localStorage.getItem("sku_cliente");
 const pedido = order.map(item => ({
     emissao: item.emissao,
     entrega: item.entrega,
-    sku_cliente: sku_cliente, // Define o sku_cliente do localStorage
+    sku_cliente: sku_cliente,
     parent: item.parent,
     produto: "1-UN",
     quantidade: item.quantidade,
@@ -99,11 +99,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Pedido inserido com sucesso!', data);
-            alert('Pedido inserido com sucesso!'); // Exibe o alerta
+            alert('Pedido inserido com sucesso!');
         })
         .catch(error => {
             console.error('Erro ao inserir pedido:', error);
-            alert('Erro ao inserir o pedido. Tente novamente.'); // Alerta em caso de erro
+            alert('Erro ao inserir o pedido. Tente novamente.');
         });
     }
 });
