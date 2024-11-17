@@ -7,6 +7,8 @@ let item_cadastro = document.querySelector(".item_cadastro");
 let item_entrar = document.querySelector(".item_entrar");
 let item_pedidos = document.querySelector(".item_pedidos");
 let cart_counter = document.querySelector(".cart-counter");
+let btn_close = document.querySelector(".close-btn");
+
 
 // localStorage.clear();
 
@@ -34,7 +36,7 @@ if (statusValue === null) {
   statusValue = "0";
 }
 
-
+// ---------------------------------------------------------------------------
 function toggle_menu() {
   if (menu_user.style.display === "block") {
       menu_user.style.display = "none";
@@ -47,7 +49,7 @@ user_icon.addEventListener("click", () => {
   menu_user.style.display = "block";
 });
 
-menu_user.addEventListener("mouseleave", () => {
+btn_close.addEventListener("click", () => {
   menu_user.style.display = "none";
 });
 

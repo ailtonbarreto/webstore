@@ -7,9 +7,7 @@ let item_cadastro = document.querySelector(".item_cadastro");
 let item_entrar = document.querySelector(".item_entrar");
 let item_pedidos = document.querySelector(".item_pedidos");
 let cart_counter = document.querySelector(".cart-counter");
-
-// localStorage.clear();
-
+let btn_close = document.querySelector(".close-btn");
 
 
 // ----------------------------------------------------------------------------
@@ -49,7 +47,7 @@ user_icon.addEventListener("click", () => {
   menu_user.style.display = "block";
 });
 
-menu_user.addEventListener("mouseleave", () => {
+btn_close.addEventListener("click", () => {
   menu_user.style.display = "none";
 });
 

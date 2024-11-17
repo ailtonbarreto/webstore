@@ -23,5 +23,22 @@ function resetAutoSlide() {
     autoSlideInterval = setInterval(autoSlide, 8000);
 }
 
+function updateImagesForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    const images = document.querySelectorAll('.carousel-images img');
+
+    images.forEach(img => {
+        const mobileSrc = img.getAttribute('data-mobile');
+        const desktopSrc = img.getAttribute('src');
+
+     
+        img.src = isMobile ? mobileSrc : desktopSrc;
+    });
+}
+
+updateImagesForMobile();
+window.addEventListener('resize', updateImagesForMobile);
+
+
 showSlide(currentIndex);
 resetAutoSlide();
