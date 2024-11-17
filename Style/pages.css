@@ -962,8 +962,8 @@ footer img{
     
     .add-to-cart-btn{
         display: none;
-        width: 60%;
-        height: 5vw;
+        width: 50%;
+        height: 4vw;
         font-size: 2.5vw;
         margin: 1vw 0vw;
     }

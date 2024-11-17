@@ -149,9 +149,9 @@ function criarCardProduto(item) {
 }
 
 function atualizarVisibilidade() {
-    document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
-        btn.style.display = (statusValue === "1") ? "block" : "none";
-    });
+    // document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+    //     btn.style.display = (statusValue === "1") ? "block" : "none";
+    // });
     document.querySelectorAll(".preco-container").forEach(preco => {
         preco.style.display = (statusValue === "1") ? "flex" : "none";
     });
