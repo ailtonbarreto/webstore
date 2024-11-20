@@ -78,18 +78,28 @@ const pedido = order.map(item => ({
 
 const pedidoJson = JSON.stringify(pedido);
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const enviar = document.getElementById("enviar-btn");
     const loadingModal = document.getElementById("loading-modal");
+    const successModal = document.getElementById("success-modal");
+    const successOkBtn = document.getElementById("success-ok-btn");
 
     if (enviar) {
         enviar.addEventListener('click', EnviarPedido);
     } else {
-        console.error("Elemento '.enviar' não encontrado");
+        console.error("Elemento '#enviar-btn' não encontrado");
+    }
+
+    if (successOkBtn) {
+        successOkBtn.addEventListener('click', function() {
+            successModal.style.display = 'none';
+            window.location.href = 'meuspedidos.html';
+        });
     }
 
     function EnviarPedido() {
-        // MODAL PATETICO
+        // Exibir modal de carregamento
         loadingModal.style.display = 'flex';
 
         fetch('https://api-webstore.onrender.com/inserir/', {
@@ -105,13 +115,14 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Pedido inserido com sucesso!', data);
-            window.location.href = 'meuspedidos.html';
             localStorage.removeItem("cart");
             loadingModal.style.display = 'none';
+
+            // Exibir modal de sucesso
+            successModal.style.display = 'flex';
         })
         .catch(error => {
             console.error('Erro ao inserir pedido:', error);
-            alert('Erro ao inserir o pedido. Tente novamente.');
             loadingModal.style.display = 'none';
         });
     }
