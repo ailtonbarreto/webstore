@@ -30,7 +30,7 @@ async function load_tela() {
         return;
     }
 
-    const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === "0");
+    const filtered_pedidos = dadosSalvos.filter(item => item.PEDIDO === "PED69147");
     console.log("Pedidos filtrados:", filtered_pedidos);
 
     renderPedidos(filtered_pedidos);

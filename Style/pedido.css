@@ -228,7 +228,7 @@ td {
     cursor: pointer;
 }
 
-   /* Estilo do modal de carregamento */
+/* MODAL PEDIDO ENVIADO----------------------------------- */
 #loading-modal {
     position: fixed;
     top: 0;
@@ -276,17 +276,18 @@ td {
     color: var(--cor-text);
 }
 
-.container-modal button{
+#success-ok-btn{
     display: flex;
     background-color:  #29be4e;
     border-radius: 0.3vw;
     color: var(--cor-text);
-    height: 2vw;
+    padding: 0.5vw;
     border: none;
     align-items: center;
     justify-content: center;
     width: 80%;
-    font-size: var(--font-size);
+    height: 5vh;
+    font-size: 3vh;
     text-align: center;
     cursor: pointer;
 }
