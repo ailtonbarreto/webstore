@@ -54,7 +54,8 @@ img{
     color: var(--cor-text);
     width: 25vw;
     padding: 1vw;
-    height: 100%;
+    width: 25vw;
+    height: 30vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 

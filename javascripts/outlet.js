@@ -150,6 +150,7 @@ btn_close.addEventListener("click", () => {
   }
 
   // FUNÇÃO PARA LAZY LOADING DAS IMAGENS---------------------------------------
+ 
   function lazyLoadImages() {
     const images = document.querySelectorAll("img[data-src]");
 
