@@ -563,8 +563,6 @@ section{
     cursor: pointer;
     font-weight: bolder;
     font-size: var(--card-font-size);
-    
-    /* display: none; */
 }
 
 .departamentos{
@@ -651,6 +649,7 @@ section{
     box-shadow: 3px 7px 5px 2px rgba(0, 0, 0, 0.2);
 }
 /* NEWSLETTER------------------------------------------------------------------ */
+
 .newsletter{
     display: flex;
     justify-content: space-around;

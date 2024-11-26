@@ -465,7 +465,7 @@ footer img{
         display: none;
     }
 
-    /* ---------------------------------------------------- */
+/* ---------------------------------------------------- */
 /* MENU USUARIO */
 
     .menu_user{
@@ -518,8 +518,8 @@ footer img{
         border-radius: 50%;
     }
 
-    /* ----------------------------------------------------------- */
-    /* CARRINHO */
+/* ----------------------------------------------------------- */
+/* CARRINHO */
 
     .cart{
         right: -100vw;
@@ -579,20 +579,10 @@ footer img{
 
     .title{
         margin-top: 25vw;
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
-    .container{
-        height: 90vh;
-        margin-top: 1vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        gap: 1vw;
-        margin-left: 4vw;
-        margin-right: 4vw;
-    }
+
     
     .grade{
         display: none;
@@ -603,7 +593,7 @@ footer img{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 3vh;
+        /* gap: 3vh; */
         border-radius: 0.5vw;
         width: 90vw;
         padding: 0vw;
@@ -613,8 +603,25 @@ footer img{
         display: none;
     }
 
+    .container{
+        height: 90vh;
+        margin-top: 5vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1vw;
+        margin-left: 4vw;
+        margin-right: 4vw;
+    }
+
+    .produto-box{
+        display: flex;
+    }
+
+
     #produtoSelecionado{
-        font-size: 10vw;
+        font-size: 6vw;
         width: 95vw;
     }
 
@@ -628,16 +635,23 @@ footer img{
     
     .produto-box img{
         width: 80vw;
+        top: 35vh;
+        position: absolute;
     }
 
     .preco-div{
         flex-direction: column;
+        display: flex;
         align-items: center;
-        gap: 5vw;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 80vw;
+        gap: 6vw;
     }
 
     #precode{
-        margin-top: 15vw;
+        position: relative;
+        margin-top: 30vw;
         font-size: 4vw;
     }
 
@@ -657,7 +671,8 @@ footer img{
     .add-to-cart-btn {
         background-color: #29be4e;
         border: none;
-        padding: 0.3vw;
+        margin-top: 2vw;
+        padding: 2vw;
         color: var(--cor-text);
         width: 90%;
         border-radius: 0.5vw;

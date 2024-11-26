@@ -29,7 +29,6 @@ body{
     background-color: var(--cor-bg);
     font-family: 'MinhaFonte', sans-serif;
     height: 100vh;
-    /* min-height: 720px; */
 }   
 
 header{
@@ -101,7 +100,6 @@ li a:hover::after{
     text-align: center;
     gap: 1vw;
     justify-content: space-between;
-    visibility: hidden;
 }
 
 .search-icon{
@@ -122,14 +120,13 @@ li a:hover::after{
 .cart-counter {
     position: absolute;
     bottom: 2.4vw;
-    right: 0.9vw;
+    right: 5vw;
     background-color: var(--cor-btn-addToCard);
     color: white;
     border-radius: 50%;
     padding: 0.2vw 0.4vw;
     font-size: 0.6vw;
 }
-
 /* ------------------------------------------------ */
 
 .title{
@@ -325,5 +322,36 @@ footer img{
     text-align: center;
 
 }
-/* FIM--------------------------------------------------------------------------- */
 
+/* ------------------------------------------------------- */
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    header{
+        display: flex;
+        height: 20vw;
+        justify-content: space-between;
+        margin-bottom: 1vw;
+    }
+
+    .logo{
+        width: 12vw;
+        margin: 0vw;
+    }
+
+    .cadastro{
+        width: 35vw;
+    }
+
+    .cadastro img{
+        width: 8vw;
+    }
+
+    .navbar{
+        display: none;
+    }
+
+    
+}
+/* ---------------------------------------------------- */
