@@ -779,55 +779,55 @@ footer img{
 /* ---------------------------------------------------- */
 /* MENU USUARIO */
 
-.menu_user{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    right: 0;
-    top: 0;
-    align-items: center;
-    background-color: var(--cor-btn-addToCard);
-    display: none;
-    z-index: 1;
-}
+    .menu_user{
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        right: 0;
+        top: 0;
+        align-items: center;
+        background-color: var(--cor-btn-addToCard);
+        display: none;
+        z-index: 1;
+    }
 
-.menu_user li{
-    font-size: 10vw;;
-    color: var(--cor-text);
-    text-align: center;
-}
+    .menu_user li{
+        font-size: 10vw;;
+        color: var(--cor-text);
+        text-align: center;
+    }
 
-.item_sair{
-    display: none;
-}
+    .item_sair{
+        display: none;
+    }
 
-.menu_user ul{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 0vw;
-    height: 10vh;
-}
+    .menu_user ul{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 0vw;
+        height: 10vh;
+    }
 
-.close{
-    display: flex;
-    justify-content: right;
-    align-items: right;
-    margin-bottom: 50vw;
-}
+    .close{
+        display: flex;
+        justify-content: right;
+        align-items: right;
+        margin-bottom: 50vw;
+    }
 
-.close-btn{
-    background-color: var(--cor-bg);
-    color: var(--cor-principal);
-    font-size: 7vw;
-    display: flex;
-    border: none;
-    padding: 2vw;
-    margin: 1vw;
-    cursor: pointer;
-    border-radius: 50%;
-}
+    .close-btn{
+        background-color: var(--cor-bg);
+        color: var(--cor-principal);
+        font-size: 7vw;
+        display: flex;
+        border: none;
+        padding: 2vw;
+        margin: 1vw;
+        cursor: pointer;
+        border-radius: 50%;
+    }
 
 /* ---------------------------------------------------- */
  /* CARROSSEL */
@@ -848,17 +848,31 @@ footer img{
 
     .cart-table td{
         font-size: 3vw;
+
     }
 
     .cart-table img{
         display: none;
     }
 
-
-    .quantity-btn{
+    .quantity-input{
         display: none;
     }
 
+
+    .quantity-btn{
+        display: none;
+        font-size: 4vh;
+        height: 7vw;
+        width: 7vw;
+    }
+
+    .quantity-control{
+        display: flex;
+        justify-content: center;
+        margin: 1vw;
+        padding: 0;
+    }
 
     .cart-table .remove-btn{
         width: 5vw;
@@ -1011,4 +1025,5 @@ footer img{
     footer{
         display: none;
     }
+
 }

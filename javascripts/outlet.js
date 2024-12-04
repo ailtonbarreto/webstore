@@ -53,7 +53,7 @@ btn_close.addEventListener("click", () => {
   menu_user.style.display = "none";
 });
 
-  // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
+  // CARREGAR PRODUTOS NA PAGINA------------------------------------------------
   async function carregar_produtos() {
  
     let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
@@ -61,7 +61,6 @@ btn_close.addEventListener("click", () => {
     let product_name = document.querySelector(".prod");
     let categoria = "Outlet";
 
-    // Filtra os dados carregados
     let filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1);
 
     
@@ -130,7 +129,7 @@ btn_close.addEventListener("click", () => {
     });
   }
 
-  // FUNÇÃO CLICAR NO PRODUTO-------------------------------------------------
+  // FUNCAO CLICAR NO PRODUTO-------------------------------------------------
   function produtoclicado(event) {
     let selected_product = event.target;
     let elementoPai = selected_product.parentElement.parentElement;
@@ -149,7 +148,7 @@ btn_close.addEventListener("click", () => {
     window.location.href = "./produto.html";
   }
 
-  // FUNÇÃO PARA LAZY LOADING DAS IMAGENS---------------------------------------
+  // FUNCAO PARA LAZY LOADING DAS IMAGENS---------------------------------------
  
   function lazyLoadImages() {
     const images = document.querySelectorAll("img[data-src]");
