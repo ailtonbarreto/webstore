@@ -52,10 +52,9 @@ img{
     align-items: center;
     border-radius: 0.5vw;
     color: var(--cor-text);
-    width: 25vw;
     padding: 1vw;
-    width: 25vw;
-    height: 30vw;
+    width: 60vh;
+    height: 90vh;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
