@@ -521,6 +521,12 @@ footer img{
 /* ---------------------------------------------------- */
 /* CARRINHO DE COMPRAS */
 
+
+    .cart{
+        width: 100vw;
+        right: -100vw;
+    }
+
     .quantity-btn {
         width: 6vw;
         height: 6vw;
