@@ -10,6 +10,10 @@ let cart_counter = document.querySelector(".cart-counter");
 let btn_close = document.querySelector(".close-btn");
 
 // localStorage.clear();
+// sessionstorage.clear();
+
+
+// ----------------------------------------------------------------------------
 
 if (statusValue === null) {
     localStorage.setItem("logged", 0);
@@ -50,9 +54,9 @@ btn_close.addEventListener("click", () => {
     menu_user.style.display = "none";
 });
 
-
+// ----------------------------------------------------------------------------
 /// CARREGAR DADOS DA API
-async function carregarDados() {
+async function carregarDadosApi() {
     try {
         const response = await fetch("https://api-webstore.onrender.com/integracao");
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
@@ -65,11 +69,30 @@ async function carregarDados() {
     }
 }
 
+// ----------------------------------------------------------------------------
+/// CARREGAR DADOS DA LOCAL
+async function carregarDados() {
+    try {
+        // const response = await fetch("https://api-webstore.onrender.com/integracao");
+        const response = await fetch("database/tb_produtos.json");
+        if (!response.ok) throw new Error("Erro ao obter os dados da API.");
+        const dadosArray = await response.json();
+        sessionStorage.setItem("dadosConsulta", JSON.stringify(dadosArray));
+        return dadosArray;
+    } catch (error) {
+        console.error("Erro ao obter os dados:", error);
+        return [];
+    }
+}
+
+// ----------------------------------------------------------------------------
+// CARREGAR DADOS DA SESSION STORAGE
 function carregarDadosDoSessionStorage() {
     const dadosSalvos = sessionStorage.getItem("dadosConsulta");
     return dadosSalvos ? JSON.parse(dadosSalvos) : [];
 }
 
+// ----------------------------------------------------------------------------
 // CARREGAR PRODUTOS
 async function load_products(categoria) {
     let dadosSalvos = carregarDadosDoSessionStorage();
@@ -86,6 +109,8 @@ async function load_products(categoria) {
     atualizarVisibilidade();
 }
 
+// ----------------------------------------------------------------------------
+// CRIAR CARD DE PRODUTOS
 function criarCardProduto(item) {
     const card = document.createElement("figure");
     card.id = item.PARENT;
@@ -148,6 +173,7 @@ function criarCardProduto(item) {
     return card;
 }
 
+// ----------------------------------------------------------------------------
 function atualizarVisibilidade() {
     // document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
     //     btn.style.display = (statusValue === "1") ? "block" : "none";
@@ -160,6 +186,8 @@ function atualizarVisibilidade() {
     });
 }
 
+// ----------------------------------------------------------------------------
+// PRODUTO CLICADO
 function produtoclicado(event) {
     const elementoPai = event.target.closest("figure");
     localStorage.setItem("produtoSelecionado", elementoPai.id);
@@ -170,6 +198,7 @@ function produtoclicado(event) {
     window.location.href = "./produto.html";
 }
 
+// ----------------------------------------------------------------------------
 // INICIALIZAR CARREGAMENTO DE PRODUTOS AO CARREGAR A PÁGINA
 window.addEventListener("load", async () => {
     await load_products("best_sellers");
