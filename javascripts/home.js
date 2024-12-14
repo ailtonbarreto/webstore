@@ -73,8 +73,8 @@ async function carregarDadosApi() {
 /// CARREGAR DADOS DA LOCAL
 async function carregarDados() {
     try {
-        // const response = await fetch("https://api-webstore.onrender.com/integracao");
-        const response = await fetch("database/tb_produtos.json");
+        const response = await fetch("https://api-webstore.onrender.com/integracao");
+        // const response = await fetch("database/tb_produtos.json");
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         const dadosArray = await response.json();
         sessionStorage.setItem("dadosConsulta", JSON.stringify(dadosArray));
