@@ -91,20 +91,6 @@ header {
 
 }
 
-.add-to-cart-btn {
-    background-color: var(--cor-btn-addToCard);
-    margin-left: 15vw;
-    margin-top: 1vw;
-    border: none;
-    padding: 0.3vw;
-    color: var(--cor-text);
-    width: 25%;
-    border-radius: 0.5vw;
-    cursor: pointer;
-    font-weight: bolder;
-    font-size: 0.7vw;
-
-}
 
 .remove-btn {
     width: 1vw;
@@ -781,28 +767,36 @@ footer img {
     }
 
     .navbar-mobile{
-        display: block;
-        position: absolute;
-        height: 100vh;
-        width: 50vw;
-        background-color: var(--cor-btn-addToCard);
-        z-index: 800000000;
+        display: flex;
+ 
 
     }
 
     .navbar-mobile{
-        display: none;
-        justify-content: space-around;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--cor-btn-addToCard);
+        z-index: 10000;
+        position: absolute;
+    }
+
+    .navlist-mobile{
+        display: flex;
+        width: 100vw;
+        flex-direction: column;
         align-items: center;
         text-align: center;
-        width: 100%;
     }
     
     .navlist-mobile li{
         display: flex;
+        align-items: center;
         gap: 4vw;
         font-size: large;
-        z-index: 2;
+        z-index: 200;
     }
 
     .cadastro {
@@ -870,7 +864,6 @@ footer img {
 
     .menu_user li {
         font-size: 10vw;
-        ;
         color: var(--cor-text);
         text-align: center;
     }
@@ -1021,14 +1014,6 @@ footer img {
         font-size: 4vw;
     }
 
-    .add-to-cart-btn {
-        display: none;
-        width: 50%;
-        height: 4vw;
-        font-size: 2.5vw;
-        margin: 1vw 0vw;
-    }
-
     .btn-prod {
         width: 60%;
         height: 5vw;
@@ -1074,7 +1059,5 @@ footer img {
     footer {
         display: none;
     }
-
-
 
 }

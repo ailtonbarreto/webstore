@@ -76,13 +76,6 @@ async function carregar_produtos() {
     card.id = `${item.PARENT}`;
     card.classList.add("card");
 
-    if (statusValue === "1") {
-      let cartButton = document.createElement("button");
-      cartButton.classList.add("add-to-cart-btn");
-      cartButton.textContent = "+ Add";
-      card.appendChild(cartButton);
-    }
-
     let list_name = document.createElement("a");
     list_name.classList.add("product-name");
     list_name.textContent = `${item.DESCRICAO}`;

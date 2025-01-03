@@ -116,12 +116,6 @@ function criarCardProduto(item) {
     card.id = item.PARENT;
     card.classList.add("card");
 
-    if (statusValue === "1") {
-        const cartButton = document.createElement("button");
-        cartButton.classList.add("add-to-cart-btn");
-        cartButton.textContent = "+ Add";
-        card.appendChild(cartButton);
-    }
 
     const list_name = document.createElement("a");
     list_name.classList.add("product-name");
@@ -175,15 +169,11 @@ function criarCardProduto(item) {
 
 // ----------------------------------------------------------------------------
 function atualizarVisibilidade() {
-    // document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
-    //     btn.style.display = (statusValue === "1") ? "block" : "none";
-    // });
+
     document.querySelectorAll(".preco-container").forEach(preco => {
         preco.style.display = (statusValue === "1") ? "flex" : "none";
     });
-    document.querySelectorAll(".btn-prod").forEach(prod_btn => {
-        prod_btn.style.display = (statusValue === "1") ? "none" : "block";
-    });
+
 }
 
 // ----------------------------------------------------------------------------

@@ -8,7 +8,6 @@ const subtotalElement = document.querySelector(".subtotal");
 
 // localStorage.clear();
 
-
 // ---------------------------------------------------------------------------
 // ABRIR E FECHAR CARRINHO
 openCartBtn.addEventListener('click', () => {

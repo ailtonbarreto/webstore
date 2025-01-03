@@ -53,8 +53,8 @@ img{
     border-radius: 0.5vw;
     color: var(--cor-text);
     padding: 1vw;
-    width: 60vh;
-    height: 90vh;
+    width: 40vw;
+    height: 50vw;
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -74,7 +74,7 @@ input{
     outline: none;
     border: none;
     border-radius: 2px;
-    height: 1.5vw;
+    height: 2vw;
     color: var(--cor-principal);
     font-weight: bold;
 }
@@ -84,13 +84,6 @@ label{
 }
 
 
-.message{
-    text-align: center;
-    font-size: var(--font-size);
-    margin: 1vw;
-    width: 100%;
-    color: rgb(134, 15, 15);
-}
 
 .btn{
     margin-top: 2vw;
@@ -102,6 +95,7 @@ label{
     border-radius: 0.2vw;
     color: var(--cor-principal);
     font-weight: bolder;
+    cursor: pointer;
 }
 
 span{
