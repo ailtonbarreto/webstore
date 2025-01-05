@@ -428,8 +428,8 @@ input[type="number"]::-webkit-inner-spin-button {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap: 3vh;
-    padding: 2vw;
+    gap: 3vw;
+    padding: 1vw;
     border-radius: 0.5vw;
     width: 30vw;
     height: 35vw;
