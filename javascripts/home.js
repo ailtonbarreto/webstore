@@ -98,7 +98,7 @@ async function load_products(categoria) {
     let dadosSalvos = carregarDadosDoSessionStorage();
     if (!dadosSalvos.length) dadosSalvos = await carregarDados();
 
-    const filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1);
+    const filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1 && Number(item.ESTOQUE_VENDA) > 0);
     const productContainer = document.querySelector(`.${categoria}`);
 
     filteredData.forEach(item => {

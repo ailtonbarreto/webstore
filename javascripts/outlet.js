@@ -61,8 +61,7 @@ btn_close.addEventListener("click", () => {
     let product_name = document.querySelector(".prod");
     let categoria = "Outlet";
 
-    let filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1);
-
+    let filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1 && Number(item.ESTOQUE_VENDA) > 0);
     
     product_name.innerHTML = '';
 
