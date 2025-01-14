@@ -46,6 +46,9 @@ header {
     top: 0;
 }
 
+.menu-container {
+    display: none;
+}
 
 /* --------------------------------------- */
 /* comeco do carrinho */
@@ -755,7 +758,7 @@ footer img {
 
 @media (max-width: 768px) {
 
-    body{
+    body {
         overflow-x: hidden;
     }
 
@@ -764,6 +767,62 @@ footer img {
         height: 20vw;
         justify-content: space-between;
         margin-bottom: 1vw;
+    }
+
+    .menu-container{
+        display: block;
+    }
+
+    /* Ícone do menu */
+    .mobile-icon {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+    }
+
+    /* Menu retrátil */
+    .menu-content {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #32CD32;
+        /* Cor de fundo do menu */
+        overflow-x: hidden;
+        transition: width 0.4s ease;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Links do menu */
+    .menu-content a {
+        font-size: 24px;
+        color: white;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: color 0.3s;
+    }
+
+    .menu-content a:hover {
+        color: #ddd;
+    }
+
+    /* Botão de fechar */
+    .menu-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
     }
 
     .logo {
@@ -781,7 +840,7 @@ footer img {
 
     .mobile-icon {
         display: block;
-        width: 5vw;
+        width: 10vw;
     }
 
     .mobile-icon img {
@@ -861,15 +920,13 @@ footer img {
     }
 
     .close-btn {
-        background-color: var(--cor-bg);
-        color: var(--cor-principal);
-        font-size: 7vw;
-        display: flex;
-        border: none;
-        padding: 2vw;
-        margin: 1vw;
+        background: transparent;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
         cursor: pointer;
-        border-radius: 50%;
+        color: white;
     }
 
     /* ---------------------------------------------------- */

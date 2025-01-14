@@ -195,3 +195,16 @@ window.addEventListener("load", async () => {
     await load_products("destaques");
     await load_products("estoque_limitado");
 });
+
+
+// ----------------------------------------------------------------------------
+// MENU TOOGLE MOBILE
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    if (menu.style.width === "100%") {
+      menu.style.width = "0";
+    } else {
+      menu.style.width = "100%";
+    }
+  }
+  

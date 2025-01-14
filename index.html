@@ -16,36 +16,46 @@
 </head>
 
 <body>
-     
+
     <div id="cart" class="cart">
-        
-      <button id="close-cart">X</button>
-      <h2 style="color:#0f8f8f">Meu Carrinho</h2>
-      <hr style="border: 1px solid #0f8f8f; margin: 1vw" >
 
-      <div id="cart-items">
-        
+        <button id="close-cart">X</button>
+        <h2 style="color:#0f8f8f">Meu Carrinho</h2>
+        <hr style="border: 1px solid #0f8f8f; margin: 1vw">
 
+        <div id="cart-items">
 
-      </div>
-    
-      <div class="finish-btn">
+        </div>
 
-        <p class="subtotal"><span>Subtotal: 00</span></p>
+        <div class="finish-btn">
 
-        <a href="./pedido.html" class="finish">Finalizar Pedido</a>
+            <p class="subtotal"><span>Subtotal: 00</span></p>
 
-      </div>
+            <a href="./pedido.html" class="finish">Finalizar Pedido</a>
+
+        </div>
 
     </div>
 
 
     <header>
 
+        <div class="menu-container">
 
-        <div class="mobile-icon">
+            <img src="./Assets/menu-mobile-icon.png" class="mobile-icon" alt="Menu" onclick="toggleMenu()">
 
-            <img src="./Assets/menu-mobile-icon.png" alt="">
+
+            <div id="menu" class="menu-content">
+
+                <div class="menu-close" onclick="toggleMenu()">✖</div>
+
+                <a href="./roupas.html">Roupas</a>
+                <a href="./tenis.html">Tênis</a>
+                <a href="./mochila.html">Mochilas</a>
+                <a href="./bone.html">Chapelaria</a>
+                <a href="./outlet.html">Outlet</a>
+
+            </div>
 
         </div>
 
@@ -54,7 +64,7 @@
             <a href="#"><img class="logo" src="./Assets/logo.png" alt=""></a>
 
         </div>
-        
+
         <div class="navbar">
             <ul class="navlist">
                 <li><a href="./roupas.html">Roupas</a></li>
@@ -69,12 +79,19 @@
 
             <div class="close">
                 <button class="close-btn">X</button>
+    
             </div>
-            
+
             <ul>
-                <a class="item_entrar" href="./login.html"><li>Entrar</li></a>
-                <a class="item_cadastro" href="./cadastro.html"><li>Cadastrar</li></a>
-                <a class="item_pedidos" href="./meuspedidos.html"><li>Meus Pedidos</li></a>
+                <a class="item_entrar" href="./login.html">
+                    <li>Entrar</li>
+                </a>
+                <a class="item_cadastro" href="./cadastro.html">
+                    <li>Cadastrar</li>
+                </a>
+                <a class="item_pedidos" href="./meuspedidos.html">
+                    <li>Meus Pedidos</li>
+                </a>
                 <li class="item_sair" onclick="localStorage.setItem('logged', 0); window.location.reload();">Sair</li>
             </ul>
 
@@ -96,25 +113,29 @@
         <div class="carousel">
             <button class="prev" onclick="changeSlide(-1)">&lt;</button>
             <div class="carousel-images">
-                <a href="./outlet.html" class="link1"><img src="./Assets/banner-home1.png" data-mobile="./Assets/banner1.png" class="slide"></a>
-                <a href="./roupas.html" class="link2"><img src="./Assets/banner-home2.png" data-mobile="./Assets/banner2.png" class="slide"></a>
-                <a href="./bone.html" class="link3"><img src="./Assets/banner-home3.png" data-mobile="./Assets/banner3.png" class="slide"></a>
+                <a href="./outlet.html" class="link1"><img src="./Assets/banner-home1.png"
+                        data-mobile="./Assets/banner1.png" class="slide"></a>
+                <a href="./roupas.html" class="link2"><img src="./Assets/banner-home2.png"
+                        data-mobile="./Assets/banner2.png" class="slide"></a>
+                <a href="./bone.html" class="link3"><img src="./Assets/banner-home3.png"
+                        data-mobile="./Assets/banner3.png" class="slide"></a>
             </div>
             <button class="next" onclick="changeSlide(1)">&gt;</button>
         </div>
     </div>
-    
+
 
     <div class="logowhats">
-        <a href="https://wa.me/5516988134637" target="_blank"><img class="zap" src="./Assets/logo-whatsapp.png" alt=""></a>
+        <a href="https://wa.me/5516988134637" target="_blank"><img class="zap" src="./Assets/logo-whatsapp.png"
+                alt=""></a>
     </div>
 
     <div class="texto-home" id="home1">
         <h1>Best Sellers</h1>
     </div>
 
-    <section  id="best_sellers" class="best_sellers">
-  
+    <section id="best_sellers" class="best_sellers">
+
     </section>
 
 
@@ -175,7 +196,7 @@
 
     <section id="estoque_limitado" class="estoque_limitado">
 
-       
+
     </section>
 
     <div class="newsletter">
@@ -194,12 +215,12 @@
 
                 Se inscreva na nossa newsletter e receba nossas promoções<br>
                 e novidades
-    
+
             </p>
 
 
         </div>
-        
+
 
         <form class="newsletter_form" id="newsletterForm">
 
@@ -264,7 +285,7 @@
 
     <div class="assinatura">
 
-        
+
     </div>
     <a href="https://www.ailtonbarreto.com.br/">
 

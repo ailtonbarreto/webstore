@@ -275,16 +275,16 @@ td {
 
 #success-ok-btn{
     display: flex;
-    background-color:  #29be4e;
+    background-color:  var(--cor-btn-addToCard);
     border-radius: 0.3vw;
     color: var(--cor-text);
-    padding: 0.5vw;
+    padding: 2vw;
     border: none;
     align-items: center;
     justify-content: center;
-    width: 15vw;
-    height: 2.5vw;
-    font-size: 1.4vw;
+    width: 20vw;
+    height: 2vh;
+    font-size: 3vw;
     text-align: center;
     cursor: pointer;
 }
