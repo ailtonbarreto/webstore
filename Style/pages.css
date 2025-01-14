@@ -755,6 +755,10 @@ footer img {
 
 @media (max-width: 768px) {
 
+    body{
+        overflow-x: hidden;
+    }
+
     header {
         display: flex;
         height: 20vw;
@@ -766,38 +770,6 @@ footer img {
         display: none;
     }
 
-    .navbar-mobile{
-        display: flex;
- 
-
-    }
-
-    .navbar-mobile{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100vw;
-        height: 100vh;
-        background-color: var(--cor-btn-addToCard);
-        z-index: 10000;
-        position: absolute;
-    }
-
-    .navlist-mobile{
-        display: flex;
-        width: 100vw;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .navlist-mobile li{
-        display: flex;
-        align-items: center;
-        gap: 4vw;
-        font-size: large;
-        z-index: 200;
-    }
 
     .cadastro {
         width: 35vw;
@@ -948,6 +920,7 @@ footer img {
 
     .texto-home {
         font-size: 5vw;
+        margin-top: 20vw;
     }
 
     .texto-home-dep,
