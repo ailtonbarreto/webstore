@@ -773,7 +773,7 @@ footer img {
         display: block;
     }
 
-    /* Ícone do menu */
+    
     .mobile-icon {
         width: 30px;
         height: 30px;
@@ -784,25 +784,23 @@ footer img {
         z-index: 2;
     }
 
-    /* Menu retrátil */
+
     .menu-content {
         height: 100%;
         width: 0;
         position: fixed;
         top: 0;
         left: 0;
-        background-color: #32CD32;
-        /* Cor de fundo do menu */
+        background-color: var(--cor-btn-addToCard);
         overflow-x: hidden;
         transition: width 0.4s ease;
-        z-index: 1;
+        z-index: 100;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    /* Links do menu */
     .menu-content a {
         font-size: 24px;
         color: white;
@@ -890,7 +888,7 @@ footer img {
         align-items: center;
         background-color: var(--cor-btn-addToCard);
         display: none;
-        z-index: 1;
+        z-index: 10;
     }
 
     .menu_user li {
@@ -977,6 +975,10 @@ footer img {
 
     .texto-home {
         font-size: 5vw;
+        margin-top: 10vw;
+    }
+
+    .home-mobile{
         margin-top: 20vw;
     }
 
