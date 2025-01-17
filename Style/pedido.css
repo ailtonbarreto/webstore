@@ -44,6 +44,14 @@ header{
     top: 0;
 }
 
+.menu-container{
+    display: none;
+}
+
+.menu_user{
+    display: none;
+}
+
 .div-logo{
     display: flex;
     margin-right: 3vw;
