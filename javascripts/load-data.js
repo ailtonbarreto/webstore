@@ -65,8 +65,6 @@ async function carregar_produtos() {
   let product_name = document.querySelector(".prod");
   let categoria = document.querySelector("#category").textContent.trim();
 
-  // Filtra os dados carregados
-  // let filteredData = dadosSalvos.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1);
   let filteredData = dadosSalvos.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1 && Number(item.ESTOQUE_VENDA) > 0);
   
   product_name.innerHTML = '';

@@ -74,7 +74,6 @@ async function carregarDadosApi() {
 async function carregarDados() {
     try {
         const response = await fetch("https://api-webstore.onrender.com/integracao");
-        // const response = await fetch("database/tb_produtos.json");
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         const dadosArray = await response.json();
         sessionStorage.setItem("dadosConsulta", JSON.stringify(dadosArray));
@@ -109,13 +108,32 @@ async function load_products(categoria) {
     atualizarVisibilidade();
 }
 
-// ----------------------------------------------------------------------------
-// CRIAR CARD DE PRODUTOS
+// ------------------------------------------------------------------------------
+// TENTAR RECARREGAR IMAGEM SE DER ERRO
+
+function carregarImagem(imagem, src, tentativas = 0) {
+    const maxTentativas = 3;
+
+  
+    imagem.src = src;
+
+    imagem.addEventListener('error', function() {
+        if (tentativas < maxTentativas) {
+   
+            setTimeout(() => carregarImagem(imagem, src, tentativas + 1), 1000);
+        } else {
+            imagem.src = ".Assets/logo.png";
+        }
+    });
+}
+
+// ------------------------------------------------------------------------------
+// CRIAR CARD DE PRODUTO
+
 function criarCardProduto(item) {
     const card = document.createElement("figure");
     card.id = item.PARENT;
     card.classList.add("card");
-
 
     const list_name = document.createElement("a");
     list_name.classList.add("product-name");
@@ -126,11 +144,13 @@ function criarCardProduto(item) {
     imageLink.classList.add("produto");
 
     const imagem = document.createElement("img");
-    imagem.src = item.IMAGEM;
     imagem.loading = "lazy";
     imagem.alt = item.DESCRICAO;
     imagem.addEventListener("click", produtoclicado);
     
+    // Carregar a imagem com a função de tentativa
+    carregarImagem(imagem, item.IMAGEM);
+
     imageLink.appendChild(imagem);
     card.appendChild(imageLink);
 

@@ -777,7 +777,6 @@ footer img {
 
 .assinatura {
     font-weight: thin;
-    /* margin-top: 1vw; */
     background-color: var(--cor-bg);
     color: var(--cor-principal);
     text-align: center;
