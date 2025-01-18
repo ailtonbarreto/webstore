@@ -196,46 +196,44 @@
 
     <section id="estoque_limitado" class="estoque_limitado">
 
-
     </section>
 
     <div class="newsletter">
 
-
         <div class="text-newsletter">
 
-            <div>
-
-                <p class="wetext"><strong class="web-text">WebStore B2B </strong>Newsletter</p>
-
-            </div>
-
+            <p class="wetext"><strong class="web-text">WebStore B2B</strong> Newsletter</p>
 
             <p class="wetext1">
-
                 Se inscreva na nossa newsletter e receba nossas promoções<br>
                 e novidades
-
             </p>
 
-
         </div>
-
-
+    
         <form class="newsletter_form" id="newsletterForm">
 
-            <input id="nome" type="text" placeholder="Nome">
 
-            <input id="fone" type="number" placeholder="Fone">
+            <input id="nome" type="text" placeholder="Nome" required>
+    
 
-            <input id="email" type="email" placeholder="Email">
+            <input id="fone" type="tel" placeholder="Fone" required>
+    
 
+            <input id="email" type="email" placeholder="Email" required>
+    
             <button type="submit">Cadastrar</button>
 
         </form>
 
     </div>
+   
+    <div id="fullscreenSpinner" class="fullscreen-spinner" style="display: none;">
 
+        <div class="spinner"></div>
+
+    </div>
+    
     <footer>
 
         <div class="container-footer">

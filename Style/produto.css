@@ -43,6 +43,10 @@ header {
     z-index: 1;
 }
 
+.menu-container {
+    display: none;
+}
+
 .div-logo {
     display: flex;
     margin-right: 3vw;
@@ -518,8 +522,56 @@ footer img {
     }
 
     .logo {
-        width: 12vw;
-        margin: 0vw;
+        display: none;
+    }
+
+    .menu-container {
+        display: block;
+    }
+    
+    .mobile-icon {
+        width: 10vw;
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+    }
+
+
+    .menu-content {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: var(--cor-btn-addToCard);
+        overflow-x: hidden;
+        transition: width 0.4s ease;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-content a {
+        font-size: 24px;
+        color: white;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: color 0.3s;
+    }
+
+
+    /* Botão de fechar */
+    .menu-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
     }
 
     .cadastro {

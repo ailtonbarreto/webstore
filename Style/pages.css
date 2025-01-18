@@ -660,12 +660,6 @@ section {
     padding: 2vw;
 }
 
-.text-newslette {
-    display: flex;
-    display: left;
-}
-
-
 
 .text-newsletter div {
     display: flex;
@@ -676,12 +670,12 @@ section {
 
 .web-text {
     font-size: 2vw;
-
     color: var(--cor-text);
 }
 
 .wetext {
     font-size: 1.5vw;
+    color: var(--cor-text);
 
 }
 
@@ -719,6 +713,42 @@ section {
     margin-top: 0.2vw;
     padding: 0.5vw;
 }
+
+
+.fullscreen-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ddd;
+    border-top: 6px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 
 /* RODAPE----------------------------------------------------------------------- */
 footer {
@@ -775,8 +805,7 @@ footer img {
 
     
     .mobile-icon {
-        width: 30px;
-        height: 30px;
+        width: 10vw;
         cursor: pointer;
         position: fixed;
         top: 20px;
@@ -809,9 +838,7 @@ footer img {
         transition: color 0.3s;
     }
 
-    .menu-content a:hover {
-        color: #ddd;
-    }
+
 
     /* Botão de fechar */
     .menu-close {
