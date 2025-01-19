@@ -9,7 +9,6 @@ let item_pedidos = document.querySelector(".item_pedidos");
 let cart_counter = document.querySelector(".cart-counter");
 let btn_close = document.querySelector(".close-btn");
 
-
 // ----------------------------------------------------------------------------
 // USER
 
@@ -26,14 +25,12 @@ if (statusValue === "0") {
   item_sair.style.display = "block";
   item_cadastro.style.display = "none";
   item_entrar.style.display = "none";
-  
 }
 
 if (statusValue === null) {
   localStorage.setItem("logged", 0);
   statusValue = "0";
 }
-
 
 function toggle_menu() {
   if (menu_user.style.display === "block") {
@@ -56,7 +53,6 @@ async function carregar_produtos() {
  
   let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
 
- 
   if (!dadosSalvos) {
     await carregar_dados_local(); 
     dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
@@ -87,6 +83,7 @@ async function carregar_produtos() {
     imagem.loading = "lazy";
     imagem.addEventListener("click", produtoclicado);
     imagem.alt = item.DESCRICAO;
+    imagem.onerror = () => carregarImagem(imagem);
     imageLink.appendChild(imagem);
     card.appendChild(imageLink);
 
@@ -144,6 +141,32 @@ function produtoclicado(event) {
   window.location.href = "./produto.html";
 }
 
+// FUNÇÃO PARA TENTAR CARREGAR IMAGEM---------------------------------------
+function carregarImagem(img) {
+  const maxTentativas = 5; // Número máximo de tentativas
+  let tentativas = 0;
+
+  function tentarCarregar() {
+    const tempImg = new Image();
+    tempImg.onload = function () {
+      img.src = tempImg.src; // Define a imagem no elemento original
+    };
+
+    tempImg.onerror = function () {
+      tentativas++;
+      if (tentativas < maxTentativas) {
+        setTimeout(tentarCarregar, 1000); // Tenta novamente após 1 segundo
+      } else {
+        console.error(`Falha ao carregar a imagem após ${maxTentativas} tentativas: ${img.src}`);
+      }
+    };
+
+    tempImg.src = img.src; // Tenta carregar a URL original
+  }
+
+  tentarCarregar();
+}
+
 // FUNÇÃO PARA LAZY LOADING DAS IMAGENS---------------------------------------
 function lazyLoadImages() {
   const images = document.querySelectorAll("img[data-src]");
@@ -157,6 +180,10 @@ function lazyLoadImages() {
             img.src = img.dataset.src;
             img.removeAttribute("data-src");
             observer.unobserve(img);
+
+            // Verifica se a imagem carregou corretamente
+            img.onload = () => console.log(`Imagem carregada: ${img.src}`);
+            img.onerror = () => carregarImagem(img); // Tenta novamente caso falhe
           }
         }
       });
@@ -171,6 +198,8 @@ function lazyLoadImages() {
   } else {
     images.forEach(img => {
       img.src = img.dataset.src;
+      img.onload = () => console.log(`Imagem carregada: ${img.src}`);
+      img.onerror = () => carregarImagem(img); // Tenta novamente caso falhe
     });
   }
 }
@@ -181,7 +210,7 @@ carregar_produtos().then(() => {
 });
 
 // ----------------------------------------------------------------------------
-// MENU TOOGLE MOBILE
+// MENU TOGGLE MOBILE
 function toggleMenu() {
   var menu = document.getElementById("menu");
   if (menu.style.width === "100%") {
