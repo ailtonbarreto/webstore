@@ -1,4 +1,4 @@
-// funcao para carregar pedidos da API e armazená-los no sessionStorage
+// Função para carregar pedidos da API e armazená-los no sessionStorage
 async function load_pedidos() {
     try {
         const response = await fetch("https://api-webstore.onrender.com/vendas");
@@ -16,7 +16,7 @@ async function load_pedidos() {
     }
 }
 
-// funcao para carregar pedidos armazenados no sessionStorage
+// Função para carregar pedidos armazenados no sessionStorage
 function carregarPedidosSessionStorage() {
     try {
         const compressedData = sessionStorage.getItem("pedidos");
@@ -27,7 +27,7 @@ function carregarPedidosSessionStorage() {
     }
 }
 
-// funcao principal para carregar a tela com os pedidos
+// Função principal para carregar a tela com os pedidos
 async function load_tela() {
     const container = document.getElementById("pedidos-container");
     if (container) container.innerHTML = "<p>Carregando pedidos...</p>";
@@ -46,13 +46,13 @@ async function load_tela() {
         return;
     }
 
-    const filtered_pedidos = dadosSalvos.filter(item => item.PEDIDO === "PED69197");
+    const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === "0");
     console.log("Pedidos filtrados:", filtered_pedidos);
 
     renderPedidos(filtered_pedidos);
 }
 
-// funcao para renderizar os pedidos no contêiner
+// Função para renderizar os pedidos em uma tabela
 function renderPedidos(pedidos) {
     const container = document.getElementById("pedidos-container");
     if (!container) {
@@ -60,29 +60,61 @@ function renderPedidos(pedidos) {
         return;
     }
 
-    if (!Array.isArray(pedidos) || !pedidos.length) {
+    if (!pedidos || pedidos.length === 0) {
         console.warn("Nenhum pedido disponível para renderizar.");
         container.innerHTML = "<p>Nenhum pedido encontrado.</p>";
         return;
     }
 
-    container.innerHTML = "";
+    // Criação da tabela
+    const tabela = document.createElement("table");
+    tabela.setAttribute("border", "1");
+    tabela.innerHTML = `
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Emissão</th>
+                <th>Entrega</th>
+                <th>SKU Cliente</th>
+                <th>SKU</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    `;
+
+    const tbody = tabela.querySelector("tbody");
 
     pedidos.forEach(pedido => {
-        const id = pedido.ID || "ID não disponível";
-        const cliente = pedido.CLIENTE || "Cliente não informado";
-        const sku = pedido.SKU_CLIENTE || "SKU não disponível";
+        const tr = document.createElement("tr");
 
-        const pedidoElement = document.createElement("div");
-        pedidoElement.className = "pedido-item";
-        pedidoElement.innerHTML = `
-            <p><strong>ID:</strong> ${id}</p>
-            <p><strong>Cliente:</strong> ${cliente}</p>
-            <p><strong>SKU:</strong> ${sku}</p>
-        `;
-        container.appendChild(pedidoElement);
+        const tdId = document.createElement("td");
+        tdId.textContent = pedido.PARENT || "ID não disponível";
+
+        const tdEmissao = document.createElement("td");
+        tdEmissao.textContent = pedido.EMISSAO || "Data de emissão não disponível";
+
+        const tdEntrega = document.createElement("td");
+        tdEntrega.textContent = pedido.ENTREGA || "Data de entrega não disponível";
+
+        const tdSkuCliente = document.createElement("td");
+        tdSkuCliente.textContent = pedido.SKU_CLIENTE || "SKU Cliente não disponível";
+
+        const tdSku = document.createElement("td");
+        tdSku.textContent = pedido.SKU || "SKU não disponível";
+
+        tr.appendChild(tdId);
+        tr.appendChild(tdEmissao);
+        tr.appendChild(tdEntrega);
+        tr.appendChild(tdSkuCliente);
+        tr.appendChild(tdSku);
+
+        tbody.appendChild(tr);
     });
+
+    container.innerHTML = "";  // Limpa o conteúdo do contêiner
+    container.appendChild(tabela);  // Adiciona a tabela ao contêiner
 }
 
-// Chamar a funcao principal ao carregar a página
+// Chamar a função principal para carregar a página
 load_tela();
