@@ -32,11 +32,13 @@ async function load_tela() {
     const container = document.getElementById("pedidos-container");
     if (container) container.innerHTML = "<p>Carregando pedidos...</p>";
 
+    let cliente = localStorage.getItem("sku_cliente");
     let dadosSalvos = carregarPedidosSessionStorage();
     console.log("Dados carregados do sessionStorage:", dadosSalvos);
+    console.log(cliente);
 
     if (!dadosSalvos.length) {
-        console.log("Carregando dados da API...");
+        console.log("Carregando");
         dadosSalvos = await load_pedidos();
     }
 
@@ -46,7 +48,7 @@ async function load_tela() {
         return;
     }
 
-    const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === "0");
+    const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === cliente);
     console.log("Pedidos filtrados:", filtered_pedidos);
 
     renderPedidos(filtered_pedidos);
@@ -88,32 +90,27 @@ function renderPedidos(pedidos) {
     pedidos.forEach(pedido => {
         const tr = document.createElement("tr");
 
-        const tdId = document.createElement("td");
-        tdId.textContent = pedido.PARENT || "ID não disponível";
 
         const tdEmissao = document.createElement("td");
         tdEmissao.textContent = pedido.EMISSAO || "Data de emissão não disponível";
 
-        const tdEntrega = document.createElement("td");
-        tdEntrega.textContent = pedido.ENTREGA || "Data de entrega não disponível";
 
         const tdSkuCliente = document.createElement("td");
         tdSkuCliente.textContent = pedido.SKU_CLIENTE || "SKU Cliente não disponível";
 
         const tdSku = document.createElement("td");
-        tdSku.textContent = pedido.SKU || "SKU não disponível";
+        tdSku.textContent = pedido.DESCRICAO || "SKU não disponível";
 
-        tr.appendChild(tdId);
+    
         tr.appendChild(tdEmissao);
-        tr.appendChild(tdEntrega);
         tr.appendChild(tdSkuCliente);
         tr.appendChild(tdSku);
 
         tbody.appendChild(tr);
     });
 
-    container.innerHTML = "";  // Limpa o conteúdo do contêiner
-    container.appendChild(tabela);  // Adiciona a tabela ao contêiner
+    container.innerHTML = "";  //
+    container.appendChild(tabela);
 }
 
 // Chamar a função principal para carregar a página
