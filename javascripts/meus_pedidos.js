@@ -1,3 +1,62 @@
+// Função principal para carregar a tela com os pedidos
+async function load_tela() {
+    const container = document.getElementById("pedidos-container");
+    if (container) container.innerHTML = "<p>Carregando pedidos...</p>";
+
+    let cliente = localStorage.getItem("sku_cliente");
+    console.log("SKU do cliente carregado:", cliente);
+
+    // Carregar dados salvos
+    let dadosSalvos = carregarPedidosSessionStorage();
+
+    if (!dadosSalvos.length) {
+        console.log("Nenhum dado encontrado no sessionStorage, carregando da API...");
+        dadosSalvos = await load_pedidos();
+    }
+
+    if (!Array.isArray(dadosSalvos)) {
+        console.error("Erro: os dados carregados não são um array.");
+        if (container) container.innerHTML = "<p>Erro ao carregar pedidos.</p>";
+        return;
+    }
+
+    console.log("Dados completos antes do filtro:", dadosSalvos);
+
+    // Filtrar pedidos por cliente
+    const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === cliente);
+    console.log("Pedidos filtrados:", filtered_pedidos);
+
+    // Remover duplicados com base no campo PEDIDO
+    const pedidosSemDuplicados = removerDuplicados(filtered_pedidos, "PEDIDO");
+    console.log("Pedidos filtrados e sem duplicados:", pedidosSemDuplicados);
+
+    // Salvar os pedidos filtrados e sem duplicados no sessionStorage
+    try {
+        const compressedFiltered = LZString.compress(JSON.stringify(pedidosSemDuplicados));
+        sessionStorage.setItem("pedidos_filtrados", compressedFiltered);
+        console.log("Pedidos filtrados e sem duplicados salvos no sessionStorage:", pedidosSemDuplicados);
+    } catch (error) {
+        console.error("Erro ao salvar os pedidos filtrados no sessionStorage:", error);
+    }
+
+    // Renderizar os pedidos
+    renderPedidos(pedidosSemDuplicados);
+}
+
+// Função para remover duplicados com base em um campo específico
+function removerDuplicados(array, campoUnico) {
+    console.log(`Removendo duplicados com base no campo: ${campoUnico}`);
+    const itensUnicos = new Map();
+    array.forEach(item => {
+        if (!itensUnicos.has(item[campoUnico])) {
+            itensUnicos.set(item[campoUnico], item);
+        } else {
+            console.log(`Item duplicado encontrado:`, item);
+        }
+    });
+    return Array.from(itensUnicos.values());
+}
+
 // Função para carregar pedidos da API e armazená-los no sessionStorage
 async function load_pedidos() {
     try {
@@ -5,10 +64,14 @@ async function load_pedidos() {
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         
         const tabela = await response.json();
+        console.log("Dados recebidos da API:", tabela);
+
         if (!Array.isArray(tabela)) throw new Error("Formato de dados inválido.");
-        
+
         const compressedData = LZString.compress(JSON.stringify(tabela));
         sessionStorage.setItem("pedidos", compressedData);
+        console.log("Dados salvos no sessionStorage:", tabela);
+
         return tabela;
     } catch (error) {
         console.error("Erro ao obter os Pedidos:", error);
@@ -19,39 +82,23 @@ async function load_pedidos() {
 // Função para carregar pedidos armazenados no sessionStorage
 function carregarPedidosSessionStorage() {
     try {
+        const compressedFiltered = sessionStorage.getItem("pedidos_filtrados");
+        if (compressedFiltered) {
+            const dadosFiltrados = JSON.parse(LZString.decompress(compressedFiltered));
+            console.log("Dados filtrados carregados do sessionStorage:", dadosFiltrados);
+            return dadosFiltrados;
+        }
+
         const compressedData = sessionStorage.getItem("pedidos");
-        return compressedData ? JSON.parse(LZString.decompress(compressedData)) : [];
+        const dadosCompletos = compressedData 
+            ? JSON.parse(LZString.decompress(compressedData)) 
+            : [];
+        console.log("Dados completos carregados do sessionStorage:", dadosCompletos);
+        return dadosCompletos;
     } catch (error) {
         console.error("Erro ao carregar dados do sessionStorage:", error);
         return [];
     }
-}
-
-// Função principal para carregar a tela com os pedidos
-async function load_tela() {
-    const container = document.getElementById("pedidos-container");
-    if (container) container.innerHTML = "<p>Carregando pedidos...</p>";
-
-    let cliente = localStorage.getItem("sku_cliente");
-    let dadosSalvos = carregarPedidosSessionStorage();
-    console.log("Dados carregados do sessionStorage:", dadosSalvos);
-    console.log(cliente);
-
-    if (!dadosSalvos.length) {
-        console.log("Carregando");
-        dadosSalvos = await load_pedidos();
-    }
-
-    if (!Array.isArray(dadosSalvos)) {
-        console.error("Erro: os dados carregados não são um array.");
-        if (container) container.innerHTML = "<p>Erro ao carregar pedidos.</p>";
-        return;
-    }
-
-    const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === cliente);
-    console.log("Pedidos filtrados:", filtered_pedidos);
-
-    renderPedidos(filtered_pedidos);
 }
 
 // Função para renderizar os pedidos em uma tabela
@@ -68,17 +115,16 @@ function renderPedidos(pedidos) {
         return;
     }
 
+    console.log("Renderizando pedidos na tabela:", pedidos);
+
     // Criação da tabela
     const tabela = document.createElement("table");
     tabela.setAttribute("border", "1");
     tabela.innerHTML = `
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Emissão</th>
-                <th>Entrega</th>
-                <th>SKU Cliente</th>
-                <th>SKU</th>
+                <th>Pedido</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -90,26 +136,19 @@ function renderPedidos(pedidos) {
     pedidos.forEach(pedido => {
         const tr = document.createElement("tr");
 
+        const tdpedido = document.createElement("td");
+        tdpedido.textContent = pedido.PEDIDO;
 
-        const tdEmissao = document.createElement("td");
-        tdEmissao.textContent = pedido.EMISSAO || "Data de emissão não disponível";
+        const tdstatus = document.createElement("td");
+        tdstatus.textContent = pedido.STATUS;
 
-
-        const tdSkuCliente = document.createElement("td");
-        tdSkuCliente.textContent = pedido.SKU_CLIENTE || "SKU Cliente não disponível";
-
-        const tdSku = document.createElement("td");
-        tdSku.textContent = pedido.DESCRICAO || "SKU não disponível";
-
-    
-        tr.appendChild(tdEmissao);
-        tr.appendChild(tdSkuCliente);
-        tr.appendChild(tdSku);
+        tr.appendChild(tdpedido);
+        tr.appendChild(tdstatus);
 
         tbody.appendChild(tr);
     });
 
-    container.innerHTML = "";  //
+    container.innerHTML = "";
     container.appendChild(tabela);
 }
 
