@@ -106,12 +106,6 @@ li a:hover::after {
     justify-content: space-between;
 }
 
-.search-icon {
-    width: 1.2vw;
-    cursor: pointer;
-
-}
-
 .cart-icon {
     width: 1.2vw;
     cursor: pointer;
