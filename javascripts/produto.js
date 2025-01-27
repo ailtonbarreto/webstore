@@ -3,6 +3,9 @@
 window.onload = function () {
   const produto = localStorage.getItem("produtoSelecionado");
   const img = localStorage.getItem("foto");
+  let user_icon = document.querySelector(".login");
+  let item_sair = document.querySelector(".item_sair");
+  let menu_user = document.querySelector(".menu_user");
   const nome = localStorage.getItem("nome");
   const preco_de = localStorage.getItem("preco_de");
   const preco_por = localStorage.getItem("preco_por");
@@ -37,6 +40,26 @@ window.onload = function () {
     console.log(" ");
   }
 };
+
+// ----------------------------------------------------------------------------
+// USER
+
+function toggle_menu() {
+  if (menu_user.style.display === "block") {
+    menu_user.style.display = "none";
+  } else {
+    menu_user.style.display = "block";
+  }
+}
+
+user_icon.addEventListener("click", () => {
+  menu_user.style.display = "block";
+});
+
+btn_close.addEventListener("click", () => {
+  menu_user.style.display = "none";
+});
+
 
 document.addEventListener("DOMContentLoaded", updateCartCounter);
 
