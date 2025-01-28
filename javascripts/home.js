@@ -94,6 +94,9 @@ function carregarDadosDoSessionStorage() {
 // ----------------------------------------------------------------------------
 // CARREGAR PRODUTOS
 async function load_products(categoria) {
+    const spinner = document.getElementById("spinner");
+    spinner.style.display = "block"; // Mostrar o spinner
+
     let dadosSalvos = carregarDadosDoSessionStorage();
     if (!dadosSalvos.length) dadosSalvos = await carregarDados();
 
@@ -105,8 +108,10 @@ async function load_products(categoria) {
         productContainer.appendChild(card);
     });
 
+    spinner.style.display = "none"; // Esconder o spinner após carregar os produtos
     atualizarVisibilidade();
 }
+
 
 // ------------------------------------------------------------------------------
 // TENTAR RECARREGAR IMAGEM SE DER ERRO
@@ -227,4 +232,5 @@ function toggleMenu() {
       menu.style.width = "100%";
     }
   }
+  
   
