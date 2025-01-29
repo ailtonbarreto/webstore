@@ -223,6 +223,18 @@ td {
     cursor: pointer;
 }
 
+.cart-counter {
+    position: absolute;
+    bottom: 2.4vw;
+    right: 5vw;
+    background-color: var(--cor-btn-addToCard);
+    color: white;
+    border-radius: 50%;
+    padding: 0.2vw 0.4vw;
+    font-size: 0.6vw;
+}
+
+
 /* MODAL PEDIDO ENVIADO----------------------------------- */
 #loading-modal {
     position: fixed;
@@ -331,9 +343,118 @@ footer img {
 /* ------------------------------------------------------ */
 
 @media (max-width: 768px) {
+
+    body{
+        margin-top: 25vw;
+    }
+
+    .texto-home {
+        display: flex;
+        justify-content: center;
+        color: var(--cor-principal);
+        font-size: 7vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        margin-top: 7vw;
+    }
+
     table {
         display: none;
     }
+
+    header {
+        display: flex;
+        height: 20vw;
+        justify-content: space-between;
+        margin-bottom: 1vw;
+    }
+
+    .menu-container{
+        display: block;
+    }
+
+    
+    .mobile-icon {
+        width: 10vw;
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+    }
+
+    .cart-icon {
+        display: block;
+    }
+    
+    .cart-counter {
+        display: block;
+        font-size: 4vw;
+        width: 7vw;
+        top: 1vw;
+        height: 7vw;
+        right: 2vw;
+    }
+
+
+    .menu-content {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: var(--cor-btn-addToCard);
+        overflow-x: hidden;
+        transition: width 0.4s ease;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-content a {
+        font-size: 24px;
+        color: white;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: color 0.3s;
+    }
+
+    .menu-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .navbar{
+        display: none;
+    }
+
+    .cadastro {
+        width: 20vw;
+    }
+
+    .cadastro img {
+        width: 8vw;
+    }
+
+    .mobile-icon {
+        display: block;
+        width: 10vw;
+    }
+
+    .mobile-icon img {
+        width: 9vw;
+    }
+
 
     .cart-card {
         display: block;
@@ -374,7 +495,6 @@ footer img {
         padding: 4vw;
     }
 
-    
 
     footer{
         display: none;
