@@ -108,7 +108,7 @@ async function load_products(categoria) {
         productContainer.appendChild(card);
     });
 
-    spinner.style.display = "none"; // Esconder o spinner após carregar os produtos
+    spinner.style.display = "none";
     atualizarVisibilidade();
 }
 

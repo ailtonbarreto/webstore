@@ -26,7 +26,7 @@ function loadCart() {
         `;
         cartItemsContainer.innerHTML = tableHeader;
 
-        // Processa cada item do carrinho
+
         cart.forEach(item => {
             let valor = item.valor;
             let quantidade = parseInt(item.quantidade);
@@ -119,12 +119,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (successOkBtn) {
         successOkBtn.addEventListener('click', function() {
             successModal.style.display = 'none';
-            window.location.href = 'meuspedidos.html';
+            // localStorage.removeItem("pedidosfiltrado");
+            // sessionStorage.removeItem("pedidos");
+            window.location.href = 'index.html';
         });
     }
 
     function EnviarPedido() {
-        // Exibir modal de carregamento
+
         loadingModal.style.display = 'flex';
 
         fetch('https://api-webstore.onrender.com/inserir/', {

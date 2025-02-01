@@ -1,16 +1,14 @@
 // Função principal para carregar a tela com os pedidos
 async function load_tela() {
     const container = document.getElementById("pedidos-container");
-    if (container) container.innerHTML = "<p>Carregando pedidos...</p>";
+    if (container) container.innerHTML = "<p class='title'>Carregando pedidos...</p>";
 
     let cliente = localStorage.getItem("sku_cliente");
-    console.log("SKU do cliente carregado:", cliente);
 
     // Carregar dados salvos
     let dadosSalvos = carregarPedidosSessionStorage();
 
     if (!dadosSalvos.length) {
-        console.log("Nenhum dado encontrado no sessionStorage, carregando da API...");
         dadosSalvos = await load_pedidos();
     }
 
@@ -20,57 +18,42 @@ async function load_tela() {
         return;
     }
 
-    console.log("Dados completos antes do filtro:", dadosSalvos);
-
-    // Filtrar pedidos por cliente
     const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === cliente);
-    console.log("Pedidos filtrados:", filtered_pedidos);
 
-    // Remover duplicados com base no campo PEDIDO
     const pedidosSemDuplicados = removerDuplicados(filtered_pedidos, "PEDIDO");
-    console.log("Pedidos filtrados e sem duplicados:", pedidosSemDuplicados);
 
-    // Salvar os pedidos filtrados e sem duplicados no sessionStorage
     try {
         const compressedFiltered = LZString.compress(JSON.stringify(pedidosSemDuplicados));
-        sessionStorage.setItem("pedidos_filtrados", compressedFiltered);
-        console.log("Pedidos filtrados e sem duplicados salvos no sessionStorage:", pedidosSemDuplicados);
+        localStorage.setItem("pedidos_filtrados", compressedFiltered);
     } catch (error) {
-        console.error("Erro ao salvar os pedidos filtrados no sessionStorage:", error);
+        console.error("Erro ao salvar os pedidos filtrados no localStorage:", error);
     }
 
-    // Renderizar os pedidos
     renderPedidos(pedidosSemDuplicados);
 }
 
-// Função para remover duplicados com base em um campo específico
+
 function removerDuplicados(array, campoUnico) {
-    console.log(`Removendo duplicados com base no campo: ${campoUnico}`);
     const itensUnicos = new Map();
     array.forEach(item => {
         if (!itensUnicos.has(item[campoUnico])) {
             itensUnicos.set(item[campoUnico], item);
-        } else {
-            console.log(`Item duplicado encontrado:`, item);
         }
     });
     return Array.from(itensUnicos.values());
 }
 
-// Função para carregar pedidos da API e armazená-los no sessionStorage
+
 async function load_pedidos() {
     try {
         const response = await fetch("https://api-webstore.onrender.com/vendas");
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         
         const tabela = await response.json();
-        console.log("Dados recebidos da API:", tabela);
-
         if (!Array.isArray(tabela)) throw new Error("Formato de dados inválido.");
 
         const compressedData = LZString.compress(JSON.stringify(tabela));
         sessionStorage.setItem("pedidos", compressedData);
-        console.log("Dados salvos no sessionStorage:", tabela);
 
         return tabela;
     } catch (error) {
@@ -79,29 +62,22 @@ async function load_pedidos() {
     }
 }
 
-// Função para carregar pedidos armazenados no sessionStorage
+
 function carregarPedidosSessionStorage() {
     try {
         const compressedFiltered = sessionStorage.getItem("pedidos_filtrados");
         if (compressedFiltered) {
-            const dadosFiltrados = JSON.parse(LZString.decompress(compressedFiltered));
-            console.log("Dados filtrados carregados do sessionStorage:", dadosFiltrados);
-            return dadosFiltrados;
+            return JSON.parse(LZString.decompress(compressedFiltered));
         }
 
         const compressedData = sessionStorage.getItem("pedidos");
-        const dadosCompletos = compressedData 
-            ? JSON.parse(LZString.decompress(compressedData)) 
-            : [];
-        console.log("Dados completos carregados do sessionStorage:", dadosCompletos);
-        return dadosCompletos;
+        return compressedData ? JSON.parse(LZString.decompress(compressedData)) : [];
     } catch (error) {
         console.error("Erro ao carregar dados do sessionStorage:", error);
         return [];
     }
 }
 
-// Função para renderizar os pedidos em uma tabela
 function renderPedidos(pedidos) {
     const container = document.getElementById("pedidos-container");
     if (!container) {
@@ -115,20 +91,21 @@ function renderPedidos(pedidos) {
         return;
     }
 
-    console.log("Renderizando pedidos na tabela:", pedidos);
+  
+    pedidos.sort((a, b) => new Date(b.EMISSAO) - new Date(a.EMISSAO));
 
-    // Criação da tabela
+    // Criar a tabela
     const tabela = document.createElement("table");
     tabela.setAttribute("border", "1");
     tabela.innerHTML = `
         <thead>
             <tr>
                 <th>Pedido</th>
+                <th>Data</th>
                 <th>Status</th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody></tbody>
     `;
 
     const tbody = tabela.querySelector("tbody");
@@ -136,21 +113,40 @@ function renderPedidos(pedidos) {
     pedidos.forEach(pedido => {
         const tr = document.createElement("tr");
 
+        
         const tdpedido = document.createElement("td");
         tdpedido.textContent = pedido.PEDIDO;
 
+
+        const tddata = document.createElement("td");
+ 
+        const data = new Date(pedido.EMISSAO);
+
+    
+        const ano = data.getFullYear();
+        const mes = String(data.getMonth() + 1).padStart(2, "0");
+        const dia = String(data.getDate()).padStart(2, "0");
+
+        const dataFormatada = `${dia}/${mes}/${ano}`;
+
+        tddata.textContent = dataFormatada;
+
+      
         const tdstatus = document.createElement("td");
         tdstatus.textContent = pedido.STATUS;
 
         tr.appendChild(tdpedido);
+        tr.appendChild(tddata);
         tr.appendChild(tdstatus);
+
 
         tbody.appendChild(tr);
     });
+
 
     container.innerHTML = "";
     container.appendChild(tabela);
 }
 
-// Chamar a função principal para carregar a página
+
 load_tela();
