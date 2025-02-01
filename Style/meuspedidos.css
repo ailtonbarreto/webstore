@@ -103,11 +103,7 @@ li a:hover::after {
 /* INICIO DO CADASTRO--------------------------- */
 
 .cadastro {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 1vw;
-    justify-content: space-between;
+    visibility: hidden;
 }
 
 .cart-icon {
