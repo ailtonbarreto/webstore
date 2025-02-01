@@ -47,10 +47,11 @@ function loadCart() {
             let cartCard = document.createElement('div');
             cartCard.className = 'cart-card';
             cartCard.innerHTML = `
-                <div><img src="${item.imagem}" alt="${item.nome}" style="width: 100%; height: auto;"></div>
+                <div><img src="${item.imagem}" alt="${item.nome}"></div>
                 <div class= "text"><strong>Valor Un:</strong> ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}</div>
                 <div class= "text"><strong>Quantidade:</strong> ${quantidade}</div>
                 <div class= "text"><strong>Subtotal:</strong>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}</div>
+                <hr>
             `;
             cartCardsContainer.appendChild(cartCard);
 

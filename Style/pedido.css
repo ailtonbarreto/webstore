@@ -295,12 +295,12 @@ td {
     background-color: var(--cor-btn-addToCard);
     border-radius: 0.3vw;
     color: var(--cor-text);
-    padding: 0.5vw;
+    padding: 3vw;
     border: none;
     align-items: center;
     justify-content: center;
-    width: 10vw;
-    font-size: 1.5vw;
+    width: 70vw;
+    font-size: 4vw;
     text-align: center;
     cursor: pointer;
 }
@@ -384,16 +384,12 @@ footer img {
     }
 
     .cart-icon {
-        display: block;
+        display: none;
     }
     
     .cart-counter {
-        display: block;
-        font-size: 4vw;
-        width: 7vw;
-        top: 1vw;
-        height: 7vw;
-        right: 2vw;
+        display: none;
+ 
     }
 
 
@@ -439,7 +435,7 @@ footer img {
     }
 
     .cadastro {
-        width: 20vw;
+        width: 10vw;
     }
 
     .cadastro img {
@@ -469,8 +465,13 @@ footer img {
         color: var(--cor-principal);
     }
 
+    .cart-card img{
+        width: 50vw;
+    }
+
     .text{
         color: var(--cor-principal);
+        margin-bottom: 3vw;
     }
 
     .enviar-section {
