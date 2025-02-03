@@ -14,7 +14,6 @@ function loadCart() {
         cartCardsContainer.innerHTML = '<div class="cart-card">O carrinho está vazio</div>';
         totalElement.textContent = "Total: R$ 0,00";
     } else {
-        // Cabeçalho da tabela (para desktop)
         let tableHeader = `
             <tr>
                 <th></th>
@@ -32,7 +31,6 @@ function loadCart() {
             let quantidade = parseInt(item.quantidade);
             let subtotal = valor * quantidade;
 
-            // Adiciona linha na tabela (para desktop)
             let tableRow = document.createElement('tr');
             tableRow.innerHTML = `
                 <td><img src="${item.imagem}" alt="${item.nome}" style="width: 5vw; height: auto;"></td>
@@ -43,7 +41,7 @@ function loadCart() {
             `;
             cartItemsContainer.appendChild(tableRow);
 
-            // Adiciona cartão (para mobile)
+
             let cartCard = document.createElement('div');
             cartCard.className = 'cart-card';
             cartCard.innerHTML = `
@@ -58,7 +56,6 @@ function loadCart() {
             total += subtotal;
         });
 
-        // Atualiza o total
         totalElement.textContent = `Total: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}`;
     }
 
@@ -120,8 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (successOkBtn) {
         successOkBtn.addEventListener('click', function() {
             successModal.style.display = 'none';
-            // localStorage.removeItem("pedidosfiltrado");
-            // sessionStorage.removeItem("pedidos");
             window.location.href = 'index.html';
         });
     }
@@ -146,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.removeItem("cart");
             loadingModal.style.display = 'none';
 
-            // Exibir modal de sucesso
             successModal.style.display = 'flex';
         })
         .catch(error => {
