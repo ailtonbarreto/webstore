@@ -498,6 +498,12 @@ footer img {
 
     #success-ok-btn {
         width: 70vw;
+        padding: 3vw;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+        font-size: 5vw;
     }
 
 
