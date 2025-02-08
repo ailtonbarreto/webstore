@@ -48,6 +48,16 @@ header {
     display: none;
 }
 
+.texto-home{
+    display: flex;
+    justify-content: center;
+    color: var(--cor-principal);
+    font-size: 3vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 7vw;
+}
+
 .menu_user {
     display: none;
 }
@@ -349,9 +359,6 @@ footer img {
     }
 
     .texto-home {
-        display: flex;
-        justify-content: center;
-        color: var(--cor-principal);
         font-size: 7vw;
         margin-left: 5vw;
         margin-right: 5vw;
