@@ -1,12 +1,9 @@
-// Seleciona o formulário e o modal de carregamento
 const loginForm = document.getElementById("loginForm");
 const loadingModal = document.getElementById("loading-modal");
 
-// Adiciona um evento ao enviar o formulário
 loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Impede o envio automático do formulário
+    event.preventDefault();
 
-    // Exibe o modal de carregamento com o spinner
     loadingModal.style.display = "flex";
 
     const username = document.getElementById('username').value;
@@ -42,7 +39,6 @@ loginForm.addEventListener("submit", function (event) {
             alert("Ocorreu um erro ao tentar realizar o login. Tente novamente mais tarde.");
         })
         .finally(() => {
-            // Oculta o modal de carregamento ao final, independente do sucesso ou erro
             loadingModal.style.display = "none";
         });
 });
