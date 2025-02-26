@@ -1,35 +1,46 @@
-// Função principal para carregar a tela com os pedidos
 async function load_tela() {
     const container = document.getElementById("pedidos-container");
     if (container) container.innerHTML = "<p class='title'>Carregando pedidos...</p>";
 
-    let cliente = localStorage.getItem("sku_cliente");
-
-    // Carregar dados salvos
-    let dadosSalvos = carregarPedidosSessionStorage();
-
-    if (!dadosSalvos.length) {
-        dadosSalvos = await load_pedidos();
-    }
-
-    if (!Array.isArray(dadosSalvos)) {
-        console.error("Erro: os dados carregados não são um array.");
-        if (container) container.innerHTML = "<p>Erro ao carregar pedidos.</p>";
+    let clienteId = localStorage.getItem("sku_cliente");
+    if (!clienteId) {
+        console.error("Erro: ID do cliente não encontrado.");
+        container.innerHTML = "<p>Erro ao carregar pedidos.</p>";
         return;
     }
 
-    const filtered_pedidos = dadosSalvos.filter(item => item.SKU_CLIENTE === cliente);
+    let pedidos = await load_pedidos(clienteId);
+    
+    if (!Array.isArray(pedidos)) {
+        console.error("Erro: os dados carregados não são um array.");
+        container.innerHTML = "<p>Erro ao carregar pedidos.</p>";
+        return;
+    }
 
-    const pedidosSemDuplicados = removerDuplicados(filtered_pedidos, "PEDIDO");
+    const pedidosSemDuplicados = removerDuplicados(pedidos, "PEDIDO");
 
     try {
-        const compressedFiltered = LZString.compress(JSON.stringify(pedidosSemDuplicados));
-        localStorage.setItem("pedidos_filtrados", compressedFiltered);
+        localStorage.setItem("pedidos_filtrados", JSON.stringify(pedidosSemDuplicados));
     } catch (error) {
         console.error("Erro ao salvar os pedidos filtrados no localStorage:", error);
     }
 
     renderPedidos(pedidosSemDuplicados);
+}
+
+async function load_pedidos() {
+    try {
+        let cliente = localStorage.getItem("sku_cliente");
+        if (!cliente) throw new Error("Cliente não encontrado no localStorage.");
+
+        const response = await fetch(`https://api-webstore.onrender.com/vendas/${cliente}`);
+        if (!response.ok) throw new Error("Erro ao obter os dados da API.");
+        
+        return await response.json();
+    } catch (error) {
+        console.error("Erro ao obter os Pedidos:", error);
+        return [];
+    }
 }
 
 
@@ -41,41 +52,6 @@ function removerDuplicados(array, campoUnico) {
         }
     });
     return Array.from(itensUnicos.values());
-}
-
-
-async function load_pedidos() {
-    try {
-        const response = await fetch("https://api-webstore.onrender.com/vendas");
-        if (!response.ok) throw new Error("Erro ao obter os dados da API.");
-        
-        const tabela = await response.json();
-        if (!Array.isArray(tabela)) throw new Error("Formato de dados inválido.");
-
-        const compressedData = LZString.compress(JSON.stringify(tabela));
-        sessionStorage.setItem("pedidos", compressedData);
-
-        return tabela;
-    } catch (error) {
-        console.error("Erro ao obter os Pedidos:", error);
-        return [];
-    }
-}
-
-
-function carregarPedidosSessionStorage() {
-    try {
-        const compressedFiltered = sessionStorage.getItem("pedidos_filtrados");
-        if (compressedFiltered) {
-            return JSON.parse(LZString.decompress(compressedFiltered));
-        }
-
-        const compressedData = sessionStorage.getItem("pedidos");
-        return compressedData ? JSON.parse(LZString.decompress(compressedData)) : [];
-    } catch (error) {
-        console.error("Erro ao carregar dados do sessionStorage:", error);
-        return [];
-    }
 }
 
 function renderPedidos(pedidos) {
@@ -91,10 +67,8 @@ function renderPedidos(pedidos) {
         return;
     }
 
-  
     pedidos.sort((a, b) => new Date(b.EMISSAO) - new Date(a.EMISSAO));
 
-    // Criar a tabela
     const tabela = document.createElement("table");
     tabela.setAttribute("border", "1");
     tabela.innerHTML = `
@@ -113,40 +87,25 @@ function renderPedidos(pedidos) {
     pedidos.forEach(pedido => {
         const tr = document.createElement("tr");
 
-        
         const tdpedido = document.createElement("td");
         tdpedido.textContent = pedido.PEDIDO;
 
-
         const tddata = document.createElement("td");
- 
         const data = new Date(pedido.EMISSAO);
-
-    
-        const ano = data.getFullYear();
-        const mes = String(data.getMonth() + 1).padStart(2, "0");
-        const dia = String(data.getDate()).padStart(2, "0");
-
-        const dataFormatada = `${dia}/${mes}/${ano}`;
-
+        const dataFormatada = `${String(data.getDate()).padStart(2, "0")}/${String(data.getMonth() + 1).padStart(2, "0")}/${data.getFullYear()}`;
         tddata.textContent = dataFormatada;
 
-      
         const tdstatus = document.createElement("td");
         tdstatus.textContent = pedido.STATUS;
 
         tr.appendChild(tdpedido);
         tr.appendChild(tddata);
         tr.appendChild(tdstatus);
-
-
         tbody.appendChild(tr);
     });
-
 
     container.innerHTML = "";
     container.appendChild(tabela);
 }
-
 
 load_tela();
