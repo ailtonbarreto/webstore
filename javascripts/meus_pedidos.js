@@ -86,26 +86,35 @@ function renderPedidos(pedidos) {
 
     pedidos.forEach(pedido => {
         const tr = document.createElement("tr");
-
+        tr.style.cursor = "pointer";
+    
+        tr.addEventListener("click", () => {
+            localStorage.setItem("pedido_selecionado", pedido.PEDIDO);
+            window.location.href = `detalhes.html?pedido=${pedido.PEDIDO}`;
+        });
+    
         const tdpedido = document.createElement("td");
         tdpedido.textContent = pedido.PEDIDO;
-
+    
         const tddata = document.createElement("td");
         const data = new Date(pedido.EMISSAO);
         const dataFormatada = `${String(data.getDate()).padStart(2, "0")}/${String(data.getMonth() + 1).padStart(2, "0")}/${data.getFullYear()}`;
         tddata.textContent = dataFormatada;
-
+    
         const tdstatus = document.createElement("td");
         tdstatus.textContent = pedido.STATUS;
-
+    
         tr.appendChild(tdpedido);
         tr.appendChild(tddata);
         tr.appendChild(tdstatus);
         tbody.appendChild(tr);
     });
+    
 
     container.innerHTML = "";
     container.appendChild(tabela);
+
+    
 }
 
 load_tela();
