@@ -1,6 +1,6 @@
 async function load_tela() {
     const container = document.getElementById("pedidos-container");
-    if (container) container.innerHTML = "<p class='title'>Carregando pedidos...</p>";
+    if (container) container.innerHTML = "<p class='title' style='font-size:2vw'>Carregando pedidos...</p>";
 
     let clienteId = localStorage.getItem("sku_cliente");
     if (!clienteId) {
