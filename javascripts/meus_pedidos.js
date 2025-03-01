@@ -97,10 +97,10 @@ function renderPedidos(pedidos) {
         tdpedido.textContent = pedido.PEDIDO;
     
         const tddata = document.createElement("td");
-        const data = new Date(pedido.EMISSAO);
-        const dataFormatada = `${String(data.getDate()).padStart(2, "0")}/${String(data.getMonth() + 1).padStart(2, "0")}/${data.getFullYear()}`;
+        const date = new Date(pedido.EMISSAO);
+        const dataFormatada = date.toISOString().split('T')[0].split('-').reverse().join('/');        
         tddata.textContent = dataFormatada;
-    
+
         const tdstatus = document.createElement("td");
         tdstatus.textContent = pedido.STATUS;
     
