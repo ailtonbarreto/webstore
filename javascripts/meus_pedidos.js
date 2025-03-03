@@ -76,6 +76,7 @@ function renderPedidos(pedidos) {
             <tr>
                 <th>Pedido</th>
                 <th>Data</th>
+                <th>Total</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -95,7 +96,11 @@ function renderPedidos(pedidos) {
     
         const tdpedido = document.createElement("td");
         tdpedido.textContent = pedido.PEDIDO;
-    
+        
+
+        const tdtotal = document.createElement("td");
+        tdtotal.textContent = pedido.TOTAL_PEDIDO;
+
         const tddata = document.createElement("td");
         const date = new Date(pedido.EMISSAO);
         const dataFormatada = date.toISOString().split('T')[0].split('-').reverse().join('/');        
@@ -106,6 +111,7 @@ function renderPedidos(pedidos) {
     
         tr.appendChild(tdpedido);
         tr.appendChild(tddata);
+        tr.appendChild(tdtotal);
         tr.appendChild(tdstatus);
         tbody.appendChild(tr);
     });
