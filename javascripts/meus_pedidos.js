@@ -76,6 +76,7 @@ function renderPedidos(pedidos) {
             <tr>
                 <th>Pedido</th>
                 <th>Data</th>
+                <th>Previsão Entrega</th>
                 <th>Total</th>
                 <th>Status</th>
             </tr>
@@ -99,18 +100,27 @@ function renderPedidos(pedidos) {
         
 
         const tdtotal = document.createElement("td");
-        tdtotal.textContent = pedido.TOTAL_PEDIDO;
+        tdtotal.textContent = Number(pedido.TOTAL_PEDIDO).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
 
         const tddata = document.createElement("td");
         const date = new Date(pedido.EMISSAO);
         const dataFormatada = date.toISOString().split('T')[0].split('-').reverse().join('/');        
         tddata.textContent = dataFormatada;
 
+        const tddata_entrega = document.createElement("td");
+        const date1 = new Date(pedido.ENTREGA);
+        const dataFormatada1 = date1.toISOString().split('T')[0].split('-').reverse().join('/');        
+        tddata_entrega.textContent = dataFormatada1;
+
         const tdstatus = document.createElement("td");
         tdstatus.textContent = pedido.STATUS;
     
         tr.appendChild(tdpedido);
         tr.appendChild(tddata);
+        tr.appendChild(tddata_entrega);
+
         tr.appendChild(tdtotal);
         tr.appendChild(tdstatus);
         tbody.appendChild(tr);
