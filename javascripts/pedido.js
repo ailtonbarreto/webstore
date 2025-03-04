@@ -97,7 +97,7 @@ const pedido = order.map(item => ({
     quantidade: item.quantidade,
     valor_unit: item.valor,
     sequencia: 50000,
-    situacao: "AGUARDANDO CONFIRMACAO"
+    situacao: "AGUARDANDO APROVAÇÃO"
 }));
 
 const pedidoJson = JSON.stringify(pedido);
