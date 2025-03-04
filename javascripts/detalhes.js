@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       
         if (itensPedido.length === 0) {
-            container.innerHTML = `<h2>Pedido: ${pedidoId}</h2><p>Este pedido não possui itens.</p>`;
+            container.innerHTML = `<h2 class='texto-home'>Pedido: ${pedidoId}</h2><p>Este pedido não possui itens.</p>`;
             return;
         }
 
 
-        container.innerHTML = `<h2>Pedido: ${pedidoId}</h2>`;
+        container.innerHTML = `<h2 class='title'>Pedido: ${pedidoId}</h2>`;
 
         const table = document.createElement("table");
         table.border = "1";
@@ -53,21 +53,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const tbody = document.createElement("tbody");
 
-
         itensPedido.forEach(item => {
             const row = document.createElement("tr");
-
+        
+            const tddata = document.createElement("td");
+            const date = new Date(item.EMISSAO);
+            const dataFormatada = date.toISOString().split('T')[0].split('-').reverse().join('/');        
+            tddata.textContent = dataFormatada;
+        
             row.innerHTML = `
                 <td>${item.PEDIDO}</td>
-                <td>${item.EMISSAO}</td>
+                <td>${dataFormatada}</td>
                 <td>${item.DESCRICAO}</td>
                 <td>${item.QTD}</td>
                 <td>R$ ${parseFloat(item.VR_UNIT).toFixed(2)}</td>
                 <td>${item.STATUS}</td>
             `;
-
+        
             tbody.appendChild(row);
         });
+        
 
         table.appendChild(tbody);
         container.appendChild(table);

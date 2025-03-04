@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (successOkBtn) {
         successOkBtn.addEventListener('click', function() {
             successModal.style.display = 'none';
-            window.location.href = 'index.html';
+            window.location.href = 'meuspedidos.html';
         });
     }
 

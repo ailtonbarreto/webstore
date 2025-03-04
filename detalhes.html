@@ -3,11 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Style/meuspedidos.css">
     <title>Detalhes do Pedido</title>
 </head>
 <body>
-    <div id="detalhes-container"></div>  <!-- O conteúdo da tabela será adicionado aqui -->
+
+    <header>
+
+            <div class="menu-container">
+
+            <img src="./Assets/menu-mobile-icon.png" class="mobile-icon" alt="Menu" onclick="toggleMenu()">
+
+
+            <div id="menu" class="menu-content">
+
+                <div class="menu-close" onclick="toggleMenu()">✖</div>
+
+                <a href="./roupas.html">Roupas</a>
+                <a href="./tenis.html">Tênis</a>
+                <a href="./mochila.html">Mochilas</a>
+                <a href="./bone.html">Chapelaria</a>
+                <a href="./outlet.html">Outlet</a>
+
+            </div>
+
+        </div>
+
+        <div class="div-logo">
+
+            <a href="./index.html"><img class="logo" src="./Assets/logo.png" alt=""></a>
+
+        </div>
+
+        <div class="navbar">
+            <ul class="navlist">
+                <li><a href="./roupas.html">Roupas</a></li>
+                <li><a href="./tenis.html">Tênis</a></li>
+                <li><a href="./mochila.html">Mochilas</a></li>
+                <li><a href="./bone.html">Chapelaria</a></li>
+                <li><a href="./outlet.html" style="color: rgb(235, 200, 3);">Outlet</a></li>
+            </ul>
+        </div>
+
+        <div class="menu_user">
+
+            <div class="close">
+                <button class="close-btn">X</button>
     
-    <script src="./javascripts/detalhes.js"></script>  <!-- Seu arquivo JavaScript -->
+            </div>
+
+            <ul>
+                <a class="item_entrar" href="./login.html">
+                    <li>Entrar</li>
+                </a>
+                <a class="item_cadastro" href="./cadastro.html">
+                    <li>Cadastrar</li>
+                </a>
+                <a class="item_pedidos" href="./meuspedidos.html">
+                    <li>Meus Pedidos</li>
+                </a>
+                <li class="item_sair" onclick="localStorage.setItem('logged', 0); window.location.reload();">Sair</li>
+            </ul>
+
+        </div>
+
+        <div class="cadastro">
+            <a><img class="login" src="./Assets/user-icon.png" alt=""></a>
+            <a id="open-cart"><img class="cart-icon" src="./Assets/carrinho.png" alt=""></a>
+            <span class="cart-counter">0</span>
+        </div>
+
+
+    </header>
+
+
+    <div id="detalhes-container" style="padding: 2vw;"></div>
+    
+    <script src="./javascripts/detalhes.js"></script>
 </body>
 </html>
