@@ -122,7 +122,7 @@ async function carregar_produtos() {
   });
 }
 
-// FUNÇÃO CLICAR NO PRODUTO-------------------------------------------------
+// FUNCAO CLICAR NO PRODUTO-------------------------------------------------
 function produtoclicado(event) {
   let selected_product = event.target;
   let elementoPai = selected_product.parentElement.parentElement;
@@ -141,7 +141,7 @@ function produtoclicado(event) {
   window.location.href = "./produto.html";
 }
 
-// FUNÇÃO PARA TENTAR CARREGAR IMAGEM---------------------------------------
+// FUNCAO PARA TENTAR CARREGAR IMAGEM---------------------------------------
 function carregarImagem(img) {
   const maxTentativas = 5; // Número máximo de tentativas
   let tentativas = 0;
@@ -149,19 +149,19 @@ function carregarImagem(img) {
   function tentarCarregar() {
     const tempImg = new Image();
     tempImg.onload = function () {
-      img.src = tempImg.src; // Define a imagem no elemento original
+      img.src = tempImg.src;
     };
 
     tempImg.onerror = function () {
       tentativas++;
       if (tentativas < maxTentativas) {
-        setTimeout(tentarCarregar, 1000); // Tenta novamente após 1 segundo
+        setTimeout(tentarCarregar, 1000);
       } else {
         console.error(`Falha ao carregar a imagem após ${maxTentativas} tentativas: ${img.src}`);
       }
     };
 
-    tempImg.src = img.src; // Tenta carregar a URL original
+    tempImg.src = img.src;
   }
 
   tentarCarregar();
@@ -181,9 +181,9 @@ function lazyLoadImages() {
             img.removeAttribute("data-src");
             observer.unobserve(img);
 
-            // Verifica se a imagem carregou corretamente
+            
             img.onload = () => console.log(`Imagem carregada: ${img.src}`);
-            img.onerror = () => carregarImagem(img); // Tenta novamente caso falhe
+            img.onerror = () => carregarImagem(img);
           }
         }
       });
@@ -204,7 +204,7 @@ function lazyLoadImages() {
   }
 }
 
-// CHAMAR FUNÇÕES NA ORDEM CORRETA--------------------------------------------
+// CHAMAR FUNCOES NA ORDEM CORRETA--------------------------------------------
 carregar_produtos().then(() => {
   lazyLoadImages();
 });
