@@ -17,19 +17,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response = await fetch(`https://api-webstore.onrender.com/pedido/${pedidoId}`);
         if (!response.ok) throw new Error("Erro ao obter os detalhes do pedido.");
 
-
         const pedido = await response.json();
         console.log(pedido);
 
-
         const itensPedido = Array.isArray(pedido) ? pedido : [pedido];
 
-      
         if (itensPedido.length === 0) {
             container.innerHTML = `<h2 class='texto-home'>Pedido: ${pedidoId}</h2><p>Este pedido não possui itens.</p>`;
             return;
         }
-
 
         container.innerHTML = `<h2 class='title'>Pedido: ${pedidoId}</h2>`;
 
@@ -52,30 +48,35 @@ document.addEventListener("DOMContentLoaded", async () => {
         table.appendChild(thead);
 
         const tbody = document.createElement("tbody");
+        let totalPedido = 0; 
 
         itensPedido.forEach(item => {
             const row = document.createElement("tr");
-        
-            const tddata = document.createElement("td");
+
             const date = new Date(item.EMISSAO);
-            const dataFormatada = date.toISOString().split('T')[0].split('-').reverse().join('/');        
-            tddata.textContent = dataFormatada;
-        
+            const dataFormatada = date.toISOString().split('T')[0].split('-').reverse().join('/');
+
+            totalPedido += item.QTD * parseFloat(item.VR_UNIT);
+
             row.innerHTML = `
                 <td>${item.PEDIDO}</td>
                 <td>${dataFormatada}</td>
                 <td>${item.DESCRICAO}</td>
                 <td>${item.QTD}</td>
-                <td>R$ ${parseFloat(item.VR_UNIT).toFixed(2)}</td>
+                <td>${parseFloat(item.VR_UNIT).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</td>
                 <td>${item.STATUS}</td>
             `;
-        
+
             tbody.appendChild(row);
         });
-        
 
         table.appendChild(tbody);
         container.appendChild(table);
+
+        const totalDiv = document.createElement("div");
+        totalDiv.style.marginTop = "20px"; 
+        totalDiv.innerHTML = `<p style='font-size:1vw; color:#0f8f8f; font-weight:bold'>Total do Pedido: ${totalPedido.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>`;
+        container.appendChild(totalDiv);
 
     } catch (error) {
         console.error("Erro ao carregar detalhes do pedido:", error);
