@@ -461,6 +461,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .add-to-cart-btn {
     background-color: #29be4e;
     border: none;
+    user-select: none;
     padding: 0.3vw;
     color: var(--cor-text);
     width: 25%;
