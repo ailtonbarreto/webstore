@@ -63,7 +63,7 @@ function renderPedidos(pedidos) {
 
     if (!pedidos || pedidos.length === 0) {
         console.warn("Nenhum pedido disponível para renderizar.");
-        container.innerHTML = "<p>Nenhum pedido encontrado.</p>";
+        container.innerHTML = "<p class='title'>Nenhum pedido encontrado.</p>";
         return;
     }
 
