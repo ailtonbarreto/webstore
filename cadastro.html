@@ -34,6 +34,7 @@
             <label for="text">UF:</label>
             <input type="text" id="UF" name="UF" required>
 
+
             
             <label for="SENHA">Senha:</label>
             <input type="password" id="password" name="password" required>
@@ -54,6 +55,59 @@
 
 
 </body>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        // Captura os valores do formulário
+        const razao = document.getElementById("razao").value;
+        const cnpj = document.getElementById("cnpj").value;
+        const cidade = document.getElementById("CIDADE").value;
+        const uf = document.getElementById("UF").value;
+        const senha = document.getElementById("password").value;
+        const senhaConfirm = document.getElementById("password-confir").value;
+
+        // Validação da senha
+        if (senha !== senhaConfirm) {
+            alert("As senhas não coincidem!");
+            return;
+        }
+
+        // Cria o objeto para envio
+        const dados = {
+            razao_social: razao,
+            cnpj: cnpj,
+            cidade: cidade,
+            uf: uf,
+            senha: senha
+        };
+
+        try {
+            const response = await fetch("https://api-webstore.onrender.com/inserir_cliente/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro na requisição");
+            }
+
+            const resposta = await response.json();
+            console.log("Cadastro realizado com sucesso!", resposta);
+            alert("Cadastro realizado com sucesso!");
+            document.getElementById("loginForm").reset(); // Limpa o formulário
+
+        } catch (error) {
+            console.error("Erro ao cadastrar:", error);
+            alert("Erro ao cadastrar. Tente novamente.");
+        }
+    });
+</script>
+
 
 
 </html>
