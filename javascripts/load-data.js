@@ -9,6 +9,8 @@ let item_pedidos = document.querySelector(".item_pedidos");
 let cart_counter = document.querySelector(".cart-counter");
 let btn_close = document.querySelector(".close-btn");
 
+
+
 // ----------------------------------------------------------------------------
 // USER
 
@@ -52,6 +54,7 @@ btn_close.addEventListener("click", () => {
 async function carregar_produtos() {
  
   let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
+
 
   if (!dadosSalvos) {
     await carregar_dados_local(); 
@@ -119,6 +122,8 @@ async function carregar_produtos() {
     }
 
     product_name.appendChild(card);
+
+    console.log(sessionStorage.getItem('dadosConsulta'))
   });
 }
 
