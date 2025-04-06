@@ -58,7 +58,7 @@ btn_close.addEventListener("click", () => {
 /// CARREGAR DADOS DA API
 async function carregarDadosApi() {
     try {
-        const response = await fetch("https://api-webstore.onrender.com/integracao");
+        const response = await fetch("https://barretoapps.com.br/integracao");
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         const dadosArray = await response.json();
         sessionStorage.setItem("dadosConsulta", JSON.stringify(dadosArray));
@@ -73,7 +73,7 @@ async function carregarDadosApi() {
 /// CARREGAR DADOS DA LOCAL
 async function carregarDados() {
     try {
-        const response = await fetch("https://api-webstore.onrender.com/integracao");
+        const response = await fetch("https://barretoapps.com.br/integracao");
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         const dadosArray = await response.json();
         sessionStorage.setItem("dadosConsulta", JSON.stringify(dadosArray));

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch(`https://api-webstore.onrender.com/pedido/${pedidoId}`);
+        const response = await fetch(`https://barretoapps.com.br/pedido/${pedidoId}`);
         if (!response.ok) throw new Error("Erro ao obter os detalhes do pedido.");
 
         const pedido = await response.json();

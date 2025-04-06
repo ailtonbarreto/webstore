@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         loadingModal.style.display = 'flex';
 
-        fetch('https://api-webstore.onrender.com/inserir/', {
+        fetch('https://barretoapps.com.br/inserir/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

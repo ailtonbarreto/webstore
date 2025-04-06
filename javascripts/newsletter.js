@@ -12,7 +12,7 @@ document.getElementById('newsletterForm').addEventListener('submit', async (even
 
     try {
 
-        const response = await fetch('https://api-webstore.onrender.com/newsletter', {
+        const response = await fetch('https://barretoapps.com.br/newsletter', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
