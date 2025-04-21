@@ -10,12 +10,7 @@ loginForm.addEventListener("submit", function (event) {
     const password = document.getElementById('password').value;
     let logged = "0";
 
-    fetch('./database/keys.json')
-        .then(response => response.json())
-        .then(config => {
-            const apiUrl = config.tb_cliente;
-            return fetch(apiUrl);
-        })
+    fetch('https://barretoapps.com.br/clientes')
         .then(response => response.json())
         .then(data => {
             const user = data.find(user => 
