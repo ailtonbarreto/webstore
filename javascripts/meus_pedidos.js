@@ -33,7 +33,7 @@ async function load_pedidos() {
         let cliente = localStorage.getItem("sku_cliente");
         if (!cliente) throw new Error("Cliente não encontrado no localStorage.");
 
-        const response = await fetch(`https://barretoapps.com.br/vendas/${cliente}`);
+        const response = await fetch(`https://api-webstore.onrender.com/vendas/${cliente}`);
         if (!response.ok) throw new Error("Erro ao obter os dados da API.");
         
         return await response.json();
