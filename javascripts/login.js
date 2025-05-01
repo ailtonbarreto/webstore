@@ -10,7 +10,7 @@ loginForm.addEventListener("submit", function (event) {
     const password = document.getElementById('password').value;
     let logged = "0";
 
-    fetch('https://barretoapps.com.br/clientes')
+    fetch('https://api-webstore.onrender.com/clientes')
         .then(response => response.json())
         .then(data => {
             const user = data.find(user => 
