@@ -9,10 +9,11 @@ document.getElementById('newsletterForm').addEventListener('submit', async (even
     const nome = document.getElementById('nome').value;
     const fone = document.getElementById('fone').value;
     const email = document.getElementById('email').value;
-
+  
     try {
 
         const response = await fetch('https://api-webstore.onrender.com/newsletter', {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
