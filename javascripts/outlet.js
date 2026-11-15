@@ -1,5 +1,6 @@
 let data = [];
 let statusValue = localStorage.getItem("logged");
+sessionStorage.removeItem("dadosConsulta");
 let menu_user = document.querySelector(".menu_user");
 let user_icon = document.querySelector(".login");
 let item_sair = document.querySelector(".item_sair");
@@ -55,13 +56,19 @@ btn_close.addEventListener("click", () => {
 
   // CARREGAR PRODUTOS NA PAGINA------------------------------------------------
   async function carregar_produtos() {
- 
-    let dadosSalvos = JSON.parse(sessionStorage.getItem('dadosConsulta'));
+    let dadosApi = [];
+    try {
+      const response = await fetch("https://api-webstore.onrender.com/integracao");
+      if (!response.ok) throw new Error("Erro ao obter os dados da API.");
+      dadosApi = await response.json();
+    } catch (error) {
+      console.error("Erro ao obter os dados:", error);
+    }
 
     let product_name = document.querySelector(".prod");
     let categoria = "Outlet";
 
-    let filteredData = dadosSalvos.filter(item => item.HOME === categoria && item.ATIVO === 1 && Number(item.ESTOQUE_VENDA) > 0);
+    let filteredData = dadosApi.filter(item => item.HOME === categoria && item.ATIVO === 1 && Number(item.ESTOQUE_VENDA) > 0);
     
     product_name.innerHTML = '';
 
