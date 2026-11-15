@@ -1,6 +1,6 @@
 // localStorage.clear()
 
-window.onload = function () {
+window.onload = async function () {
   const produto = localStorage.getItem("produtoSelecionado");
   const img = localStorage.getItem("foto");
   let user_icon = document.querySelector(".login");
@@ -39,7 +39,61 @@ window.onload = function () {
   } else {
     console.log(" ");
   }
+
+  await carregarGrade(produto);
 };
+
+// ----------------------------------------------------------------------------
+async function carregarGrade(produto) {
+  const gradeContainer = document.getElementById("gradeProduto");
+  gradeContainer.textContent = "Carregando tamanhos...";
+
+  try {
+    const configResponse = await fetch("./database/db_estoque.json");
+    if (!configResponse.ok) throw new Error("Não foi possível carregar a configuração do estoque.");
+
+    const config = await configResponse.json();
+    if (typeof config.tb_integracao !== "string") {
+      throw new Error("A configuração não contém a URL do estoque.");
+    }
+
+    const response = await fetch(config.tb_integracao);
+    if (!response.ok) throw new Error("Erro ao obter os dados da API.");
+
+    const dados = await response.json();
+    if (!Array.isArray(dados)) throw new Error("A resposta da API não contém uma lista de produtos.");
+
+    if (dados.length && !dados.some(item => item.SKU != null && item.ESTOQUE != null)) {
+      gradeContainer.textContent = "A API não retornou SKU e estoque por tamanho.";
+      return;
+    }
+
+    const estoquePorParent = new Map();
+    dados.forEach(item => {
+      const parent = String(item.PARENT);
+      if (!estoquePorParent.has(parent)) estoquePorParent.set(parent, []);
+      estoquePorParent.get(parent).push(item);
+    });
+
+    const grade = (estoquePorParent.get(String(produto)) || [])
+      .map(item => {
+        const sku = String(item.SKU || "");
+        const separador = sku.lastIndexOf("-");
+        const tamanho = separador >= 0 ? sku.slice(separador + 1).trim() : "";
+        const estoque = Number(item.ESTOQUE);
+
+        return tamanho && Number.isFinite(estoque) ? `${tamanho}: ${estoque}` : null;
+      })
+      .filter(Boolean);
+
+    gradeContainer.textContent = grade.length
+      ? grade.join(", ")
+      : "Nenhum tamanho encontrado.";
+  } catch (error) {
+    console.error("Erro ao carregar a grade do produto:", error);
+    gradeContainer.textContent = "Não foi possível carregar os tamanhos.";
+  }
+}
 
 // ----------------------------------------------------------------------------
 // USER

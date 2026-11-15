@@ -483,6 +483,7 @@ section {
     flex-wrap: wrap;
     padding: 2vw;
     align-items: center;
+    min-height: 100vh;
 
 }
 

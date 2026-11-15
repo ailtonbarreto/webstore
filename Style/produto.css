@@ -391,9 +391,16 @@ input[type="number"]::-webkit-inner-spin-button {
     box-shadow: 3px 7px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
-.grade {
-    color: var(--cor-principal);
-    font-size: 2vw;
+
+
+.grade-tamanhos {
+    display: block;
+    color: var(--cor-bg);
+    padding: 0.5vw;
+    font-size: 1vw;
+    border-radius: 1rem;
+    margin-top: 0.5vw;
+    background-color: var(--cor-btn-addToCard);
 }
 
 #produtoSelecionado {
@@ -657,7 +664,12 @@ footer img {
 
 
     .grade {
-        display: none;
+        display: block;
+        font-size: 5vw;
+    }
+
+    .grade-tamanhos {
+        font-size: 3vw;
     }
 
     .preco-box {

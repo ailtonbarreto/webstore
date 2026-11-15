@@ -14,29 +14,29 @@
 </head>
 
 <body>
-    
+
     <div id="cart" class="cart">
-        
+
         <button id="close-cart">X</button>
 
         <h2 style="color:#0f8f8f">Meu Carrinho</h2>
 
         <hr style="border: 1px solid #0f8f8f; margin: 1vw">
-        
+
         <div id="cart-items">
 
-  
+
         </div>
-      
+
         <div class="finish-btn">
-  
-          <p class="subtotal"><span>Subtotal: </span></p>
-  
-          <a href="./pedido.html" class="finish">Finalizar Pedido</a>
-  
+
+            <p class="subtotal"><span>Subtotal: </span></p>
+
+            <a href="./pedido.html" class="finish">Finalizar Pedido</a>
+
         </div>
-  
-      </div>
+
+    </div>
 
 
     <header>
@@ -65,7 +65,7 @@
         <div class="div-logo">
 
             <a href="./index.html"><img class="logo" src="./Assets/logo.png" alt=""></a>
-            
+
         </div>
         <div class="navbar">
             <ul class="navlist">
@@ -83,11 +83,17 @@
             <div class="close">
                 <button class="close-btn">X</button>
             </div>
-            
+
             <ul>
-                <a class="item_entrar" href="./login.html"><li>Entrar</li></a>
-                <a class="item_cadastro" href="./cadastro.html"><li>Cadastrar</li></a>
-                <a class="item_pedidos" href="./meuspedidos.html"><li>Meus Pedidos</li></a>
+                <a class="item_entrar" href="./login.html">
+                    <li>Entrar</li>
+                </a>
+                <a class="item_cadastro" href="./cadastro.html">
+                    <li>Cadastrar</li>
+                </a>
+                <a class="item_pedidos" href="./meuspedidos.html">
+                    <li>Meus Pedidos</li>
+                </a>
                 <li class="item_sair" onclick="localStorage.setItem('logged', 0); window.location.reload();">Sair</li>
             </ul>
 
@@ -98,16 +104,20 @@
             <a id="open-cart"><img class="cart-icon" src="./Assets/carrinho.png" alt=""></a>
             <span class="cart-counter">0</span>
         </div>
-        
+
     </header>
 
     <h2 id="nome" class="title"></h2>
 
     <section class="container">
         <div class="produto-box">
+
             <h1 id="produtoSelecionado"></h1>
+            
             <img id="imagemProduto" src="" alt="Imagem do Produto">
-            <h2 class="grade">Grade</h2>
+
+            <span id="gradeProduto" class="grade-tamanhos" aria-live="polite">Carregando tamanhos...</span>
+
         </div>
 
         <div class="preco-box">
@@ -162,9 +172,9 @@
             <img src="./Assets/logo.png" alt="">
 
             <p>WebStore B2B</p>
-            
+
         </div>
-        
+
     </footer>
 
     <a href="https://www.ailtonbarreto.com.br/" target="_blank">
