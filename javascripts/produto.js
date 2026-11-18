@@ -46,7 +46,7 @@ window.onload = async function () {
 // ----------------------------------------------------------------------------
 async function carregarGrade(produto) {
   const gradeContainer = document.getElementById("gradeProduto");
-  gradeContainer.textContent = "Carregando tamanhos...";
+  gradeContainer.textContent = "Carregando variações...";
 
   try {
     const configResponse = await fetch("./database/db_estoque.json");
@@ -63,35 +63,32 @@ async function carregarGrade(produto) {
     const dados = await response.json();
     if (!Array.isArray(dados)) throw new Error("A resposta da API não contém uma lista de produtos.");
 
-    if (dados.length && !dados.some(item => item.SKU != null && item.ESTOQUE != null)) {
-      gradeContainer.textContent = "A API não retornou SKU e estoque por tamanho.";
+    if (dados.length && !dados.some(item => item.SKU != null)) {
+      gradeContainer.textContent = "A API não retornou SKU por variação.";
       return;
     }
 
-    const estoquePorParent = new Map();
+    const variacoesPorParent = new Map();
     dados.forEach(item => {
       const parent = String(item.PARENT);
-      if (!estoquePorParent.has(parent)) estoquePorParent.set(parent, []);
-      estoquePorParent.get(parent).push(item);
+      if (!variacoesPorParent.has(parent)) variacoesPorParent.set(parent, new Set());
+
+      const sku = String(item.SKU || "").trim();
+      const separador = sku.lastIndexOf("-");
+      if (separador >= 0) {
+        const variacao = sku.slice(separador + 1).trim();
+        if (variacao) variacoesPorParent.get(parent).add(variacao);
+      }
     });
 
-    const grade = (estoquePorParent.get(String(produto)) || [])
-      .map(item => {
-        const sku = String(item.SKU || "");
-        const separador = sku.lastIndexOf("-");
-        const tamanho = separador >= 0 ? sku.slice(separador + 1).trim() : "";
-        const estoque = Number(item.ESTOQUE);
-
-        return tamanho && Number.isFinite(estoque) ? `${tamanho}: ${estoque}` : null;
-      })
-      .filter(Boolean);
+    const grade = [...(variacoesPorParent.get(String(produto)) || [])];
 
     gradeContainer.textContent = grade.length
       ? grade.join(", ")
-      : "Nenhum tamanho encontrado.";
+      : "Nenhuma variação encontrada.";
   } catch (error) {
     console.error("Erro ao carregar a grade do produto:", error);
-    gradeContainer.textContent = "Não foi possível carregar os tamanhos.";
+    gradeContainer.textContent = "Não foi possível carregar as variações.";
   }
 }
 
