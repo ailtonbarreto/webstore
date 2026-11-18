@@ -71,7 +71,7 @@ async function carregarDadosApi() {
 // CARREGAR PRODUTOS
 async function load_products(categoria, dadosApi) {
     const spinner = document.getElementById("spinner");
-    spinner.style.display = "block"; // Mostrar o spinner
+    spinner.style.display = "block"; 
 
     const filteredData = dadosApi.filter(item => item.HOME === categoria && item.ATIVO === 1 && Number(item.ESTOQUE_VENDA) > 0);
     const productContainer = document.querySelector(`.${categoria}`);

@@ -37,9 +37,9 @@ if (statusValue === null) {
 
 function toggle_menu() {
   if (menu_user.style.display === "block") {
-      menu_user.style.display = "none";
+    menu_user.style.display = "none";
   } else {
-      menu_user.style.display = "block";
+    menu_user.style.display = "block";
   }
 }
 
@@ -53,6 +53,10 @@ btn_close.addEventListener("click", () => {
 
 // CARREGAR PRODUTOS NA PÁGINA------------------------------------------------
 async function carregar_produtos() {
+
+  const spinner = document.getElementById("spinner");
+  spinner.style.display = "block";
+
   let dadosApi = [];
   try {
     const response = await fetch("https://api-webstore.onrender.com/integracao");
@@ -66,7 +70,7 @@ async function carregar_produtos() {
   let categoria = document.querySelector("#category").textContent.trim();
 
   let filteredData = dadosApi.filter(item => item.CATEGORIA === categoria && item.ATIVO === 1 && Number(item.ESTOQUE_VENDA) > 0);
-  
+
   product_name.innerHTML = '';
 
   filteredData.forEach(item => {
@@ -123,6 +127,8 @@ async function carregar_produtos() {
     }
 
     product_name.appendChild(card);
+
+    spinner.style.display = "none";
 
   });
 }
@@ -186,7 +192,7 @@ function lazyLoadImages() {
             img.removeAttribute("data-src");
             observer.unobserve(img);
 
-            
+
             img.onload = () => console.log(`Imagem carregada: ${img.src}`);
             img.onerror = () => carregarImagem(img);
           }
